@@ -19,7 +19,6 @@ export default function Footer() {
             </p>
             <div className="space-y-2 text-gray-300">
               <p>📧 danmujicafe@gmail.com</p>
-              <p>📱 010-2829-0451</p>
             </div>
           </div>
 

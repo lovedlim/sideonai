@@ -103,10 +103,10 @@ export default function Hero() {
           {/* CTA 버튼 */}
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <Link
-              href="#roadmap"
+              href="/courses"
               className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg relative overflow-hidden"
             >
-              <span className="relative z-10">🎯 나에게 맞는 AI 활용법 찾기</span>
+              <span className="relative z-10">📹 강의 보러가기</span>
               <div className="absolute inset-0 bg-white/20 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
             </Link>
             <Link

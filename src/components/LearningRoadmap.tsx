@@ -12,30 +12,27 @@ export default function LearningRoadmap() {
     {
       id: 1,
       step: "STEP 1",
-      title: "AI, 내 업무에 바로 써보기",
-      subtitle: "업무 생산성 향상",
-      course: {
-        title: "만약 \"영업사원\"이 바이브 코딩을 배운다면",
-        target: "영업/고객 관리 전문가를 위해",
-        result: "AI 미팅 요약 및 나만의 CRM 어시스턴트 제작",
-        skills: ["#업무자동화", "#CRM", "#Firebase", "#프롬프트엔지니어링"],
-        description: "고객 미팅 내용을 AI가 자동으로 요약하고, 개인 맞춤형 CRM 시스템을 직접 만들어봅니다.",
-        curriculum: [
-          "AI 음성인식 및 텍스트 요약 시스템 구축",
-          "Firebase를 활용한 고객 데이터베이스 설계",
-          "프롬프트 엔지니어링으로 맞춤형 고객 분석 리포트 생성",
-          "웹 인터페이스 제작 및 배포"
-        ],
-        color: "from-blue-500 to-blue-600",
-        icon: "💼"
-      }
-    },
-    {
-      id: 2,
-      step: "STEP 2",
-      title: "나만의 AI 비서 & 서비스 만들기",
-      subtitle: "바이브 코딩 개발",
+      title: "생성형 AI 기초부터 실무까지",
+      subtitle: "업무 자동화 & 바이브 코딩",
       courses: [
+        {
+          title: "생성형AI를 활용한 업무 자동화",
+          target: "모든 업종 실무자를 위해",
+          result: "AI 도구를 활용한 업무 효율화 및 자동화 시스템 구축",
+          skills: ["#프롬프트엔지니어링", "#업무자동화", "#ChatGPT", "#Gemini"],
+          description: "생성형 AI 트렌드부터 실무 적용까지, 업무 효율을 극대화하는 AI 활용법을 배웁니다.",
+          curriculum: [
+            "생성형 AI 트렌드 및 AI agent 최신 이슈",
+            "3단계 활용 전략 (효율화·창의성·인사이트)",
+            "Perplexity/Gemini/ChatGPT/Claude 도구 마스터",
+            "프롬프트 엔지니어링 (상황설명·통합요청·예시제시)",
+            "실전 프로젝트: 메일/공문 회신 자동화",
+            "실전 프로젝트: 엑셀 데이터 분석 자동화",
+            "실전 프로젝트: AI 협업 시스템 구축"
+          ],
+          color: "from-purple-500 to-purple-600",
+          icon: "🤖"
+        },
         {
           title: "정부 AI 정책 시대! 바이브코딩으로 만드는 공공데이터 AI 서비스",
           target: "공공 데이터 활용 전문가를 위해",
@@ -50,6 +47,29 @@ export default function LearningRoadmap() {
           ],
           color: "from-green-500 to-green-600",
           icon: "🏛️"
+        }
+      ]
+    },
+    {
+      id: 2,
+      step: "STEP 2",
+      title: "나만의 AI 비서 & 서비스 만들기",
+      subtitle: "바이브 코딩 개발",
+      courses: [
+        {
+          title: "만약 \"영업사원\"이 바이브 코딩을 배운다면",
+          target: "영업/고객 관리 전문가를 위해",
+          result: "AI 미팅 요약 및 나만의 CRM 어시스턴트 제작",
+          skills: ["#업무자동화", "#CRM", "#Firebase", "#프롬프트엔지니어링"],
+          description: "고객 미팅 내용을 AI가 자동으로 요약하고, 개인 맞춤형 CRM 시스템을 직접 만들어봅니다.",
+          curriculum: [
+            "AI 음성인식 및 텍스트 요약 시스템 구축",
+            "Firebase를 활용한 고객 데이터베이스 설계",
+            "프롬프트 엔지니어링으로 맞춤형 고객 분석 리포트 생성",
+            "웹 인터페이스 제작 및 배포"
+          ],
+          color: "from-blue-500 to-blue-600",
+          icon: "💼"
         },
         {
           title: "바이브 코딩으로 만드는 재미있는 재무제표",
@@ -201,10 +221,10 @@ export default function LearningRoadmap() {
               목표와 현재 수준에 맞는 최적의 학습 경로를 추천해드립니다
             </p>
             <Link
-              href="#contact"
+              href="/courses"
               className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-2xl"
             >
-              🎯 맞춤 학습 경로 상담받기
+              📹 강의 수강하기
               <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>

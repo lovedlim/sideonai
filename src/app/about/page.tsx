@@ -191,7 +191,7 @@ export default function AboutPage() {
                   커뮤니티
                 </h3>
                 <ul className="space-y-2 text-gray-600 dark:text-gray-300 text-sm">
-                  <li>• 캐글/AI 학습 모임 200회+</li>
+                  <li>• 캐글/AI 학습 모임 230회+</li>
                   <li>• 빅데이터 분석기사 스터디</li>
                   <li>• AI 기술 세미나</li>
                   <li>• 멘토링 프로그램</li>

@@ -18,7 +18,7 @@ export default function Achievements() {
       items: [
         "Inflearn Award '답변왕' 수상",
         "온라인 강의 수강자 4.8k 돌파",
-        "캐글/AI 학습 모임 200회 달성",
+        "캐글/AI 학습 모임 230회 달성",
         "모두의연구소 AI 커리큘럼 연구원 활동"
       ]
     },
@@ -38,7 +38,7 @@ export default function Achievements() {
   const stats = [
     { number: "4.8K+", label: "온라인 강의 수강자", icon: "👥" },
     { number: "4.9/5", label: "강의 만족도", icon: "⭐" },
-    { number: "200+", label: "학습 모임 운영", icon: "🎯" },
+    { number: "230+", label: "학습 모임 운영", icon: "🎯" },
     { number: "50+", label: "기업/공공기관 교육", icon: "🏢" }
   ];
 

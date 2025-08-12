@@ -2,7 +2,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import EmpathySection from "@/components/EmpathySection";
-import IntroSection from "@/components/IntroSection";
 import LearningRoadmap from "@/components/LearningRoadmap";
 import CommunitySection from "@/components/CommunitySection";
 import ContactSection from "@/components/ContactSection";
@@ -15,7 +14,6 @@ export default function Home() {
       <main>
         <Hero />
         <EmpathySection />
-        <IntroSection />
         <LearningRoadmap />
         <CommunitySection />
         <ContactSection />

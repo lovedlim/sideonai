@@ -39,10 +39,9 @@ export default function About() {
               <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">연락처</h4>
               <div className="space-y-2 text-gray-600 dark:text-gray-300">
                 <p>📧 danmujicafe@gmail.com</p>
-                <p>📱 010-2829-0451</p>
-                <p>💼 <a href="https://bit.ly/sideonai" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
                 <p>💻 <a href="https://github.com/lovedlim/" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">GitHub</a></p>
                 <p>📺 <a href="https://www.youtube.com/@ai-study" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">YouTube</a></p>
+                <p>📚 <a href="https://www.inflearn.com/users/26238/@roadmap" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Inflearn 로드맵</a></p>
               </div>
             </div>
           </div>
@@ -70,7 +69,7 @@ export default function About() {
               <div>
                 <h4 className="font-semibold text-gray-900 dark:text-white mb-2">커뮤니티</h4>
                 <ul className="text-gray-600 dark:text-gray-300 space-y-1">
-                  <li>• 캐글/AI 학습 모임 (200회 이상)</li>
+                  <li>• 캐글/AI 학습 모임 (230회 이상)</li>
                   <li>• 빅데이터 분석기사 스터디 운영</li>
                 </ul>
               </div>

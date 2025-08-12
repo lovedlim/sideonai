@@ -11,8 +11,8 @@ export default function CommunitySection() {
     {
       id: 1,
       name: "캐글/AI 학습 모임",
-      period: "2020.5 ~ 현재",
-      sessions: "200회+",
+      period: "2020.5 ~ 2024.12",
+      sessions: "230회+",
       description: "국내 최장수 AI 스터디 중 하나",
       features: [
         "최신 논문 리뷰 & 토론",
@@ -22,14 +22,19 @@ export default function CommunitySection() {
       ],
       testimonials: [
         {
-          name: "김개발",
-          role: "데이터 사이언티스트",
-          comment: "혼자 공부할 때와는 차원이 다른 성장을 경험했어요!"
+          name: "참여자 A",
+          role: "데이터 분야 직장인",
+          comment: "다양한 관심사를 가진 분들이 있어 흥미로웠고, 정리해서 발표하는 연습을 할 수 있었어요. 공부할 건 쌓여있는데 막상 하지 않는 분들, 동기부여 하고싶은 분들에게 추천합니다!"
         },
         {
-          name: "박분석",
-          role: "AI 엔지니어",
-          comment: "실무에서 바로 쓸 수 있는 노하우를 배울 수 있어서 좋았습니다."
+          name: "참여자 B",
+          role: "AI 연구원",
+          comment: "스터디장님께서 굉장히 많은 시간과 노력을 들이셔서 매번 좋은 퀄리티의 스터디가 만들어지도록 최선을 다해주십니다. 다양한 분들이 최선을 다하는 것을 보며 의욕이 생기고, 많은 새로운 것들을 배울 수 있었습니다."
+        },
+        {
+          name: "참여자 C",
+          role: "대학원생",
+          comment: "공부하면서 자극을 정말 많이 받을 수 있었습니다. 다들 열심히 하는 모습에 자극받아서 더 열심히 하게 되는 아주 좋은 스터디였어요! 데이터 사이언스라는 주제로 정말 다양한 분야에 종사하시는 분들이 모여 넓은 도메인에 대한 이해를 넓힐 수 있는 점이 가장 큰 장점입니다."
         }
       ],
       color: "from-blue-500 to-blue-600",
@@ -98,7 +103,7 @@ export default function CommunitySection() {
             Community
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            200회의 만남,<br />
+            230회의 만남,<br />
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
               질문이 사라질 때까지 함께합니다
             </span>
@@ -246,9 +251,9 @@ export default function CommunitySection() {
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { number: "200+", label: "총 모임 횟수", icon: "📅" },
+                { number: "230+", label: "총 모임 횟수", icon: "📅" },
                 { number: "1,500+", label: "커뮤니티 멤버", icon: "👥" },
-                { number: "80%", label: "자격증 합격률", icon: "🏆" },
+                { number: "장기", label: "스터디 운영", icon: "🏆" },
                 { number: "4.9/5", label: "만족도", icon: "⭐" }
               ].map((stat, index) => (
                 <div key={index} className="text-center p-6 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/20 dark:to-pink-900/20 rounded-2xl">
