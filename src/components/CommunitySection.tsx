@@ -98,7 +98,7 @@ export default function CommunitySection() {
     >
       <div className="max-w-7xl mx-auto">
         {/* 섹션 제목 */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="text-center mb-16">
           <div className="inline-block bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-semibold mb-6">
             Community
           </div>

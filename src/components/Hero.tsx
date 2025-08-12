@@ -50,12 +50,12 @@ export default function Hero() {
         <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Main headline with typing effect */}
           <div className="mb-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6 leading-tight px-2">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6 leading-tight px-2 max-w-5xl mx-auto">
               {typedText}
               <span className="animate-pulse text-blue-600">|</span>
             </h1>
             
-            <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-gray-600 dark:text-gray-300 mb-6 md:mb-8 leading-relaxed px-4">
+            <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-gray-600 dark:text-gray-300 mb-6 md:mb-8 leading-relaxed px-4 max-w-6xl mx-auto">
               AI와 대화하며 아이디어를 현실로 만드는 가장 빠른 길을 안내하는<br className="hidden sm:block" />
               <span className="sm:hidden"> </span><span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent font-semibold">
                 &lsquo;소통하는 AI 교육 전문가&rsquo;
@@ -87,13 +87,13 @@ export default function Hero() {
             ].map((stat, index) => (
               <div
                 key={index}
-                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg p-4 md:p-6 rounded-2xl border border-white/20 hover:scale-105 transition-all duration-300 shadow-lg"
+                className="bg-white/90 dark:bg-gray-800/90 backdrop-blur-lg p-6 md:p-8 rounded-2xl border border-white/20 hover:scale-105 transition-all duration-300 shadow-xl"
               >
-                <div className="text-3xl md:text-4xl mb-2 md:mb-3">{stat.icon}</div>
-                <div className={`text-2xl md:text-3xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-1 md:mb-2`}>
+                <div className="text-4xl md:text-5xl mb-3 md:mb-4">{stat.icon}</div>
+                <div className={`text-3xl md:text-4xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-2 md:mb-3`}>
                   {stat.number}
                 </div>
-                <div className="text-gray-600 dark:text-gray-300 font-medium text-xs md:text-sm">
+                <div className="text-gray-600 dark:text-gray-300 font-medium text-sm md:text-base">
                   {stat.label}
                 </div>
               </div>
@@ -104,17 +104,17 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
             <Link
               href="/courses"
-              className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg relative overflow-hidden w-full sm:w-auto text-center"
+              className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg relative overflow-hidden w-full sm:w-auto text-center min-h-[60px] flex items-center justify-center"
             >
               <span className="relative z-10">📹 강의 보러가기</span>
               <div className="absolute inset-0 bg-white/20 transform translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
             </Link>
             <Link
               href="#community"
-              className="group border-2 border-gray-300 text-gray-700 dark:text-gray-300 dark:border-gray-600 hover:border-blue-500 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 hover:scale-105 backdrop-blur-sm bg-white/30 dark:bg-black/30 w-full sm:w-auto text-center"
+              className="group border-2 border-gray-300 text-gray-700 dark:text-gray-300 dark:border-gray-600 hover:border-blue-500 px-8 sm:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold transition-all duration-300 hover:scale-105 backdrop-blur-sm bg-white/30 dark:bg-black/30 w-full sm:w-auto text-center min-h-[60px] flex items-center justify-center"
             >
               💬 학습 커뮤니티 참여하기
-              <svg className="inline-block ml-2 w-4 sm:w-5 h-4 sm:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="inline-block ml-2 w-5 sm:w-6 h-5 sm:h-6 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </Link>

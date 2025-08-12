@@ -157,17 +157,17 @@ export default function LearningRoadmap() {
     >
       <div className="max-w-7xl mx-auto">
         {/* 섹션 제목 */}
-        <div className={`text-center mb-12 md:mb-16 transition-all duration-1000 px-4 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="text-center mb-12 md:mb-16 px-4">
           <div className="inline-block bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6">
             Learning Roadmap
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6">
             당신의 목표에 맞는 최적의<br className="hidden sm:block" />
             <span className="sm:hidden"> </span><span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               AI 학습 경로를 선택하세요
             </span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
             단순 활용부터 서비스 개발, 자격증 취득까지 맞춤형 솔루션을 제공합니다.
           </p>
         </div>
@@ -177,9 +177,7 @@ export default function LearningRoadmap() {
           {roadmapSteps.length > 0 ? roadmapSteps.map((step, stepIndex) => (
             <div 
               key={step.id}
-              className={`transition-all duration-1000 delay-${stepIndex * 200} ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
+              className="transition-all duration-1000 opacity-100 translate-y-0"
             >
               {/* 스텝 헤더 */}
               <div className="text-center mb-8">
@@ -280,27 +278,27 @@ function CourseCard({ course, stepIndex, courseIndex, expandedCard, setExpandedC
         </div>
 
         {/* 코스 정보 */}
-        <h4 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
+        <h4 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
           {course.title}
         </h4>
         
         <div className="mb-3 md:mb-4">
-          <div className="text-xs md:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">결과물:</div>
-          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
+          <div className="text-sm md:text-base font-semibold text-gray-700 dark:text-gray-300 mb-2">결과물:</div>
+          <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
             {course.result}
           </p>
         </div>
 
-        <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4 md:mb-6 leading-relaxed">
+        <p className="text-base md:text-lg text-gray-600 dark:text-gray-300 mb-4 md:mb-6 leading-relaxed">
           {course.description}
         </p>
 
         {/* 핵심 기술 태그 */}
-        <div className="flex flex-wrap gap-1 md:gap-2 mb-4 md:mb-6">
+        <div className="flex flex-wrap gap-2 md:gap-3 mb-4 md:mb-6">
           {course.skills.map((skill: string, index: number) => (
             <span 
               key={index}
-              className={`px-2 md:px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${course.color} text-white`}
+              className={`px-3 md:px-4 py-2 md:py-2 rounded-full text-sm md:text-base font-medium bg-gradient-to-r ${course.color} text-white`}
             >
               {skill}
             </span>
@@ -308,16 +306,16 @@ function CourseCard({ course, stepIndex, courseIndex, expandedCard, setExpandedC
         </div>
 
         {/* CTA 버튼 */}
-        <div className="flex flex-col sm:flex-row gap-2 md:gap-3 mb-4 md:mb-6">
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mb-4 md:mb-6">
           <button
             onClick={() => setExpandedCard(isExpanded ? null : cardId)}
-            className={`flex-1 bg-gradient-to-r ${course.color} text-white px-3 md:px-4 py-2 md:py-3 rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-lg`}
+            className={`flex-1 bg-gradient-to-r ${course.color} text-white px-6 md:px-8 py-3 md:py-4 rounded-xl text-base md:text-lg font-semibold hover:scale-105 transition-all duration-300 shadow-lg min-h-[50px]`}
           >
             {isExpanded ? '접기' : '강의 자세히 보기'}
           </button>
           <Link
             href="#contact"
-            className="px-4 md:px-6 py-2 md:py-3 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl text-sm md:text-base font-semibold hover:border-blue-500 hover:text-blue-500 transition-all duration-300 text-center"
+            className="px-6 md:px-8 py-3 md:py-4 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl text-base md:text-lg font-semibold hover:border-blue-500 hover:text-blue-500 transition-all duration-300 text-center min-h-[50px] flex items-center justify-center"
           >
             문의하기
           </Link>
@@ -325,15 +323,15 @@ function CourseCard({ course, stepIndex, courseIndex, expandedCard, setExpandedC
 
         {/* 확장된 커리큘럼 */}
         {isExpanded && (
-          <div className="mt-4 md:mt-6 p-4 md:p-6 bg-gray-50 dark:bg-gray-700/50 rounded-2xl border border-gray-200 dark:border-gray-600">
-            <h5 className="text-sm md:text-base font-bold text-gray-900 dark:text-white mb-3 md:mb-4">상세 커리큘럼</h5>
-            <div className="space-y-2 md:space-y-3">
+          <div className="mt-4 md:mt-6 p-5 md:p-6 bg-gray-50 dark:bg-gray-700/50 rounded-2xl border border-gray-200 dark:border-gray-600">
+            <h5 className="text-base md:text-lg font-bold text-gray-900 dark:text-white mb-4 md:mb-5">상세 커리큘럼</h5>
+            <div className="space-y-3 md:space-y-4">
               {course.curriculum.map((item: string, index: number) => (
-                <div key={index} className="flex items-start space-x-2 md:space-x-3 p-2 md:p-3 bg-white dark:bg-gray-800 rounded-lg">
-                  <div className={`w-5 h-5 md:w-6 md:h-6 rounded-full bg-gradient-to-r ${course.color} text-white text-xs flex items-center justify-center font-bold flex-shrink-0 mt-0.5`}>
+                <div key={index} className="flex items-start space-x-3 md:space-x-4 p-3 md:p-4 bg-white dark:bg-gray-800 rounded-lg">
+                  <div className={`w-6 h-6 md:w-7 md:h-7 rounded-full bg-gradient-to-r ${course.color} text-white text-sm flex items-center justify-center font-bold flex-shrink-0 mt-0.5`}>
                     {index + 1}
                   </div>
-                  <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{item}</span>
+                  <span className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">{item}</span>
                 </div>
               ))}
             </div>
