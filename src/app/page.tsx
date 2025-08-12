@@ -1,13 +1,11 @@
 
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import WhyNowStory from "@/components/WhyNowStory";
-import RealSkillsShowcase from "@/components/RealSkillsShowcase";
-import AIJourney from "@/components/AIJourney";
-import SuccessStories from "@/components/SuccessStories";
-import About from "@/components/About";
-import Courses from "@/components/Courses";
-import Achievements from "@/components/Achievements";
+import EmpathySection from "@/components/EmpathySection";
+import IntroSection from "@/components/IntroSection";
+import LearningRoadmap from "@/components/LearningRoadmap";
+import CommunitySection from "@/components/CommunitySection";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -16,13 +14,11 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <WhyNowStory />
-        <RealSkillsShowcase />
-        <AIJourney />
-        <SuccessStories />
-        <About />
-        <Courses />
-        <Achievements />
+        <EmpathySection />
+        <IntroSection />
+        <LearningRoadmap />
+        <CommunitySection />
+        <ContactSection />
       </main>
       <Footer />
     </div>
