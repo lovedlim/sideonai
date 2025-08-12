@@ -30,8 +30,12 @@ export default function AboutPage() {
 
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-600 p-8 rounded-2xl">
-                <div className="w-32 h-32 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <span className="text-white font-bold text-4xl">SideOnAI</span>
+                <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-white shadow-lg">
+                  <img 
+                    src="/images/profile-illustration.svg" 
+                    alt="SideOnAI 대표 프로필" 
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="text-center">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
