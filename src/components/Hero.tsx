@@ -56,10 +56,10 @@ export default function Hero() {
             </h1>
             
             <div className="text-2xl md:text-3xl lg:text-4xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-              AI와 대화하며 아이디어를 현실로 만드는<br />
+              AI와 대화하며 아이디어를 현실로 만드는 가장 빠른 길을 안내하는<br />
               <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent font-semibold">
-                &lsquo;바이브 코딩&rsquo; 전문가
-              </span>, OOO입니다.
+                &lsquo;소통하는 AI 교육 전문가&rsquo;
+              </span>입니다.
             </div>
           </div>
 
@@ -67,22 +67,22 @@ export default function Hero() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-4xl mx-auto">
             {[
               { 
-                number: "4.8K+", 
-                label: "인프런 수강생", 
+                number: "4,829+", 
+                label: "선택받은 강의", 
                 icon: "👥",
                 color: "from-blue-500 to-blue-600"
               },
               { 
-                number: "4.9/5.0", 
-                label: "압도적 강의 만족도", 
-                icon: "⭐",
-                color: "from-yellow-500 to-orange-500"
+                number: "3,117+", 
+                label: "소통과 답변", 
+                icon: "💬",
+                color: "from-green-500 to-emerald-500"
               },
               { 
-                number: "2024", 
-                label: 'Inflearn Award "답변왕"', 
-                icon: "🏆",
-                color: "from-purple-500 to-purple-600"
+                number: "4.9/5.0", 
+                label: "압도적 강의 평점", 
+                icon: "⭐",
+                color: "from-yellow-500 to-orange-500"
               }
             ].map((stat, index) => (
               <div

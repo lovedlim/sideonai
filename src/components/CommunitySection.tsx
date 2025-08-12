@@ -41,7 +41,7 @@ export default function CommunitySection() {
       name: "빅데이터 분석기사 스터디",
       period: "2021 ~ 현재",
       sessions: "오징어 게임",
-      description: "수많은 합격자를 배출한 전설의 스터디",
+      description: "합격이라는 하나의 목표를 향해 함께 달리는 스터디",
       features: [
         "체계적인 학습 계획",
         "실전 문제 풀이",
@@ -98,14 +98,14 @@ export default function CommunitySection() {
             Community
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            지식은 나눌 때 빛납니다:<br />
+            200회의 만남,<br />
             <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
-              OOO의 학습 커뮤니티
+              질문이 사라질 때까지 함께합니다
             </span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            혼자 가면 길을 잃기 쉽지만, 함께 가면 길이 됩니다.<br />
-            질문하고 토론하며 함께 성장하세요.
+            지식은 독점이 아닌 공유를 통해 더 큰 가치를 만듭니다. 5년 넘게 이어온 온/오프라인 스터디는<br />
+            단순한 정보 공유를 넘어, 서로의 성장을 응원하고 이끌어주는 든든한 학습 공동체입니다.
           </p>
         </div>
 

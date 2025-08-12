@@ -12,82 +12,82 @@ export default function LearningRoadmap() {
     {
       id: 1,
       step: "STEP 1",
-      title: "AI와 친해지기",
-      subtitle: "내 업무 효율 200% 올리기",
-      courses: [
-        {
-          title: "(초급) AI 시대의 필수 역량: 생성형 AI 실무",
-          duration: "1day",
-          summary: "AI의 'A'도 모르는 분들을 위한 가장 친절한 입문서",
-          features: ["기본 개념부터 차근차근", "실무 활용 사례 중심", "ChatGPT/Claude/Gemini 완전정복"],
-          color: "from-blue-500 to-blue-600",
-          icon: "🎯"
-        }
-      ]
+      title: "AI, 내 업무에 바로 써보기",
+      subtitle: "업무 생산성 향상",
+      course: {
+        title: "만약 \"영업사원\"이 바이브 코딩을 배운다면",
+        target: "영업/고객 관리 전문가를 위해",
+        result: "AI 미팅 요약 및 나만의 CRM 어시스턴트 제작",
+        skills: ["#업무자동화", "#CRM", "#Firebase", "#프롬프트엔지니어링"],
+        description: "고객 미팅 내용을 AI가 자동으로 요약하고, 개인 맞춤형 CRM 시스템을 직접 만들어봅니다.",
+        curriculum: [
+          "AI 음성인식 및 텍스트 요약 시스템 구축",
+          "Firebase를 활용한 고객 데이터베이스 설계",
+          "프롬프트 엔지니어링으로 맞춤형 고객 분석 리포트 생성",
+          "웹 인터페이스 제작 및 배포"
+        ],
+        color: "from-blue-500 to-blue-600",
+        icon: "💼"
+      }
     },
     {
       id: 2,
       step: "STEP 2",
-      title: "AI를 내 비서로 만들기",
-      subtitle: "반복 업무 완전 자동화",
+      title: "나만의 AI 비서 & 서비스 만들기",
+      subtitle: "바이브 코딩 개발",
       courses: [
         {
-          title: "(중급) 생성형 AI를 활용한 업무 자동화",
-          duration: "1day",
-          summary: "나만의 AI 업무봇을 만들어 귀찮은 일은 AI에게 맡기세요",
-          features: ["GPTs & Gems 제작", "데이터 분석 자동화", "문서 작업 완전 자동화"],
+          title: "정부 AI 정책 시대! 바이브코딩으로 만드는 공공데이터 AI 서비스",
+          target: "공공 데이터 활용 전문가를 위해",
+          result: "공공시설 안전정보 검색 및 AI 분석 리포트 웹 서비스 제작",
+          skills: ["#공공데이터API", "#GoogleAIStudio", "#PRD기획", "#지도연동"],
+          description: "공공데이터 API를 활용해 시민들이 쉽게 활용할 수 있는 안전정보 서비스를 제작합니다.",
+          curriculum: [
+            "공공데이터 API 이해 및 연동",
+            "Google AI Studio를 활용한 데이터 분석",
+            "지도 API 연동으로 위치 기반 서비스 구현",
+            "PRD 작성부터 서비스 배포까지 전 과정"
+          ],
           color: "from-green-500 to-green-600",
-          icon: "🤖"
+          icon: "🏛️"
         },
         {
-          title: "(고급) n8n을 활용한 업무 자동화",
-          duration: "1day",
-          summary: "이메일 요약, 민원 처리, 데이터 통합까지 가능한 전문 자동화 툴",
-          features: ["워크플로우 설계", "API 연동 마스터", "복잡한 비즈니스 프로세스 자동화"],
-          color: "from-emerald-500 to-emerald-600",
-          icon: "⚡"
+          title: "바이브 코딩으로 만드는 재미있는 재무제표",
+          target: "재무/투자/비즈니스 분석가를 위해",
+          result: "전자공시(DART) 데이터 실시간 분석 및 시각화 웹 서비스 제작",
+          skills: ["#재무데이터", "#DART_API", "#데이터시각화", "#커서AI"],
+          description: "복잡한 재무제표를 AI가 쉽게 분석하고 시각화해주는 서비스를 만들어봅니다.",
+          curriculum: [
+            "DART API를 활용한 기업 재무데이터 수집",
+            "AI를 활용한 재무비율 자동 계산 및 분석",
+            "Chart.js를 활용한 데이터 시각화",
+            "Cursor AI로 코드 생성 및 최적화"
+          ],
+          color: "from-purple-500 to-purple-600",
+          icon: "📊"
         }
       ]
     },
     {
       id: 3,
       step: "STEP 3",
-      title: "AI로 서비스 만들기",
-      subtitle: "아이디어를 현실로 구현하기",
-      courses: [
-        {
-          title: "(고급) 바이브 코딩: 노코드로 AI 서비스 개발",
-          duration: "1day",
-          summary: "말로 설명하면 AI가 웹 서비스를 개발합니다",
-          features: ["Cursor AI 완전정복", "Firebase 연동", "실제 서비스 배포"],
-          color: "from-purple-500 to-purple-600",
-          icon: "🚀"
-        },
-        {
-          title: "비개발자를 위한 바이브 코딩",
-          duration: "3day",
-          summary: "기획부터 배포까지, 3일 만에 나만의 웹 서비스를 완성하는 전 과정",
-          features: ["API 서비스 제작", "데이터베이스 연동", "GitHub & Vercel 배포"],
-          color: "from-indigo-500 to-indigo-600",
-          icon: "🛠️"
-        }
-      ]
-    },
-    {
-      id: 4,
-      step: "SPECIAL",
       title: "전문가로 인정받기",
-      subtitle: "자격증으로 실력 인증",
-      courses: [
-        {
-          title: "빅데이터 분석기사 실기 자격증 과정",
-          duration: "5day",
-          summary: "시나공 저자 직강! 가장 확실한 합격 로드맵",
-          features: ["파이썬 & 판다스 완전정복", "머신러닝 실전 문제", "최신 기출 완벽 분석"],
-          color: "from-yellow-500 to-orange-500",
-          icon: "🏆"
-        }
-      ]
+      subtitle: "국가 공인 자격증",
+      course: {
+        title: "[저자직강] 퇴근후딴짓의 빅데이터 분석기사 실기",
+        target: "데이터 분야 취업/이직 준비생을 위해",
+        result: "빅데이터 분석기사 자격증 합격 (다수 90점대 합격 후기)",
+        skills: ["#빅데이터분석기사", "#자격증", "#머신러닝", "#판다스", "#통계"],
+        description: "시나공 저자가 직접 알려주는 가장 확실한 합격 전략과 실전 노하우를 전수합니다.",
+        curriculum: [
+          "파이썬 기초부터 판다스 완전 정복",
+          "머신러닝 알고리즘 이해 및 실습",
+          "실제 기출문제 유형 분석 및 풀이",
+          "최신 출제경향 반영 모의고사"
+        ],
+        color: "from-yellow-500 to-orange-500",
+        icon: "🏆"
+      }
     }
   ];
 
@@ -121,18 +121,18 @@ export default function LearningRoadmap() {
             Learning Roadmap
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            AI, 당신의 레벨에 맞춰 <br />
+            당신의 목표에 맞는 최적의<br />
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              시작하세요
+              AI 학습 경로를 선택하세요
             </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            왕초보부터 예비 창업가까지, 당신의 목표에 맞는 최적의 학습 경로를 안내합니다.
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            단순 활용부터 서비스 개발, 자격증 취득까지 맞춤형 솔루션을 제공합니다.
           </p>
         </div>
 
         {/* 로드맵 스텝들 */}
-        <div className="space-y-12">
+        <div className="space-y-16">
           {roadmapSteps.map((step, stepIndex) => (
             <div 
               key={step.id}
@@ -142,11 +142,7 @@ export default function LearningRoadmap() {
             >
               {/* 스텝 헤더 */}
               <div className="text-center mb-8">
-                <div className={`inline-block px-4 py-2 rounded-full text-sm font-bold mb-4 ${
-                  step.id === 4 
-                    ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-white'
-                    : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700'
-                }`}>
+                <div className="inline-block px-4 py-2 rounded-full text-sm font-bold mb-4 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
                   {step.step}
                 </div>
                 <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
@@ -157,97 +153,37 @@ export default function LearningRoadmap() {
                 </p>
               </div>
 
-              {/* 코스 카드들 */}
-              <div className={`grid ${step.courses.length > 1 ? 'md:grid-cols-2' : 'md:grid-cols-1 max-w-4xl mx-auto'} gap-6`}>
-                {step.courses.map((course, courseIndex) => (
-                  <div 
-                    key={courseIndex}
-                    className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-3xl p-8 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300 relative overflow-hidden group"
-                  >
-                    {/* 배경 그라데이션 */}
-                    <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${course.color} opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity duration-300`}></div>
-                    
-                    <div className="relative z-10">
-                      {/* 코스 헤더 */}
-                      <div className="flex items-start justify-between mb-6">
-                        <div className={`text-4xl p-3 rounded-2xl bg-gradient-to-br ${course.color} text-white shadow-lg`}>
-                          {course.icon}
-                        </div>
-                        <div className={`px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r ${course.color} text-white`}>
-                          {course.duration}
-                        </div>
-                      </div>
-
-                      {/* 코스 정보 */}
-                      <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
-                        {course.title}
-                      </h4>
-                      <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                        {course.summary}
-                      </p>
-
-                      {/* 주요 특징 */}
-                      <div className="space-y-2 mb-6">
-                        {course.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
-                            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${course.color} mr-3`}></div>
-                            {feature}
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* CTA 버튼 */}
-                      <div className="flex gap-3">
-                        <button
-                          onClick={() => setExpandedCard(expandedCard === (stepIndex * 10 + courseIndex) ? null : (stepIndex * 10 + courseIndex))}
-                          className={`flex-1 bg-gradient-to-r ${course.color} text-white px-4 py-3 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg`}
-                        >
-                          상세 커리큘럼 보기
-                        </button>
-                        <Link
-                          href="/contact"
-                          className="px-6 py-3 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:border-blue-500 hover:text-blue-500 transition-all duration-300"
-                        >
-                          문의하기
-                        </Link>
-                      </div>
-
-                      {/* 확장된 상세 정보 */}
-                      {expandedCard === (stepIndex * 10 + courseIndex) && (
-                        <div className="mt-6 p-6 bg-gray-50 dark:bg-gray-700/50 rounded-2xl border border-gray-200 dark:border-gray-600">
-                          <h5 className="font-bold text-gray-900 dark:text-white mb-4">상세 커리큘럼</h5>
-                          <div className="space-y-3 text-sm text-gray-600 dark:text-gray-300">
-                            <div className="flex justify-between items-center p-3 bg-white dark:bg-gray-800 rounded-lg">
-                              <span>1교시: AI 기초 개념 및 트렌드</span>
-                              <span className="text-xs text-gray-500">50분</span>
-                            </div>
-                            <div className="flex justify-between items-center p-3 bg-white dark:bg-gray-800 rounded-lg">
-                              <span>2교시: 프롬프트 엔지니어링 실습</span>
-                              <span className="text-xs text-gray-500">60분</span>
-                            </div>
-                            <div className="flex justify-between items-center p-3 bg-white dark:bg-gray-800 rounded-lg">
-                              <span>3교시: 실전 프로젝트 진행</span>
-                              <span className="text-xs text-gray-500">90분</span>
-                            </div>
-                            <div className="text-center mt-4">
-                              <Link
-                                href="/courses"
-                                className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-                              >
-                                전체 커리큘럼 자세히 보기 →
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
+              {/* 단일 코스 또는 복수 코스 */}
+              {step.courses ? (
+                // 복수 코스 (STEP 2)
+                <div className="grid md:grid-cols-2 gap-8">
+                  {step.courses.map((course, courseIndex) => (
+                    <CourseCard 
+                      key={courseIndex} 
+                      course={course} 
+                      stepIndex={stepIndex}
+                      courseIndex={courseIndex}
+                      expandedCard={expandedCard}
+                      setExpandedCard={setExpandedCard}
+                    />
+                  ))}
+                </div>
+              ) : (
+                // 단일 코스 (STEP 1, 3)
+                <div className="max-w-4xl mx-auto">
+                  <CourseCard 
+                    course={step.course!} 
+                    stepIndex={stepIndex}
+                    courseIndex={0}
+                    expandedCard={expandedCard}
+                    setExpandedCard={setExpandedCard}
+                  />
+                </div>
+              )}
 
               {/* 스텝 구분선 (마지막 스텝 제외) */}
               {stepIndex < roadmapSteps.length - 1 && (
-                <div className="flex justify-center mt-12">
+                <div className="flex justify-center mt-16">
                   <div className="w-px h-16 bg-gradient-to-b from-blue-200 to-transparent dark:from-blue-800"></div>
                 </div>
               )}
@@ -256,7 +192,7 @@ export default function LearningRoadmap() {
         </div>
 
         {/* 맞춤 상담 CTA */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-20">
           <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-3xl p-8 max-w-4xl mx-auto">
             <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
               어떤 과정이 나에게 맞을까요?
@@ -265,7 +201,7 @@ export default function LearningRoadmap() {
               목표와 현재 수준에 맞는 최적의 학습 경로를 추천해드립니다
             </p>
             <Link
-              href="/contact"
+              href="#contact"
               className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-2xl"
             >
               🎯 맞춤 학습 경로 상담받기
@@ -277,5 +213,112 @@ export default function LearningRoadmap() {
         </div>
       </div>
     </section>
+  );
+}
+
+// 코스 카드 컴포넌트
+interface Course {
+  title: string;
+  target: string;
+  result: string;
+  skills: string[];
+  description: string;
+  curriculum: string[];
+  color: string;
+  icon: string;
+}
+
+interface CourseCardProps {
+  course: Course;
+  stepIndex: number;
+  courseIndex: number;
+  expandedCard: number | null;
+  setExpandedCard: (id: number | null) => void;
+}
+
+function CourseCard({ course, stepIndex, courseIndex, expandedCard, setExpandedCard }: CourseCardProps) {
+  const cardId = stepIndex * 10 + courseIndex;
+  const isExpanded = expandedCard === cardId;
+
+  return (
+    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-3xl p-8 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+      {/* 배경 그라데이션 */}
+      <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${course.color} opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity duration-300`}></div>
+      
+      <div className="relative z-10">
+        {/* 코스 헤더 */}
+        <div className="flex items-start justify-between mb-6">
+          <div className={`text-4xl p-3 rounded-2xl bg-gradient-to-br ${course.color} text-white shadow-lg`}>
+            {course.icon}
+          </div>
+          <div className="text-right">
+            <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+              {course.target}
+            </div>
+          </div>
+        </div>
+
+        {/* 코스 정보 */}
+        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
+          {course.title}
+        </h4>
+        
+        <div className="mb-4">
+          <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">결과물:</div>
+          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+            {course.result}
+          </p>
+        </div>
+
+        <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+          {course.description}
+        </p>
+
+        {/* 핵심 기술 태그 */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {course.skills.map((skill: string, index: number) => (
+            <span 
+              key={index}
+              className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${course.color} text-white`}
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+
+        {/* CTA 버튼 */}
+        <div className="flex gap-3 mb-6">
+          <button
+            onClick={() => setExpandedCard(isExpanded ? null : cardId)}
+            className={`flex-1 bg-gradient-to-r ${course.color} text-white px-4 py-3 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg`}
+          >
+            {isExpanded ? '접기' : '강의 자세히 보기'}
+          </button>
+          <Link
+            href="#contact"
+            className="px-6 py-3 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:border-blue-500 hover:text-blue-500 transition-all duration-300"
+          >
+            문의하기
+          </Link>
+        </div>
+
+        {/* 확장된 커리큘럼 */}
+        {isExpanded && (
+          <div className="mt-6 p-6 bg-gray-50 dark:bg-gray-700/50 rounded-2xl border border-gray-200 dark:border-gray-600">
+            <h5 className="font-bold text-gray-900 dark:text-white mb-4">상세 커리큘럼</h5>
+            <div className="space-y-3">
+              {course.curriculum.map((item: string, index: number) => (
+                <div key={index} className="flex items-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
+                  <div className={`w-6 h-6 rounded-full bg-gradient-to-r ${course.color} text-white text-xs flex items-center justify-center font-bold flex-shrink-0 mt-0.5`}>
+                    {index + 1}
+                  </div>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

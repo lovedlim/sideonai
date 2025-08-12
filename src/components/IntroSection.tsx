@@ -32,9 +32,9 @@ export default function IntroSection() {
         {/* 섹션 제목 */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            지식을 나누는 개발자, <br />
+            비전공자의 막막함을 알기에,<br />
             <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
-              OOO입니다.
+              가장 쉬운 길을 안내합니다.
             </span>
           </h2>
         </div>
@@ -54,24 +54,24 @@ export default function IntroSection() {
 
               <div className="space-y-6 text-gray-700 dark:text-gray-300 leading-relaxed">
                 <p className="text-lg">
-                  저는 <span className="font-semibold text-blue-600 dark:text-blue-400">&lsquo;함께 성장하는 것&rsquo;</span>의 가치를 믿습니다.
+                  저 또한 비전공자였기에, 새로운 기술 앞에서 작아지는 마음을 누구보다 잘 압니다.
                 </p>
                 
                 <p>
-                  2020년부터 4년간 <span className="font-semibold">200회가 넘는 AI 학습 커뮤니티</span>를 꾸준히 이끌고, 
-                  인프런에서 <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent font-bold">
-                    &lsquo;올해 가장 많은 답변을 남긴 지식공유자&rsquo;
-                  </span> 로 선정된 것은 저의 가장 큰 자랑입니다.
+                  전문가들은 너무나 당연하게 이야기하지만 입문자에게는 벽처럼 느껴지는 
+                  <span className="font-semibold text-red-600 dark:text-red-400">&lsquo;Expert Blind Spot(전문가의 맹점)&rsquo;</span>이 
+                  있다는 것을 압니다.
                 </p>
 
                 <p>
-                  DB Inc., Riid, CodeStates 등 다양한 현장에서 쌓은 실무 경험을 저 혼자만 간직하는 것이 아니라, 
-                  이제 막 AI의 세계에 발을 들이는 분들과 아낌없이 나누고 싶습니다.
+                  그래서 저는 <span className="font-semibold">&lsquo;가르치는 사람&rsquo;이 아닌 &lsquo;함께 길을 찾는 사람&rsquo;</span>이 되고자 합니다. 
+                  200회가 넘는 학습 커뮤니티를 운영하고, 3천 개가 넘는 질문에 직접 답변하며 
+                  여러분이 어떤 지점에서 어려워하는지, 무엇을 필요로 하는지 가장 가까이에서 듣고 있습니다.
                 </p>
 
                 <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 p-6 rounded-2xl border-l-4 border-blue-500">
                   <p className="font-semibold text-blue-800 dark:text-blue-300">
-                    저의 모든 강의와 저서는 이러한 &lsquo;나눔의 철학&rsquo;에서 시작됩니다.
+                    저의 모든 콘텐츠는 이 소통과 공감에서 출발합니다.
                   </p>
                 </div>
               </div>

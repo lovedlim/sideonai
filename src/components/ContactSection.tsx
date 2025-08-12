@@ -100,12 +100,12 @@ export default function ContactSection() {
                 </div>
                 
                 <div className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl">
-                  <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center text-white">
-                    💼
+                  <div className="w-10 h-10 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center text-white">
+                    📺
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900 dark:text-white">LinkedIn</div>
-                    <div className="text-gray-600 dark:text-gray-300">linkedin.com/in/sideonai</div>
+                    <div className="font-medium text-gray-900 dark:text-white">YouTube</div>
+                    <div className="text-gray-600 dark:text-gray-300">youtube.com/@sideonai</div>
                   </div>
                 </div>
 
@@ -124,7 +124,7 @@ export default function ContactSection() {
                     🎓
                   </div>
                   <div>
-                    <div className="font-medium text-gray-900 dark:text-white">인프런</div>
+                    <div className="font-medium text-gray-900 dark:text-white">Inflearn</div>
                     <div className="text-gray-600 dark:text-gray-300">inflearn.com/users/@sideonai</div>
                   </div>
                 </div>

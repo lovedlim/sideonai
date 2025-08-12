@@ -9,19 +9,24 @@ export default function EmpathySection() {
 
   const questions = [
     {
-      text: "내 아이디어를 서비스로 만들고 싶은데, 개발은 너무 막막해요.",
-      icon: "💡",
+      text: "AI로 뭔가 해보고 싶은데, 어디서부터 시작할지 막막해요.",
+      icon: "🤔",
       color: "from-blue-500 to-blue-600"
     },
     {
-      text: "매일 반복되는 단순 업무, AI에게 맡길 수는 없을까요?",
-      icon: "🔄",
+      text: "매일 반복되는 보고서, 문서 작업에서 벗어나고 싶어요.",
+      icon: "📊",
       color: "from-green-500 to-green-600"
     },
     {
-      text: "AI가 중요하다는데, 정작 내 업무에는 어떻게 써야 할지 감이 안 와요.",
-      icon: "🤔",
+      text: "복잡한 재무제표, 누가 쉽고 빠르게 분석해 줬으면 좋겠어요.",
+      icon: "💰",
       color: "from-purple-500 to-purple-600"
+    },
+    {
+      text: "자격증은 따야겠는데, 비전공자라 코딩부터 겁이 나요.",
+      icon: "🎓",
+      color: "from-orange-500 to-red-500"
     }
   ];
 
@@ -62,7 +67,7 @@ export default function EmpathySection() {
         {/* 섹션 제목 */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            혹시 이런 <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">고민</span>,<br />
+            혹시 이런 <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">생각</span>,<br />
             하고 계신가요?
           </h2>
         </div>
@@ -127,11 +132,11 @@ export default function EmpathySection() {
 
             <div className="text-center mb-8">
               <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
-                <span className="font-semibold">코딩 지식이 없어도, 개발자가 아니어도</span> 좋습니다.<br />
-                저의 목표는 복잡한 기술의 장벽을 허물고,<br />
+                <span className="font-semibold">괜찮습니다. 기술은 도구일 뿐, 가장 중요한 것은 &lsquo;아이디어&rsquo;와 &lsquo;필요&rsquo;입니다.</span><br />
+                저는 복잡한 기술 용어 대신, 누구나 이해할 수 있는 언어로<br />
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent font-semibold">
-                  누구나 자신의 아이디어와 필요를 AI를 통해 실현
-                </span>하도록 돕는 것입니다.
+                  여러분의 아이디어가 실제 서비스가 되고, 반복 업무가 자동화되는 과정
+                </span>을 안내합니다.
               </p>
             </div>
 
