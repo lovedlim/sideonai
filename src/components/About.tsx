@@ -31,7 +31,7 @@ export default function About() {
               </p>
               <p className="flex items-center">
                 <span className="text-blue-600 mr-2">🏆</span>
-                2024 Inflearn Award "답변왕" 수상 - 올해 가장 많은 답변을 남긴 지식공유자
+                2024 Inflearn Award 답변왕 수상 - 올해 가장 많은 답변을 남긴 지식공유자
               </p>
             </div>
 

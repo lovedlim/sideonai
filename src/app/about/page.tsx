@@ -142,7 +142,7 @@ export default function AboutPage() {
                     </li>
                     <li className="flex items-center">
                       <span className="text-blue-600 mr-2">•</span>
-                      2024 Inflearn Award "답변왕" 수상
+                      2024 Inflearn Award 답변왕 수상
                     </li>
                   </ul>
                 </div>

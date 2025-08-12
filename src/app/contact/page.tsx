@@ -58,7 +58,7 @@ export default function ContactPage() {
         duration: "",
         message: ""
       });
-    } catch (error) {
+    } catch {
       setSubmitMessage("신청 중 오류가 발생했습니다. 직접 연락 주시기 바랍니다.");
     } finally {
       setIsSubmitting(false);
@@ -138,7 +138,7 @@ export default function ContactPage() {
                   <li>• 온라인 강의 수강자 4.8k+ (만족도 4.9/5)</li>
                   <li>• 기업/공공기관 교육 50회 이상</li>
                   <li>• 캐글/AI 학습 모임 200회 이상 운영</li>
-                  <li>• 2024 Inflearn Award "답변왕" 수상</li>
+                  <li>• 2024 Inflearn Award 답변왕 수상</li>
                 </ul>
               </div>
             </div>
