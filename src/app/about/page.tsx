@@ -19,35 +19,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* 미션 & 비전 */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-2xl p-8">
-                <div className="text-4xl mb-4">🎯</div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                  우리의 미션
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-                  생성형 AI와 바이브 코딩을 통해 누구나 쉽게 프로그래밍을 배우고, 
-                  업무 효율성을 극대화할 수 있도록 돕는 것이 우리의 미션입니다.
-                </p>
-              </div>
-
-              <div className="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm border border-gray-200 dark:border-gray-700 rounded-2xl p-8">
-                <div className="text-4xl mb-4">🚀</div>
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                  우리의 비전
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">
-                  AI 시대의 교육 패러다임을 변화시켜, 모든 사람이 기술의 혜택을 
-                  누릴 수 있는 포용적 디지털 사회를 만들어 나가겠습니다.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* 대표 소개 */}
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-gray-800/50">
           <div className="max-w-7xl mx-auto">
