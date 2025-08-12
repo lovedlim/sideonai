@@ -157,17 +157,17 @@ export default function LearningRoadmap() {
     >
       <div className="max-w-7xl mx-auto">
         {/* 섹션 제목 */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <div className="inline-block bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-6 py-2 rounded-full text-sm font-semibold mb-6">
+        <div className={`text-center mb-12 md:mb-16 transition-all duration-1000 px-4 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <div className="inline-block bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-semibold mb-4 md:mb-6">
             Learning Roadmap
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            당신의 목표에 맞는 최적의<br />
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6">
+            당신의 목표에 맞는 최적의<br className="hidden sm:block" />
+            <span className="sm:hidden"> </span><span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
               AI 학습 경로를 선택하세요
             </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
             단순 활용부터 서비스 개발, 자격증 취득까지 맞춤형 솔루션을 제공합니다.
           </p>
         </div>
@@ -262,45 +262,45 @@ function CourseCard({ course, stepIndex, courseIndex, expandedCard, setExpandedC
   const isExpanded = expandedCard === cardId;
 
   return (
-    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-3xl p-8 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
+    <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-3xl p-4 md:p-6 lg:p-8 shadow-xl border border-white/20 hover:scale-105 transition-all duration-300 relative overflow-hidden group">
       {/* 배경 그라데이션 */}
       <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${course.color} opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity duration-300`}></div>
       
       <div className="relative z-10">
         {/* 코스 헤더 */}
-        <div className="flex items-start justify-between mb-6">
-          <div className={`text-4xl p-3 rounded-2xl bg-gradient-to-br ${course.color} text-white shadow-lg`}>
+        <div className="flex items-start justify-between mb-4 md:mb-6">
+          <div className={`text-3xl md:text-4xl p-2 md:p-3 rounded-2xl bg-gradient-to-br ${course.color} text-white shadow-lg`}>
             {course.icon}
           </div>
           <div className="text-right">
-            <div className="text-sm text-gray-500 dark:text-gray-400 mb-1">
+            <div className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mb-1">
               {course.target}
             </div>
           </div>
         </div>
 
         {/* 코스 정보 */}
-        <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
+        <h4 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-3 leading-tight">
           {course.title}
         </h4>
         
-        <div className="mb-4">
-          <div className="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">결과물:</div>
-          <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+        <div className="mb-3 md:mb-4">
+          <div className="text-xs md:text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">결과물:</div>
+          <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 leading-relaxed">
             {course.result}
           </p>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+        <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 mb-4 md:mb-6 leading-relaxed">
           {course.description}
         </p>
 
         {/* 핵심 기술 태그 */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-1 md:gap-2 mb-4 md:mb-6">
           {course.skills.map((skill: string, index: number) => (
             <span 
               key={index}
-              className={`px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${course.color} text-white`}
+              className={`px-2 md:px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${course.color} text-white`}
             >
               {skill}
             </span>
@@ -308,16 +308,16 @@ function CourseCard({ course, stepIndex, courseIndex, expandedCard, setExpandedC
         </div>
 
         {/* CTA 버튼 */}
-        <div className="flex gap-3 mb-6">
+        <div className="flex flex-col sm:flex-row gap-2 md:gap-3 mb-4 md:mb-6">
           <button
             onClick={() => setExpandedCard(isExpanded ? null : cardId)}
-            className={`flex-1 bg-gradient-to-r ${course.color} text-white px-4 py-3 rounded-xl font-semibold hover:scale-105 transition-all duration-300 shadow-lg`}
+            className={`flex-1 bg-gradient-to-r ${course.color} text-white px-3 md:px-4 py-2 md:py-3 rounded-xl text-sm md:text-base font-semibold hover:scale-105 transition-all duration-300 shadow-lg`}
           >
             {isExpanded ? '접기' : '강의 자세히 보기'}
           </button>
           <Link
             href="#contact"
-            className="px-6 py-3 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl font-semibold hover:border-blue-500 hover:text-blue-500 transition-all duration-300"
+            className="px-4 md:px-6 py-2 md:py-3 border-2 border-gray-200 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-xl text-sm md:text-base font-semibold hover:border-blue-500 hover:text-blue-500 transition-all duration-300 text-center"
           >
             문의하기
           </Link>
@@ -325,15 +325,15 @@ function CourseCard({ course, stepIndex, courseIndex, expandedCard, setExpandedC
 
         {/* 확장된 커리큘럼 */}
         {isExpanded && (
-          <div className="mt-6 p-6 bg-gray-50 dark:bg-gray-700/50 rounded-2xl border border-gray-200 dark:border-gray-600">
-            <h5 className="font-bold text-gray-900 dark:text-white mb-4">상세 커리큘럼</h5>
-            <div className="space-y-3">
+          <div className="mt-4 md:mt-6 p-4 md:p-6 bg-gray-50 dark:bg-gray-700/50 rounded-2xl border border-gray-200 dark:border-gray-600">
+            <h5 className="text-sm md:text-base font-bold text-gray-900 dark:text-white mb-3 md:mb-4">상세 커리큘럼</h5>
+            <div className="space-y-2 md:space-y-3">
               {course.curriculum.map((item: string, index: number) => (
-                <div key={index} className="flex items-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
-                  <div className={`w-6 h-6 rounded-full bg-gradient-to-r ${course.color} text-white text-xs flex items-center justify-center font-bold flex-shrink-0 mt-0.5`}>
+                <div key={index} className="flex items-start space-x-2 md:space-x-3 p-2 md:p-3 bg-white dark:bg-gray-800 rounded-lg">
+                  <div className={`w-5 h-5 md:w-6 md:h-6 rounded-full bg-gradient-to-r ${course.color} text-white text-xs flex items-center justify-center font-bold flex-shrink-0 mt-0.5`}>
                     {index + 1}
                   </div>
-                  <span className="text-sm text-gray-600 dark:text-gray-300">{item}</span>
+                  <span className="text-xs md:text-sm text-gray-600 dark:text-gray-300 leading-relaxed">{item}</span>
                 </div>
               ))}
             </div>
