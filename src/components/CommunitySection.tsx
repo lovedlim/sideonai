@@ -117,7 +117,7 @@ export default function CommunitySection() {
         {/* 커뮤니티 탭 */}
         <div className="flex flex-col lg:flex-row gap-8">
           {/* 좌측: 탭 버튼들 */}
-          <div className={`lg:w-1/3 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
+          <div className="lg:w-1/3 transition-all duration-1000 opacity-100 translate-x-0">
             <div className="space-y-4">
               {communities.map((community, index) => (
                 <button
@@ -167,7 +167,7 @@ export default function CommunitySection() {
           </div>
 
           {/* 우측: 상세 내용 */}
-          <div className={`lg:w-2/3 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+          <div className="lg:w-2/3 transition-all duration-1000 opacity-100 translate-x-0">
             <div className={`bg-gradient-to-br ${activeCommunity.bgColor} rounded-3xl p-8 shadow-xl border border-white/20`}>
               {/* 커뮤니티 헤더 */}
               <div className="flex items-center space-x-4 mb-8">
@@ -244,7 +244,7 @@ export default function CommunitySection() {
         </div>
 
         {/* 커뮤니티 통계 */}
-        <div className={`mt-16 transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className="mt-16 transition-all duration-1000 opacity-100 translate-y-0">
           <div className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg rounded-3xl p-8 shadow-xl border border-white/20">
             <h3 className="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">
               함께 성장한 4년의 기록
