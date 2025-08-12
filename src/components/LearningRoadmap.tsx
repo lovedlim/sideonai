@@ -93,21 +93,23 @@ export default function LearningRoadmap() {
       step: "STEP 3",
       title: "전문가로 인정받기",
       subtitle: "국가 공인 자격증",
-      course: {
-        title: "[저자직강] 퇴근후딴짓의 빅데이터 분석기사 실기",
-        target: "데이터 분야 취업/이직 준비생을 위해",
-        result: "빅데이터 분석기사 자격증 합격 (다수 90점대 합격 후기)",
-        skills: ["#빅데이터분석기사", "#자격증", "#머신러닝", "#판다스", "#통계"],
-        description: "시나공 저자가 직접 알려주는 가장 확실한 합격 전략과 실전 노하우를 전수합니다.",
-        curriculum: [
-          "파이썬 기초부터 판다스 완전 정복",
-          "머신러닝 알고리즘 이해 및 실습",
-          "실제 기출문제 유형 분석 및 풀이",
-          "최신 출제경향 반영 모의고사"
-        ],
-        color: "from-yellow-500 to-orange-500",
-        icon: "🏆"
-      }
+      courses: [
+        {
+          title: "[저자직강] 퇴근후딴짓의 빅데이터 분석기사 실기",
+          target: "데이터 분야 취업/이직 준비생을 위해",
+          result: "빅데이터 분석기사 자격증 합격 (다수 90점대 합격 후기)",
+          skills: ["#빅데이터분석기사", "#자격증", "#머신러닝", "#판다스", "#통계"],
+          description: "시나공 저자가 직접 알려주는 가장 확실한 합격 전략과 실전 노하우를 전수합니다.",
+          curriculum: [
+            "파이썬 기초부터 판다스 완전 정복",
+            "머신러닝 알고리즘 이해 및 실습",
+            "실제 기출문제 유형 분석 및 풀이",
+            "최신 출제경향 반영 모의고사"
+          ],
+          color: "from-yellow-500 to-orange-500",
+          icon: "🏆"
+        }
+      ]
     }
   ];
 
@@ -173,33 +175,19 @@ export default function LearningRoadmap() {
                 </p>
               </div>
 
-              {/* 단일 코스 또는 복수 코스 */}
-              {step.courses ? (
-                // 복수 코스 (STEP 2)
-                <div className="grid md:grid-cols-2 gap-8">
-                  {step.courses.map((course, courseIndex) => (
-                    <CourseCard 
-                      key={courseIndex} 
-                      course={course} 
-                      stepIndex={stepIndex}
-                      courseIndex={courseIndex}
-                      expandedCard={expandedCard}
-                      setExpandedCard={setExpandedCard}
-                    />
-                  ))}
-                </div>
-              ) : (
-                // 단일 코스 (STEP 1, 3)
-                <div className="max-w-4xl mx-auto">
+              {/* 코스 표시 */}
+              <div className={`${step.courses.length === 1 ? 'max-w-4xl mx-auto' : 'grid md:grid-cols-2 gap-8'}`}>
+                {step.courses.map((course, courseIndex) => (
                   <CourseCard 
-                    course={step.course!} 
+                    key={courseIndex} 
+                    course={course} 
                     stepIndex={stepIndex}
-                    courseIndex={0}
+                    courseIndex={courseIndex}
                     expandedCard={expandedCard}
                     setExpandedCard={setExpandedCard}
                   />
-                </div>
-              )}
+                ))}
+              </div>
 
               {/* 스텝 구분선 (마지막 스텝 제외) */}
               {stepIndex < roadmapSteps.length - 1 && (

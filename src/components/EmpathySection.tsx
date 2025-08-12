@@ -168,15 +168,20 @@ export default function EmpathySection() {
             </div>
 
             <div className="text-center mt-12">
-              <a
-                href="#roadmap"
+              <button
+                onClick={() => {
+                  const roadmapSection = document.getElementById('roadmap');
+                  if (roadmapSection) {
+                    roadmapSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-2xl"
               >
                 🎯 내 문제에 맞는 해결책 찾기
                 <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
         </div>

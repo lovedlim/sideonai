@@ -5521,15 +5521,11 @@ kynee
 			
 			
 			
+최종
+https://script.google.com/macros/s/AKfycbz2g37ka3GK23_ZSMOqVctwmdhPyXMQka7buYSIkuKKnZ0FTbqFuJedpnUsEJgxJZ3x/exec
 			
 			
-			
-			
-			
-			
-			
-			
-https://script.google.com/macros/s/AKfycbzCG_NH4escjW50wurucGlnhNDQmCnpb4j17hsibt62QKGxZVZ27HgNgswX-qq67lvt/exec
+
 
 
 <style>
