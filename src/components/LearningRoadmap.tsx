@@ -3,12 +3,31 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
+interface Course {
+  title: string;
+  target: string;
+  result: string;
+  skills: string[];
+  description: string;
+  curriculum: string[];
+  color: string;
+  icon: string;
+}
+
+interface RoadmapStep {
+  id: number;
+  step: string;
+  title: string;
+  subtitle: string;
+  courses: Course[];
+}
+
 export default function LearningRoadmap() {
   const [isVisible, setIsVisible] = useState(false);
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const roadmapSteps = [
+  const roadmapSteps: RoadmapStep[] = [
     {
       id: 1,
       step: "STEP 1",
@@ -155,7 +174,7 @@ export default function LearningRoadmap() {
 
         {/* 로드맵 스텝들 */}
         <div className="space-y-16">
-          {roadmapSteps.map((step, stepIndex) => (
+          {roadmapSteps.length > 0 ? roadmapSteps.map((step, stepIndex) => (
             <div 
               key={step.id}
               className={`transition-all duration-1000 delay-${stepIndex * 200} ${
@@ -176,8 +195,8 @@ export default function LearningRoadmap() {
               </div>
 
               {/* 코스 표시 */}
-              <div className={`${step.courses.length === 1 ? 'max-w-4xl mx-auto' : 'grid md:grid-cols-2 gap-8'}`}>
-                {step.courses.map((course, courseIndex) => (
+              <div className={`${step.courses?.length === 1 ? 'max-w-4xl mx-auto' : 'grid md:grid-cols-2 gap-8'}`}>
+                {step.courses?.map((course, courseIndex) => (
                   <CourseCard 
                     key={courseIndex} 
                     course={course} 
@@ -186,7 +205,7 @@ export default function LearningRoadmap() {
                     expandedCard={expandedCard}
                     setExpandedCard={setExpandedCard}
                   />
-                ))}
+                )) || null}
               </div>
 
               {/* 스텝 구분선 (마지막 스텝 제외) */}
@@ -196,7 +215,11 @@ export default function LearningRoadmap() {
                 </div>
               )}
             </div>
-          ))}
+          )) : (
+            <div className="text-center text-gray-500 dark:text-gray-400">
+              <p>로드맵을 불러오는 중...</p>
+            </div>
+          )}
         </div>
 
         {/* 맞춤 상담 CTA */}
@@ -225,16 +248,6 @@ export default function LearningRoadmap() {
 }
 
 // 코스 카드 컴포넌트
-interface Course {
-  title: string;
-  target: string;
-  result: string;
-  skills: string[];
-  description: string;
-  curriculum: string[];
-  color: string;
-  icon: string;
-}
 
 interface CourseCardProps {
   course: Course;
