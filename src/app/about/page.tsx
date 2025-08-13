@@ -1,5 +1,16 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "회사소개 - SideOnAI",
+  description: "SideOnAI는 AI 시대의 교육 혁신을 선도하는 전문 교육 회사입니다. 생성형 AI와 바이브 코딩 교육으로 4,829+ 수강생들의 성장을 도왔습니다.",
+  keywords: "SideOnAI 소개, AI 교육 회사, 바이브 코딩 전문가, 생성형 AI 교육",
+  openGraph: {
+    title: "회사소개 - SideOnAI",
+    description: "SideOnAI는 AI 시대의 교육 혁신을 선도하는 전문 교육 회사입니다.",
+  },
+};
 
 export default function AboutPage() {
   return (

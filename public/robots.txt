@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sideonai-qv0vbkovi-danmujicafe-gmailcoms-projects.vercel.app/sitemap.xml
+
+# 크롤링 제한
+Crawl-delay: 1
+
+# 제외할 페이지들 (필요시)
+# Disallow: /admin/
+# Disallow: /api/

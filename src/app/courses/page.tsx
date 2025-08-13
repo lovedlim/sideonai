@@ -1,6 +1,17 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "교육과정 - SideOnAI | AI 교육 강의 및 VOD 과정",
+  description: "생성형 AI, 바이브 코딩, 빅데이터 분석기사 등 실무 중심의 AI 교육과정을 만나보세요. 4.9/5.0 평점의 검증된 교육 프로그램을 제공합니다.",
+  keywords: "AI 교육과정, 바이브 코딩 강의, 빅데이터 분석기사, 생성형 AI 교육, 프로그래밍 교육, 온라인 강의",
+  openGraph: {
+    title: "교육과정 - SideOnAI",
+    description: "생성형 AI, 바이브 코딩, 빅데이터 분석기사 등 실무 중심의 AI 교육과정을 만나보세요.",
+  },
+};
 
 export default function CoursesPage() {
   const vodCourses = [
