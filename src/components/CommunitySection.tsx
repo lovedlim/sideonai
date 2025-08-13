@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { trackButtonClick, trackContactClick } from "@/lib/gtag";
 
 export default function CommunitySection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -122,7 +123,10 @@ export default function CommunitySection() {
               {communities.map((community, index) => (
                 <button
                   key={community.id}
-                  onClick={() => setActiveTab(index)}
+                  onClick={() => {
+                    trackButtonClick(`${community.name} 탭`, "Community Section");
+                    setActiveTab(index);
+                  }}
                   className={`w-full text-left p-6 rounded-2xl transition-all duration-300 ${
                     activeTab === index
                       ? `bg-gradient-to-br ${community.bgColor} border-2 border-purple-200 dark:border-purple-700 shadow-lg scale-105`
@@ -231,6 +235,7 @@ export default function CommunitySection() {
               <div className="text-center">
                 <a
                   href="#contact"
+                  onClick={() => trackButtonClick(`${activeCommunity.name} 참여하기`, "Community Section")}
                   className={`inline-flex items-center bg-gradient-to-r ${activeCommunity.color} text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-2xl`}
                 >
                   💬 {activeCommunity.name} 참여하기

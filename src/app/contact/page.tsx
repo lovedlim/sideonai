@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { trackFormSubmit } from "@/lib/gtag";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -63,8 +64,8 @@ export default function ContactPage() {
       const googleFormData = new FormData();
       googleFormData.append("이름", formData.name);
       googleFormData.append("이메일", formData.email);
-      googleFormData.append("회사/소속", formData.company);
-      googleFormData.append("문의 내용", formData.message);
+      googleFormData.append("회사소속", formData.company);
+      googleFormData.append("문의내용", formData.message);
 
       // 구글 Apps Script 웹 앱으로 데이터 전송
       const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
@@ -94,6 +95,7 @@ export default function ContactPage() {
       }
       
       if (data.result === 'success') {
+        trackFormSubmit("Contact 페이지 문의 폼");
         setSubmitMessage("잠시 후, 작성하신 이메일로 접수 확인 메일이 발송됩니다.\n만약 확인 메일을 받지 못하셨다면 스팸함을 확인하시거나, 홈페이지의 이메일로 다시 문의 부탁드립니다.");
         setFormData({
           name: "",

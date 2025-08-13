@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { trackFormSubmit, trackContactClick } from "@/lib/gtag";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -50,8 +51,8 @@ export default function ContactSection() {
       const googleFormData = new FormData();
       googleFormData.append("이름", formData.name);
       googleFormData.append("이메일", formData.email);
-      googleFormData.append("회사/소속", formData.company);
-      googleFormData.append("문의 내용", formData.inquiry);
+      googleFormData.append("회사소속", formData.company);
+      googleFormData.append("문의내용", formData.inquiry);
 
       // 구글 Apps Script 웹 앱으로 데이터 전송
       const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
@@ -81,6 +82,7 @@ export default function ContactSection() {
       }
       
       if (data.result === 'success') {
+        trackFormSubmit("메인 페이지 문의 폼");
         setSubmitMessage("잠시 후, 작성하신 이메일로 접수 확인 메일이 발송됩니다.\n만약 확인 메일을 받지 못하셨다면 스팸함을 확인하시거나, 홈페이지의 이메일로 다시 문의 부탁드립니다.");
         setFormData({ name: "", email: "", company: "", inquiry: "" });
       } else {
@@ -151,6 +153,7 @@ export default function ContactSection() {
                   href="https://youtube.com/@ai-study" 
                   target="_blank" 
                   rel="noopener noreferrer"
+                  onClick={() => trackContactClick("YouTube")}
                   className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors cursor-pointer"
                 >
                   <div className="w-10 h-10 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center text-white">
@@ -166,6 +169,7 @@ export default function ContactSection() {
                   href="https://github.com/lovedlim/" 
                   target="_blank" 
                   rel="noopener noreferrer"
+                  onClick={() => trackContactClick("GitHub")}
                   className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors cursor-pointer"
                 >
                   <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center text-white">
@@ -181,6 +185,7 @@ export default function ContactSection() {
                   href="https://www.inflearn.com/users/26238/@roadmap" 
                   target="_blank" 
                   rel="noopener noreferrer"
+                  onClick={() => trackContactClick("Inflearn")}
                   className="flex items-center space-x-4 p-4 bg-gray-50 dark:bg-gray-700 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors cursor-pointer"
                 >
                   <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center text-white">

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { trackButtonClick } from "@/lib/gtag";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
