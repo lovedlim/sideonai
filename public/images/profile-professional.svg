@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E40AF"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="skinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FED7AA"/>
+      <stop offset="100%" stop-color="#FDBA74"/>
+    </linearGradient>
+    <linearGradient id="suitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1F2937"/>
+      <stop offset="100%" stop-color="#374151"/>
+    </linearGradient>
+    <linearGradient id="hairGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#374151"/>
+      <stop offset="100%" stop-color="#4B5563"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="100" fill="url(#bgGradient)"/>
+  
+  <!-- Body/Suit -->
+  <path d="M55 185 Q65 170 75 165 L125 165 Q135 170 145 185 L145 200 L55 200 Z" fill="url(#suitGradient)"/>
+  
+  <!-- Shirt -->
+  <path d="M70 165 Q80 160 90 163 L110 163 Q120 160 130 165 L130 185 L70 185 Z" fill="#FFFFFF"/>
+  
+  <!-- Tie -->
+  <path d="M95 163 L105 163 L108 180 L100 185 L92 180 Z" fill="#1E40AF"/>
+  <rect x="97" y="165" width="6" height="2" fill="#3B82F6"/>
+  <rect x="97" y="169" width="6" height="2" fill="#3B82F6"/>
+  <rect x="97" y="173" width="6" height="2" fill="#3B82F6"/>
+  
+  <!-- Neck -->
+  <ellipse cx="100" cy="160" rx="14" ry="10" fill="url(#skinGradient)"/>
+  
+  <!-- Face -->
+  <ellipse cx="100" cy="125" rx="38" ry="42" fill="url(#skinGradient)"/>
+  
+  <!-- Hair -->
+  <path d="M62 105 Q67 80 82 75 Q100 70 118 75 Q133 80 138 105 Q138 115 133 120 Q118 90 100 90 Q82 90 67 120 Q62 115 62 105 Z" fill="url(#hairGradient)"/>
+  
+  <!-- Eyes -->
+  <ellipse cx="85" cy="120" rx="8" ry="5" fill="#FFFFFF"/>
+  <ellipse cx="115" cy="120" rx="8" ry="5" fill="#FFFFFF"/>
+  <circle cx="85" cy="120" r="4" fill="#1F2937"/>
+  <circle cx="115" cy="120" r="4" fill="#1F2937"/>
+  <circle cx="86" cy="119" r="1.5" fill="#FFFFFF"/>
+  <circle cx="116" cy="119" r="1.5" fill="#FFFFFF"/>
+  
+  <!-- Eyebrows -->
+  <path d="M77 113 Q85 111 93 113" stroke="#374151" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M107 113 Q115 111 123 113" stroke="#374151" stroke-width="3" fill="none" stroke-linecap="round"/>
+  
+  <!-- Nose -->
+  <path d="M98 130 Q100 133 102 130" stroke="#FDBA74" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Mouth -->
+  <path d="M90 140 Q100 145 110 140" stroke="#FDBA74" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Professional Glasses -->
+  <rect x="75" y="115" width="20" height="12" rx="6" fill="none" stroke="#1F2937" stroke-width="2.5" opacity="0.8"/>
+  <rect x="105" y="115" width="20" height="12" rx="6" fill="none" stroke="#1F2937" stroke-width="2.5" opacity="0.8"/>
+  <path d="M95 121 L105 121" stroke="#1F2937" stroke-width="2.5" opacity="0.8"/>
+  <path d="M75 121 L70 121" stroke="#1F2937" stroke-width="2" opacity="0.8"/>
+  <path d="M125 121 L130 121" stroke="#1F2937" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Ears -->
+  <ellipse cx="65" cy="125" rx="6" ry="10" fill="url(#skinGradient)"/>
+  <ellipse cx="135" cy="125" rx="6" ry="10" fill="url(#skinGradient)"/>
+  
+  <!-- Suit Details -->
+  <path d="M75 165 Q70 155 80 150 L90 163" fill="#111827"/>
+  <path d="M125 165 Q130 155 120 150 L110 163" fill="#111827"/>
+  
+  <!-- Professional Badge -->
+  <rect x="78" y="155" width="8" height="6" rx="1" fill="#1E40AF"/>
+  <text x="82" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="3" font-weight="bold" fill="#FFFFFF">AI</text>
+  
+  <!-- Suit Buttons -->
+  <circle cx="100" cy="175" r="2" fill="#6B7280"/>
+  
+  <!-- Pocket Square -->
+  <path d="M85 155 L90 155 L90 160 L87 162 L85 160 Z" fill="#FFFFFF"/>
+</svg>

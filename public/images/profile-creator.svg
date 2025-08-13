@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#667EEA"/>
+      <stop offset="100%" stop-color="#764BA2"/>
+    </linearGradient>
+    <linearGradient id="skinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FED7AA"/>
+      <stop offset="100%" stop-color="#FDBA74"/>
+    </linearGradient>
+    <linearGradient id="hoodieGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#3730A3"/>
+    </linearGradient>
+    <linearGradient id="hairGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#374151"/>
+      <stop offset="100%" stop-color="#4B5563"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="100" fill="url(#bgGradient)"/>
+  
+  <!-- Body/Hoodie -->
+  <path d="M50 180 Q60 165 70 160 L130 160 Q140 165 150 180 L150 200 L50 200 Z" fill="url(#hoodieGradient)"/>
+  
+  <!-- Hoodie Hood -->
+  <path d="M65 160 Q70 150 85 145 Q100 140 115 145 Q130 150 135 160 Q135 165 130 170 L125 165 Q115 155 100 155 Q85 155 75 165 L70 170 Q65 165 65 160 Z" fill="url(#hoodieGradient)" opacity="0.8"/>
+  
+  <!-- Hoodie Front Pocket -->
+  <path d="M85 170 Q100 168 115 170 Q115 180 100 182 Q85 180 85 170 Z" fill="#3730A3"/>
+  
+  <!-- Hoodie Strings -->
+  <circle cx="95" cy="162" r="2" fill="#D1D5DB"/>
+  <circle cx="105" cy="162" r="2" fill="#D1D5DB"/>
+  <path d="M95 164 Q95 175 92 180" stroke="#D1D5DB" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M105 164 Q105 175 108 180" stroke="#D1D5DB" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Neck -->
+  <ellipse cx="100" cy="155" rx="12" ry="8" fill="url(#skinGradient)"/>
+  
+  <!-- Face -->
+  <ellipse cx="100" cy="120" rx="35" ry="40" fill="url(#skinGradient)"/>
+  
+  <!-- Modern Hair -->
+  <path d="M65 100 Q70 75 85 70 Q100 65 115 70 Q130 75 135 100 Q135 110 130 115 Q125 95 115 90 Q100 85 85 90 Q75 95 70 115 Q65 110 65 100 Z" fill="url(#hairGradient)"/>
+  <!-- Hair Side Parts -->
+  <path d="M75 95 Q80 90 85 95" stroke="#374151" stroke-width="2" fill="none"/>
+  <path d="M115 95 Q120 90 125 95" stroke="#374151" stroke-width="2" fill="none"/>
+  
+  <!-- Eyes (no glasses) -->
+  <ellipse cx="88" cy="115" rx="6" ry="4" fill="#FFFFFF"/>
+  <ellipse cx="112" cy="115" rx="6" ry="4" fill="#FFFFFF"/>
+  <circle cx="88" cy="115" r="3" fill="#2D3748"/>
+  <circle cx="112" cy="115" r="3" fill="#2D3748"/>
+  <circle cx="89" cy="114" r="1" fill="#FFFFFF"/>
+  <circle cx="113" cy="114" r="1" fill="#FFFFFF"/>
+  
+  <!-- Eyebrows -->
+  <path d="M82 108 Q88 106 94 108" stroke="#4A5568" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M106 108 Q112 106 118 108" stroke="#4A5568" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Nose -->
+  <path d="M98 125 Q100 128 102 125" stroke="#FDBA74" stroke-width="1" fill="none" stroke-linecap="round"/>
+  
+  <!-- Smile -->
+  <path d="M90 135 Q100 142 110 135" stroke="#FDBA74" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Ears -->
+  <ellipse cx="70" cy="120" rx="5" ry="8" fill="url(#skinGradient)"/>
+  <ellipse cx="130" cy="120" rx="5" ry="8" fill="url(#skinGradient)"/>
+  
+  <!-- Creative Touch - Small Logo on Hoodie -->
+  <circle cx="120" cy="175" r="6" fill="#667EEA"/>
+  <text x="120" y="178" text-anchor="middle" font-family="Arial, sans-serif" font-size="4" font-weight="bold" fill="#FFFFFF">AI</text>
+  
+  <!-- Hoodie Cuffs -->
+  <rect x="65" y="185" width="10" height="15" rx="3" fill="#3730A3"/>
+  <rect x="125" y="185" width="10" height="15" rx="3" fill="#3730A3"/>
+</svg>

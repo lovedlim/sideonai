@@ -32,7 +32,7 @@ export default function AboutPage() {
               <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-600 p-8 rounded-2xl">
                 <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden bg-white shadow-lg">
                   <img 
-                    src="/images/profile-illustration.svg" 
+                    src="/images/profile-creator.svg" 
                     alt="SideOnAI 대표 프로필" 
                     className="w-full h-full object-cover"
                   />
@@ -42,7 +42,7 @@ export default function AboutPage() {
                     SideOnAI 대표
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    Data Scientist & Developer | HRDer | DevRel
+                    AI Evangelist & Developer | HRDer | DevRel
                   </p>
                   <div className="flex justify-center space-x-4">
                     <a
@@ -144,6 +144,7 @@ export default function AboutPage() {
                 <ul className="space-y-2 text-gray-600 dark:text-gray-300 text-sm">
                   <li>• 인프런 강의 수강자 4.8k+</li>
                   <li>• 강의 만족도 4.9/5점</li>
+                  <li>• 생성형AI를 활용한 업무자동화</li>
                   <li>• 바이브 코딩 시리즈</li>
                   <li>• 빅데이터 분석기사 실기</li>
                 </ul>
