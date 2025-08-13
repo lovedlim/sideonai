@@ -49,14 +49,26 @@ npm run dev
 
 ### 환경변수 설정
 
-문의 폼이 작동하려면 구글 Apps Script URL이 필요합니다:
+문의 폼과 Google Analytics가 작동하려면 환경변수 설정이 필요합니다:
 
 1. `.env.local` 파일을 프로젝트 루트에 생성
 2. 다음 내용 추가:
    ```
+   # 구글 Apps Script URL (문의 폼)
    NEXT_PUBLIC_GOOGLE_SCRIPT_URL=https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec
+   
+   # Google Analytics 4 Measurement ID (선택사항)
+   NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
    ```
 3. `YOUR_SCRIPT_ID`를 실제 구글 Apps Script 배포 ID로 변경
+4. `G-XXXXXXXXXX`를 실제 GA4 Measurement ID로 변경 (없으면 GA 기능 비활성화)
+
+### Google Analytics 4 설정
+
+1. [Google Analytics](https://analytics.google.com/)에 접속
+2. 새 속성 생성 → 웹사이트 선택
+3. 추적 ID (G-XXXXXXXXXX) 복사
+4. `.env.local`의 `NEXT_PUBLIC_GA_MEASUREMENT_ID`에 추가
 
 ## 🛡️ 스팸 및 보안 방지
 

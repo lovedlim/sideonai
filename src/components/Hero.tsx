@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { trackButtonClick } from "@/lib/gtag";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -104,6 +105,7 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4">
             <Link
               href="/courses"
+              onClick={() => trackButtonClick("강의 보러가기", "Hero Section")}
               className="group bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 sm:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold transition-all duration-300 hover:scale-110 hover:shadow-2xl shadow-lg relative overflow-hidden w-full sm:w-auto text-center min-h-[60px] flex items-center justify-center"
             >
               <span className="relative z-10">📹 강의 보러가기</span>
@@ -111,6 +113,7 @@ export default function Hero() {
             </Link>
             <Link
               href="#community"
+              onClick={() => trackButtonClick("학습 커뮤니티 참여하기", "Hero Section")}
               className="group border-2 border-gray-300 text-gray-700 dark:text-gray-300 dark:border-gray-600 hover:border-blue-500 px-8 sm:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold transition-all duration-300 hover:scale-105 backdrop-blur-sm bg-white/30 dark:bg-black/30 w-full sm:w-auto text-center min-h-[60px] flex items-center justify-center"
             >
               💬 학습 커뮤니티 참여하기
