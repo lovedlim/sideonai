@@ -6,7 +6,7 @@ declare global {
       command: 'config' | 'event' | 'js' | 'set',
       targetId: string | Date,
       config?: {
-        [key: string]: any;
+        [key: string]: string | number | boolean;
       }
     ) => void;
   }
@@ -36,11 +36,19 @@ export const event = ({
   value?: number;
 }) => {
   if (typeof window !== 'undefined' && window.gtag && GA_MEASUREMENT_ID) {
-    window.gtag('event', action, {
+    const config: { [key: string]: string | number | boolean } = {
       event_category: category,
-      event_label: label,
-      value: value,
-    });
+    };
+    
+    if (label) {
+      config.event_label = label;
+    }
+    
+    if (value !== undefined) {
+      config.value = value;
+    }
+    
+    window.gtag('event', action, config);
   }
 };
 
