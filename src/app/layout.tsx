@@ -16,22 +16,22 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "SideOnAI - AI 교육 전문가",
-  description: "생성형 AI와 바이브 코딩으로 누구나 쉽게 프로그래밍을 배우고 업무 효율성을 극대화하세요. 4,829+ 선택받은 강의, 4.9/5.0 압도적 강의 평점",
-  keywords: "AI 교육, 바이브 코딩, 생성형 AI, 프로그래밍 교육, 업무 자동화, 빅데이터 분석기사, 캐글, 머신러닝",
+  description: "AI 교육 전문가 SideOnAI의 개인 브랜딩 페이지. GitHub, YouTube, Inflearn 강의 및 도서 정보를 확인하세요.",
+  keywords: "SideOnAI, AI 교육, 프로그래밍 교육, 빅데이터 분석기사, 딥러닝, 텐서플로, 바이브 코딩",
   authors: [{ name: "SideOnAI" }],
   creator: "SideOnAI",
   publisher: "SideOnAI",
   openGraph: {
     title: "SideOnAI - AI 교육 전문가",
-    description: "생성형 AI와 바이브 코딩으로 누구나 쉽게 프로그래밍을 배우고 업무 효율성을 극대화하세요",
+    description: "AI 교육 전문가 SideOnAI의 개인 브랜딩 페이지",
     type: "website",
     locale: "ko_KR",
     siteName: "SideOnAI",
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "SideOnAI - AI 교육 전문가",
-    description: "생성형 AI와 바이브 코딩으로 누구나 쉽게 프로그래밍을 배우고 업무 효율성을 극대화하세요",
+    description: "AI 교육 전문가 SideOnAI의 개인 브랜딩 페이지",
   },
   robots: {
     index: true,
