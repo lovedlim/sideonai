@@ -34,7 +34,7 @@ export default function SimpleContactForm() {
         return;
       }
 
-      if (!formData.name.trim() || !formData.email.trim() || !formData.inquiry.trim()) {
+      if (!formData.name.trim() || !formData.email.trim() || !formData.company.trim() || !formData.inquiry.trim()) {
         setSubmitMessage("필수 항목을 모두 입력해주세요.");
         setIsSubmitting(false);
         return;
@@ -126,7 +126,7 @@ export default function SimpleContactForm() {
       <div className="mb-6">
         <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 px-2 flex items-center">
           <span className="text-2xl mr-2">📝</span>
-          문의하기
+          협업 문의하기
         </h2>
         
         <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
@@ -175,12 +175,13 @@ export default function SimpleContactForm() {
 
             <div>
               <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                회사/소속
+                회사/소속 *
               </label>
               <input
                 type="text"
                 id="company"
                 name="company"
+                required
                 value={formData.company}
                 onChange={handleChange}
                 className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all text-sm"
@@ -263,12 +264,10 @@ export default function SimpleContactForm() {
               <span className="ml-2 text-gray-900 dark:text-white">{submittedData.email}</span>
             </div>
             
-            {submittedData.company && (
-              <div>
-                <span className="font-medium text-gray-700 dark:text-gray-300">회사/소속:</span>
-                <span className="ml-2 text-gray-900 dark:text-white">{submittedData.company}</span>
-              </div>
-            )}
+            <div>
+              <span className="font-medium text-gray-700 dark:text-gray-300">회사/소속:</span>
+              <span className="ml-2 text-gray-900 dark:text-white">{submittedData.company}</span>
+            </div>
             
             <div>
               <span className="font-medium text-gray-700 dark:text-gray-300">문의 내용:</span>
