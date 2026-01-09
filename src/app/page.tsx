@@ -47,7 +47,7 @@ export default function Home() {
             href="https://www.inflearn.com/users/26238/@roadmap"
             icon="🎓"
             title="Inflearn"
-            subtitle="강의 로드맵 보기"
+            subtitle="만족도 4.9/5점 만점"
           />
           
           <LinkButton

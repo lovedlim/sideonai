@@ -1,29 +1,40 @@
-# SideOnAI 공식 웹사이트
+# SideOnAI - 개인 브랜딩 페이지
 
-SideOnAI는 AI 시대의 교육 혁신을 선도하는 전문 교육 회사입니다. 생성형 AI와 바이브 코딩을 통해 새로운 개발 경험과 업무 효율화를 제공합니다.
+도메인에 AI를 더하는, SideOnAI의 개인 브랜딩 페이지입니다. Linktree 스타일의 깔끔하고 모바일 최적화된 디자인으로 제작되었습니다.
 
-## 🚀 주요 기능
+## ✨ 주요 기능
 
-- **현대적인 반응형 디자인**: Tailwind CSS를 사용한 모바일 친화적 UI
-- **교육과정 소개**: 다양한 AI/데이터 교육 프로그램 정보 제공
-- **교육의뢰 신청**: 맞춤형 교육 상담 및 신청 시스템
-- **회사 소개**: 대표 프로필 및 주요 성과 소개
+- **Linktree 스타일 디자인**: 깔끔하고 모바일 최적화된 개인 브랜딩 페이지
+- **프로필 아바타**: "+AI" 텍스트 기반 커스텀 아바타
+- **링크 버튼**: 이메일, GitHub, YouTube, Inflearn, LinkedIn 등 주요 링크 제공
+- **학습 자료 섹션**: 캐글 데이터분석 튜토리얼 등 학습 자료 링크
+- **도서 섹션**: 출간/예정 도서 정보 제공
+- **간편 문의 폼**: Google Apps Script 연동 문의 폼 (전송 완료 후 확인 카드 표시)
 - **다크 모드 지원**: 사용자 환경에 맞는 테마 자동 적용
 
 ## 🛠 기술 스택
 
 - **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS 4
 - **배포**: Vercel
 - **개발 도구**: ESLint, PostCSS
 
-## 📚 교육과정
+## 📚 포함된 링크
 
-1. **생성형 AI 활용 교육** - ChatGPT, Claude, Cursor AI 활용법
-2. **바이브 코딩 워크숍** - 노코드/로우코드 개발 경험
-3. **데이터 분석 & 머신러닝** - Python 실무 활용
-4. **빅데이터 분석기사 대비** - 자격증 취득 과정
-5. **맞춤형 기업 교육** - 기업별 특화 프로그램
+### 소셜 미디어
+- 이메일: danmujicafe@gmail.com
+- GitHub: https://github.com/lovedlim/
+- YouTube: https://www.youtube.com/@ai-study
+- Inflearn: https://www.inflearn.com/users/26238/@roadmap (만족도 4.9/5점 만점)
+- LinkedIn: https://www.linkedin.com/in/ailab
+
+### 학습 자료
+- 캐글 데이터분석 튜토리얼: 빅데이터 분석기사 실기 데이터셋
+
+### 도서
+- 바이브 코딩 with cursor (2026.2 출간 예정)
+- 2026 시나공 빅데이터분석기사 실기 (길벗)
+- 파이썬 딥러닝 텐서플로 (정보문화사)
 
 ## 🏃‍♂️ 시작하기
 
@@ -31,7 +42,7 @@ SideOnAI는 AI 시대의 교육 혁신을 선도하는 전문 교육 회사입�
 
 ```bash
 # 저장소 클론
-git clone https://github.com/[your-username]/sideonai.git
+git clone https://github.com/lovedlim/sideonai.git
 cd sideonai
 
 # 의존성 설치
@@ -78,23 +89,6 @@ npm run dev
 2. **유효성 검사**: 이메일 형식, 필수 항목, 문자 수 제한 (2000자)
 3. **환경변수**: 민감한 URL 정보를 환경변수로 분리
 
-### 추가 보안 강화 방법
-
-**서버 사이드 (구글 Apps Script):**
-```javascript
-function doPost(e) {
-  // IP 기반 rate limiting
-  // 시간당 요청 제한
-  // 키워드 필터링
-  // 이메일 도메인 검증
-}
-```
-
-**클라이언트 사이드:**
-- reCAPTCHA 추가 가능
-- 제출 간격 제한 (1분에 1회)
-- 브라우저 fingerprinting 방지
-
 ### 빌드 및 배포
 
 ```bash
@@ -110,11 +104,12 @@ npm start
 - **이메일**: danmujicafe@gmail.com
 - **GitHub**: [https://github.com/lovedlim/](https://github.com/lovedlim/)
 - **YouTube**: [https://www.youtube.com/@ai-study](https://www.youtube.com/@ai-study)
-- **Inflearn**: [강의 로드맵](https://www.inflearn.com/users/26238/@roadmap)
+- **Inflearn**: [강의 로드맵](https://www.inflearn.com/users/26238/@roadmap) (만족도 4.9/5점 만점)
+- **LinkedIn**: [https://www.linkedin.com/in/ailab](https://www.linkedin.com/in/ailab)
 
 ## 🏆 주요 성과
 
-- 온라인 강의 수강자 4.8k+ (만족도 4.9/5)
+- 온라인 강의 수강자 4.8k+ (만족도 4.9/5점 만점)
 - 기업/공공기관 교육 50회 이상
 - 캐글/AI 학습 모임 230회 이상 운영
 - 2024 Inflearn Award "답변왕" 수상
