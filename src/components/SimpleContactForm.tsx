@@ -126,7 +126,7 @@ export default function SimpleContactForm() {
       <div className="mb-6">
         <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 px-2 flex items-center">
           <span className="text-2xl mr-2">📝</span>
-          간편 문의
+          문의하기
         </h2>
         
         <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
