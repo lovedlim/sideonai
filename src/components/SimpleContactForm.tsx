@@ -74,7 +74,7 @@ export default function SimpleContactForm() {
       let data;
       try {
         data = JSON.parse(responseText);
-      } catch (parseError) {
+      } catch {
         throw new Error("서버 응답을 파싱할 수 없습니다.");
       }
       
