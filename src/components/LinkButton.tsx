@@ -1,7 +1,10 @@
-import { ReactNode } from "react";
+'use client';
+
+import { ReactNode, useEffect, useState } from "react";
 
 interface LinkButtonProps {
   href?: string;
+  randomLinks?: string[];
   onClick?: () => void;
   icon?: ReactNode;
   title: string;
@@ -11,12 +14,21 @@ interface LinkButtonProps {
 
 export default function LinkButton({
   href,
+  randomLinks,
   onClick,
   icon,
   title,
   subtitle,
   disabled = false,
 }: LinkButtonProps) {
+  const [selectedLink, setSelectedLink] = useState(href);
+
+  useEffect(() => {
+    if (randomLinks && randomLinks.length > 0) {
+      const randomIndex = Math.floor(Math.random() * randomLinks.length);
+      setSelectedLink(randomLinks[randomIndex]);
+    }
+  }, [randomLinks]);
   const content = (
     <div
       className={`
@@ -55,12 +67,12 @@ export default function LinkButton({
     return <div>{content}</div>;
   }
 
-  if (href) {
+  if (selectedLink) {
     return (
       <a
-        href={href}
-        target={href.startsWith("http") ? "_blank" : undefined}
-        rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+        href={selectedLink}
+        target={selectedLink.startsWith("http") ? "_blank" : undefined}
+        rel={selectedLink.startsWith("http") ? "noopener noreferrer" : undefined}
         className="block"
       >
         {content}

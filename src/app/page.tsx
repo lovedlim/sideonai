@@ -1,8 +1,15 @@
+'use client';
+
 import ProfileAvatar from "@/components/ProfileAvatar";
 import LinkButton from "@/components/LinkButton";
 import SimpleContactForm from "@/components/SimpleContactForm";
+import RandomBookLink from "@/components/RandomBookLink";
 
 export default function Home() {
+  const vibeBookLinks = [
+    "https://product.kyobobook.co.kr/detail/S000219139681",
+    "https://www.yes24.com/product/goods/176548558"
+  ];
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <main className="max-w-md mx-auto px-4 py-8 sm:py-12">
@@ -22,22 +29,19 @@ export default function Home() {
 
         {/* 신간 출시 배너 */}
         <div className="mb-8 animate-fade-in-up">
-          <a 
-            href="https://product.kyobobook.co.kr/detail/S000219139681"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 animate-pulse"></div>
-            <img 
-              src="/images/vibe-coding-book.png" 
-              alt="바이브 코딩 with 커서 - 2026.2 출간 예정"
-              className="w-full h-auto relative z-10"
-            />
-            <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-bounce z-20">
-              NEW
+          <RandomBookLink links={vibeBookLinks}>
+            <div className="block relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 animate-pulse"></div>
+              <img 
+                src="/images/vibe-coding-book.png" 
+                alt="바이브 코딩 with 커서 - 2026.2 출간 예정"
+                className="w-full h-auto relative z-10"
+              />
+              <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold animate-bounce z-20">
+                NEW
+              </div>
             </div>
-          </a>
+          </RandomBookLink>
         </div>
 
         {/* 링크 버튼들 */}
@@ -100,7 +104,7 @@ export default function Home() {
           </h2>
           <div className="space-y-3">
             <LinkButton
-              href="https://product.kyobobook.co.kr/detail/S000219139681"
+              randomLinks={vibeBookLinks}
               icon="📖"
               title="바이브 코딩 with cursor"
               subtitle="길벗 (2026.2)"
