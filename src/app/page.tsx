@@ -28,7 +28,7 @@ export default function Home() {
         </div>
 
         {/* 신간 출시 배너 */}
-        <div className="mb-8 animate-fade-in-up">
+        <div className="mb-8 animate-fade-in-up max-w-sm mx-auto">
           <RandomBookLink links={vibeBookLinks}>
             <div className="block relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 animate-pulse"></div>
@@ -44,41 +44,20 @@ export default function Home() {
           </RandomBookLink>
         </div>
 
-        {/* 링크 버튼들 */}
+        {/* 콘텐츠 */}
         <div className="space-y-3 mb-8">
-          <LinkButton
-            href="mailto:danmujicafe@gmail.com"
-            icon="✉️"
-            title="이메일"
-            subtitle="danmujicafe@gmail.com"
-          />
-          
-          <LinkButton
-            href="https://github.com/lovedlim/"
-            icon="🐙"
-            title="GitHub"
-            subtitle="github.com/lovedlim"
-          />
-          
           <LinkButton
             href="https://www.youtube.com/@ai-study"
             icon="📺"
-            title="YouTube"
+            title="유튜브 (Youtube)"
             subtitle="youtube.com/@ai-study"
           />
           
           <LinkButton
             href="https://www.inflearn.com/users/26238/@roadmap"
             icon="🎓"
-            title="Inflearn"
+            title="VOD 과정 (인프런)"
             subtitle="만족도 4.9/5점 만점"
-          />
-          
-          <LinkButton
-            href="https://www.linkedin.com/in/ailab"
-            icon="💼"
-            title="LinkedIn"
-            subtitle="linkedin.com/in/ailab"
           />
         </div>
 
@@ -126,8 +105,52 @@ export default function Home() {
           </div>
         </div>
 
+        {/* 전자 도서 (공개) 섹션 */}
+        <div className="mb-8">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 px-2">
+            📱 전자 도서 (공개)
+          </h2>
+          <div className="space-y-3">
+            <LinkButton
+              href="https://wikidocs.net/book/19077"
+              icon="📘"
+              title="AI 기반 소방 활용 (기초)"
+              subtitle="위키독스"
+            />
+          </div>
+        </div>
+
         {/* 간편 문의 폼 */}
         <SimpleContactForm />
+
+        {/* 연락처 및 링크 */}
+        <div className="mb-8 mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 px-2">
+            🔗 연락처 및 링크
+          </h2>
+          <div className="space-y-3">
+            <LinkButton
+              href="mailto:danmujicafe@gmail.com"
+              icon="✉️"
+              title="이메일"
+              subtitle="danmujicafe@gmail.com"
+            />
+            
+            <LinkButton
+              href="https://github.com/lovedlim/"
+              icon="🐙"
+              title="깃허브 (Github)"
+              subtitle="github.com/lovedlim"
+            />
+            
+            <LinkButton
+              href="https://www.linkedin.com/in/ailab"
+              icon="💼"
+              title="링크드인 (LinkedIn)"
+              subtitle="linkedin.com/in/ailab"
+            />
+          </div>
+        </div>
       </main>
     </div>
   );
