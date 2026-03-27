@@ -42,3 +42,10 @@ next-env.d.ts
 
 # backup files (local only)
 backup/
+
+# list folder source images (local only)
+list/*.jpg
+list/*.jpeg
+list/*.png
+list/*.heic
+list/*.webp
