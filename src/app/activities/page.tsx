@@ -264,8 +264,8 @@ export default function ActivitiesPage() {
             <div key={section.year}>
               {/* 연도 구분선 */}
               <div className="flex items-center gap-3 mb-4">
-                <span className="text-sm font-bold text-indigo-500 dark:text-indigo-400">
-                  {section.year}년
+                <span className="text-2xl font-extrabold text-indigo-500 dark:text-indigo-400 tracking-tight">
+                  {section.year}
                 </span>
                 <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
                 <span className="text-xs text-gray-400">
