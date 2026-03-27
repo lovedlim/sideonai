@@ -300,7 +300,7 @@ export default function ActivitiesPage() {
                           alt={group.org}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 448px) calc(100vw - 64px), 384px"
+                          sizes="(max-width: 448px) calc(100vw - 96px), 360px"
                         />
                       </div>
                     )}
