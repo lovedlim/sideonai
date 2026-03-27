@@ -59,6 +59,19 @@ export default function Home() {
             title="VOD 과정 (인프런)"
             subtitle="만족도 4.9/5점 만점"
           />
+
+          <a href="/activities" className="block">
+            <div className="w-full px-6 py-4 rounded-2xl bg-gradient-to-br from-white to-indigo-50 dark:from-gray-800 dark:to-indigo-950/50 border border-indigo-100 dark:border-indigo-900 shadow-sm hover:shadow-md transition-all duration-200 flex items-center justify-between group hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+              <div className="flex items-center space-x-4">
+                <div className="flex-shrink-0 text-2xl">🎤</div>
+                <div>
+                  <div className="font-semibold text-gray-900 dark:text-white text-base">강의 / 강연 활동</div>
+                  <div className="text-sm text-indigo-400 mt-0.5">컨퍼런스, 기업교육, 워크숍 등 46회+</div>
+                </div>
+              </div>
+              <div className="text-indigo-300 group-hover:text-indigo-500 transition-colors">→</div>
+            </div>
+          </a>
         </div>
 
         {/* 학습 자료 섹션 */}
