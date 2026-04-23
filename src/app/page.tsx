@@ -10,6 +10,10 @@ export default function Home() {
     "https://product.kyobobook.co.kr/detail/S000219139681",
     "https://www.yes24.com/product/goods/176548558"
   ];
+  const bigdataExamBookLinks = [
+    "https://www.yes24.com/product/goods/185160480",
+    "https://product.kyobobook.co.kr/detail/S000219615760"
+  ];
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       <main className="max-w-md mx-auto px-4 py-8 sm:py-12">
@@ -66,7 +70,7 @@ export default function Home() {
                 <div className="flex-shrink-0 text-2xl">🎤</div>
                 <div>
                   <div className="font-semibold text-gray-900 dark:text-white text-base">강의 / 강연 활동</div>
-                  <div className="text-sm text-indigo-400 mt-0.5">컨퍼런스, 기업교육, 워크숍 등 46회+</div>
+                  <div className="text-sm text-indigo-400 mt-0.5">컨퍼런스, 기업교육, 워크숍 등 62회+</div>
                 </div>
               </div>
               <div className="text-indigo-300 group-hover:text-indigo-500 transition-colors">→</div>
@@ -103,7 +107,7 @@ export default function Home() {
             />
             
             <LinkButton
-              href="https://product.kyobobook.co.kr/detail/S000216355151"
+              randomLinks={bigdataExamBookLinks}
               icon="📕"
               title="2026 시나공 빅데이터분석기사 실기"
               subtitle="길벗"
