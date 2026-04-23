@@ -25,39 +25,11 @@ const sections: YearSection[] = [
     year: 2026,
     groups: [
       {
-        org: "한국음악협회",
-        image: "/images/activities/2026music1.webp",
-        activities: [
-          { title: "음악예술가를 위한 바이브 코딩" },
-        ],
-      },
-      {
         org: "GS리테일",
         image: "/images/activities/2026gs1.webp",
         activities: [
           { title: "팀장리더십스쿨: AI 전환을 설계하고 실행하는 팀 만들기 1차" },
           { title: "팀장리더십스쿨: AI 전환을 설계하고 실행하는 팀 만들기 2차" },
-        ],
-      },
-      {
-        org: "방송기술교육원",
-        image: "/images/activities/2026broadcast1.webp",
-        activities: [
-          { title: "AI 활용 및 콘텐츠 제작 교육 - 바이브코딩", href: "http://edu.kobeta.com/education/index-list_cate2.php?idx=228&code=all&bgu=view" },
-        ],
-      },
-      {
-        org: "메타버스 캠퍼스",
-        image: "/images/activities/2026meta1.webp",
-        activities: [
-          { title: "바이브 코딩(노코드)을 활용한 AI 업무 서비스 개발 과정", href: "https://www.metaverse-campus.kr/lecture/viewAll.do?pageIndex=1&menu_idx=50&lecIdx=17&proIdx=262&selYear=&selApplyStatus=" },
-        ],
-      },
-      {
-        org: "메드엔진 (위메이드 계열 게임사)",
-        image: "/images/activities/2026medengine1.webp",
-        activities: [
-          { title: "클로드 코드 활용법" },
         ],
       },
       {
@@ -80,10 +52,25 @@ const sections: YearSection[] = [
         ],
       },
       {
-        org: "디지털 오픈랩 x 인프런",
-        image: "/images/activities/2026inf1.webp",
+        org: "전자신문",
+        image: "/images/activities/2026enews1.webp",
         activities: [
-          { title: "AI를 활용한 데이터 수집과 데이터 분석", href: "https://inf.run/A96Ct" },
+          { title: "'바이브 코딩'으로 웹/앱 제작 워크숍(중급반) with Claude Code + n8n" },
+          { title: "'바이브 코딩'으로 웹/앱 제작 워크숍(중급반) with Cursor + n8n", href: "https://conference.etnews.com/conf_info.html?uid=467" },
+        ],
+      },
+      {
+        org: "메드엔진 (위메이드 계열 게임사)",
+        image: "/images/activities/2026medengine1.webp",
+        activities: [
+          { title: "클로드 코드 활용법" },
+        ],
+      },
+      {
+        org: "방송기술교육원",
+        image: "/images/activities/2026broadcast1.webp",
+        activities: [
+          { title: "AI 활용 및 콘텐츠 제작 교육 - 바이브코딩", href: "http://edu.kobeta.com/education/index-list_cate2.php?idx=228&code=all&bgu=view" },
         ],
       },
       {
@@ -94,11 +81,24 @@ const sections: YearSection[] = [
         ],
       },
       {
-        org: "전자신문",
-        image: "/images/activities/2026enews1.webp",
+        org: "한국음악협회",
+        image: "/images/activities/2026music1.webp",
         activities: [
-          { title: "'바이브 코딩'으로 웹/앱 제작 워크숍(중급반) with Claude Code + n8n" },
-          { title: "'바이브 코딩'으로 웹/앱 제작 워크숍(중급반) with Cursor + n8n", href: "https://conference.etnews.com/conf_info.html?uid=467" },
+          { title: "음악예술가를 위한 바이브 코딩" },
+        ],
+      },
+      {
+        org: "메타버스 캠퍼스",
+        image: "/images/activities/2026meta1.webp",
+        activities: [
+          { title: "바이브 코딩(노코드)을 활용한 AI 업무 서비스 개발 과정", href: "https://www.metaverse-campus.kr/lecture/viewAll.do?pageIndex=1&menu_idx=50&lecIdx=17&proIdx=262&selYear=&selApplyStatus=" },
+        ],
+      },
+      {
+        org: "디지털 오픈랩 x 인프런",
+        image: "/images/activities/2026inf1.webp",
+        activities: [
+          { title: "AI를 활용한 데이터 수집과 데이터 분석", href: "https://inf.run/A96Ct" },
         ],
       },
       {
