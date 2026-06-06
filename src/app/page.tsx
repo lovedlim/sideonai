@@ -4,6 +4,7 @@ import ProfileAvatar from "@/components/ProfileAvatar";
 import LinkButton from "@/components/LinkButton";
 import SimpleContactForm from "@/components/SimpleContactForm";
 import RandomBookLink from "@/components/RandomBookLink";
+import { totalCount } from "./activities/page";
 
 export default function Home() {
   const vibeBookLinks = [
@@ -46,6 +47,13 @@ export default function Home() {
             title="마크다운 에디터 연습"
             subtitle="문법·미리보기 · sideonai.com/md"
           />
+          <LinkButton
+            href="/code"
+            openInNewTab
+            icon="🐼"
+            title="코딩팡"
+            subtitle="파이썬·판다스·머신러닝·통계 실습 · sideonai.com/code"
+          />
         </div>
 
         {/* 신간 출시 배너 */}
@@ -87,7 +95,7 @@ export default function Home() {
                 <div className="flex-shrink-0 text-2xl">🎤</div>
                 <div>
                   <div className="font-semibold text-gray-900 dark:text-white text-base">강의 / 강연 활동</div>
-                  <div className="text-sm text-indigo-400 mt-0.5">컨퍼런스, 기업교육, 워크숍 등 62회+</div>
+                  <div className="text-sm text-indigo-400 mt-0.5">컨퍼런스, 기업교육, 워크숍 등 {totalCount}회+</div>
                 </div>
               </div>
               <div className="text-indigo-300 group-hover:text-indigo-500 transition-colors">→</div>

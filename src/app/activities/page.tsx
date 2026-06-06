@@ -25,11 +25,41 @@ const sections: YearSection[] = [
     year: 2026,
     groups: [
       {
+        org: "한국언론진흥재단",
+        image: "/images/activities/2026press1.webp",
+        activities: [
+          { title: "AI 시대의 데이터 수집하기 바이브 코딩 (기자 대상)" },
+        ],
+      },
+      {
+        org: "EBS",
+        image: "/images/activities/2026ebs2.webp",
+        activities: [
+          { title: "디지털학교를 위한 바이브코딩 (클로드 코드) + 교육외 현업 적용 프로젝트 진행" },
+        ],
+      },
+      {
+        org: "KOBA 미디어 컨퍼런스",
+        image: "/images/activities/2026koba1.webp",
+        activities: [
+          { title: "지상파 엔지니어를 위한 바이브 코딩: Claude Code 기반 방송 업무 자동화" },
+        ],
+      },
+      {
+        org: "인프런",
+        image: "/images/activities/2026infvibe1.webp",
+        activities: [
+          { title: "바이브 코딩으로 만드는 AI 서비스" },
+        ],
+      },
+      {
         org: "GS리테일",
         image: "/images/activities/2026gs1.webp",
         activities: [
           { title: "팀장리더십스쿨: AI 전환을 설계하고 실행하는 팀 만들기 1차" },
           { title: "팀장리더십스쿨: AI 전환을 설계하고 실행하는 팀 만들기 2차" },
+          { title: "팀장리더십스쿨: AI 전환을 설계하고 실행하는 팀 만들기 3차" },
+          { title: "팀장리더십스쿨: AI 전환을 설계하고 실행하는 팀 만들기 4차" },
         ],
       },
       {
@@ -39,6 +69,7 @@ const sections: YearSection[] = [
           { title: "AI 문서 작성법 1차" },
           { title: "AI 문서 작성법 2차" },
           { title: "AI 문서 작성법 3차" },
+          { title: "AI 문서 작성법 4차" },
           { title: "업무 자동화 설계 및 구현 1차" },
           { title: "업무 자동화 설계 및 구현 2차" },
         ],
@@ -252,7 +283,7 @@ const sections: YearSection[] = [
   },
 ];
 
-const totalCount = sections.reduce(
+export const totalCount = sections.reduce(
   (sum, s) => sum + s.groups.reduce((s2, g) => s2 + g.activities.length, 0),
   0
 );
