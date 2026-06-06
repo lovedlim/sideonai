@@ -31,6 +31,23 @@ export default function Home() {
           </p>
         </div>
 
+        <div className="mb-6 max-w-sm mx-auto space-y-3">
+          <LinkButton
+            href="/typing"
+            openInNewTab
+            icon="⌨️"
+            title="클로드 코드 타이핑 테스트"
+            subtitle="교육 입장 전 연습 · sideonai.com/typing"
+          />
+          <LinkButton
+            href="/md"
+            openInNewTab
+            icon="📝"
+            title="마크다운 에디터 연습"
+            subtitle="문법·미리보기 · sideonai.com/md"
+          />
+        </div>
+
         {/* 신간 출시 배너 */}
         <div className="mb-8 animate-fade-in-up max-w-sm mx-auto">
           <RandomBookLink links={vibeBookLinks}>

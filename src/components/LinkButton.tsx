@@ -10,6 +10,8 @@ interface LinkButtonProps {
   title: string;
   subtitle?: string;
   disabled?: boolean;
+  /** true이면 상대 경로도 새 탭에서 엽니다. 미지정 시에는 http(s) 링크만 새 탭. */
+  openInNewTab?: boolean;
 }
 
 export default function LinkButton({
@@ -20,6 +22,7 @@ export default function LinkButton({
   title,
   subtitle,
   disabled = false,
+  openInNewTab,
 }: LinkButtonProps) {
   const [selectedLink, setSelectedLink] = useState(href);
 
@@ -68,11 +71,14 @@ export default function LinkButton({
   }
 
   if (selectedLink) {
+    const newTab =
+      openInNewTab === true ||
+      (openInNewTab !== false && selectedLink.startsWith("http"));
     return (
       <a
         href={selectedLink}
-        target={selectedLink.startsWith("http") ? "_blank" : undefined}
-        rel={selectedLink.startsWith("http") ? "noopener noreferrer" : undefined}
+        target={newTab ? "_blank" : undefined}
+        rel={newTab ? "noopener noreferrer" : undefined}
         className="block"
       >
         {content}
