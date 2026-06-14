@@ -48,11 +48,11 @@ export default function Home() {
             subtitle="문법·미리보기 · sideonai.com/md"
           />
           <LinkButton
-            href="/code"
+            href="https://code.sideonai.com"
             openInNewTab
             icon="🐼"
             title="코딩팡"
-            subtitle="파이썬·판다스·머신러닝·통계 실습 · sideonai.com/code"
+            subtitle="파이썬·판다스·머신러닝·통계 실습 · code.sideonai.com"
           />
         </div>
 

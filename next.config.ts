@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/code",
-        destination: "https://codingpang.vercel.app/",
+        destination: "https://code.sideonai.com/",
         permanent: false,
       },
     ];
