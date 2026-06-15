@@ -54,6 +54,13 @@ export default function Home() {
             title="코딩팡"
             subtitle="파이썬·판다스·머신러닝·통계 실습 · code.sideonai.com"
           />
+          <LinkButton
+            href="https://check.sideonai.com"
+            openInNewTab
+            icon="🧭"
+            title="AI 역량 간단 진단"
+            subtitle="나의 AI 활용 수준 체크 · check.sideonai.com"
+          />
         </div>
 
         {/* 신간 출시 배너 */}
