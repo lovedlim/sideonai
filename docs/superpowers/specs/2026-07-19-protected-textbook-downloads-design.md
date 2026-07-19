@@ -14,7 +14,7 @@
 
 ```
 go.sideonai.com
-   → 교재 목록 (썸네일 + 제목)          ← 서버가 렌더 (비번/링크는 미포함)
+   → 교재 목록 (과정명 + 교육 기간 + 회사명 텍스트 카드)   ← 서버가 렌더 (비번/링크는 미포함)
    → 카드 클릭 → 모달로 비번 6자리 입력창
    → [확인] → 서버에 검증 요청
    → 성공: 다운로드 버튼(구글 드라이브 링크) 노출
@@ -26,7 +26,7 @@ go.sideonai.com
 
 > **비밀번호와 드라이브 링크는 절대 클라이언트로 전송하지 않는다. 서버에만 존재한다.**
 
-- 목록 페이지 HTML/JS에는 `id`, `title`, `thumb`만 포함.
+- 목록 페이지 HTML/JS에는 `id`, `course`, `period`, `company`만 포함.
 - `url`(드라이브 링크)와 `password`는 서버 라우트에서만 읽고, 비번이 맞을 때만 `url`을 응답으로 반환.
 - 결과적으로 개발자도구/네트워크 탭으로 뒤져도 링크·비번을 볼 수 없다.
 
@@ -40,8 +40,9 @@ go.sideonai.com
   "items": [
     {
       "id": "kb2026",
-      "title": "KB 교재",
-      "thumb": "2026kb1.jpg",
+      "course": "바이브코딩 과정",
+      "period": "2026-03-01 ~ 2026-03-05",
+      "company": "KB국민은행",
       "url": "https://drive.google.com/...",
       "password": "a1b2c3"
     }
@@ -52,8 +53,9 @@ go.sideonai.com
 | 필드 | 성격 | 클라이언트 노출 |
 |---|---|---|
 | `id` | 항목 식별자 | O |
-| `title` | 목록에 표시할 제목 | O |
-| `thumb` | 썸네일 파일명 (`public/` 또는 `list/` 기준) | O |
+| `course` | 과정명 | O |
+| `period` | 교육 날짜/기간 (자유 형식 문자열) | O |
+| `company` | 회사명 | O |
 | `url` | 구글 드라이브 링크 | **X (비밀)** |
 | `password` | 6자리 영숫자 비번 | **X (비밀)** |
 
@@ -62,7 +64,7 @@ go.sideonai.com
 ## 5. 구성 요소
 
 ### 5.1 목록 페이지 (서버 컴포넌트)
-- Edge Config에서 `items`를 읽어 `id/title/thumb`만 카드로 렌더.
+- Edge Config에서 `items`를 읽어 `id/course/period/company`만 텍스트 카드로 렌더 (썸네일 없음).
 - `url/password`는 애초에 직렬화해서 내려보내지 않는다.
 
 ### 5.2 비번 검증 API — `POST /api/unlock`
