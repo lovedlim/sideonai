@@ -36,10 +36,12 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-warm);
-  outline-offset: 3px;
-  border-radius: 4px;
+/* base 레이어에 두어 focus:outline-none 같은 유틸리티가 이길 수 있게 한다 */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--color-warm);
+    outline-offset: 3px;
+  }
 }
 
 ::selection {
@@ -267,14 +269,15 @@ a.card:hover,
 }
 
 /* 화면에 들어올 때 떠오르는 등장. 지원하지 않는 브라우저에서는 그냥 보인다 */
+/* transform이 아니라 translate를 쓴다. 채움 모드가 카드 호버의 transform을 덮지 않게 하려는 것 */
 @keyframes reveal {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    translate: 0 28px;
   }
   to {
     opacity: 1;
-    transform: none;
+    translate: 0 0;
   }
 }
 
@@ -295,6 +298,11 @@ a.card:hover,
 
   .hero-rise {
     animation: none;
+  }
+
+  /* 정지 화면으로 바뀌기 전 첫 그리기부터 히어로 높이를 한 화면으로 맞춘다 */
+  .hero-track {
+    height: auto !important;
   }
 
   *,

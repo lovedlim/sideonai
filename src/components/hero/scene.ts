@@ -19,14 +19,23 @@ export interface HeroScene {
   impulse(energy: number, spin: number): void;
   shockAt(nx: number, ny: number): void;
   resize(w: number, h: number): void;
+  /** 품질 단계를 바꿔 장면을 다시 만들 때 이어받을 상태 */
+  getState(): SceneState;
   start(): void;
   stop(): void;
   dispose(): void;
 }
 
+export interface SceneState {
+  progress: number;
+  autoY: number;
+}
+
 export interface HeroSceneOptions {
   quality: 'high' | 'low';
   domainCount: number;
+  /** 넘기면 인트로를 건너뛰고 이 상태에서 시작한다 */
+  resume?: SceneState;
   onFrame(f: FrameInfo): void;
   onContextLost(): void;
 }
@@ -201,8 +210,8 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
   // ---------- 상태 ----------
   let W = 1, H = 1, fit = 1, narrow = false;
   let tmx = 0.2, tmy = 0.1, mx = tmx, my = tmy, hx = tmx, hy = tmy;
-  let pT = 0, p = 0;
-  let energy = 0, spinVel = 0, autoY = 0, asm = 0, travel = 0;
+  let pT = opts.resume?.progress ?? 0, p = pT;
+  let energy = 0, spinVel = 0, autoY = opts.resume?.autoY ?? 0, asm = opts.resume ? 1 : 0, travel = 0;
   let slot = 0, lastRipple = 0, shockAmp = 1, nextShock = 3.2;
   let time = 0, last = 0, raf = 0, running = false, disposed = false, fps = 60;
 
@@ -355,11 +364,16 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
       fit = Math.max(1, 0.78 / aspect); // 세로로 긴 화면에서는 카메라를 물려 구체가 폭 안에 들어오게 한다
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, dprCap));
       renderer.setSize(W, H, false);
+      // 컴포저는 생성 시점의 픽셀 비율을 기억하므로 매번 맞춰 준다. 빼면 HiDPI에서 1배로 렌더되어 흐려진다.
+      composer?.setPixelRatio(renderer.getPixelRatio());
       composer?.setSize(W, H);
       camera.aspect = aspect;
       U.uAspect.value = aspect;
       U.uPx.value = H * renderer.getPixelRatio() * 0.0175 * (high ? 1 : 1.25);
       applyCamera(stageValues(p).domain, stageValues(p).camZ);
+    },
+    getState() {
+      return { progress: pT, autoY };
     },
     start() {
       if (running || disposed) return;

@@ -4,14 +4,17 @@ import { useEffect, useRef, useState } from "react";
 import CtaLink from "@/components/CtaLink";
 import { DOMAIN_LINE, DOMAINS, SLOGAN, TAGLINE } from "@/data/site";
 import { pickQuality, type Quality } from "./quality";
-import type { FrameInfo, HeroScene } from "./scene";
+import type { FrameInfo, HeroScene, SceneState } from "./scene";
 import { stageValues } from "./stages";
 
 const clamp = (v: number, a: number, b: number) => Math.min(b, Math.max(a, v));
 
+// WebGL2 지원 여부. 확인용 컨텍스트는 바로 놓아준다(브라우저의 컨텍스트 개수 상한을 아끼기 위해).
 function hasWebGL2(): boolean {
   try {
-    return !!document.createElement("canvas").getContext("webgl2");
+    const gl = document.createElement("canvas").getContext("webgl2");
+    gl?.getExtension("WEBGL_lose_context")?.loseContext();
+    return !!gl;
   } catch {
     return false;
   }
@@ -30,7 +33,7 @@ function HeroCopy({ className = "" }: { className?: string }) {
       <p className="hero-rise mt-5 text-[clamp(1rem,1.4vw,1.25rem)] text-ink/75" style={{ animationDelay: "0.45s" }}>
         {TAGLINE}
       </p>
-      <div className="hero-rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: "0.7s" }}>
+      <div data-hero-cta className="hero-rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: "0.7s" }}>
         <CtaLink
           href="#contact"
           location="hero"
@@ -68,9 +71,10 @@ export default function NeuralHero() {
     if (!track || !sticky || !canvas) return;
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const webgl = hasWebGL2(); // 마운트 때 한 번만 확인한다
     const env = () => ({
       reducedMotion: reduce.matches,
-      webgl: hasWebGL2(),
+      webgl,
       coarsePointer: window.matchMedia("(pointer: coarse)").matches,
       width: window.innerWidth,
       cores: navigator.hardwareConcurrency ?? 0,
@@ -83,13 +87,6 @@ export default function NeuralHero() {
     let scene: HeroScene | null = null;
     let cancelled = false, inView = true, downgraded = false;
     let labelOpacity = 0, slowSince = 0, bootedAt = 0;
-
-    const goStatic = () => {
-      scene?.dispose();
-      scene = null;
-      current = "static";
-      setQuality("static");
-    };
 
     const onFrame = (f: FrameInfo) => {
       labelRefs.current.forEach((el, i) => {
@@ -124,11 +121,14 @@ export default function NeuralHero() {
       const show = 1 - st.exit;
       labelOpacity = st.domain * show;
       if (stageRef.current) stageRef.current.style.opacity = String(show);
-      if (copyRef.current) {
-        copyRef.current.style.opacity = String(st.copyOpacity);
-        copyRef.current.style.transform = `translate3d(0, ${(1 - st.copyOpacity) * -24}px, 0)`;
-        copyRef.current.style.pointerEvents = st.copyOpacity < 0.2 ? "none" : "";
-        copyRef.current.style.visibility = st.copyOpacity === 0 ? "hidden" : "";
+      const copy = copyRef.current;
+      if (copy) {
+        copy.style.opacity = String(st.copyOpacity);
+        copy.style.transform = `translate3d(0, ${(1 - st.copyOpacity) * -24}px, 0)`;
+        copy.style.pointerEvents = st.copyOpacity < 0.2 ? "none" : "";
+        // 보이지 않는 버튼에 포커스가 가지 않게 한다. 제목은 스크린 리더가 계속 읽을 수 있도록 남긴다.
+        const cta = copy.querySelector<HTMLElement>("[data-hero-cta]");
+        if (cta) cta.inert = st.copyOpacity < 0.2;
       }
       if (hintRef.current) hintRef.current.style.opacity = String(st.copyOpacity);
       if (lineRef.current) {
@@ -141,12 +141,20 @@ export default function NeuralHero() {
       try {
         const { createHeroScene } = await import("./scene");
         if (cancelled || current === "static") return;
+        // 품질을 바꿔 다시 만들 때는 인트로를 다시 틀지 않고 하던 자리에서 이어 간다
+        const resume: SceneState | undefined = scene?.getState();
         scene?.dispose();
         current = q;
         setQuality(q);
         bootedAt = performance.now();
         slowSince = 0;
-        scene = createHeroScene(canvas!, { quality: q, domainCount: DOMAINS.length, onFrame, onContextLost: goStatic });
+        scene = createHeroScene(canvas!, {
+          quality: q,
+          domainCount: DOMAINS.length,
+          resume,
+          onFrame,
+          onContextLost: goStatic,
+        });
         scene.resize(sticky!.clientWidth, sticky!.clientHeight);
         scene.setProgress(progress());
         if (inView && !document.hidden) scene.start();
@@ -219,11 +227,10 @@ export default function NeuralHero() {
     document.addEventListener("visibilitychange", onVisibility);
     reduce.addEventListener("change", onReduceChange);
 
-    applyStage(progress());
-    boot(current);
-
-    return () => {
-      cancelled = true;
+    let detached = false;
+    const teardown = () => {
+      if (detached) return;
+      detached = true;
       io.disconnect();
       ro.disconnect();
       window.removeEventListener("scroll", onScroll);
@@ -234,6 +241,31 @@ export default function NeuralHero() {
       reduce.removeEventListener("change", onReduceChange);
       scene?.dispose();
       scene = null;
+    };
+
+    // 실행 중 정지 화면으로 바꾼다(컨텍스트 손실, 동작 줄이기 켬, 장면 생성 실패).
+    // 히어로 높이가 280vh에서 한 화면으로 줄어들므로, 방문자가 이미 아래 섹션을 보고 있었다면
+    // 줄어든 만큼 스크롤을 당겨 보던 내용이 제자리에 있게 한다.
+    function goStatic() {
+      if (current === "static") return;
+      const before = track!.offsetHeight;
+      const wasBelow = track!.getBoundingClientRect().bottom < window.innerHeight * 0.5;
+      teardown();
+      current = "static";
+      setQuality("static");
+      if (!wasBelow) return;
+      requestAnimationFrame(() => {
+        const after = document.getElementById("top")?.offsetHeight ?? before;
+        if (after < before) window.scrollBy({ top: after - before, behavior: "instant" });
+      });
+    }
+
+    applyStage(progress());
+    boot(current);
+
+    return () => {
+      cancelled = true;
+      teardown();
     };
   }, []);
 
@@ -259,15 +291,15 @@ export default function NeuralHero() {
   }
 
   return (
-    <section id="top" ref={trackRef} className="relative h-[280vh]">
-      <div ref={stickyRef} className="sticky top-0 h-svh overflow-hidden">
+    <section id="top" ref={trackRef} className="hero-track relative h-[280vh]">
+      <div ref={stickyRef} className="sticky top-0 h-screen overflow-hidden supports-[height:100svh]:h-svh">
         <div ref={stageRef} className="absolute inset-0">
           <div className="hero-poster" aria-hidden="true" />
           <canvas ref={canvasRef} aria-hidden="true" className="hero-canvas" />
           <div className="hero-vignette" aria-hidden="true" />
           <div ref={cursorRef} className="hero-cursor" aria-hidden="true" />
 
-          {/* 3D 노드를 따라다니는 이름표. 같은 내용을 아래 sr-only 목록으로도 제공한다 */}
+          {/* 3D 노드를 따라다니는 이름표와 도메인 문구. 같은 내용은 아래 sr-only 목록으로 한 번만 읽힌다 */}
           <div aria-hidden="true">
             {DOMAINS.map((d, i) => (
               <div
@@ -281,14 +313,13 @@ export default function NeuralHero() {
             <div ref={aiRef} className="domain-label is-core">
               <span>AI</span>
             </div>
-          </div>
-
-          <div
-            ref={lineRef}
-            className="pointer-events-none absolute inset-x-0 bottom-[9svh] px-5 text-center opacity-0"
-          >
-            <p className="label-mono mb-3 !text-warm">Domain + AI</p>
-            <p className="hero-title text-[clamp(1.5rem,3.4vw,2.75rem)] font-bold tracking-[-0.03em]">{DOMAIN_LINE}</p>
+            <div
+              ref={lineRef}
+              className="pointer-events-none absolute inset-x-0 bottom-[9svh] px-5 text-center opacity-0"
+            >
+              <p className="label-mono mb-3 !text-warm">Domain + AI</p>
+              <p className="hero-title text-[clamp(1.5rem,3.4vw,2.75rem)] font-bold tracking-[-0.03em]">{DOMAIN_LINE}</p>
+            </div>
           </div>
         </div>
 
