@@ -3,9 +3,9 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "SideOnAI",
-    "description": "AI 시대의 교육 혁신을 선도하는 전문 교육 회사",
-    "url": "https://sideonai-qv0vbkovi-danmujicafe-gmailcoms-projects.vercel.app",
-    "logo": "https://sideonai-qv0vbkovi-danmujicafe-gmailcoms-projects.vercel.app/images/profile-creator.svg",
+    "description": "기업·기관을 위한 AI 교육, 업무 자동화, 바이브 코딩. 도메인에 AI를 더하는 SideOnAI.",
+    "url": "https://sideonai.com",
+    "logo": "https://sideonai.com/images/profile-creator.svg",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "",
@@ -25,6 +25,7 @@ export default function StructuredData() {
     "areaServed": "KR",
     "serviceType": [
       "AI 교육",
+      "업무 자동화",
       "바이브 코딩 교육",
       "빅데이터 분석기사 교육",
       "생성형 AI 교육",
@@ -57,17 +58,9 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "SideOnAI",
-    "url": "https://sideonai-qv0vbkovi-danmujicafe-gmailcoms-projects.vercel.app",
-    "description": "AI 교육 전문 회사 SideOnAI의 공식 웹사이트",
-    "inLanguage": "ko-KR",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://sideonai-qv0vbkovi-danmujicafe-gmailcoms-projects.vercel.app/courses?search={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
-    }
+    "url": "https://sideonai.com",
+    "description": "도메인에 AI를 더하는 SideOnAI의 공식 웹사이트",
+    "inLanguage": "ko-KR"
   };
 
   return (

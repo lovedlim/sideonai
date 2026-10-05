@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://sideonai-qv0vbkovi-danmujicafe-gmailcoms-projects.vercel.app/sitemap.xml
+Sitemap: https://sideonai.com/sitemap.xml
 
 # 크롤링 제한
 Crawl-delay: 1

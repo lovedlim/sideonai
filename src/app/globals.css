@@ -92,7 +92,7 @@ a.card:hover,
   position: absolute;
   left: 50%;
   top: 36%;
-  width: min(130vw, 96svh);
+  width: min(129vw, 100svh);
   aspect-ratio: 1;
   translate: -50% -50%;
   background: url("/images/hero-poster.webp") center / contain no-repeat,
@@ -105,7 +105,7 @@ a.card:hover,
   .hero-poster {
     left: 62%;
     top: 50%;
-    width: min(74vw, 118svh);
+    width: 100svh;
   }
 }
 

@@ -18,15 +18,15 @@ export default function Books() {
           lead="현장에서 다듬은 내용을 책과 온라인 강의로 정리했습니다."
         />
 
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-10">
-          <RandomBookLink links={featured.links} className="card reveal group block overflow-hidden">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-10">
+          <RandomBookLink links={featured.links} className="card reveal group block self-start overflow-hidden">
             {featured.cover && (
               <Image
                 src={featured.cover}
                 alt={`${featured.title} 표지`}
                 width={640}
                 height={820}
-                sizes="(max-width: 1024px) 100vw, 460px"
+                sizes="(max-width: 1024px) 100vw, 380px"
                 className="h-auto w-full transition duration-500 group-hover:scale-[1.02]"
               />
             )}

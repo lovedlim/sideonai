@@ -21,7 +21,7 @@ export default function TrackRecord() {
               <CountUp value={totalCount} />
               <span className="text-warm">+</span>
             </p>
-            <p className="mt-3 text-lg text-ink/85">회의 강의 · 강연</p>
+            <p className="mt-3 text-lg text-ink/85">누적 강의 · 강연 횟수</p>
             <Link
               href="/activities"
               className="mt-8 inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-[0.95rem] font-semibold transition hover:border-accent/70 hover:text-accent"
