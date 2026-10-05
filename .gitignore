@@ -49,3 +49,6 @@ list/*.jpeg
 list/*.png
 list/*.heic
 list/*.webp
+
+# brainstorm/plan scratch (local only)
+.superpowers/
