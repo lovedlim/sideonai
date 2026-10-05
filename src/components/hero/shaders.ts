@@ -51,7 +51,7 @@ export const NODE_VERT = /* glsl */ `
 `;
 
 export const NODE_FRAG = /* glsl */ `
-  uniform float uDim;
+  uniform float uDim, uBoost, uPathGain;
   varying float vHot, vFade, vWave, vNodePath;
   void main() {
     float d = length(gl_PointCoord - 0.5);
@@ -61,7 +61,9 @@ export const NODE_FRAG = /* glsl */ `
     // 파동과 커서 주변은 흰 청록으로 밝아지기만 한다. 금색은 생각의 경로와 도메인에만 쓴다.
     vec3 col = mix(vec3(0.42, 0.9, 1.0), vec3(0.85, 1.0, 1.0), w);
     col = mix(col, vec3(1.0, 0.82, 0.5), vNodePath); // 생각의 경로 위의 노드는 따뜻한 흰빛 구슬로
-    gl_FragColor = vec4(col * (0.5 + c * 0.9 + vWave * 0.6 + vNodePath * 0.9), c * max(vFade, vNodePath * 0.7) * uDim);
+    // 경로 위 노드는 밝기 보정(uBoost)을 받지 않는다. 블룸이 없는 단계에서 금색이 흰색으로 날아가지 않게 하려는 것
+    float bright = (0.5 + c * 0.9 + vWave * 0.6) * mix(uBoost, 1.0, vNodePath) + vNodePath * 0.9 * uPathGain;
+    gl_FragColor = vec4(col * bright, c * max(vFade, vNodePath * 0.7) * uDim);
   }
 `;
 
@@ -79,7 +81,7 @@ export const EDGE_VERT = /* glsl */ `
 // aPath가 켜진 선은 "생각의 경로"다: 중심에서 커서가 가리키는 노드까지 밝게 이어지고,
 // vDepth(중심에서의 거리)를 따라 빛이 바깥쪽으로 흐른다.
 export const EDGE_FRAG = /* glsl */ `
-  uniform float uTime, uSigT, uDim, uEnergy;
+  uniform float uTime, uSigT, uDim, uEnergy, uBoost, uPathGain;
   varying float vT, vPhase, vSpeed, vHot, vFade, vWave, vPath, vDepth;
   void main() {
     float s = fract(vT - uSigT * vSpeed + vPhase);
@@ -89,7 +91,7 @@ export const EDGE_FRAG = /* glsl */ `
     float a = (0.2 + vHot * 0.3 + vWave * 0.55 + uEnergy * 0.18) * vFade * uDim;
     float flow = smoothstep(0.65, 1.0, fract(vDepth * 0.4 - uTime * 1.5));
     vec3 path = vec3(1.0, 0.72, 0.32) * vPath * (2.0 + flow * 3.0) * max(vFade, 0.6) * uDim;
-    gl_FragColor = vec4(col * a + vec3(0.8, 1.0, 1.0) * pulse * vFade * uDim + path, 1.0);
+    gl_FragColor = vec4((col * a + vec3(0.8, 1.0, 1.0) * pulse * vFade * uDim) * uBoost + path * uPathGain, 1.0);
   }
 `;
 

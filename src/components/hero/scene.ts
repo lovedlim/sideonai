@@ -72,6 +72,8 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     uRT: { value: [99, 99, 99] }, uRAmp: { value: [0, 0, 0] },
     uMouse: { value: new THREE.Vector2(0.2, 0.1) }, uAspect: { value: 1 }, uPx: { value: 28 },
     uCamZ: { value: 3.8 }, uDim: { value: 1 }, uEnergy: { value: 0 }, uDomain: { value: 0 }, uDomainCount: { value: opts.domainCount }, uHotR: { value: 0.24 },
+    uBoost: { value: high ? 1 : 1.7 }, // low 단계는 블룸이 없어 어둡게 보이므로 밝기를 올린다
+    uPathGain: { value: high ? 1 : 0.5 }, // 블룸이 없으면 금색이 바로 흰색으로 날아가므로 낮춘다
   };
   const additive = (vertexShader: string, fragmentShader: string) =>
     new THREE.ShaderMaterial({
@@ -444,7 +446,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
       composer?.setSize(W, H);
       camera.aspect = aspect;
       U.uAspect.value = aspect;
-      U.uPx.value = H * renderer.getPixelRatio() * 0.0175 * (high ? 1 : 1.25);
+      U.uPx.value = H * renderer.getPixelRatio() * 0.0175 * (high ? 1 : 1.5);
       applyCamera(stageValues(p).domain, stageValues(p).camZ);
     },
     getState() {
