@@ -362,7 +362,9 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
       narrow = W < 1024; // globals.css와 NeuralHero의 lg 기준과 같아야 한다
       const aspect = W / H;
       fit = Math.max(1, 0.78 / aspect); // 세로로 긴 화면에서는 카메라를 물려 구체가 폭 안에 들어오게 한다
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, dprCap));
+      // 큰 화면에서 픽셀 수가 과하게 늘지 않도록 전체 픽셀 수(약 450만)로도 제한한다
+      const pixelBudget = Math.sqrt(4_500_000 / (W * H));
+      renderer.setPixelRatio(Math.max(1, Math.min(window.devicePixelRatio || 1, dprCap, pixelBudget)));
       renderer.setSize(W, H, false);
       // 컴포저는 생성 시점의 픽셀 비율을 기억하므로 매번 맞춰 준다. 빼면 HiDPI에서 1배로 렌더되어 흐려진다.
       composer?.setPixelRatio(renderer.getPixelRatio());
