@@ -20,12 +20,17 @@ function hasWebGL2(): boolean {
 function HeroCopy({ className = "" }: { className?: string }) {
   return (
     <div className={className}>
-      <p className="label-mono mb-5">SideOnAI</p>
-      <h1 className="hero-title text-[clamp(2.5rem,6.2vw,5.5rem)] font-bold leading-[1.05] tracking-[-0.035em] text-balance">
+      <p className="label-mono hero-rise mb-5">SideOnAI</p>
+      <h1
+        className="hero-title hero-rise text-[clamp(2.5rem,6.2vw,5.5rem)] font-bold leading-[1.05] tracking-[-0.035em] text-balance"
+        style={{ animationDelay: "0.15s" }}
+      >
         {SLOGAN}
       </h1>
-      <p className="mt-5 text-[clamp(1rem,1.4vw,1.25rem)] text-ink/75">{TAGLINE}</p>
-      <div className="mt-8 flex flex-wrap gap-3">
+      <p className="hero-rise mt-5 text-[clamp(1rem,1.4vw,1.25rem)] text-ink/75" style={{ animationDelay: "0.45s" }}>
+        {TAGLINE}
+      </p>
+      <div className="hero-rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: "0.7s" }}>
         <CtaLink
           href="#contact"
           location="hero"
