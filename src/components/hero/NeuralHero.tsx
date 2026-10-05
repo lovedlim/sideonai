@@ -28,7 +28,13 @@ function HeroCopy({ className = "" }: { className?: string }) {
         className="hero-title hero-rise text-[clamp(2.5rem,6.2vw,5.5rem)] font-bold leading-[1.05] tracking-[-0.035em] text-balance"
         style={{ animationDelay: "0.15s" }}
       >
-        {SLOGAN}
+        {/* "AI"만 강조색으로. 슬로건 문자열에 AI가 없으면 그대로 출력된다 */}
+        {SLOGAN.split("AI").map((part, i, all) => (
+          <span key={i}>
+            {part}
+            {i < all.length - 1 && <span className="text-accent [text-shadow:0_0_36px_rgba(77,243,255,0.55)]">AI</span>}
+          </span>
+        ))}
       </h1>
       <p className="hero-rise mt-5 text-[clamp(1rem,1.4vw,1.25rem)] text-ink/75" style={{ animationDelay: "0.45s" }}>
         {TAGLINE}
