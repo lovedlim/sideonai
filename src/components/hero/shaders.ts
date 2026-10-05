@@ -40,48 +40,56 @@ const PLACE = /* glsl */ `
 
 export const NODE_VERT = /* glsl */ `
   ${PLACE}
-  attribute float aSize;
+  attribute float aSize, aNodePath;
+  varying float vNodePath;
   void main() {
     vec4 mv = place();
+    vNodePath = aNodePath;
     gl_Position = projectionMatrix * mv;
-    gl_PointSize = min(aSize * uPx * (1.0 + vHot * 1.6 + vWave * 1.4 + uEnergy * 0.4) / -mv.z, uPx * 2.6);
+    gl_PointSize = min(aSize * uPx * (1.0 + vHot * 1.2 + vWave * 1.4 + uEnergy * 0.4 + aNodePath * 2.1) / -mv.z, uPx * 2.6);
   }
 `;
 
 export const NODE_FRAG = /* glsl */ `
   uniform float uDim;
-  varying float vHot, vFade, vWave;
+  varying float vHot, vFade, vWave, vNodePath;
   void main() {
     float d = length(gl_PointCoord - 0.5);
     if (d > 0.5) discard;
     float c = 1.0 - smoothstep(0.06, 0.5, d);
-    float w = clamp(vHot + vWave * 1.5, 0.0, 1.0);
-    vec3 col = mix(vec3(0.42, 0.9, 1.0), vec3(1.0, 0.7, 0.3), w);
-    gl_FragColor = vec4(col * (0.5 + c * 0.9 + vWave * 0.6), c * vFade * uDim);
+    float w = clamp(vHot * 0.7 + vWave * 1.5, 0.0, 1.0);
+    // 파동과 커서 주변은 흰 청록으로 밝아지기만 한다. 금색은 생각의 경로와 도메인에만 쓴다.
+    vec3 col = mix(vec3(0.42, 0.9, 1.0), vec3(0.85, 1.0, 1.0), w);
+    col = mix(col, vec3(1.0, 0.82, 0.5), vNodePath); // 생각의 경로 위의 노드는 따뜻한 흰빛 구슬로
+    gl_FragColor = vec4(col * (0.5 + c * 0.9 + vWave * 0.6 + vNodePath * 0.9), c * max(vFade, vNodePath * 0.7) * uDim);
   }
 `;
 
 export const EDGE_VERT = /* glsl */ `
   ${PLACE}
-  attribute float aT, aPhase, aSpeed;
-  varying float vT, vPhase, vSpeed;
+  attribute float aT, aPhase, aSpeed, aPath, aDepth;
+  varying float vT, vPhase, vSpeed, vPath, vDepth;
   void main() {
-    vT = aT; vPhase = aPhase; vSpeed = aSpeed;
+    vT = aT; vPhase = aPhase; vSpeed = aSpeed; vPath = aPath; vDepth = aDepth;
     gl_Position = projectionMatrix * place();
   }
 `;
 
 // 선의 일부(aSpeed > 0)에는 빛 점이 선을 따라 달린다.
+// aPath가 켜진 선은 "생각의 경로"다: 중심에서 커서가 가리키는 노드까지 밝게 이어지고,
+// vDepth(중심에서의 거리)를 따라 빛이 바깥쪽으로 흐른다.
 export const EDGE_FRAG = /* glsl */ `
-  uniform float uSigT, uDim, uEnergy;
-  varying float vT, vPhase, vSpeed, vHot, vFade, vWave;
+  uniform float uTime, uSigT, uDim, uEnergy;
+  varying float vT, vPhase, vSpeed, vHot, vFade, vWave, vPath, vDepth;
   void main() {
     float s = fract(vT - uSigT * vSpeed + vPhase);
     float pulse = smoothstep(0.8, 1.0, s) * step(0.001, vSpeed);
     float w = clamp(vHot + vWave * 1.5, 0.0, 1.0);
-    vec3 col = mix(vec3(0.16, 0.62, 0.85), vec3(1.0, 0.66, 0.26), w);
-    float a = (0.2 + vHot * 0.7 + vWave * 0.55 + uEnergy * 0.18) * vFade * uDim;
-    gl_FragColor = vec4(col * a + vec3(0.8, 1.0, 1.0) * pulse * vFade * uDim, 1.0);
+    vec3 col = mix(vec3(0.16, 0.62, 0.85), vec3(0.6, 0.95, 1.0), w);
+    float a = (0.2 + vHot * 0.3 + vWave * 0.55 + uEnergy * 0.18) * vFade * uDim;
+    float flow = smoothstep(0.65, 1.0, fract(vDepth * 0.4 - uTime * 1.5));
+    vec3 path = vec3(1.0, 0.72, 0.32) * vPath * (2.0 + flow * 3.0) * max(vFade, 0.6) * uDim;
+    gl_FragColor = vec4(col * a + vec3(0.8, 1.0, 1.0) * pulse * vFade * uDim + path, 1.0);
   }
 `;
 

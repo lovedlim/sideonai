@@ -3,7 +3,9 @@ import * as THREE from 'three';
 import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
-import { buildGraph, mulberry32, randomDirection, SHELLS_HIGH, SHELLS_LOW } from './graph';
+import {
+  buildGraph, buildPathTree, mulberry32, nearestOuterNode, pathEdges, randomDirection, SHELLS_HIGH, SHELLS_LOW,
+} from './graph';
 import { domainReveal, smoothstep, stageValues } from './stages';
 import * as GLSL from './shaders';
 
@@ -69,7 +71,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     uRDir: { value: [new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 1, 0)] },
     uRT: { value: [99, 99, 99] }, uRAmp: { value: [0, 0, 0] },
     uMouse: { value: new THREE.Vector2(0.2, 0.1) }, uAspect: { value: 1 }, uPx: { value: 28 },
-    uCamZ: { value: 3.8 }, uDim: { value: 1 }, uEnergy: { value: 0 }, uDomain: { value: 0 }, uDomainCount: { value: opts.domainCount }, uHotR: { value: 0.42 },
+    uCamZ: { value: 3.8 }, uDim: { value: 1 }, uEnergy: { value: 0 }, uDomain: { value: 0 }, uDomainCount: { value: opts.domainCount }, uHotR: { value: 0.24 },
   };
   const additive = (vertexShader: string, fragmentShader: string) =>
     new THREE.ShaderMaterial({
@@ -84,9 +86,12 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     return obj;
   };
 
-  // 노드
+  // 노드. aNodePath는 생각의 경로 위에 있는 노드의 밝기로, 매 프레임 갱신한다.
+  const nodePathAttr = new THREE.BufferAttribute(new Float32Array(graph.count), 1);
+  nodePathAttr.setUsage(THREE.DynamicDrawUsage);
   {
     const g = new THREE.BufferGeometry();
+    g.setAttribute('aNodePath', nodePathAttr);
     f32(g, 'position', graph.positions, 3);
     f32(g, 'aFrom', graph.from, 3);
     f32(g, 'aSeed', graph.seeds, 1);
@@ -94,23 +99,29 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     add(new THREE.Points(g, additive(GLSL.NODE_VERT, GLSL.NODE_FRAG)));
   }
 
-  // 연결선과 신호
+  // 연결선과 신호. aPath는 "생각의 경로"에 속한 선의 밝기로, 매 프레임 갱신한다.
+  const tree = buildPathTree(graph);
+  const edgeCount = graph.edges.length / 2;
+  const pathAttr = new THREE.BufferAttribute(new Float32Array(edgeCount * 2), 1);
+  pathAttr.setUsage(THREE.DynamicDrawUsage);
   {
     const n = graph.edges.length;
     const pos = new Float32Array(n * 3), from = new Float32Array(n * 3);
     const seed = new Float32Array(n), aT = new Float32Array(n), phase = new Float32Array(n), speed = new Float32Array(n);
+    const depth = new Float32Array(n);
     for (let e = 0; e < n; e += 2) {
       const ph = rnd(), sp = rnd() < 0.45 ? 0.15 + rnd() * 0.45 : 0;
       for (let k = 0; k < 2; k++) {
         const node = graph.edges[e + k], v = e + k;
         pos.set(graph.positions.subarray(node * 3, node * 3 + 3), v * 3);
         from.set(graph.from.subarray(node * 3, node * 3 + 3), v * 3);
-        seed[v] = graph.seeds[node]; aT[v] = k; phase[v] = ph; speed[v] = sp;
+        seed[v] = graph.seeds[node]; aT[v] = k; phase[v] = ph; speed[v] = sp; depth[v] = tree.depth[node];
       }
     }
     const g = new THREE.BufferGeometry();
     f32(g, 'position', pos, 3); f32(g, 'aFrom', from, 3); f32(g, 'aSeed', seed, 1);
-    f32(g, 'aT', aT, 1); f32(g, 'aPhase', phase, 1); f32(g, 'aSpeed', speed, 1);
+    f32(g, 'aT', aT, 1); f32(g, 'aPhase', phase, 1); f32(g, 'aSpeed', speed, 1); f32(g, 'aDepth', depth, 1);
+    g.setAttribute('aPath', pathAttr);
     add(new THREE.LineSegments(g, additive(GLSL.EDGE_VERT, GLSL.EDGE_FRAG)));
   }
 
@@ -217,6 +228,11 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
   let slot = 0, lastRipple = 0, shockAmp = 1, nextShock = 3.2;
   let time = 0, last = 0, raf = 0, running = false, disposed = false, fps = 60;
 
+  // 생각의 경로 상태. pathFlag: 지금 경로에 속하는가, pathReadyAt: 언제부터 켜질 수 있는가(중심에서 가까운 선부터 차례로)
+  const pathFlag = new Uint8Array(edgeCount), pathStrength = new Float32Array(edgeCount), pathReadyAt = new Float32Array(edgeCount);
+  const pathScratch = new Uint8Array(edgeCount), pathDir: [number, number, number] = [0, 0, 1];
+  let pathNode = -1;
+
   const ray = new THREE.Raycaster();
   const hit = new THREE.Vector3(), tmp = new THREE.Vector3(), ndc = new THREE.Vector2();
   const sphere = new THREE.Sphere();
@@ -242,11 +258,62 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     slot = (slot + 1) % 3;
   };
 
+  // 커서가 가리키는 노드가 바뀌면 경로를 다시 잡는다. 새로 들어온 선만 중심 쪽부터 순서대로 켠다.
+  function setPathNode(node: number) {
+    if (node === pathNode) return;
+    pathNode = node;
+    pathScratch.fill(0);
+    if (node >= 0) {
+      for (const e of pathEdges(tree, node)) {
+        pathScratch[e] = 1;
+        if (!pathFlag[e]) {
+          const fromCore = Math.max(tree.depth[graph.edges[e * 2]], tree.depth[graph.edges[e * 2 + 1]]) - 1;
+          pathReadyAt[e] = time + fromCore * 0.03;
+        }
+      }
+    }
+    pathFlag.set(pathScratch);
+  }
+
+  function updatePath(dt: number, dom: number) {
+    const dir = asm >= 1 && dom < 0.25 ? hitDirection(tmx, tmy) : null;
+    if (dir) {
+      pathDir[0] = dir.x; pathDir[1] = dir.y; pathDir[2] = dir.z;
+      setPathNode(nearestOuterNode(graph, pathDir));
+    } else setPathNode(-1);
+    const arr = pathAttr.array as Float32Array;
+    const rise = 1 - Math.exp(-dt * 16), fall = 1 - Math.exp(-dt * 3);
+    let dirty = false;
+    for (let e = 0; e < edgeCount; e++) {
+      const target = pathFlag[e] && time >= pathReadyAt[e] ? 1 : 0;
+      const s = pathStrength[e];
+      if (s === target) continue;
+      let next = s + (target - s) * (target > s ? rise : fall);
+      if (Math.abs(target - next) < 0.004) next = target;
+      pathStrength[e] = next;
+      arr[e * 2] = arr[e * 2 + 1] = next;
+      dirty = true;
+    }
+    if (!dirty) return;
+    pathAttr.needsUpdate = true;
+    // 경로 위의 노드도 함께 밝힌다
+    const nodes = nodePathAttr.array as Float32Array;
+    nodes.fill(0);
+    for (let e = 0; e < edgeCount; e++) {
+      const s = pathStrength[e];
+      if (s === 0) continue;
+      const a = graph.edges[e * 2], b = graph.edges[e * 2 + 1];
+      if (s > nodes[a]) nodes[a] = s;
+      if (s > nodes[b]) nodes[b] = s;
+    }
+    nodePathAttr.needsUpdate = true;
+  }
+
   function applyCamera(dom: number, camZ: number) {
     // 좁은 화면의 도메인 장면에서는 이름표가 화면 안에 들어오도록 카메라를 더 물린다
     const f = fit * (narrow ? 1 + 0.85 * dom : 1);
     camera.position.set(-mx * 0.3 * f, -my * 0.18 * f, camZ * f);
-    U.uHotR.value = 0.42 / f; // 커서 반응 반경은 화면이 아니라 구체 크기에 비례한다
+    U.uHotR.value = 0.24 / f; // 커서 반응 반경은 화면이 아니라 구체 크기에 비례한다
     camera.lookAt(0, 0, 0);
     // 구체 중심을 화면 가로 62%(좁은 화면은 위쪽 36%)에 두고, 도메인 장면에서는 가운데로 옮긴다
     const offX = narrow ? 0 : -0.12 * W * (1 - dom);
@@ -290,6 +357,8 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     U.uCamZ.value = camera.position.z;
     U.uDim.value = 1 - 0.55 * dom;
     U.uDomain.value = dom;
+
+    updatePath(dt, dom);
 
     // 충격파: 방치하면 3.4초마다 자동 발생
     U.uShockT.value += dt;
@@ -342,7 +411,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
       travel += d;
       if (travel > 0.22) {
         travel = 0;
-        ripple(hitDirection(nx, ny), 0.6);
+        ripple(hitDirection(nx, ny), 0.3);
       }
     },
     setProgress(value) {

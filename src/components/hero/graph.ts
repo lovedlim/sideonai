@@ -13,6 +13,8 @@ export const DOMAIN_DIRS: [number, number, number][] = [-38, 0, 38, 142, 180, 21
 export interface Graph {
   count: number;
   outerCount: number;
+  /** 가장 안쪽 껍질이 시작하는 노드 인덱스. 이 뒤의 노드가 중심(AI)에 가장 가깝다 */
+  coreStart: number;
   positions: Float32Array;
   from: Float32Array;
   seeds: Float32Array;
@@ -118,5 +120,65 @@ export function buildGraph(opts: { seed: number; shells: Shell[]; domainCount: n
     domainNodes.push(best);
   }
 
-  return { count, outerCount, positions, from, seeds, sizes, edges: new Uint16Array(pairs), domainNodes };
+  const coreStart = starts[opts.shells.length - 1];
+  return { count, outerCount, coreStart, positions, from, seeds, sizes, edges: new Uint16Array(pairs), domainNodes };
+}
+
+// ---------- 생각의 경로 ----------
+// 커서가 가리키는 노드에서 중심(AI)까지 신경망을 따라 가는 최단 경로.
+
+export interface PathTree {
+  /** 중심 쪽으로 한 칸 간 노드. 출발점이거나 닿지 않으면 -1 */
+  parent: Int32Array;
+  /** 그 한 칸에 해당하는 연결선 번호(쌍 단위). 없으면 -1 */
+  parentEdge: Int32Array;
+  /** 중심까지의 연결선 수. 가장 안쪽 껍질은 0, 닿지 않으면 -1 */
+  depth: Int32Array;
+}
+
+export function buildPathTree(graph: Graph): PathTree {
+  const { count, edges, coreStart } = graph;
+  const adjacency: [neighbor: number, edge: number][][] = Array.from({ length: count }, () => []);
+  for (let e = 0; e < edges.length / 2; e++) {
+    const a = edges[e * 2], b = edges[e * 2 + 1];
+    adjacency[a].push([b, e]);
+    adjacency[b].push([a, e]);
+  }
+  const parent = new Int32Array(count).fill(-1);
+  const parentEdge = new Int32Array(count).fill(-1);
+  const depth = new Int32Array(count).fill(-1);
+  const queue: number[] = [];
+  for (let i = coreStart; i < count; i++) { depth[i] = 0; queue.push(i); }
+  for (let head = 0; head < queue.length; head++) {
+    const node = queue[head];
+    for (const [next, edge] of adjacency[node]) {
+      if (depth[next] !== -1) continue;
+      depth[next] = depth[node] + 1;
+      parent[next] = node;
+      parentEdge[next] = edge;
+      queue.push(next);
+    }
+  }
+  return { parent, parentEdge, depth };
+}
+
+/** node에서 중심까지 가는 연결선 번호들. 바깥에서 안쪽 순서. */
+export function pathEdges(tree: PathTree, node: number): number[] {
+  const out: number[] = [];
+  for (let current = node; tree.parentEdge[current] !== -1; current = tree.parent[current]) {
+    out.push(tree.parentEdge[current]);
+  }
+  return out;
+}
+
+/** 주어진 방향(구체 로컬 좌표)에 가장 가까운 바깥 껍질 노드 */
+export function nearestOuterNode(graph: Graph, dir: readonly [number, number, number]): number {
+  const { positions, outerCount } = graph;
+  let best = 0, bestDot = -Infinity;
+  for (let i = 0; i < outerCount; i++) {
+    const x = positions[i * 3], y = positions[i * 3 + 1], z = positions[i * 3 + 2];
+    const dot = (x * dir[0] + y * dir[1] + z * dir[2]) / Math.hypot(x, y, z);
+    if (dot > bestDot) { bestDot = dot; best = i; }
+  }
+  return best;
 }
