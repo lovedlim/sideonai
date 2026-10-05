@@ -92,7 +92,7 @@ export const NEBULA_VERT = /* glsl */ `
   void main() {
     vec4 mv = modelViewMatrix * vec4(position, 1.0);
     gl_Position = projectionMatrix * mv;
-    gl_PointSize = aSize * uPx * 0.4 / -mv.z;
+    gl_PointSize = aSize * uPx * 0.5 / -mv.z;
     vWarm = step(0.93, aSeed);
     vA = (0.55 + 0.45 * sin(uTime * (0.5 + aSeed * 2.0) + aSeed * 50.0)) * uAssemble * smoothstep(0.3, 1.2, -mv.z);
   }
@@ -105,7 +105,7 @@ export const NEBULA_FRAG = /* glsl */ `
     float d = length(gl_PointCoord - 0.5);
     if (d > 0.5) discard;
     vec3 col = mix(vec3(0.3, 0.55, 1.0), vec3(1.0, 0.68, 0.32), vWarm);
-    gl_FragColor = vec4(col, (1.0 - smoothstep(0.0, 0.5, d)) * vA * 0.34 * uDim);
+    gl_FragColor = vec4(col, (1.0 - smoothstep(0.0, 0.5, d)) * vA * 0.55 * uDim);
   }
 `;
 
