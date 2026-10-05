@@ -289,7 +289,7 @@ export default function NeuralHero() {
 
         <div
           ref={copyRef}
-          className="absolute inset-x-5 bottom-[10svh] md:inset-x-auto md:bottom-auto md:left-[6vw] md:top-1/2 md:w-[min(44vw,42rem)] md:-translate-y-[46%]"
+          className="absolute inset-x-5 bottom-[10svh] sm:inset-x-8 lg:inset-x-auto lg:bottom-auto lg:left-[6vw] lg:top-1/2 lg:w-[min(44vw,42rem)] lg:-translate-y-[46%]"
         >
           <HeroCopy />
         </div>

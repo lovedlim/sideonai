@@ -350,7 +350,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     },
     resize(w, h) {
       W = Math.max(1, w); H = Math.max(1, h);
-      narrow = W <= 860;
+      narrow = W < 1024; // globals.css와 NeuralHero의 lg 기준과 같아야 한다
       const aspect = W / H;
       fit = Math.max(1, 0.78 / aspect); // 세로로 긴 화면에서는 카메라를 물려 구체가 폭 안에 들어오게 한다
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, dprCap));

@@ -90,13 +90,13 @@ export default function ActivitiesPage() {
 
                     {/* 기관 이미지 */}
                     {group.image && (
-                      <div className="mx-10 mt-3 relative aspect-square rounded-xl overflow-hidden border border-line">
+                      <div className="mx-auto mt-3 relative aspect-square w-[calc(100%-5rem)] max-w-sm rounded-xl overflow-hidden border border-line">
                         <Image
                           src={group.image}
                           alt={group.org}
                           fill
                           className="object-cover"
-                          sizes="(max-width: 672px) calc(100vw - 112px), 560px"
+                          sizes="(max-width: 480px) calc(100vw - 112px), 384px"
                         />
                       </div>
                     )}

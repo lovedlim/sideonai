@@ -32,6 +32,8 @@ const PLACE = /* glsl */ `
     p += n * vHot * 0.13 * len;
     vec4 mv = modelViewMatrix * vec4(p, 1.0);
     vFade = mix(0.14, 1.0, 1.0 - smoothstep(uCamZ - 1.0, uCamZ + 1.2, -mv.z));
+    vFade *= mix(0.25, 1.0, a * a); // 조립 중에는 어둡게 시작한다
+    vFade *= smoothstep(0.4, 1.6, -mv.z); // 카메라 바로 앞을 지나는 입자는 화면을 덮지 않게 지운다
     return mv;
   }
 `;
@@ -42,7 +44,7 @@ export const NODE_VERT = /* glsl */ `
   void main() {
     vec4 mv = place();
     gl_Position = projectionMatrix * mv;
-    gl_PointSize = aSize * uPx * (1.0 + vHot * 1.6 + vWave * 3.0 + uEnergy * 0.8) / -mv.z;
+    gl_PointSize = min(aSize * uPx * (1.0 + vHot * 1.6 + vWave * 3.0 + uEnergy * 0.8) / -mv.z, uPx * 2.6);
   }
 `;
 

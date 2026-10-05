@@ -100,8 +100,11 @@ export function buildGraph(opts: { seed: number; shells: Shell[]; domainCount: n
   for (let i = 0; i < count; i++) {
     seeds[i] = rnd();
     sizes[i] = (rnd() < 0.06 ? 2.4 : 0.7 + rnd() * 0.9) * (i < outerCount ? 1 : 0.8);
+    // 인트로 시작 위치: 제자리에서 바깥으로 멀리 밀어낸 곳. 방향을 유지해야 조립 중에 연결선이
+    // 중심을 가로지르며 하얗게 뭉치지 않는다.
     const d = randomDirection(rnd), r = 3 + rnd() * 5;
-    from[i * 3] = d[0] * r; from[i * 3 + 1] = d[1] * r; from[i * 3 + 2] = d[2] * r;
+    const len = Math.hypot(positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2]) || 1;
+    for (let k = 0; k < 3; k++) from[i * 3 + k] = (positions[i * 3 + k] / len) * r + d[k] * 0.8;
   }
 
   const domainNodes: number[] = [];

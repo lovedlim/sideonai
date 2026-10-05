@@ -101,7 +101,7 @@ a.card:hover,
   mask-image: radial-gradient(circle, #000 52%, transparent 70%);
 }
 
-@media (min-width: 861px) {
+@media (min-width: 1024px) {
   .hero-poster {
     left: 62%;
     top: 50%;
@@ -189,7 +189,7 @@ a.card:hover,
 }
 
 /* 좁은 화면: 이름표를 노드 바로 아래 가운데에 붙여 화면 밖으로 나가지 않게 한다 */
-@media (max-width: 860px) {
+@media (max-width: 1023px) {
   .domain-label.is-right span,
   .domain-label.is-left span {
     translate: -50% 14px;
@@ -227,7 +227,7 @@ a.card:hover,
   transform-origin: top;
 }
 
-@media (min-width: 861px) {
+@media (min-width: 1024px) {
   .hero-hint {
     display: flex;
   }
