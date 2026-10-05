@@ -303,7 +303,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     core.scale.setScalar(a * (1 - 0.4 * dom) * (1 + 0.06 * Math.sin(time * 2.2)));
     (glow.material as THREE.SpriteMaterial).opacity = 0.26 + 0.08 * Math.sin(time * 2.2);
     for (const r of rings) r.ring.rotation.set(r.bx + time * r.s, r.by + time * r.s * 0.7, 0);
-    if (bloom) bloom.strength = 0.8 + energy * 0.8;
+    if (bloom) bloom.strength = 0.8 + energy * 0.3;
 
     // 이름표 좌표
     group.updateMatrixWorld();
@@ -338,7 +338,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
       travel += d;
       if (travel > 0.22) {
         travel = 0;
-        ripple(hitDirection(nx, ny), 0.9);
+        ripple(hitDirection(nx, ny), 0.6);
       }
     },
     setProgress(value) {
@@ -347,14 +347,14 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     impulse(e, spin) {
       energy = Math.min(1.3, energy + Math.max(0, e));
       spinVel = clamp(spinVel + spin, -5, 5);
-      ripple(group.worldToLocal(camera.position.clone()).normalize(), 1.2);
+      ripple(group.worldToLocal(camera.position.clone()).normalize(), 0.7);
     },
     shockAt(nx, ny) {
       const dir = hitDirection(nx, ny);
       if (!dir) return;
       U.uShockDir.value.copy(dir);
       U.uShockT.value = 0;
-      shockAmp = 1.9;
+      shockAmp = 1.5;
       nextShock = time + 3.4;
     },
     resize(w, h) {

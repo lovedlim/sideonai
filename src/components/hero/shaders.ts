@@ -44,7 +44,7 @@ export const NODE_VERT = /* glsl */ `
   void main() {
     vec4 mv = place();
     gl_Position = projectionMatrix * mv;
-    gl_PointSize = min(aSize * uPx * (1.0 + vHot * 1.6 + vWave * 3.0 + uEnergy * 0.8) / -mv.z, uPx * 2.6);
+    gl_PointSize = min(aSize * uPx * (1.0 + vHot * 1.6 + vWave * 1.4 + uEnergy * 0.4) / -mv.z, uPx * 2.6);
   }
 `;
 
@@ -57,7 +57,7 @@ export const NODE_FRAG = /* glsl */ `
     float c = 1.0 - smoothstep(0.06, 0.5, d);
     float w = clamp(vHot + vWave * 1.5, 0.0, 1.0);
     vec3 col = mix(vec3(0.42, 0.9, 1.0), vec3(1.0, 0.7, 0.3), w);
-    gl_FragColor = vec4(col * (0.5 + c * 0.9 + vWave * 1.6), c * vFade * uDim);
+    gl_FragColor = vec4(col * (0.5 + c * 0.9 + vWave * 0.6), c * vFade * uDim);
   }
 `;
 
@@ -80,7 +80,7 @@ export const EDGE_FRAG = /* glsl */ `
     float pulse = smoothstep(0.8, 1.0, s) * step(0.001, vSpeed);
     float w = clamp(vHot + vWave * 1.5, 0.0, 1.0);
     vec3 col = mix(vec3(0.16, 0.62, 0.85), vec3(1.0, 0.66, 0.26), w);
-    float a = (0.2 + vHot * 0.7 + vWave * 1.2 + uEnergy * 0.3) * vFade * uDim;
+    float a = (0.2 + vHot * 0.7 + vWave * 0.55 + uEnergy * 0.18) * vFade * uDim;
     gl_FragColor = vec4(col * a + vec3(0.8, 1.0, 1.0) * pulse * vFade * uDim, 1.0);
   }
 `;
