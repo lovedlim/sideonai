@@ -184,20 +184,21 @@ export const BEAM_VERT = /* glsl */ `
 
 // 광선은 중심에서 도메인 노드 쪽으로 자라난다. 자라는 동안 끝이 밝게 빛난다.
 export const BEAM_FRAG = /* glsl */ `
-  uniform float uSigT;
+  uniform float uSigT, uFlash;
   varying float vT, vP, vD;
   void main() {
     float grow = smoothstep(0.0, 0.7, vD);
     if (vD < 0.001 || vT > grow) discard;
     float tip = smoothstep(grow - 0.14, grow, vT) * (1.0 - smoothstep(0.7, 1.0, vD));
     float s = fract(vT * 1.5 - uSigT * 0.6 + vP);
-    gl_FragColor = vec4(vec3(1.0, 0.68, 0.28) * (0.4 + smoothstep(0.75, 1.0, s) * 1.6) + vec3(1.0, 0.9, 0.7) * tip * 2.2, 1.0);
+    // uFlash: 여섯 도메인이 모두 연결된 순간 한 번 번쩍인다
+    gl_FragColor = vec4(vec3(1.0, 0.68, 0.28) * (0.4 + smoothstep(0.75, 1.0, s) * 1.6) * (1.0 + uFlash * 2.2) + vec3(1.0, 0.9, 0.7) * tip * 2.2, 1.0);
   }
 `;
 
 export const MARK_VERT = /* glsl */ `
   ${REVEAL}
-  uniform float uTime, uPx;
+  uniform float uTime, uPx, uFlash;
   attribute float aIdx;
   varying float vArrive;
   void main() {
@@ -206,7 +207,7 @@ export const MARK_VERT = /* glsl */ `
     float pop = vArrive * (1.0 - smoothstep(0.75, 1.0, d)); // 닿을 때 한 번 커졌다가 돌아온다
     vec4 mv = modelViewMatrix * vec4(position, 1.0);
     gl_Position = projectionMatrix * mv;
-    gl_PointSize = 4.2 * uPx * (1.0 + 0.12 * sin(uTime * 3.0)) * (1.0 + 0.9 * pop) / -mv.z;
+    gl_PointSize = 4.2 * uPx * (1.0 + 0.12 * sin(uTime * 3.0)) * (1.0 + 0.9 * pop + 0.7 * uFlash) / -mv.z;
   }
 `;
 

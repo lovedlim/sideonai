@@ -72,6 +72,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     uRT: { value: [99, 99, 99] }, uRAmp: { value: [0, 0, 0] },
     uMouse: { value: new THREE.Vector2(0.2, 0.1) }, uAspect: { value: 1 }, uPx: { value: 28 },
     uCamZ: { value: 3.8 }, uDim: { value: 1 }, uEnergy: { value: 0 }, uDomain: { value: 0 }, uDomainCount: { value: opts.domainCount }, uHotR: { value: 0.24 },
+    uFlash: { value: 0 },
     uBoost: { value: high ? 1 : 1.7 }, // low 단계는 블룸이 없어 어둡게 보이므로 밝기를 올린다
     uPathGain: { value: high ? 1 : 0.5 }, // 블룸이 없으면 금색이 바로 흰색으로 날아가므로 낮춘다
   };
@@ -249,6 +250,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
   const pathFlag = new Uint8Array(segCount), pathStrength = new Float32Array(segCount), pathReadyAt = new Float32Array(segCount);
   const pathScratch = new Uint8Array(segCount), pathDir: [number, number, number] = [0, 0, 1];
   let pathNode = -1;
+  let flash = 0, flashArmed = true; // 도메인이 모두 연결되는 순간의 번쩍임
 
   const ray = new THREE.Raycaster();
   const hit = new THREE.Vector3(), tmp = new THREE.Vector3(), ndc = new THREE.Vector2();
@@ -381,6 +383,12 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     U.uDim.value = 1 - 0.55 * dom;
     U.uDomain.value = dom;
 
+    // 여섯 도메인이 모두 켜지는 순간 한 번 번쩍인다. 되돌아갔다가 다시 오면 또 번쩍인다.
+    if (dom > 0.985 && flashArmed) { flash = 1; flashArmed = false; }
+    else if (dom < 0.9) flashArmed = true;
+    flash *= Math.exp(-dt * 3.2);
+    U.uFlash.value = flash;
+
     updatePath(dt, dom);
 
     // 충격파: 방치하면 3.4초마다 자동 발생
@@ -394,10 +402,10 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     U.uShockAmp.value = shockAmp;
 
     const a = U.uAssemble.value;
-    core.scale.setScalar(a * (1 - 0.4 * dom) * (1 + 0.06 * Math.sin(time * 2.2)));
+    core.scale.setScalar(a * (1 - 0.4 * dom) * (1 + 0.06 * Math.sin(time * 2.2)) * (1 + 0.5 * flash));
     (glow.material as THREE.SpriteMaterial).opacity = 0.26 + 0.08 * Math.sin(time * 2.2);
     for (const r of rings) r.ring.rotation.set(r.bx + time * r.s, r.by + time * r.s * 0.7, 0);
-    if (bloom) bloom.strength = 0.8 + energy * 0.3;
+    if (bloom) bloom.strength = 0.8 + energy * 0.3 + flash * 0.6;
 
     // 이름표 좌표
     group.updateMatrixWorld();
