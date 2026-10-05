@@ -84,3 +84,11 @@ export const trackContactClick = (contactType: string) => {
     label: contactType,
   });
 };
+
+export const trackCtaClick = (location: string) => {
+  event({
+    action: 'click',
+    category: 'CTA',
+    label: `협업 문의 - ${location}`,
+  });
+};

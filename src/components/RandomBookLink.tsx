@@ -1,26 +1,28 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
 interface RandomBookLinkProps {
   links: string[];
+  className?: string;
   children: React.ReactNode;
 }
 
-export default function RandomBookLink({ links, children }: RandomBookLinkProps) {
-  const [selectedLink, setSelectedLink] = useState(links[0]);
-
-  useEffect(() => {
-    // 랜덤으로 링크 선택
-    const randomIndex = Math.floor(Math.random() * links.length);
-    setSelectedLink(links[randomIndex]);
-  }, [links]);
+// 서점 링크가 여러 개면 누를 때마다 그중 하나를 무작위로 연다.
+// 서버 렌더와 일치하도록 기본 href는 첫 번째 링크다.
+export default function RandomBookLink({ links, className, children }: RandomBookLinkProps) {
+  const pick = (el: HTMLAnchorElement) => {
+    el.href = links[Math.floor(Math.random() * links.length)];
+  };
 
   return (
     <a
-      href={selectedLink}
+      href={links[0]}
       target="_blank"
       rel="noopener noreferrer"
+      className={className}
+      onPointerDown={(e) => pick(e.currentTarget)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") pick(e.currentTarget);
+      }}
     >
       {children}
     </a>

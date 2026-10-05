@@ -1,60 +1,272 @@
 @import "tailwindcss";
 
+@theme {
+  --color-bg: #03060b;
+  --color-surface: #0a121c;
+  --color-raised: #101b28;
+  --color-line: rgba(120, 220, 255, 0.16);
+  --color-ink: #eaf6ff;
+  --color-muted: #8aa0b4;
+  --color-accent: #4df3ff;
+  --color-warm: #ffb454;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-bg);
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  word-break: keep-all;
 }
 
-/* Linktree 스타일 - 부드러운 스크롤 */
-html {
-  scroll-behavior: smooth;
-}
-
-/* 모바일 터치 최적화 */
 * {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* 포커스 스타일 */
 :focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+  outline: 2px solid var(--color-warm);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-/* 페이드 인 애니메이션 */
-@keyframes fade-in-up {
+::selection {
+  background: rgba(77, 243, 255, 0.3);
+}
+
+/* 섹션 번호와 영문 라벨 */
+.label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* 선으로 된 카드. 호버하면 테두리가 밝아지고 안쪽에 빛이 든다 */
+.card {
+  position: relative;
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(16, 27, 40, 0.7), rgba(10, 18, 28, 0.7));
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+a.card:hover,
+.card.is-interactive:hover {
+  border-color: rgba(77, 243, 255, 0.55);
+  box-shadow: 0 0 0 1px rgba(77, 243, 255, 0.12), 0 18px 60px -24px rgba(77, 243, 255, 0.45);
+  transform: translateY(-2px);
+}
+
+/* 노드 점 */
+.node-dot {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background: var(--color-accent);
+  box-shadow: 0 0 10px var(--color-accent);
+}
+
+/* ---------- 히어로 ---------- */
+
+.hero-title {
+  text-shadow: 0 2px 30px rgba(3, 6, 11, 0.95), 0 0 2px rgba(3, 6, 11, 0.8);
+}
+
+/* 3D가 준비되기 전, 또는 정지 화면에서 보이는 구체 이미지. 구체 중심 위치는 장면과 같다 */
+.hero-poster {
+  position: absolute;
+  left: 50%;
+  top: 36%;
+  width: min(130vw, 96svh);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  background: url("/images/hero-poster.webp") center / contain no-repeat,
+    radial-gradient(circle, rgba(77, 243, 255, 0.16), transparent 62%);
+  -webkit-mask-image: radial-gradient(circle, #000 52%, transparent 70%);
+  mask-image: radial-gradient(circle, #000 52%, transparent 70%);
+}
+
+@media (min-width: 861px) {
+  .hero-poster {
+    left: 62%;
+    top: 50%;
+    width: min(74vw, 118svh);
+  }
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.hero-canvas[data-ready="true"] {
+  opacity: 1;
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 55% 45%, transparent 42%, rgba(0, 0, 0, 0.5) 100%),
+    linear-gradient(180deg, transparent 78%, var(--color-bg) 100%);
+}
+
+/* 커서를 따라다니는 빛. 터치 기기에서는 숨긴다 */
+.hero-cursor {
+  position: fixed;
+  left: -160px;
+  top: -160px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: radial-gradient(circle, rgba(77, 243, 255, 0.2), rgba(77, 243, 255, 0.05) 45%, transparent 70%);
+  will-change: transform;
+}
+
+@media (hover: none) {
+  .hero-cursor {
+    display: none;
+  }
+}
+
+/* 3D 노드를 따라다니는 도메인 이름표. 위치는 스크립트가 transform으로 넣는다 */
+.domain-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  will-change: transform, opacity;
+}
+
+.domain-label span {
+  display: inline-block;
+  padding: 0.4rem 0.95rem;
+  border: 1.5px solid rgba(255, 180, 84, 0.85);
+  border-radius: 9999px;
+  background: rgba(6, 12, 20, 0.82);
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.domain-label.is-right span {
+  translate: 18px -50%;
+}
+
+.domain-label.is-left span {
+  translate: calc(-100% - 18px) -50%;
+}
+
+.domain-label.is-core span {
+  translate: 22px calc(-100% - 14px);
+  border-color: var(--color-accent);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+}
+
+.hero-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1.75rem;
+  translate: -50% 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.hero-hint::after {
+  content: "";
+  width: 1px;
+  height: 2.5rem;
+  background: linear-gradient(var(--color-accent), transparent);
+  animation: hint-drop 1.8s ease-in-out infinite;
+  transform-origin: top;
+}
+
+@media (min-width: 861px) {
+  .hero-hint {
+    display: flex;
+  }
+}
+
+@keyframes hint-drop {
+  0% {
+    transform: scaleY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 0;
+  }
+}
+
+/* 화면에 들어올 때 떠오르는 등장. 지원하지 않는 브라우저에서는 그냥 보인다 */
+@keyframes reveal {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s ease-out;
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 42%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

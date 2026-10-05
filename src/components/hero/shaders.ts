@@ -1,0 +1,189 @@
+// 뉴럴 코어 장면의 GLSL. 모든 레이어는 가산 혼합이라 그리는 순서와 무관하다.
+
+// 노드와 연결선이 함께 쓰는 정점 변위.
+// 인트로 조립, 충격파(자동 1개 + 반응 3개), 스크롤 에너지 폭발, 커서 자석 효과를 한곳에서 계산한다.
+const PLACE = /* glsl */ `
+  uniform float uTime, uAssemble, uShockT, uShockAmp, uAspect, uPx, uCamZ, uEnergy;
+  uniform vec3 uShockDir;
+  uniform vec3 uRDir[3];
+  uniform float uRT[3];
+  uniform float uRAmp[3];
+  uniform vec2 uMouse;
+  attribute vec3 aFrom;
+  attribute float aSeed;
+  varying float vHot, vFade, vWave;
+
+  vec4 place() {
+    float a = clamp(uAssemble * 1.6 - aSeed * 0.6, 0.0, 1.0);
+    a = a * a * (3.0 - 2.0 * a);
+    vec3 n = normalize(position);
+    float d = acos(clamp(dot(n, uShockDir), -1.0, 1.0));
+    vWave = uShockAmp * exp(-pow((d - uShockT * 1.6) * 4.5, 2.0)) * exp(-uShockT * 0.55);
+    for (int i = 0; i < 3; i++) {
+      float dr = acos(clamp(dot(n, uRDir[i]), -1.0, 1.0));
+      vWave += uRAmp[i] * exp(-pow((dr - uRT[i] * 2.6) * 4.5, 2.0)) * exp(-uRT[i] * 1.6);
+    }
+    float len = length(position);
+    vec3 p = mix(aFrom, position, a) + n * (vWave * 0.16 + uEnergy * 0.2 * (0.4 + aSeed)) * len;
+    p *= 1.0 + 0.012 * sin(uTime * 1.3 + aSeed * 40.0);
+    vec4 clip = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+    vec2 dd = (clip.xy / clip.w - uMouse) * vec2(uAspect, 1.0);
+    vHot = 1.0 - smoothstep(0.0, 0.42, length(dd));
+    p += n * vHot * 0.13 * len;
+    vec4 mv = modelViewMatrix * vec4(p, 1.0);
+    vFade = mix(0.14, 1.0, 1.0 - smoothstep(uCamZ - 1.0, uCamZ + 1.2, -mv.z));
+    return mv;
+  }
+`;
+
+export const NODE_VERT = /* glsl */ `
+  ${PLACE}
+  attribute float aSize;
+  void main() {
+    vec4 mv = place();
+    gl_Position = projectionMatrix * mv;
+    gl_PointSize = aSize * uPx * (1.0 + vHot * 1.6 + vWave * 3.0 + uEnergy * 0.8) / -mv.z;
+  }
+`;
+
+export const NODE_FRAG = /* glsl */ `
+  uniform float uDim;
+  varying float vHot, vFade, vWave;
+  void main() {
+    float d = length(gl_PointCoord - 0.5);
+    if (d > 0.5) discard;
+    float c = 1.0 - smoothstep(0.06, 0.5, d);
+    float w = clamp(vHot + vWave * 1.5, 0.0, 1.0);
+    vec3 col = mix(vec3(0.42, 0.9, 1.0), vec3(1.0, 0.7, 0.3), w);
+    gl_FragColor = vec4(col * (0.5 + c * 0.9 + vWave * 1.6), c * vFade * uDim);
+  }
+`;
+
+export const EDGE_VERT = /* glsl */ `
+  ${PLACE}
+  attribute float aT, aPhase, aSpeed;
+  varying float vT, vPhase, vSpeed;
+  void main() {
+    vT = aT; vPhase = aPhase; vSpeed = aSpeed;
+    gl_Position = projectionMatrix * place();
+  }
+`;
+
+// 선의 일부(aSpeed > 0)에는 빛 점이 선을 따라 달린다.
+export const EDGE_FRAG = /* glsl */ `
+  uniform float uSigT, uDim, uEnergy;
+  varying float vT, vPhase, vSpeed, vHot, vFade, vWave;
+  void main() {
+    float s = fract(vT - uSigT * vSpeed + vPhase);
+    float pulse = smoothstep(0.8, 1.0, s) * step(0.001, vSpeed);
+    float w = clamp(vHot + vWave * 1.5, 0.0, 1.0);
+    vec3 col = mix(vec3(0.16, 0.62, 0.85), vec3(1.0, 0.66, 0.26), w);
+    float a = (0.2 + vHot * 0.7 + vWave * 1.2 + uEnergy * 0.3) * vFade * uDim;
+    gl_FragColor = vec4(col * a + vec3(0.8, 1.0, 1.0) * pulse * vFade * uDim, 1.0);
+  }
+`;
+
+export const NEBULA_VERT = /* glsl */ `
+  uniform float uTime, uPx, uAssemble;
+  attribute float aSeed, aSize;
+  varying float vA, vWarm;
+  void main() {
+    vec4 mv = modelViewMatrix * vec4(position, 1.0);
+    gl_Position = projectionMatrix * mv;
+    gl_PointSize = aSize * uPx * 0.4 / -mv.z;
+    vWarm = step(0.93, aSeed);
+    vA = (0.55 + 0.45 * sin(uTime * (0.5 + aSeed * 2.0) + aSeed * 50.0)) * uAssemble * smoothstep(0.3, 1.2, -mv.z);
+  }
+`;
+
+export const NEBULA_FRAG = /* glsl */ `
+  uniform float uDim;
+  varying float vA, vWarm;
+  void main() {
+    float d = length(gl_PointCoord - 0.5);
+    if (d > 0.5) discard;
+    vec3 col = mix(vec3(0.3, 0.55, 1.0), vec3(1.0, 0.68, 0.32), vWarm);
+    gl_FragColor = vec4(col, (1.0 - smoothstep(0.0, 0.5, d)) * vA * 0.34 * uDim);
+  }
+`;
+
+export const CORE_VERT = /* glsl */ `
+  varying vec3 vN, vV, vP;
+  void main() {
+    vec4 mv = modelViewMatrix * vec4(position, 1.0);
+    vN = normalize(normalMatrix * normal);
+    vV = normalize(-mv.xyz);
+    vP = position;
+    gl_Position = projectionMatrix * mv;
+  }
+`;
+
+// 결이 흐르는 플라스마. 중심이 하얗게 뭉개지지 않도록 밝기를 제한하고 테두리(프레넬)를 살린다.
+export const CORE_FRAG = /* glsl */ `
+  uniform float uTime;
+  varying vec3 vN, vV, vP;
+  float hash(vec3 p) {
+    p = fract(p * 0.3183099 + 0.1);
+    p *= 17.0;
+    return fract(p.x * p.y * p.z * (p.x + p.y + p.z));
+  }
+  float noise(vec3 x) {
+    vec3 i = floor(x), f = fract(x);
+    f = f * f * (3.0 - 2.0 * f);
+    return mix(
+      mix(mix(hash(i), hash(i + vec3(1, 0, 0)), f.x), mix(hash(i + vec3(0, 1, 0)), hash(i + vec3(1, 1, 0)), f.x), f.y),
+      mix(mix(hash(i + vec3(0, 0, 1)), hash(i + vec3(1, 0, 1)), f.x), mix(hash(i + vec3(0, 1, 1)), hash(i + vec3(1, 1, 1)), f.x), f.y),
+      f.z);
+  }
+  float fbm(vec3 p) {
+    float a = 0.5, s = 0.0;
+    for (int i = 0; i < 4; i++) { s += a * noise(p); p = p * 2.02 + vec3(1.7, 9.2, 3.1); a *= 0.5; }
+    return s;
+  }
+  void main() {
+    float f = pow(1.0 - max(dot(normalize(vN), normalize(vV)), 0.0), 2.2);
+    float n = fbm(vP * 16.0 + vec3(0.0, uTime * 0.35, uTime * 0.2));
+    float veins = smoothstep(0.4, 0.72, n);
+    vec3 base = mix(vec3(0.01, 0.1, 0.16), vec3(0.2, 0.85, 1.0), veins);
+    vec3 col = base * (0.3 + veins * 0.75) + vec3(0.5, 0.95, 1.0) * f * 0.9 + vec3(1.0, 0.75, 0.4) * pow(veins, 3.0) * 0.3;
+    gl_FragColor = vec4(col * (0.85 + 0.15 * sin(uTime * 2.2)), 1.0);
+  }
+`;
+
+export const BEAM_VERT = /* glsl */ `
+  attribute float aT, aPhase;
+  varying float vT, vP;
+  void main() {
+    vT = aT; vP = aPhase;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+`;
+
+export const BEAM_FRAG = /* glsl */ `
+  uniform float uSigT, uDomain;
+  varying float vT, vP;
+  void main() {
+    float s = fract(vT * 1.5 - uSigT * 0.6 + vP);
+    gl_FragColor = vec4(vec3(1.0, 0.68, 0.28) * (0.4 + smoothstep(0.75, 1.0, s) * 1.6) * uDomain, 1.0);
+  }
+`;
+
+export const MARK_VERT = /* glsl */ `
+  uniform float uTime, uPx;
+  void main() {
+    vec4 mv = modelViewMatrix * vec4(position, 1.0);
+    gl_Position = projectionMatrix * mv;
+    gl_PointSize = 4.2 * uPx * (1.0 + 0.12 * sin(uTime * 3.0)) / -mv.z;
+  }
+`;
+
+export const MARK_FRAG = /* glsl */ `
+  uniform float uDomain;
+  void main() {
+    float d = length(gl_PointCoord - 0.5);
+    if (d > 0.5) discard;
+    float c = 1.0 - smoothstep(0.0, 0.2, d);
+    float r = smoothstep(0.33, 0.4, d) * (1.0 - smoothstep(0.44, 0.5, d));
+    gl_FragColor = vec4(vec3(1.0, 0.72, 0.32) * (c * 1.6 + r), (c + r) * uDomain);
+  }
+`;

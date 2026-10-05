@@ -121,15 +121,10 @@ export default function SimpleContactForm() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto mt-8">
+    <div className="w-full">
       {/* 간편 문의 폼 */}
-      <div className="mb-6">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 px-2 flex items-center">
-          <span className="text-2xl mr-2">📝</span>
-          협업 문의하기
-        </h2>
-        
-        <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-sm">
+      <div>
+        <div className="card p-6 sm:p-8">
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="text"
@@ -142,7 +137,7 @@ export default function SimpleContactForm() {
             />
             
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              <label htmlFor="name" className="block text-sm font-medium text-ink/85 mb-1.5">
                 이름 *
               </label>
               <input
@@ -152,13 +147,13 @@ export default function SimpleContactForm() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all text-sm"
+                className="w-full px-4 py-3 border border-line rounded-xl bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition-all text-[0.95rem]"
                 placeholder="홍길동"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              <label htmlFor="email" className="block text-sm font-medium text-ink/85 mb-1.5">
                 이메일 *
               </label>
               <input
@@ -168,13 +163,13 @@ export default function SimpleContactForm() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all text-sm"
+                className="w-full px-4 py-3 border border-line rounded-xl bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition-all text-[0.95rem]"
                 placeholder="hong@company.com"
               />
             </div>
 
             <div>
-              <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              <label htmlFor="company" className="block text-sm font-medium text-ink/85 mb-1.5">
                 회사/소속 *
               </label>
               <input
@@ -184,13 +179,13 @@ export default function SimpleContactForm() {
                 required
                 value={formData.company}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all text-sm"
+                className="w-full px-4 py-3 border border-line rounded-xl bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition-all text-[0.95rem]"
                 placeholder="(주)테크컴퍼니"
               />
             </div>
 
             <div>
-              <label htmlFor="inquiry" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
+              <label htmlFor="inquiry" className="block text-sm font-medium text-ink/85 mb-1.5">
                 문의 내용 *
               </label>
               <textarea
@@ -201,10 +196,10 @@ export default function SimpleContactForm() {
                 maxLength={2000}
                 value={formData.inquiry}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white transition-all resize-none text-sm"
+                className="w-full px-4 py-3 border border-line rounded-xl bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition-all resize-none text-[0.95rem]"
                 placeholder="문의하실 내용을 자세히 적어주세요."
               />
-              <div className="text-right text-xs text-gray-500 mt-1">
+              <div className="text-right font-mono text-xs text-muted mt-1">
                 {formData.inquiry.length}/2000
               </div>
             </div>
@@ -212,7 +207,7 @@ export default function SimpleContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 py-3 rounded-xl font-semibold hover:opacity-90 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm"
+              className="w-full bg-accent text-bg py-3.5 rounded-xl font-semibold hover:shadow-[0_0_32px_rgba(77,243,255,0.5)] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <div className="flex items-center justify-center space-x-2">
@@ -227,8 +222,8 @@ export default function SimpleContactForm() {
             {submitMessage && (
               <div className={`p-3 rounded-xl text-sm ${
                 submitMessage.includes("접수 확인") 
-                  ? "bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-300 border border-green-200 dark:border-green-700"
-                  : "bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-300 border border-red-200 dark:border-red-700"
+                  ? "bg-accent/10 text-accent border border-accent/40"
+                  : "bg-red-500/10 text-red-300 border border-red-400/40"
               }`}>
                 <div className="whitespace-pre-line">{submitMessage}</div>
               </div>
@@ -239,15 +234,16 @@ export default function SimpleContactForm() {
 
       {/* 전송 완료된 문의 내용 카드 */}
       {submittedData && (
-        <div className="mt-6 p-6 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl border border-blue-200 dark:border-blue-700 shadow-sm">
+        <div className="card mt-6 p-6">
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white flex items-center">
-              <span className="text-xl mr-2">✅</span>
+            <h3 className="text-lg font-semibold text-ink flex items-center gap-3">
+              <span className="node-dot" aria-hidden="true" />
               전송 완료된 문의
             </h3>
             <button
               onClick={() => setSubmittedData(null)}
-              className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors text-sm"
+              aria-label="전송 완료 카드 닫기"
+              className="text-muted hover:text-ink transition-colors text-sm"
             >
               ✕
             </button>
@@ -255,29 +251,29 @@ export default function SimpleContactForm() {
           
           <div className="space-y-3 text-sm">
             <div>
-              <span className="font-medium text-gray-700 dark:text-gray-300">이름:</span>
-              <span className="ml-2 text-gray-900 dark:text-white">{submittedData.name}</span>
+              <span className="font-medium text-muted">이름:</span>
+              <span className="ml-2 text-ink">{submittedData.name}</span>
             </div>
             
             <div>
-              <span className="font-medium text-gray-700 dark:text-gray-300">이메일:</span>
-              <span className="ml-2 text-gray-900 dark:text-white">{submittedData.email}</span>
+              <span className="font-medium text-muted">이메일:</span>
+              <span className="ml-2 text-ink">{submittedData.email}</span>
             </div>
             
             <div>
-              <span className="font-medium text-gray-700 dark:text-gray-300">회사/소속:</span>
-              <span className="ml-2 text-gray-900 dark:text-white">{submittedData.company}</span>
+              <span className="font-medium text-muted">회사/소속:</span>
+              <span className="ml-2 text-ink">{submittedData.company}</span>
             </div>
             
             <div>
-              <span className="font-medium text-gray-700 dark:text-gray-300">문의 내용:</span>
-              <div className="mt-1 p-3 bg-white dark:bg-gray-800 rounded-lg text-gray-900 dark:text-white whitespace-pre-wrap">
+              <span className="font-medium text-muted">문의 내용:</span>
+              <div className="mt-1 p-3 bg-bg/60 border border-line rounded-lg text-ink whitespace-pre-wrap">
                 {submittedData.inquiry}
               </div>
             </div>
             
-            <div className="pt-2 border-t border-blue-200 dark:border-blue-700">
-              <span className="text-xs text-gray-500 dark:text-gray-400">
+            <div className="pt-2 border-t border-line">
+              <span className="text-xs text-muted">
                 전송 시간: {formatDate(submittedData.submittedAt)}
               </span>
             </div>
