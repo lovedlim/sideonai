@@ -53,6 +53,16 @@ describe('buildGraph', () => {
     for (let a = 0; a < 6; a++) for (let b = a + 1; b < 6; b++)
       expect(Math.hypot(xy[a][0] - xy[b][0], xy[a][1] - xy[b][1])).toBeGreaterThan(0.35);
   });
+  it('인트로 시작 위치는 제자리의 바깥 방향에 있다 (조립 중 연결선이 중심을 가로지르지 않게)', () => {
+    const g = buildGraph(opts);
+    for (let i = 0; i < g.count; i++) {
+      const p = [g.positions[i * 3], g.positions[i * 3 + 1], g.positions[i * 3 + 2]];
+      const f = [g.from[i * 3], g.from[i * 3 + 1], g.from[i * 3 + 2]];
+      const lp = Math.hypot(...p), lf = Math.hypot(...f);
+      expect(lf).toBeGreaterThan(2);
+      expect((p[0] * f[0] + p[1] * f[1] + p[2] * f[2]) / (lp * lf)).toBeGreaterThan(0.9);
+    }
+  });
   it('저사양 껍질 구성도 유효하다', () => {
     const g = buildGraph({ ...opts, shells: SHELLS_LOW });
     expect(g.count).toBe(420);
