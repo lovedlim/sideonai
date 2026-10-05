@@ -102,27 +102,42 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
   }
 
   // 연결선과 신호. aPath는 "생각의 경로"에 속한 선의 밝기로, 매 프레임 갱신한다.
+  // 선 세그먼트는 그래프 연결선 뒤에 "뿌리"(중심 구체 표면 → 가장 안쪽 노드)를 덧붙인 것이다.
+  // 뿌리는 평소에는 보이지 않고(aBase 0), 경로가 지날 때만 켜져서 경로가 중심의 AI에서 시작하게 한다.
   const tree = buildPathTree(graph);
   const edgeCount = graph.edges.length / 2;
-  const pathAttr = new THREE.BufferAttribute(new Float32Array(edgeCount * 2), 1);
+  const rootCount = graph.count - graph.coreStart;
+  const segCount = edgeCount + rootCount;
+  const pathAttr = new THREE.BufferAttribute(new Float32Array(segCount * 2), 1);
   pathAttr.setUsage(THREE.DynamicDrawUsage);
   {
-    const n = graph.edges.length;
+    const n = segCount * 2;
     const pos = new Float32Array(n * 3), from = new Float32Array(n * 3);
     const seed = new Float32Array(n), aT = new Float32Array(n), phase = new Float32Array(n), speed = new Float32Array(n);
-    const depth = new Float32Array(n);
-    for (let e = 0; e < n; e += 2) {
+    const depth = new Float32Array(n), base = new Float32Array(n);
+    for (let e = 0; e < edgeCount * 2; e += 2) {
       const ph = rnd(), sp = rnd() < 0.45 ? 0.15 + rnd() * 0.45 : 0;
       for (let k = 0; k < 2; k++) {
         const node = graph.edges[e + k], v = e + k;
         pos.set(graph.positions.subarray(node * 3, node * 3 + 3), v * 3);
         from.set(graph.from.subarray(node * 3, node * 3 + 3), v * 3);
-        seed[v] = graph.seeds[node]; aT[v] = k; phase[v] = ph; speed[v] = sp; depth[v] = tree.depth[node];
+        seed[v] = graph.seeds[node]; aT[v] = k; phase[v] = ph; speed[v] = sp; depth[v] = tree.depth[node]; base[v] = 1;
       }
+    }
+    for (let k = 0; k < rootCount; k++) {
+      const node = graph.coreStart + k, v = (edgeCount + k) * 2;
+      const p = graph.positions.subarray(node * 3, node * 3 + 3);
+      const onCore = 0.11 / Math.hypot(p[0], p[1], p[2]); // 중심 구체(반지름 0.12) 표면 바로 안쪽
+      const start = [p[0] * onCore, p[1] * onCore, p[2] * onCore];
+      pos.set(start, v * 3); from.set(start, v * 3);
+      pos.set(p, (v + 1) * 3); from.set(graph.from.subarray(node * 3, node * 3 + 3), (v + 1) * 3);
+      seed[v] = seed[v + 1] = graph.seeds[node];
+      aT[v + 1] = 1; depth[v] = -1; // 안쪽 노드의 깊이가 0이므로 뿌리의 시작은 -1: 빛의 흐름이 끊기지 않는다
     }
     const g = new THREE.BufferGeometry();
     f32(g, 'position', pos, 3); f32(g, 'aFrom', from, 3); f32(g, 'aSeed', seed, 1);
     f32(g, 'aT', aT, 1); f32(g, 'aPhase', phase, 1); f32(g, 'aSpeed', speed, 1); f32(g, 'aDepth', depth, 1);
+    f32(g, 'aBase', base, 1);
     g.setAttribute('aPath', pathAttr);
     add(new THREE.LineSegments(g, additive(GLSL.EDGE_VERT, GLSL.EDGE_FRAG)));
   }
@@ -231,8 +246,8 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
   let time = 0, last = 0, raf = 0, running = false, disposed = false, fps = 60;
 
   // 생각의 경로 상태. pathFlag: 지금 경로에 속하는가, pathReadyAt: 언제부터 켜질 수 있는가(중심에서 가까운 선부터 차례로)
-  const pathFlag = new Uint8Array(edgeCount), pathStrength = new Float32Array(edgeCount), pathReadyAt = new Float32Array(edgeCount);
-  const pathScratch = new Uint8Array(edgeCount), pathDir: [number, number, number] = [0, 0, 1];
+  const pathFlag = new Uint8Array(segCount), pathStrength = new Float32Array(segCount), pathReadyAt = new Float32Array(segCount);
+  const pathScratch = new Uint8Array(segCount), pathDir: [number, number, number] = [0, 0, 1];
   let pathNode = -1;
 
   const ray = new THREE.Raycaster();
@@ -265,14 +280,18 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     if (node === pathNode) return;
     pathNode = node;
     pathScratch.fill(0);
+    // order: 중심에서 몇 번째 선인가. 뿌리가 0, 그다음 연결선이 1, 2, ...
+    const mark = (seg: number, order: number) => {
+      pathScratch[seg] = 1;
+      if (!pathFlag[seg]) pathReadyAt[seg] = time + order * 0.03;
+    };
     if (node >= 0) {
       for (const e of pathEdges(tree, node)) {
-        pathScratch[e] = 1;
-        if (!pathFlag[e]) {
-          const fromCore = Math.max(tree.depth[graph.edges[e * 2]], tree.depth[graph.edges[e * 2 + 1]]) - 1;
-          pathReadyAt[e] = time + fromCore * 0.03;
-        }
+        mark(e, Math.max(tree.depth[graph.edges[e * 2]], tree.depth[graph.edges[e * 2 + 1]]));
       }
+      let source = node;
+      while (tree.parent[source] !== -1) source = tree.parent[source];
+      if (source >= graph.coreStart) mark(edgeCount + source - graph.coreStart, 0);
     }
     pathFlag.set(pathScratch);
   }
@@ -286,7 +305,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     const arr = pathAttr.array as Float32Array;
     const rise = 1 - Math.exp(-dt * 16), fall = 1 - Math.exp(-dt * 3);
     let dirty = false;
-    for (let e = 0; e < edgeCount; e++) {
+    for (let e = 0; e < segCount; e++) {
       const target = pathFlag[e] && time >= pathReadyAt[e] ? 1 : 0;
       const s = pathStrength[e];
       if (s === target) continue;
@@ -301,10 +320,12 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     // 경로 위의 노드도 함께 밝힌다
     const nodes = nodePathAttr.array as Float32Array;
     nodes.fill(0);
-    for (let e = 0; e < edgeCount; e++) {
+    for (let e = 0; e < segCount; e++) {
       const s = pathStrength[e];
       if (s === 0) continue;
-      const a = graph.edges[e * 2], b = graph.edges[e * 2 + 1];
+      // 뿌리는 안쪽 노드 하나에만 닿는다
+      const a = e < edgeCount ? graph.edges[e * 2] : graph.coreStart + e - edgeCount;
+      const b = e < edgeCount ? graph.edges[e * 2 + 1] : a;
       if (s > nodes[a]) nodes[a] = s;
       if (s > nodes[b]) nodes[b] = s;
     }

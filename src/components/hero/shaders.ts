@@ -69,10 +69,10 @@ export const NODE_FRAG = /* glsl */ `
 
 export const EDGE_VERT = /* glsl */ `
   ${PLACE}
-  attribute float aT, aPhase, aSpeed, aPath, aDepth;
-  varying float vT, vPhase, vSpeed, vPath, vDepth;
+  attribute float aT, aPhase, aSpeed, aPath, aDepth, aBase;
+  varying float vT, vPhase, vSpeed, vPath, vDepth, vBase;
   void main() {
-    vT = aT; vPhase = aPhase; vSpeed = aSpeed; vPath = aPath; vDepth = aDepth;
+    vT = aT; vPhase = aPhase; vSpeed = aSpeed; vPath = aPath; vDepth = aDepth; vBase = aBase;
     gl_Position = projectionMatrix * place();
   }
 `;
@@ -82,7 +82,7 @@ export const EDGE_VERT = /* glsl */ `
 // vDepth(중심에서의 거리)를 따라 빛이 바깥쪽으로 흐른다.
 export const EDGE_FRAG = /* glsl */ `
   uniform float uTime, uSigT, uDim, uEnergy, uBoost, uPathGain;
-  varying float vT, vPhase, vSpeed, vHot, vFade, vWave, vPath, vDepth;
+  varying float vT, vPhase, vSpeed, vHot, vFade, vWave, vPath, vDepth, vBase;
   void main() {
     float s = fract(vT - uSigT * vSpeed + vPhase);
     float pulse = smoothstep(0.8, 1.0, s) * step(0.001, vSpeed);
@@ -91,7 +91,8 @@ export const EDGE_FRAG = /* glsl */ `
     float a = (0.2 + vHot * 0.3 + vWave * 0.55 + uEnergy * 0.18) * vFade * uDim;
     float flow = smoothstep(0.65, 1.0, fract(vDepth * 0.4 - uTime * 1.5));
     vec3 path = vec3(1.0, 0.72, 0.32) * vPath * (2.0 + flow * 3.0) * max(vFade, 0.6) * uDim;
-    gl_FragColor = vec4((col * a + vec3(0.8, 1.0, 1.0) * pulse * vFade * uDim) * uBoost + path * uPathGain, 1.0);
+    // vBase가 0인 선(중심에서 나오는 뿌리)은 경로일 때만 보인다
+    gl_FragColor = vec4((col * a + vec3(0.8, 1.0, 1.0) * pulse * vFade * uDim) * uBoost * vBase + path * uPathGain, 1.0);
   }
 `;
 
