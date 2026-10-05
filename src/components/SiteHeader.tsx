@@ -1,4 +1,5 @@
 import CtaLink from "@/components/CtaLink";
+import MobileMenu from "@/components/MobileMenu";
 import { NAV } from "@/data/site";
 
 export default function SiteHeader() {
@@ -22,13 +23,16 @@ export default function SiteHeader() {
             </a>
           ))}
         </nav>
-        <CtaLink
-          href="#contact"
-          location="header"
-          className="rounded-full border border-accent/70 px-4 py-2 text-sm font-semibold text-accent transition hover:bg-accent hover:text-bg"
-        >
-          협업 문의
-        </CtaLink>
+        <div className="flex items-center gap-2">
+          <CtaLink
+            href="#contact"
+            location="header"
+            className="rounded-full border border-accent/70 px-4 py-2 text-sm font-semibold text-accent transition hover:bg-accent hover:text-bg"
+          >
+            협업 문의
+          </CtaLink>
+          <MobileMenu />
+        </div>
       </div>
     </header>
   );
