@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist_Mono } from "next/font/google";
 // Pretendard(OFL)를 직접 호스팅한다. 외부 CDN이 막힌 기관 망에서도 글꼴과 첫 화면이 늦어지지 않는다.
 import "./fonts/pretendard/pretendardvariable-dynamic-subset.css";
@@ -40,6 +40,12 @@ export const metadata: Metadata = {
   },
 };
 
+// 모바일 브라우저의 주소창 색을 페이지 배경과 맞춘다
+export const viewport: Viewport = {
+  themeColor: "#03060b",
+  colorScheme: "dark",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -50,6 +56,10 @@ export default function RootLayout({
 
   return (
     <html lang="ko" data-scroll-behavior="smooth">
+      <head>
+        {/* 히어로 포스터가 첫 화면의 가장 큰 요소(LCP)라 CSS보다 먼저 받기 시작한다 */}
+        <link rel="preload" as="image" href="/images/hero-poster.webp" type="image/webp" />
+      </head>
       <body className={`${geistMono.variable} antialiased`}>
         {gaId && <GoogleAnalytics measurementId={gaId} />}
         <StructuredData />
