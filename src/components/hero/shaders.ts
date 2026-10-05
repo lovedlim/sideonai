@@ -63,6 +63,8 @@ export const NODE_FRAG = /* glsl */ `
     col = mix(col, vec3(1.0, 0.82, 0.5), vNodePath); // 생각의 경로 위의 노드는 따뜻한 흰빛 구슬로
     // 경로 위 노드는 밝기 보정(uBoost)을 받지 않는다. 블룸이 없는 단계에서 금색이 흰색으로 날아가지 않게 하려는 것
     float bright = (0.5 + c * 0.9 + vWave * 0.6) * mix(uBoost, 1.0, vNodePath) + vNodePath * 0.9 * uPathGain;
+    // 블룸이 없는 단계(uPathGain < 1)에서는 경로 구슬의 밝기를 1로 눌러 금색이 흰색으로 날아가지 않게 한다
+    bright = mix(bright, min(bright, 1.0), vNodePath * (1.0 - step(0.99, uPathGain)));
     gl_FragColor = vec4(col * bright, c * max(vFade, vNodePath * 0.7) * uDim);
   }
 `;
