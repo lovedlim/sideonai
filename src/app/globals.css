@@ -73,6 +73,57 @@ a.card:hover,
   transform: translateY(-2px);
 }
 
+/* 카드 안에서 커서를 따라다니는 빛. 위치는 CardGlow가 --mx, --my로 넣는다 */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(77, 243, 255, 0.16), transparent 62%);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* 섹션 위쪽 경계: 히어로의 빛이 번져 내려오는 듯한 선과 옅은 빛 */
+.section-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  width: min(72rem, 92%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(77, 243, 255, 0.5), transparent);
+}
+
+.section-glow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% 0;
+  width: min(56rem, 86%);
+  height: 220px;
+  pointer-events: none;
+  background: radial-gradient(ellipse at top, rgba(77, 243, 255, 0.09), transparent 68%);
+}
+
+/* 섹션 배경의 옅은 점 격자. 위쪽에서만 보이고 아래로 사라진다 */
+.dot-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(120, 220, 255, 0.16) 1px, transparent 1.6px);
+  background-size: 30px 30px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 0%, transparent 100%);
+  mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 0%, transparent 100%);
+}
+
 /* 노드 점 */
 .node-dot {
   display: inline-block;

@@ -1,3 +1,4 @@
+import CardGlow from "@/components/CardGlow";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import NeuralHero from "@/components/hero/NeuralHero";
@@ -20,6 +21,7 @@ export default function Home() {
         <Contact />
       </main>
       <SiteFooter />
+      <CardGlow />
     </>
   );
 }
