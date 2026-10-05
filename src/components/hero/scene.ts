@@ -251,6 +251,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
   const pathScratch = new Uint8Array(segCount), pathDir: [number, number, number] = [0, 0, 1];
   let pathNode = -1;
   let flash = 0, flashArmed = true; // 도메인이 모두 연결되는 순간의 번쩍임
+  let lastPointerAt = -1e9, autoNode = -1, nextAutoAt = 0; // 입력이 없을 때 스스로 뻗는 경로
 
   const ray = new THREE.Raycaster();
   const hit = new THREE.Vector3(), tmp = new THREE.Vector3(), ndc = new THREE.Vector2();
@@ -299,10 +300,23 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
   }
 
   function updatePath(dt: number, dom: number) {
-    const dir = asm >= 1 && dom < 0.25 ? hitDirection(tmx, tmy) : null;
+    const active = asm >= 1 && dom < 0.25;
+    const dir = active && time - lastPointerAt < 2.5 ? hitDirection(tmx, tmy) : null;
     if (dir) {
       pathDir[0] = dir.x; pathDir[1] = dir.y; pathDir[2] = dir.z;
       setPathNode(nearestOuterNode(graph, pathDir));
+      nextAutoAt = time + 0.6;
+    } else if (active) {
+      // 커서가 구체 밖에 있거나 멈춰 있으면(터치 기기는 늘 이 상태) 카메라를 향한 쪽의 임의 노드로 스스로 경로를 뻗는다
+      if (time >= nextAutoAt) {
+        const a = Math.random() * Math.PI * 2, r = 0.25 + Math.random() * 0.6;
+        tmp.set(Math.cos(a) * r, Math.sin(a) * r, 1).normalize().add(group.position);
+        group.worldToLocal(tmp).normalize();
+        pathDir[0] = tmp.x; pathDir[1] = tmp.y; pathDir[2] = tmp.z;
+        autoNode = nearestOuterNode(graph, pathDir);
+        nextAutoAt = time + 1.5 + Math.random() * 0.9;
+      }
+      setPathNode(autoNode);
     } else setPathNode(-1);
     const arr = pathAttr.array as Float32Array;
     const rise = 1 - Math.exp(-dt * 16), fall = 1 - Math.exp(-dt * 3);
@@ -438,6 +452,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     setPointer(nx, ny) {
       const d = Math.hypot(nx - tmx, ny - tmy);
       tmx = nx; tmy = ny;
+      lastPointerAt = time;
       energy = Math.min(1.2, energy + d * 0.45);
       travel += d;
       if (travel > 0.22) {
