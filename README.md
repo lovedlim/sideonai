@@ -1,24 +1,30 @@
-# SideOnAI - 개인 브랜딩 페이지
+# SideOnAI
 
-도메인에 AI를 더하는, SideOnAI의 개인 브랜딩 페이지입니다. 깔끔하고 모바일 최적화된 디자인으로 제작되었습니다.
+도메인에 AI를 더하는 SideOnAI의 홈페이지입니다. 3D 뉴럴 코어 히어로로 시작해 서비스, 실적, 도서·강의, 리소스, 협업 문의로 이어지는 다크 톤 원페이지 사이트입니다.
 
 ## ✨ 주요 기능
 
-- **깔끔한 디자인**: 모바일 최적화된 개인 브랜딩 페이지
-- **프로필 아바타**: "+AI" 텍스트 기반 커스텀 아바타
-- **링크 버튼**: 이메일, GitHub, YouTube, Inflearn, LinkedIn 등 주요 링크 제공
-- **학습 자료 섹션**: 캐글 데이터분석 튜토리얼 등 학습 자료 링크
-- **도서 섹션**: 출간/예정 도서 정보 제공
-- **전자 도서 (공개) 섹션**: 무료 공개 전자도서 링크 제공
-- **간편 문의 폼**: Google Apps Script 연동 문의 폼 (전송 완료 후 확인 카드 표시)
-- **다크 모드 지원**: 사용자 환경에 맞는 테마 자동 적용
+- **뉴럴 코어 히어로**: 마우스와 스크롤에 반응하는 three.js 3D 신경망. 스크롤하면 도메인(공공·금융·소방·방송·교육·유통)이 AI와 연결되는 장면으로 넘어갑니다.
+- **대체 화면**: 모바일·저사양 기기는 가벼운 버전으로, "동작 줄이기" 설정이나 WebGL 미지원 환경은 정지 화면으로 보여줍니다.
+- **섹션**: 서비스, 실적(강의·강연 횟수와 기관), 도서·강의, 리소스, 협업 문의
+- **강의·강연 활동 페이지**: `/activities`
+- **간편 문의 폼**: Google Apps Script 연동 (전송 완료 후 확인 카드 표시)
 
 ## 🛠 기술 스택
 
-- **Frontend**: Next.js 15, React 19, TypeScript
-- **Styling**: Tailwind CSS 4
+- **Frontend**: Next.js 16 (App Router), React 19, TypeScript
+- **3D**: three.js (히어로에서만 지연 로드)
+- **Styling**: Tailwind CSS 4, Pretendard (직접 호스팅)
+- **테스트**: Vitest (`npm test`)
 - **배포**: Vercel
-- **개발 도구**: ESLint, PostCSS
+
+## 🗂 구조
+
+- `src/data/site.ts`: 홈에 나오는 문구와 링크 (도메인, 서비스, 도서, 리소스)
+- `src/data/activities.ts`: 강의·강연 목록
+- `src/components/hero/`: 히어로. `scene.ts`가 three.js 장면, `NeuralHero.tsx`가 스크롤·포인터 입력과 이름표를 맡습니다.
+- `src/components/sections/`: 섹션 컴포넌트
+- `docs/superpowers/specs/2026-10-06-v2-home-design.md`: v2 설계 문서
 
 ## 📚 포함된 링크
 

@@ -41,6 +41,14 @@ export const SERVICES = [
   },
 ] as const;
 
+// 실적 섹션의 보조 지표. README의 "주요 성과"에서 가져왔다. 숫자가 바뀌면 여기만 고치면 된다.
+export const STATS = [
+  { value: "4.8k+", label: "온라인 강의 수강생" },
+  { value: "4.9/5", label: "인프런 수강 만족도" },
+  { value: "230+", label: "캐글·AI 학습 모임 운영" },
+  { value: "2024", label: "인프런 어워드 답변왕" },
+] as const;
+
 export interface Book {
   title: string;
   publisher: string;

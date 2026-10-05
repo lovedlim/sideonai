@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { orgNames, photos, totalCount } from "@/data/activities";
+import { STATS } from "@/data/site";
 import CountUp from "./CountUp";
 import SectionHead from "./SectionHead";
 
@@ -39,7 +40,17 @@ export default function TrackRecord() {
           </ul>
         </div>
 
-        <ul className="mt-16 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+        <dl className="reveal mt-16 grid grid-cols-2 border-t border-line lg:grid-cols-4">
+          {STATS.map((s) => (
+            <div key={s.label} className="border-b border-line py-6 pr-4 lg:border-b-0">
+              <dt className="sr-only">{s.label}</dt>
+              <dd className="font-mono text-[clamp(1.75rem,3vw,2.5rem)] font-bold tracking-[-0.04em] text-ink">{s.value}</dd>
+              <dd className="mt-1 text-sm text-muted" aria-hidden="true">{s.label}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <ul className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
           {photos.slice(0, 8).map((p) => (
             <li key={p.image} className="reveal group relative aspect-square overflow-hidden rounded-xl border border-line">
               <Image
