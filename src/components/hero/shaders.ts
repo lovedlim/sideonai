@@ -152,40 +152,60 @@ export const CORE_FRAG = /* glsl */ `
   }
 `;
 
+// stages.ts의 domainReveal과 같은 식. 도메인 번호 순서대로 켜진다.
+const REVEAL = /* glsl */ `
+  uniform float uDomain, uDomainCount;
+  float reveal(float idx) {
+    float start = idx / (uDomainCount + 2.0);
+    return smoothstep(start, start + 3.0 / (uDomainCount + 2.0), uDomain);
+  }
+`;
+
 export const BEAM_VERT = /* glsl */ `
-  attribute float aT, aPhase;
-  varying float vT, vP;
+  ${REVEAL}
+  attribute float aT, aPhase, aIdx;
+  varying float vT, vP, vD;
   void main() {
-    vT = aT; vP = aPhase;
+    vT = aT; vP = aPhase; vD = reveal(aIdx);
     gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
   }
 `;
 
+// 광선은 중심에서 도메인 노드 쪽으로 자라난다. 자라는 동안 끝이 밝게 빛난다.
 export const BEAM_FRAG = /* glsl */ `
-  uniform float uSigT, uDomain;
-  varying float vT, vP;
+  uniform float uSigT;
+  varying float vT, vP, vD;
   void main() {
+    float grow = smoothstep(0.0, 0.7, vD);
+    if (vD < 0.001 || vT > grow) discard;
+    float tip = smoothstep(grow - 0.14, grow, vT) * (1.0 - smoothstep(0.7, 1.0, vD));
     float s = fract(vT * 1.5 - uSigT * 0.6 + vP);
-    gl_FragColor = vec4(vec3(1.0, 0.68, 0.28) * (0.4 + smoothstep(0.75, 1.0, s) * 1.6) * uDomain, 1.0);
+    gl_FragColor = vec4(vec3(1.0, 0.68, 0.28) * (0.4 + smoothstep(0.75, 1.0, s) * 1.6) + vec3(1.0, 0.9, 0.7) * tip * 2.2, 1.0);
   }
 `;
 
 export const MARK_VERT = /* glsl */ `
+  ${REVEAL}
   uniform float uTime, uPx;
+  attribute float aIdx;
+  varying float vArrive;
   void main() {
+    float d = reveal(aIdx);
+    vArrive = smoothstep(0.62, 0.75, d);                 // 광선이 닿는 순간 켜진다
+    float pop = vArrive * (1.0 - smoothstep(0.75, 1.0, d)); // 닿을 때 한 번 커졌다가 돌아온다
     vec4 mv = modelViewMatrix * vec4(position, 1.0);
     gl_Position = projectionMatrix * mv;
-    gl_PointSize = 4.2 * uPx * (1.0 + 0.12 * sin(uTime * 3.0)) / -mv.z;
+    gl_PointSize = 4.2 * uPx * (1.0 + 0.12 * sin(uTime * 3.0)) * (1.0 + 0.9 * pop) / -mv.z;
   }
 `;
 
 export const MARK_FRAG = /* glsl */ `
-  uniform float uDomain;
+  varying float vArrive;
   void main() {
     float d = length(gl_PointCoord - 0.5);
     if (d > 0.5) discard;
     float c = 1.0 - smoothstep(0.0, 0.2, d);
     float r = smoothstep(0.33, 0.4, d) * (1.0 - smoothstep(0.44, 0.5, d));
-    gl_FragColor = vec4(vec3(1.0, 0.72, 0.32) * (c * 1.6 + r), (c + r) * uDomain);
+    gl_FragColor = vec4(vec3(1.0, 0.72, 0.32) * (c * 1.6 + r), (c + r) * vArrive);
   }
 `;

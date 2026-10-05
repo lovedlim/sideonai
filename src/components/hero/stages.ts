@@ -27,3 +27,11 @@ export function stageValues(p: number): StageValues {
     exit: smoothstep(0.9, 1, q),
   };
 }
+
+// 도메인 장면 진행도(0~1) 안에서 index번째 도메인이 켜진 정도.
+// 여섯 개가 한꺼번에 켜지지 않고, 앞 번호부터 차례로 광선이 뻗어 나가게 한다.
+// 셰이더(shaders.ts의 reveal)와 같은 식이어야 이름표와 광선이 맞는다.
+export function domainReveal(domain: number, index: number, count: number): number {
+  const start = index / (count + 2);
+  return smoothstep(start, start + 3 / (count + 2), domain);
+}

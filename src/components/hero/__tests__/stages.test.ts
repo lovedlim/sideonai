@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { stageValues } from '../stages';
+import { domainReveal, stageValues } from '../stages';
 
 describe('stageValues', () => {
   it('시작과 끝 값', () => {
@@ -33,5 +33,34 @@ describe('stageValues', () => {
     expect(stageValues(-1)).toEqual(stageValues(0));
     expect(stageValues(2)).toEqual(stageValues(1));
     expect(stageValues(NaN)).toEqual(stageValues(0));
+  });
+});
+
+describe('domainReveal', () => {
+  const N = 6;
+  it('도메인 장면 전에는 모두 0, 끝나면 모두 1', () => {
+    for (let i = 0; i < N; i++) {
+      expect(domainReveal(0, i, N)).toBe(0);
+      expect(domainReveal(1, i, N)).toBe(1);
+    }
+  });
+  it('순서대로 켜진다: 앞 번호가 항상 먼저 진행된다', () => {
+    for (let d = 0; d <= 1.0001; d += 0.05)
+      for (let i = 0; i < N - 1; i++)
+        expect(domainReveal(d, i, N)).toBeGreaterThanOrEqual(domainReveal(d, i + 1, N));
+  });
+  it('중간 시점에는 첫 도메인은 다 켜지고 마지막은 아직 꺼져 있다', () => {
+    expect(domainReveal(0.5, 0, N)).toBe(1);
+    expect(domainReveal(0.5, N - 1, N)).toBe(0);
+  });
+  it('각 도메인의 진행은 단조롭다', () => {
+    for (let i = 0; i < N; i++) {
+      let prev = 0;
+      for (let d = 0; d <= 1.0001; d += 0.02) {
+        const v = domainReveal(d, i, N);
+        expect(v).toBeGreaterThanOrEqual(prev - 1e-9);
+        prev = v;
+      }
+    }
   });
 });

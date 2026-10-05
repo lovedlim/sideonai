@@ -4,12 +4,13 @@ import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 import { buildGraph, mulberry32, randomDirection, SHELLS_HIGH, SHELLS_LOW } from './graph';
-import { stageValues } from './stages';
+import { domainReveal, smoothstep, stageValues } from './stages';
 import * as GLSL from './shaders';
 
 export interface FrameInfo {
-  domains: { x: number; y: number; side: 'left' | 'right' }[];
-  core: { x: number; y: number };
+  /** reveal: 이 도메인의 이름표가 켜진 정도(0~1). 광선이 노드에 닿을 때 올라간다 */
+  domains: { x: number; y: number; side: 'left' | 'right'; reveal: number }[];
+  core: { x: number; y: number; reveal: number };
   fps: number;
 }
 
@@ -68,7 +69,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     uRDir: { value: [new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 1, 0)] },
     uRT: { value: [99, 99, 99] }, uRAmp: { value: [0, 0, 0] },
     uMouse: { value: new THREE.Vector2(0.2, 0.1) }, uAspect: { value: 1 }, uPx: { value: 28 },
-    uCamZ: { value: 3.8 }, uDim: { value: 1 }, uEnergy: { value: 0 }, uDomain: { value: 0 }, uHotR: { value: 0.42 },
+    uCamZ: { value: 3.8 }, uDim: { value: 1 }, uEnergy: { value: 0 }, uDomain: { value: 0 }, uDomainCount: { value: opts.domainCount }, uHotR: { value: 0.42 },
   };
   const additive = (vertexShader: string, fragmentShader: string) =>
     new THREE.ShaderMaterial({
@@ -184,16 +185,17 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
   // 도메인 장면: 중심에서 도메인 노드로 가는 광선과 표식
   const domainLocal = graph.domainNodes.map(i => new THREE.Vector3().fromArray(graph.positions, i * 3));
   {
-    const pos: number[] = [], aT: number[] = [], phase: number[] = [];
-    for (const v of domainLocal) {
+    const pos: number[] = [], aT: number[] = [], phase: number[] = [], idx: number[] = [];
+    domainLocal.forEach((v, i) => {
       const ph = rnd();
-      pos.push(0, 0, 0, v.x, v.y, v.z); aT.push(0, 1); phase.push(ph, ph);
-    }
+      pos.push(0, 0, 0, v.x, v.y, v.z); aT.push(0, 1); phase.push(ph, ph); idx.push(i, i);
+    });
     const g = new THREE.BufferGeometry();
-    f32(g, 'position', pos, 3); f32(g, 'aT', aT, 1); f32(g, 'aPhase', phase, 1);
+    f32(g, 'position', pos, 3); f32(g, 'aT', aT, 1); f32(g, 'aPhase', phase, 1); f32(g, 'aIdx', idx, 1);
     add(new THREE.LineSegments(g, additive(GLSL.BEAM_VERT, GLSL.BEAM_FRAG)));
     const g2 = new THREE.BufferGeometry();
     f32(g2, 'position', domainLocal.flatMap(v => [v.x, v.y, v.z]), 3);
+    f32(g2, 'aIdx', domainLocal.map((_, i) => i), 1);
     add(new THREE.Points(g2, additive(GLSL.MARK_VERT, GLSL.MARK_FRAG)));
   }
 
@@ -219,8 +221,8 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
   const hit = new THREE.Vector3(), tmp = new THREE.Vector3(), ndc = new THREE.Vector2();
   const sphere = new THREE.Sphere();
   const frameInfo: FrameInfo = {
-    domains: domainLocal.map((_, i) => ({ x: 0, y: 0, side: i < domainLocal.length / 2 ? 'right' as const : 'left' as const })),
-    core: { x: 0, y: 0 },
+    domains: domainLocal.map((_, i) => ({ x: 0, y: 0, reveal: 0, side: i < domainLocal.length / 2 ? 'right' as const : 'left' as const })),
+    core: { x: 0, y: 0, reveal: 0 },
     fps: 60,
   };
 
@@ -312,10 +314,12 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
       tmp.copy(v).applyMatrix4(group.matrixWorld).project(camera);
       frameInfo.domains[i].x = (tmp.x * 0.5 + 0.5) * W;
       frameInfo.domains[i].y = (-tmp.y * 0.5 + 0.5) * H;
+      frameInfo.domains[i].reveal = smoothstep(0.7, 0.95, domainReveal(dom, i, domainLocal.length));
     });
     tmp.set(0, 0, 0).project(camera);
     frameInfo.core.x = (tmp.x * 0.5 + 0.5) * W;
     frameInfo.core.y = (-tmp.y * 0.5 + 0.5) * H;
+    frameInfo.core.reveal = smoothstep(0, 0.15, dom);
     frameInfo.fps = fps;
 
     if (composer) composer.render();

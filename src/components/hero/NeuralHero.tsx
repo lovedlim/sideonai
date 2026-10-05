@@ -86,17 +86,19 @@ export default function NeuralHero() {
 
     let scene: HeroScene | null = null;
     let cancelled = false, inView = true, downgraded = false;
-    let labelOpacity = 0, slowSince = 0, bootedAt = 0;
+    let stageShow = 1, slowSince = 0, bootedAt = 0;
 
     const onFrame = (f: FrameInfo) => {
       labelRefs.current.forEach((el, i) => {
         if (!el) return;
-        el.style.transform = `translate3d(${f.domains[i].x}px, ${f.domains[i].y}px, 0)`;
-        el.style.opacity = String(labelOpacity);
+        const r = f.domains[i].reveal;
+        // 광선이 닿는 순간 노드 자리에서 커지며 나타난다
+        el.style.transform = `translate3d(${f.domains[i].x}px, ${f.domains[i].y}px, 0) scale(${0.8 + 0.2 * r})`;
+        el.style.opacity = String(r * stageShow);
       });
       if (aiRef.current) {
         aiRef.current.style.transform = `translate3d(${f.core.x}px, ${f.core.y}px, 0)`;
-        aiRef.current.style.opacity = String(labelOpacity);
+        aiRef.current.style.opacity = String(f.core.reveal * stageShow);
       }
       // high에서 40fps 미만이 2초 이어지면 low로 한 번만 내린다 (시작 직후 4초는 제외)
       if (current === "high" && !downgraded) {
@@ -119,7 +121,7 @@ export default function NeuralHero() {
     const applyStage = (p: number) => {
       const st = stageValues(p);
       const show = 1 - st.exit;
-      labelOpacity = st.domain * show;
+      stageShow = show;
       if (stageRef.current) stageRef.current.style.opacity = String(show);
       const copy = copyRef.current;
       if (copy) {

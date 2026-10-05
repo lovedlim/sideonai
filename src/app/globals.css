@@ -176,6 +176,7 @@ a.card:hover,
   position: absolute;
   left: 0;
   top: 0;
+  transform-origin: 0 0; /* 노드 자리에서 커지며 나타나도록 */
   opacity: 0;
   pointer-events: none;
   white-space: nowrap;
