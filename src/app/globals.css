@@ -188,6 +188,19 @@ a.card:hover,
   font-size: clamp(1.1rem, 1.8vw, 1.5rem);
 }
 
+/* 좁은 화면: 이름표를 노드 바로 아래 가운데에 붙여 화면 밖으로 나가지 않게 한다 */
+@media (max-width: 860px) {
+  .domain-label.is-right span,
+  .domain-label.is-left span {
+    translate: -50% 14px;
+    padding: 0.3rem 0.8rem;
+  }
+
+  .domain-label.is-core span {
+    translate: -50% calc(-100% - 26px);
+  }
+}
+
 .hero-hint {
   position: absolute;
   left: 50%;

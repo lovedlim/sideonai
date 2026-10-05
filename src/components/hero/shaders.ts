@@ -3,7 +3,7 @@
 // 노드와 연결선이 함께 쓰는 정점 변위.
 // 인트로 조립, 충격파(자동 1개 + 반응 3개), 스크롤 에너지 폭발, 커서 자석 효과를 한곳에서 계산한다.
 const PLACE = /* glsl */ `
-  uniform float uTime, uAssemble, uShockT, uShockAmp, uAspect, uPx, uCamZ, uEnergy;
+  uniform float uTime, uAssemble, uShockT, uShockAmp, uAspect, uPx, uCamZ, uEnergy, uHotR;
   uniform vec3 uShockDir;
   uniform vec3 uRDir[3];
   uniform float uRT[3];
@@ -28,7 +28,7 @@ const PLACE = /* glsl */ `
     p *= 1.0 + 0.012 * sin(uTime * 1.3 + aSeed * 40.0);
     vec4 clip = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
     vec2 dd = (clip.xy / clip.w - uMouse) * vec2(uAspect, 1.0);
-    vHot = 1.0 - smoothstep(0.0, 0.42, length(dd));
+    vHot = 1.0 - smoothstep(0.0, uHotR, length(dd));
     p += n * vHot * 0.13 * len;
     vec4 mv = modelViewMatrix * vec4(p, 1.0);
     vFade = mix(0.14, 1.0, 1.0 - smoothstep(uCamZ - 1.0, uCamZ + 1.2, -mv.z));

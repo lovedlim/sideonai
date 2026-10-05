@@ -59,7 +59,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     uRDir: { value: [new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 1, 0), new THREE.Vector3(0, 1, 0)] },
     uRT: { value: [99, 99, 99] }, uRAmp: { value: [0, 0, 0] },
     uMouse: { value: new THREE.Vector2(0.2, 0.1) }, uAspect: { value: 1 }, uPx: { value: 28 },
-    uCamZ: { value: 3.8 }, uDim: { value: 1 }, uEnergy: { value: 0 }, uDomain: { value: 0 },
+    uCamZ: { value: 3.8 }, uDim: { value: 1 }, uEnergy: { value: 0 }, uDomain: { value: 0 }, uHotR: { value: 0.42 },
   };
   const additive = (vertexShader: string, fragmentShader: string) =>
     new THREE.ShaderMaterial({
@@ -232,7 +232,10 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
   };
 
   function applyCamera(dom: number, camZ: number) {
-    camera.position.set(-mx * 0.3 * fit, -my * 0.18 * fit, camZ * fit);
+    // 좁은 화면의 도메인 장면에서는 이름표가 화면 안에 들어오도록 카메라를 더 물린다
+    const f = fit * (narrow ? 1 + 0.85 * dom : 1);
+    camera.position.set(-mx * 0.3 * f, -my * 0.18 * f, camZ * f);
+    U.uHotR.value = 0.42 / f; // 커서 반응 반경은 화면이 아니라 구체 크기에 비례한다
     camera.lookAt(0, 0, 0);
     // 구체 중심을 화면 가로 62%(좁은 화면은 위쪽 36%)에 두고, 도메인 장면에서는 가운데로 옮긴다
     const offX = narrow ? 0 : -0.12 * W * (1 - dom);
