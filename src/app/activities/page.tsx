@@ -4,6 +4,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { sections, totalCount } from "@/data/activities";
+import SiteFooter from "@/components/SiteFooter";
+import SiteHeader from "@/components/SiteHeader";
 
 export default function ActivitiesPage() {
   const [activeYear, setActiveYear] = useState<number | "all">("all");
@@ -13,7 +15,8 @@ export default function ActivitiesPage() {
 
   return (
     <div className="min-h-screen bg-bg">
-      <main className="max-w-2xl mx-auto px-4 py-10">
+      <SiteHeader />
+      <main id="main" className="max-w-2xl mx-auto px-4 pb-16 pt-28">
 
         {/* 뒤로가기 */}
         <Link
@@ -142,6 +145,7 @@ export default function ActivitiesPage() {
           문의: danmujicafe@gmail.com
         </p>
       </main>
+      <SiteFooter />
     </div>
   );
 }

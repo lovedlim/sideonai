@@ -8,10 +8,10 @@ export const DOMAIN_LINE = "어떤 도메인에도 AI를 더합니다";
 export const DOMAINS = ["공공", "금융", "소방", "방송", "교육", "유통"] as const;
 
 export const NAV = [
-  { href: "#services", label: "서비스" },
-  { href: "#track", label: "실적" },
-  { href: "#books", label: "도서·강의" },
-  { href: "#resources", label: "리소스" },
+  { href: "/#services", label: "서비스" },
+  { href: "/#track", label: "실적" },
+  { href: "/#books", label: "도서·강의" },
+  { href: "/#resources", label: "리소스" },
 ] as const;
 
 export const SERVICES = [
