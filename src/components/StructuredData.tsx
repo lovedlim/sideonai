@@ -20,7 +20,14 @@ export default function StructuredData() {
     "foundingDate": "2025-07",
     "founder": {
       "@type": "Person",
-      "name": "SideOnAI 대표"
+      "name": "김태헌"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "법조로 25, 광교SK뷰레이크타워 A동 2815호",
+      "addressLocality": "수원시 영통구",
+      "addressRegion": "경기도",
+      "addressCountry": "KR"
     },
     "areaServed": "KR",
     "serviceType": [

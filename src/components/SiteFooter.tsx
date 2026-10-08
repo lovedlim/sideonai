@@ -30,9 +30,15 @@ export default function SiteFooter() {
         </ul>
       </div>
       <div className="mx-auto mt-8 max-w-6xl space-y-1 font-mono text-xs text-muted">
+        {/* 좁은 화면에서도 항목 중간이 아니라 항목 사이에서 줄이 바뀌게 한다 */}
         <p>
-          {COMPANY.location} ·{" "}
-          <a href={`mailto:${CONTACT_EMAIL}`} className="transition hover:text-accent">
+          <span className="whitespace-nowrap">상호 {COMPANY.legalName}</span> ·{" "}
+          <span className="whitespace-nowrap">대표 {COMPANY.ceo}</span> ·{" "}
+          <span className="whitespace-nowrap">사업자등록번호 {COMPANY.bizNo}</span>
+        </p>
+        <p>
+          {COMPANY.address} ·{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="whitespace-nowrap transition hover:text-accent">
             {CONTACT_EMAIL}
           </a>
         </p>

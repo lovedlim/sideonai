@@ -132,10 +132,13 @@ export const RESOURCES = [
 
 export const CONTACT_EMAIL = "ceo@sideonai.com";
 
-// 하단 회사 정보. 사업자등록번호·상세 주소·법인 표기는 넣지 않는다.
+// 하단 회사 정보. 사업자등록증 기준 상호·대표·등록번호.
 export const COMPANY = {
   tagline: "SideOnAI · AI Transformation Partner",
-  location: "Gyeonggi-do, Republic of Korea",
+  legalName: "사이드온에이아이(SideOnAI)",
+  ceo: "김태헌",
+  bizNo: "591-64-00871",
+  address: "경기도 수원시 영통구 법조로 25, 광교SK뷰레이크타워 A동 2815호",
 };
 
 // 해외 방문자와 파트너를 위한 영문 소개.
