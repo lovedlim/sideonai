@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CtaLink from "@/components/CtaLink";
 import MobileMenu from "@/components/MobileMenu";
 import { NAV } from "@/data/site";
@@ -13,9 +14,9 @@ export default function SiteHeader() {
         본문으로 건너뛰기
       </a>
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <a href="/" className="text-lg font-bold tracking-[-0.02em]">
+        <Link href="/" className="text-lg font-bold tracking-[-0.02em]">
           SideOn<span className="text-accent">AI</span>
-        </a>
+        </Link>
         <nav aria-label="주요 메뉴" className="hidden items-center gap-8 md:flex">
           {NAV.map((n) => (
             <a key={n.href} href={n.href} className="text-[0.95rem] text-ink/80 transition hover:text-accent">
