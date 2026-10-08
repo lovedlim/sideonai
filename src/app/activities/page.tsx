@@ -142,7 +142,7 @@ export default function ActivitiesPage() {
         </div>
 
         <p className="text-center text-xs text-muted mt-10 mb-4">
-          문의: danmujicafe@gmail.com
+          문의: ceo@sideonai.com
         </p>
       </main>
       <SiteFooter />

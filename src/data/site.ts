@@ -31,7 +31,7 @@ export const SERVICES = [
     key: "automation",
     title: "업무 자동화",
     body: "반복 업무를 n8n·파이썬·AI 에이전트로 자동화합니다. 설계부터 구현까지 함께합니다.",
-    tags: ["n8n", "AI 에이전트", "문서·행정 자동화"],
+    tags: ["n8n", "Claude API", "AI 에이전트", "문서·행정 자동화"],
   },
   {
     key: "vibe",
@@ -130,10 +130,21 @@ export const RESOURCES = [
   },
 ] as const;
 
-export const CONTACT_EMAIL = "danmujicafe@gmail.com";
+export const CONTACT_EMAIL = "ceo@sideonai.com";
+
+// 하단 회사 정보. 사업자등록번호·상세 주소·법인 표기는 넣지 않는다.
+export const COMPANY = {
+  tagline: "SideOnAI · AI Transformation Partner",
+  location: "Gyeonggi-do, Republic of Korea",
+};
+
+// 해외 방문자와 파트너를 위한 영문 소개.
+export const ABOUT_EN = [
+  "SideOnAI is an AI transformation startup founded in 2025 in Korea.",
+  "We help companies and public institutions adopt AI through hands-on training, consulting, and workflow automation built with Claude.",
+] as const;
 
 export const CONTACT_LINKS = [
   { label: "이메일", text: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
-  { label: "GitHub", text: "github.com/lovedlim", href: "https://github.com/lovedlim/" },
   { label: "LinkedIn", text: "linkedin.com/in/ailab", href: "https://www.linkedin.com/in/ailab" },
 ] as const;

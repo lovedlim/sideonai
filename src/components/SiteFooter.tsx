@@ -1,4 +1,4 @@
-import { CONTACT_LINKS, NAV } from "@/data/site";
+import { COMPANY, CONTACT_EMAIL, CONTACT_LINKS, NAV } from "@/data/site";
 
 export default function SiteFooter() {
   return (
@@ -8,7 +8,7 @@ export default function SiteFooter() {
           <p className="text-lg font-bold tracking-[-0.02em]">
             SideOn<span className="text-accent">AI</span>
           </p>
-          <p className="mt-2 text-sm text-muted">도메인에 AI를 더하는, SideOnAI (퇴근후딴짓)</p>
+          <p className="mt-2 text-sm text-muted">{COMPANY.tagline}</p>
         </div>
         <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink/80">
           {NAV.map((n) => (
@@ -29,7 +29,15 @@ export default function SiteFooter() {
           ))}
         </ul>
       </div>
-      <p className="mx-auto mt-8 max-w-6xl font-mono text-xs text-muted">© {new Date().getFullYear()} SideOnAI</p>
+      <div className="mx-auto mt-8 max-w-6xl space-y-1 font-mono text-xs text-muted">
+        <p>
+          {COMPANY.location} ·{" "}
+          <a href={`mailto:${CONTACT_EMAIL}`} className="transition hover:text-accent">
+            {CONTACT_EMAIL}
+          </a>
+        </p>
+        <p>© {new Date().getFullYear()} SideOnAI. All rights reserved.</p>
+      </div>
     </footer>
   );
 }

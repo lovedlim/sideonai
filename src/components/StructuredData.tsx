@@ -10,14 +10,14 @@ export default function StructuredData() {
       "@type": "ContactPoint",
       "telephone": "",
       "contactType": "customer service",
-      "email": "danmujicafe@gmail.com"
+      "email": "ceo@sideonai.com"
     },
     "sameAs": [
       "https://youtube.com/@ai-study",
-      "https://github.com/lovedlim/",
+      "https://www.linkedin.com/in/ailab",
       "https://www.inflearn.com/users/26238/@roadmap"
     ],
-    "foundingDate": "2019",
+    "foundingDate": "2025-07",
     "founder": {
       "@type": "Person",
       "name": "SideOnAI 대표"

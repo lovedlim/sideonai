@@ -2,6 +2,7 @@ import CardGlow from "@/components/CardGlow";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import NeuralHero from "@/components/hero/NeuralHero";
+import About from "@/components/sections/About";
 import Books from "@/components/sections/Books";
 import Contact from "@/components/sections/Contact";
 import Resources from "@/components/sections/Resources";
@@ -14,6 +15,7 @@ export default function Home() {
       <SiteHeader />
       <main id="main">
         <NeuralHero />
+        <About />
         <Services />
         <TrackRecord />
         <Books />
