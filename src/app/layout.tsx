@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://sideonai.com"),
   title: "SideOnAI - 도메인에 AI를 더하다",
   description: "기업·기관을 위한 AI 교육, 업무 자동화, 바이브 코딩. 도메인에 AI를 더하는 SideOnAI.",
-  keywords: "SideOnAI, AI 교육, 기업 교육, 업무 자동화, 바이브 코딩, 생성형 AI, 데이터 분석, 빅데이터 분석기사",
+  keywords: "SideOnAI, AX 컨설팅, AI 전환, AI 교육, 기업 교육, 업무 자동화, 바이브 코딩, 생성형 AI, 데이터 분석, 빅데이터 분석기사",
   authors: [{ name: "SideOnAI" }],
   creator: "SideOnAI",
   publisher: "SideOnAI",

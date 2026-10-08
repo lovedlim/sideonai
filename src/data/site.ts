@@ -1,7 +1,7 @@
 // 홈에 나오는 문구와 링크의 단일 출처.
 
 export const SLOGAN = "도메인에 AI를 더하다";
-export const TAGLINE = "AI 교육 · 업무 자동화 · 바이브 코딩 · 데이터 분석";
+export const TAGLINE = "AX 컨설팅 · AI 교육 · 업무 자동화 · 바이브 코딩";
 export const DOMAIN_LINE = "어떤 도메인에도 AI를 더합니다";
 
 // 히어로 도메인 장면의 이름표. 순서는 graph.ts의 DOMAIN_DIRS와 같다 (오른쪽 3개, 왼쪽 3개).
@@ -15,6 +15,12 @@ export const NAV = [
 ] as const;
 
 export const SERVICES = [
+  {
+    key: "ax",
+    title: "AX 컨설팅",
+    body: "조직의 업무를 진단하고 AI 전환 로드맵을 설계합니다. 교육과 자동화까지 실행으로 연결합니다.",
+    tags: ["업무 진단", "AX 로드맵", "데이터 기반 의사결정"],
+  },
   {
     key: "education",
     title: "AI 교육",
@@ -32,12 +38,6 @@ export const SERVICES = [
     title: "바이브 코딩",
     body: "코딩 경험이 없어도 Cursor·Claude Code로 웹 서비스를 직접 만드는 워크숍.",
     tags: ["Cursor", "Claude Code", "1-Day 워크숍"],
-  },
-  {
-    key: "data",
-    title: "데이터 분석",
-    body: "AI를 활용한 데이터 수집과 분석. 빅데이터분석기사 실기 저자의 실전 과정.",
-    tags: ["파이썬·판다스", "머신러닝", "빅데이터분석기사"],
   },
 ] as const;
 

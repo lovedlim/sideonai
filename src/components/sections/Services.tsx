@@ -5,6 +5,15 @@ import SectionShell from "./SectionShell";
 
 // 서비스별 선 아이콘. 청록은 신경망, 금색 점은 AI — 히어로와 같은 색 규칙이다.
 const ICONS: Record<(typeof SERVICES)[number]["key"], ReactNode> = {
+  // AX 컨설팅: 현재 위치에서 단계를 밟아 AI 전환 목표에 닿는 로드맵
+  ax: (
+    <>
+      <path d="M10 44 C22 44 18 30 28 30 C38 30 34 16 46 14" />
+      <circle cx="10" cy="44" r="3.5" />
+      <circle cx="28" cy="30" r="3.5" />
+      <circle cx="46" cy="13" r="4.5" className="fill-warm stroke-warm" />
+    </>
+  ),
   // 교육: 하나의 AI에서 여러 사람에게 퍼진다
   education: (
     <>
@@ -31,17 +40,6 @@ const ICONS: Record<(typeof SERVICES)[number]["key"], ReactNode> = {
       <path d="M18 16 L6 28 L18 40" />
       <path d="M38 16 L50 28 L38 40" />
       <path d="M28 18 L31 25 L38 28 L31 31 L28 38 L25 31 L18 28 L25 25 Z" className="fill-warm stroke-warm" />
-    </>
-  ),
-  // 데이터 분석: 흩어진 점과 올라가는 추세선
-  data: (
-    <>
-      <path d="M8 46 L48 46 M8 46 L8 10" />
-      <path d="M12 40 L22 32 L32 34 L46 16" />
-      <circle cx="16" cy="24" r="2" />
-      <circle cx="26" cy="20" r="2" />
-      <circle cx="38" cy="36" r="2" />
-      <circle cx="46" cy="16" r="4.5" className="fill-warm stroke-warm" />
     </>
   ),
 };

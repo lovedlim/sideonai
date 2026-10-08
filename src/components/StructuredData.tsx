@@ -24,6 +24,7 @@ export default function StructuredData() {
     },
     "areaServed": "KR",
     "serviceType": [
+      "AX 컨설팅",
       "AI 교육",
       "업무 자동화",
       "바이브 코딩 교육",
