@@ -1,20 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #03060b;
-  --color-surface: #0a121c;
-  --color-raised: #101b28;
-  --color-line: rgba(120, 220, 255, 0.16);
-  --color-ink: #eaf6ff;
-  --color-muted: #8aa0b4;
-  --color-accent: #4df3ff;
-  --color-warm: #ffb454;
+  /* 낮: 본문 섹션. 종이 위에 먹으로 쓴 듯한 톤 */
+  --color-bg: #f2f2ef;
+  --color-surface: #e9e9e4;
+  --color-raised: #ffffff;
+  --color-line: #d6d5cf;
+  --color-ink: #17181b;
+  --color-muted: #63656b;
+  /* 황동. AI를 가리킬 때만 쓴다 */
+  --color-accent: #9a7440;
+  --color-warm: #c9a063;
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
@@ -36,108 +38,116 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+@layer base {
+  /* 밤: 히어로, 문의, 하단. 퇴근 후의 시간에서 시작한 회사라 처음과 끝을 밤으로 둔다 */
+  .night {
+    --color-bg: #0d0e10;
+    --color-surface: #16171a;
+    --color-raised: #1d1e22;
+    --color-line: rgba(236, 232, 222, 0.14);
+    --color-ink: #ecebe6;
+    --color-muted: #9a9890;
+    --color-accent: #c9a063;
+    color-scheme: dark;
+    background: var(--color-bg);
+    color: var(--color-ink);
+  }
+}
+
 /* base 레이어에 두어 focus:outline-none 같은 유틸리티가 이길 수 있게 한다 */
 @layer base {
   :focus-visible {
-    outline: 2px solid var(--color-warm);
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
   }
 }
 
 ::selection {
-  background: rgba(77, 243, 255, 0.3);
+  background: rgba(154, 116, 64, 0.25);
 }
 
-/* 섹션 번호와 영문 라벨 */
-.label-mono {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-accent);
+@layer components {
+  /* 제목용 명조. 굵기를 낮추고 자간을 좁혀 인쇄물처럼 */
+  .font-display {
+    /* --font-hahmlet은 body에 정의되므로 :root의 @theme 변수로 감싸지 않고 여기서 바로 읽는다 */
+    font-family: var(--font-hahmlet), "AppleMyungjo", "Nanum Myeongjo", serif;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+  }
+
+  /* 섹션 머리의 작은 이름표 */
+  .eyebrow {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-muted);
+  }
+
+  /* 밑줄이 그어지는 글 링크 */
+  .text-link {
+    text-decoration: underline;
+    text-decoration-color: var(--color-line);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+  }
+
+  .text-link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* 조용한 면. 문의 폼과 강연 페이지에서 쓴다 */
+  .card {
+    position: relative;
+    border: 1px solid var(--color-line);
+    border-radius: 2px;
+    background: var(--color-surface);
+  }
+
+  .node-dot {
+    display: inline-block;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 9999px;
+    background: var(--color-accent);
+  }
+
+  /* 줄 목록의 한 행. 호버하면 화살표가 조금 밀린다 */
+  .row-link .arrow {
+    transition: translate 0.25s ease;
+  }
+
+  .row-link:hover .arrow {
+    translate: 4px 0;
+  }
 }
 
-/* 선으로 된 카드. 호버하면 테두리가 밝아지고 안쪽에 빛이 든다 */
-.card {
+/* 밤(히어로)에서 낮(본문)으로 넘어가는 띠. 지평선 근처에 황동빛이 아주 옅게 돈다 */
+.dawn {
   position: relative;
-  border: 1px solid var(--color-line);
-  border-radius: 1rem;
-  background: linear-gradient(180deg, rgba(16, 27, 40, 0.7), rgba(10, 18, 28, 0.7));
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  z-index: 10;
+  height: clamp(10rem, 34vh, 22rem);
+  margin-top: -1px;
+  background: linear-gradient(
+    180deg,
+    #0d0e10 0%,
+    #1b1a18 30%,
+    #5b5346 58%,
+    #c8bfae 82%,
+    var(--color-bg) 100%
+  );
 }
 
-a.card:hover,
-.card.is-interactive:hover {
-  border-color: rgba(77, 243, 255, 0.55);
-  box-shadow: 0 0 0 1px rgba(77, 243, 255, 0.12), 0 18px 60px -24px rgba(77, 243, 255, 0.45);
-  transform: translateY(-2px);
-}
-
-/* 카드 안에서 커서를 따라다니는 빛. 위치는 CardGlow가 --mx, --my로 넣는다 */
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(77, 243, 255, 0.16), transparent 62%);
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
-/* 섹션 위쪽 경계: 히어로의 빛이 번져 내려오는 듯한 선과 옅은 빛 */
-.section-glow::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  translate: -50% 0;
-  width: min(72rem, 92%);
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(77, 243, 255, 0.5), transparent);
-}
-
-.section-glow::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  translate: -50% 0;
-  width: min(56rem, 86%);
-  height: 220px;
-  pointer-events: none;
-  background: radial-gradient(ellipse at top, rgba(77, 243, 255, 0.09), transparent 68%);
-}
-
-/* 섹션 배경의 옅은 점 격자. 위쪽에서만 보이고 아래로 사라진다 */
-.dot-field {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(rgba(120, 220, 255, 0.16) 1px, transparent 1.6px);
-  background-size: 30px 30px;
-  -webkit-mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 0%, transparent 100%);
-  mask-image: radial-gradient(ellipse 70% 55% at 50% 0%, #000 0%, transparent 100%);
-}
-
-/* 노드 점 */
-.node-dot {
-  display: inline-block;
-  width: 0.4rem;
-  height: 0.4rem;
-  border-radius: 9999px;
-  background: var(--color-accent);
-  box-shadow: 0 0 10px var(--color-accent);
+.dusk {
+  height: clamp(8rem, 24vh, 16rem);
+  margin-top: 0;
+  rotate: 180deg;
 }
 
 /* ---------- 히어로 ---------- */
 
 .hero-title {
-  text-shadow: 0 2px 30px rgba(3, 6, 11, 0.95), 0 0 2px rgba(3, 6, 11, 0.8);
+  text-shadow: 0 2px 30px rgba(13, 14, 16, 0.95), 0 0 2px rgba(13, 14, 16, 0.8);
 }
 
 /* 슬로건 블록의 순차 등장. 인트로에서 입자가 모이는 동안 한 줄씩 올라온다 */
@@ -167,7 +177,7 @@ a.card:hover,
   aspect-ratio: 1;
   translate: -50% -50%;
   background: url("/images/hero-poster.webp") center / contain no-repeat,
-    radial-gradient(circle, rgba(77, 243, 255, 0.16), transparent 62%);
+    radial-gradient(circle, rgba(236, 232, 222, 0.06), transparent 62%);
   -webkit-mask-image: radial-gradient(circle, #000 52%, transparent 70%);
   mask-image: radial-gradient(circle, #000 52%, transparent 70%);
 }
@@ -212,7 +222,7 @@ a.card:hover,
   border-radius: 50%;
   pointer-events: none;
   mix-blend-mode: screen;
-  background: radial-gradient(circle, rgba(77, 243, 255, 0.2), rgba(77, 243, 255, 0.05) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(236, 232, 222, 0.07), transparent 65%);
   will-change: transform;
 }
 
@@ -236,14 +246,14 @@ a.card:hover,
 
 .domain-label span {
   display: inline-block;
-  padding: 0.4rem 0.95rem;
-  border: 1.5px solid rgba(255, 180, 84, 0.85);
-  border-radius: 9999px;
-  background: rgba(6, 12, 20, 0.82);
-  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: #fff;
+  padding: 0.3rem 0.1rem;
+  border-bottom: 1px solid rgba(201, 160, 99, 0.7);
+  font-family: var(--font-hahmlet), "AppleMyungjo", serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #ecebe6;
+  text-shadow: 0 0 18px rgba(13, 14, 16, 0.95);
 }
 
 .domain-label.is-right span {
@@ -256,8 +266,9 @@ a.card:hover,
 
 .domain-label.is-core span {
   translate: 22px calc(-100% - 14px);
-  border-color: var(--color-accent);
-  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  border-color: transparent;
+  color: var(--color-accent);
+  font-size: clamp(1.2rem, 2vw, 1.7rem);
 }
 
 /* 좁은 화면: 이름표를 노드 바로 아래 가운데에 붙여 화면 밖으로 나가지 않게 한다 */
@@ -282,10 +293,8 @@ a.card:hover,
   flex-direction: column;
   align-items: center;
   gap: 0.6rem;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
   color: var(--color-muted);
   pointer-events: none;
 }

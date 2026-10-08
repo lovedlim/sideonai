@@ -23,35 +23,31 @@ function hasWebGL2(): boolean {
 function HeroCopy({ className = "" }: { className?: string }) {
   return (
     <div className={className}>
-      <p className="label-mono hero-rise mb-5">SideOnAI</p>
       <h1
-        className="hero-title hero-rise text-[clamp(2.5rem,6.2vw,5.5rem)] font-bold leading-[1.05] tracking-[-0.035em] text-balance"
+        className="hero-title hero-rise font-display text-[clamp(2.75rem,6.6vw,6rem)] leading-[1.08] text-balance"
         style={{ animationDelay: "0.15s" }}
       >
         {/* "AI"만 강조색으로. 슬로건 문자열에 AI가 없으면 그대로 출력된다 */}
         {SLOGAN.split("AI").map((part, i, all) => (
           <span key={i}>
             {part}
-            {i < all.length - 1 && <span className="text-accent [text-shadow:0_0_36px_rgba(77,243,255,0.55)]">AI</span>}
+            {i < all.length - 1 && <span className="text-accent">AI</span>}
           </span>
         ))}
       </h1>
-      <p className="hero-rise mt-5 text-[clamp(1rem,1.4vw,1.25rem)] text-ink/75" style={{ animationDelay: "0.45s" }}>
+      <p className="hero-rise mt-6 text-[clamp(1rem,1.3vw,1.15rem)] text-muted" style={{ animationDelay: "0.45s" }}>
         {TAGLINE}
       </p>
-      <div data-hero-cta className="hero-rise mt-8 flex flex-wrap gap-3" style={{ animationDelay: "0.7s" }}>
+      <div data-hero-cta className="hero-rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-4" style={{ animationDelay: "0.7s" }}>
         <CtaLink
           href="#contact"
           location="hero"
-          className="rounded-full bg-accent px-6 py-3 text-[0.95rem] font-semibold text-bg transition hover:shadow-[0_0_32px_rgba(77,243,255,0.55)]"
+          className="bg-ink px-6 py-3.5 text-[0.95rem] font-semibold text-bg transition hover:bg-accent"
         >
           협업 문의하기
         </CtaLink>
-        <a
-          href="#track"
-          className="rounded-full border border-line bg-bg/40 px-6 py-3 text-[0.95rem] font-semibold text-ink backdrop-blur transition hover:border-accent/70"
-        >
-          강연 실적 보기
+        <a href="#track" className="row-link text-[0.95rem] font-semibold text-ink">
+          강연 실적 보기 <span className="arrow inline-block" aria-hidden="true">→</span>
         </a>
       </div>
     </div>
@@ -126,7 +122,8 @@ export default function NeuralHero() {
 
     const applyStage = (p: number) => {
       const st = stageValues(p);
-      const show = 1 - st.exit;
+      // 퇴장할 때 장면을 완전히 끄지 않고 옅게 남긴다. 빈 밤 화면 대신 별빛이 새벽 띠로 이어지며 올라간다
+      const show = 1 - st.exit * 0.55;
       stageShow = show;
       if (stageRef.current) stageRef.current.style.opacity = String(show);
       const copy = copyRef.current;
@@ -280,15 +277,15 @@ export default function NeuralHero() {
   // 동작 줄이기 또는 WebGL 불가: 정지 화면. 내용은 모두 텍스트로 남는다.
   if (quality === "static") {
     return (
-      <section id="top" className="relative flex min-h-svh items-center overflow-hidden">
+      <section id="top" className="night relative flex min-h-svh items-center overflow-hidden">
         <div className="hero-poster" aria-hidden="true" />
         <div className="hero-vignette" aria-hidden="true" />
         <div className="relative mx-auto w-full max-w-6xl px-5 py-28 sm:px-8">
           <HeroCopy className="max-w-2xl" />
-          <p className="mt-14 text-lg font-semibold text-ink">{DOMAIN_LINE}</p>
-          <ul className="mt-4 flex flex-wrap gap-2">
+          <p className="mt-14 font-display text-xl text-ink">{DOMAIN_LINE}</p>
+          <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
             {DOMAINS.map((d) => (
-              <li key={d} className="rounded-full border border-warm/70 bg-bg/70 px-4 py-1.5 text-[0.95rem] font-semibold">
+              <li key={d} className="border-b border-accent/70 pb-1 font-display text-lg">
                 {d}
               </li>
             ))}
@@ -299,7 +296,7 @@ export default function NeuralHero() {
   }
 
   return (
-    <section id="top" ref={trackRef} className="hero-track relative h-[280vh]">
+    <section id="top" ref={trackRef} className="night hero-track relative h-[280vh]">
       <div ref={stickyRef} className="sticky top-0 h-screen overflow-hidden supports-[height:100svh]:h-svh">
         <div ref={stageRef} className="absolute inset-0">
           <div className="hero-poster" aria-hidden="true" />
@@ -325,8 +322,8 @@ export default function NeuralHero() {
               ref={lineRef}
               className="pointer-events-none absolute inset-x-0 bottom-[9svh] px-5 text-center opacity-0"
             >
-              <p className="label-mono mb-3 !text-warm">Domain + AI</p>
-              <p className="hero-title text-[clamp(1.5rem,3.4vw,2.75rem)] font-bold tracking-[-0.03em]">{DOMAIN_LINE}</p>
+              <p className="eyebrow mb-3 !text-accent">도메인 + AI</p>
+              <p className="hero-title font-display text-[clamp(1.6rem,3.6vw,3rem)]">{DOMAIN_LINE}</p>
             </div>
           </div>
         </div>

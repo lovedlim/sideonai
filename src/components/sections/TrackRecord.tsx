@@ -7,62 +7,66 @@ import SectionHead from "./SectionHead";
 import SectionShell from "./SectionShell";
 
 export default function TrackRecord() {
+  // 큰 사진 1장(2×2 칸) + 작은 사진 8장이면 네 칸 격자가 빈칸 없이 찬다
+  const shown = photos.slice(0, 9);
   return (
     <SectionShell id="track">
       <SectionHead
-        no="02"
-        en="Track record"
+        label="실적"
         title="현장에서 검증했습니다"
         lead="기업, 공공기관, 컨퍼런스에서 진행한 강의와 강연입니다."
       />
 
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-        <div className="reveal">
-          <p className="font-mono text-[clamp(5rem,14vw,10rem)] font-bold leading-none tracking-[-0.06em] text-accent [text-shadow:0_0_60px_rgba(77,243,255,0.35)]">
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
+        <div className="reveal lg:col-span-3">
+          <p className="font-display text-[clamp(4.5rem,9vw,7rem)] leading-none">
             <CountUp value={totalCount} />
-            <span className="text-warm">+</span>
+            <span className="text-accent">+</span>
           </p>
-          <p className="mt-3 text-lg text-ink/85">누적 강의 · 강연 횟수</p>
-          <Link
-            href="/activities"
-            className="mt-8 inline-flex items-center gap-2 rounded-full border border-line px-5 py-2.5 text-[0.95rem] font-semibold transition hover:border-accent/70 hover:text-accent"
-          >
-            전체 활동 보기 <span aria-hidden="true">→</span>
+          <p className="mt-3 text-muted">누적 강의 · 강연 횟수</p>
+          <Link href="/activities" className="row-link mt-8 inline-block font-semibold">
+            전체 활동 보기 <span className="arrow inline-block" aria-hidden="true">→</span>
           </Link>
         </div>
 
-        <ul className="reveal flex flex-wrap content-start gap-x-2 gap-y-2.5">
-          {orgNames.map((org) => (
-            <li key={org} className="rounded-full border border-line bg-surface/60 px-3.5 py-1.5 text-[0.9rem] text-ink/85">
-              {org}
-            </li>
+        {/* 기관명은 칩 대신 문장처럼 이어 쓴다 */}
+        <p className="reveal font-display text-[clamp(1.25rem,2vw,1.6rem)] leading-[1.7] text-ink/90 lg:col-span-9">
+          {orgNames.map((org, i) => (
+            <span key={org}>
+              <span className="sm:whitespace-nowrap">{org}</span>
+              {/* 구분선은 앞 이름에 붙이고 뒤에만 공백을 둬서, 줄이 구분선 뒤에서 바뀌게 한다 */}
+              {i < orgNames.length - 1 && <><span className="ml-2 mr-1 text-line" aria-hidden="true">/</span> </>}
+            </span>
           ))}
-        </ul>
+        </p>
       </div>
 
-      <dl className="reveal mt-16 grid grid-cols-2 border-t border-line lg:grid-cols-4">
-        {STATS.map((s) => (
-          <div key={s.label} className="border-b border-line py-6 pr-4 lg:border-b-0">
+      <dl className="reveal mt-20 grid grid-cols-2 border-y border-line lg:grid-cols-4">
+        {STATS.map((s, i) => (
+          <div key={s.label} className={`py-7 pr-4 ${i % 2 ? "pl-6" : ""} ${i > 0 ? "lg:border-l lg:border-line lg:pl-6" : ""} ${i < 2 ? "border-b border-line lg:border-b-0" : ""}`}>
             <dt className="sr-only">{s.label}</dt>
-            <dd className="font-mono text-[clamp(1.75rem,3vw,2.5rem)] font-bold tracking-[-0.04em] text-ink">{s.value}</dd>
-            <dd className="mt-1 text-sm text-muted" aria-hidden="true">{s.label}</dd>
+            <dd className="font-display text-[clamp(1.9rem,3vw,2.6rem)] leading-none">{s.value}</dd>
+            <dd className="mt-2 text-sm text-muted" aria-hidden="true">{s.label}</dd>
           </div>
         ))}
       </dl>
 
-      <ul className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-        {photos.slice(0, 8).map((p) => (
-          <li key={p.image} className="reveal group relative aspect-square overflow-hidden rounded-xl border border-line">
-            <Image
-              src={p.image}
-              alt={`${p.org} 강연 현장`}
-              fill
-              sizes="(max-width: 640px) 50vw, 280px"
-              className="object-cover opacity-80 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
-            />
-            <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-bg via-bg/70 to-transparent px-3 pb-2.5 pt-8 text-[0.8rem] font-medium text-ink">
-              {p.org.replace(/\s*\(.*\)$/, "")}
-            </span>
+      {/* 현장 사진. 첫 장을 크게 두고 나머지를 옆에 모은다 */}
+      <ul className="mt-16 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-4">
+        {shown.map((p, i) => (
+          <li key={p.image} className={`reveal ${i === 0 ? "col-span-2 row-span-2" : ""}`}>
+            <figure className="flex h-full flex-col">
+              <div className={`relative overflow-hidden bg-surface ${i === 0 ? "aspect-[4/3] sm:aspect-auto sm:flex-1" : "aspect-[4/3]"}`}>
+                <Image
+                  src={p.image}
+                  alt={`${p.org} 강연 현장`}
+                  fill
+                  sizes={i === 0 ? "(max-width: 640px) 100vw, 560px" : "(max-width: 640px) 50vw, 280px"}
+                  className="object-cover grayscale-[35%] transition duration-700 hover:grayscale-0"
+                />
+              </div>
+              <figcaption className="mt-2.5 text-[0.8rem] text-muted">{p.org.replace(/\s*\(.*\)$/, "")}</figcaption>
+            </figure>
           </li>
         ))}
       </ul>

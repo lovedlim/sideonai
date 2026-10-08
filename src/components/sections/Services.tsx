@@ -1,86 +1,25 @@
-import type { ReactNode } from "react";
 import { SERVICES } from "@/data/site";
 import SectionHead from "./SectionHead";
 import SectionShell from "./SectionShell";
 
-// 서비스별 선 아이콘. 청록은 신경망, 금색 점은 AI — 히어로와 같은 색 규칙이다.
-const ICONS: Record<(typeof SERVICES)[number]["key"], ReactNode> = {
-  // AX 컨설팅: 현재 위치에서 단계를 밟아 AI 전환 목표에 닿는 로드맵
-  ax: (
-    <>
-      <path d="M10 44 C22 44 18 30 28 30 C38 30 34 16 46 14" />
-      <circle cx="10" cy="44" r="3.5" />
-      <circle cx="28" cy="30" r="3.5" />
-      <circle cx="46" cy="13" r="4.5" className="fill-warm stroke-warm" />
-    </>
-  ),
-  // 교육: 하나의 AI에서 여러 사람에게 퍼진다
-  education: (
-    <>
-      <path d="M28 14 L10 42 M28 14 L28 42 M28 14 L46 42" />
-      <circle cx="10" cy="44" r="3.5" />
-      <circle cx="28" cy="44" r="3.5" />
-      <circle cx="46" cy="44" r="3.5" />
-      <circle cx="28" cy="12" r="4.5" className="fill-warm stroke-warm" />
-    </>
-  ),
-  // 자동화: 계속 도는 고리
-  automation: (
-    <>
-      <path d="M44 22 A18 18 0 0 0 12 20" />
-      <path d="M12 12 L12 21 L21 21" />
-      <path d="M12 34 A18 18 0 0 0 44 36" />
-      <path d="M44 44 L44 35 L35 35" />
-      <circle cx="28" cy="28" r="4.5" className="fill-warm stroke-warm" />
-    </>
-  ),
-  // 바이브 코딩: 코드 괄호 사이의 불꽃
-  vibe: (
-    <>
-      <path d="M18 16 L6 28 L18 40" />
-      <path d="M38 16 L50 28 L38 40" />
-      <path d="M28 18 L31 25 L38 28 L31 31 L28 38 L25 31 L18 28 L25 25 Z" className="fill-warm stroke-warm" />
-    </>
-  ),
-};
-
+// 서비스는 카드 대신 가는 선으로 나뉜 행으로 둔다. 컨설팅 제안서의 목차처럼 읽히게.
 export default function Services() {
   return (
     <SectionShell id="services">
       <SectionHead
-        no="01"
-        en="Services"
+        label="서비스"
         title="일하는 방식에 AI를 더합니다"
         lead="교육으로 끝내지 않습니다. 현장의 업무에 바로 쓰이도록 설계하고, 직접 만들어 보게 합니다."
       />
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {SERVICES.map((s, i) => (
-          <article key={s.key} className="card is-interactive reveal flex flex-col p-6 sm:p-7">
-            <div className="mb-8 flex items-start justify-between">
-              <svg
-                viewBox="0 0 56 56"
-                className="h-14 w-14 fill-none stroke-accent"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                {ICONS[s.key]}
-              </svg>
-              <span className="font-mono text-sm text-accent">0{i + 1}</span>
-            </div>
-            <h3 className="text-2xl font-bold tracking-[-0.02em]">{s.title}</h3>
-            <p className="mt-3 flex-1 leading-relaxed text-muted">{s.body}</p>
-            <ul className="mt-6 flex flex-wrap gap-1.5">
-              {s.tags.map((t) => (
-                <li key={t} className="rounded-full border border-line px-2.5 py-1 font-mono text-[0.7rem] text-ink/80">
-                  {t}
-                </li>
-              ))}
-            </ul>
-          </article>
+      <ul className="border-b border-line">
+        {SERVICES.map((s) => (
+          <li key={s.key} className="reveal grid grid-cols-1 gap-3 border-t border-line py-8 sm:py-10 lg:grid-cols-12 lg:gap-8">
+            <h3 className="font-display text-[1.75rem] leading-tight lg:col-span-3">{s.title}</h3>
+            <p className="text-[1.05rem] leading-relaxed text-ink/85 lg:col-span-6">{s.body}</p>
+            <p className="text-sm leading-relaxed text-muted lg:col-span-3 lg:pt-1.5">{s.tags.join(" · ")}</p>
+          </li>
         ))}
-      </div>
+      </ul>
     </SectionShell>
   );
 }

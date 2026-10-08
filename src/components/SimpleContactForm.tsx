@@ -147,7 +147,7 @@ export default function SimpleContactForm() {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-line rounded-xl bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition-all text-[0.95rem]"
+                className="w-full px-4 py-3 border border-line rounded-sm bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent transition-all text-[0.95rem]"
                 placeholder="홍길동"
               />
             </div>
@@ -163,7 +163,7 @@ export default function SimpleContactForm() {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-line rounded-xl bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition-all text-[0.95rem]"
+                className="w-full px-4 py-3 border border-line rounded-sm bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent transition-all text-[0.95rem]"
                 placeholder="hong@company.com"
               />
             </div>
@@ -179,7 +179,7 @@ export default function SimpleContactForm() {
                 required
                 value={formData.company}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-line rounded-xl bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition-all text-[0.95rem]"
+                className="w-full px-4 py-3 border border-line rounded-sm bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent transition-all text-[0.95rem]"
                 placeholder="(주)테크컴퍼니"
               />
             </div>
@@ -196,7 +196,7 @@ export default function SimpleContactForm() {
                 maxLength={2000}
                 value={formData.inquiry}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-line rounded-xl bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/30 transition-all resize-none text-[0.95rem]"
+                className="w-full px-4 py-3 border border-line rounded-sm bg-bg/60 text-ink placeholder:text-muted/60 focus:outline-none focus:border-accent transition-all resize-none text-[0.95rem]"
                 placeholder="문의하실 내용을 자세히 적어주세요."
               />
               <div className="text-right font-mono text-xs text-muted mt-1">
@@ -207,7 +207,7 @@ export default function SimpleContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-accent text-bg py-3.5 rounded-xl font-semibold hover:shadow-[0_0_32px_rgba(77,243,255,0.5)] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-ink text-bg py-3.5 rounded-sm font-semibold hover:bg-accent transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <div className="flex items-center justify-center space-x-2">
@@ -220,7 +220,7 @@ export default function SimpleContactForm() {
             </button>
 
             {submitMessage && (
-              <div className={`p-3 rounded-xl text-sm ${
+              <div className={`p-3 rounded-sm text-sm ${
                 submitMessage.includes("접수 확인") 
                   ? "bg-accent/10 text-accent border border-accent/40"
                   : "bg-red-500/10 text-red-300 border border-red-400/40"
@@ -267,7 +267,7 @@ export default function SimpleContactForm() {
             
             <div>
               <span className="font-medium text-muted">문의 내용:</span>
-              <div className="mt-1 p-3 bg-bg/60 border border-line rounded-lg text-ink whitespace-pre-wrap">
+              <div className="mt-1 p-3 bg-bg/60 border border-line rounded-sm text-ink whitespace-pre-wrap">
                 {submittedData.inquiry}
               </div>
             </div>

@@ -28,7 +28,7 @@ export default function ActivitiesPage() {
 
         {/* 헤더 */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold tracking-tight text-ink mb-2">
+          <h1 className="font-display text-[2.5rem] leading-tight text-ink mb-3">
             강의 · 강연 활동
           </h1>
           <p className="text-sm text-muted">
@@ -63,7 +63,7 @@ export default function ActivitiesPage() {
             <div key={section.year}>
               {/* 연도 구분선 */}
               <div className="flex items-center gap-3 mb-4">
-                <span className="font-mono text-2xl font-bold text-accent tracking-tight">
+                <span className="font-display text-3xl text-ink">
                   {section.year}
                 </span>
                 <div className="flex-1 h-px bg-line" />
@@ -85,7 +85,7 @@ export default function ActivitiesPage() {
                         {group.org}
                       </span>
                       {group.activities.length > 1 && (
-                        <span className="font-mono text-xs text-warm border border-warm/40 px-2 py-0.5 rounded-full">
+                        <span className="text-xs text-muted">
                           {group.activities.length}회
                         </span>
                       )}
@@ -93,7 +93,7 @@ export default function ActivitiesPage() {
 
                     {/* 기관 이미지 */}
                     {group.image && (
-                      <div className="mx-auto mt-3 relative aspect-square w-[calc(100%-5rem)] max-w-sm rounded-xl overflow-hidden border border-line">
+                      <div className="mx-auto mt-3 relative aspect-square w-[calc(100%-5rem)] max-w-sm overflow-hidden">
                         <Image
                           src={group.image}
                           alt={group.org}

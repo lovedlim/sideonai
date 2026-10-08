@@ -8,7 +8,7 @@ export default function NotFound() {
       <SiteHeader />
       <main id="main" className="flex flex-1 items-center px-5 pt-28 pb-16 sm:px-8">
         <div className="mx-auto w-full max-w-6xl">
-          <p className="label-mono mb-4">404</p>
+          <p className="eyebrow mb-4">404</p>
           <h1 className="text-[clamp(1.9rem,4vw,3.25rem)] font-bold leading-[1.12] tracking-[-0.03em]">
             이 주소에는 페이지가 없습니다
           </h1>

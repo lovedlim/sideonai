@@ -58,9 +58,9 @@ export const NODE_FRAG = /* glsl */ `
     if (d > 0.5) discard;
     float c = 1.0 - smoothstep(0.06, 0.5, d);
     float w = clamp(vHot * 0.7 + vWave * 1.5, 0.0, 1.0);
-    // 파동과 커서 주변은 흰 청록으로 밝아지기만 한다. 금색은 생각의 경로와 도메인에만 쓴다.
-    vec3 col = mix(vec3(0.42, 0.9, 1.0), vec3(0.85, 1.0, 1.0), w);
-    col = mix(col, vec3(1.0, 0.82, 0.5), vNodePath); // 생각의 경로 위의 노드는 따뜻한 흰빛 구슬로
+    // 파동과 커서 주변은 은빛으로 밝아지기만 한다. 황동색은 생각의 경로와 도메인에만 쓴다.
+    vec3 col = mix(vec3(0.66, 0.65, 0.62), vec3(0.95, 0.94, 0.9), w);
+    col = mix(col, vec3(0.95, 0.78, 0.52), vNodePath); // 생각의 경로 위의 노드는 황동빛 구슬로
     // 경로 위 노드는 밝기 보정(uBoost)을 받지 않는다. 블룸이 없는 단계에서 금색이 흰색으로 날아가지 않게 하려는 것
     float bright = (0.5 + c * 0.9 + vWave * 0.6) * mix(uBoost, 1.0, vNodePath) + vNodePath * 0.9 * uPathGain;
     // 블룸이 없는 단계(uPathGain < 1)에서는 경로 구슬의 밝기를 1로 눌러 금색이 흰색으로 날아가지 않게 한다
@@ -89,12 +89,12 @@ export const EDGE_FRAG = /* glsl */ `
     float s = fract(vT - uSigT * vSpeed + vPhase);
     float pulse = smoothstep(0.8, 1.0, s) * step(0.001, vSpeed);
     float w = clamp(vHot + vWave * 1.5, 0.0, 1.0);
-    vec3 col = mix(vec3(0.16, 0.62, 0.85), vec3(0.6, 0.95, 1.0), w);
+    vec3 col = mix(vec3(0.34, 0.34, 0.33), vec3(0.8, 0.79, 0.75), w);
     float a = (0.2 + vHot * 0.3 + vWave * 0.55 + uEnergy * 0.18) * vFade * uDim;
     float flow = smoothstep(0.65, 1.0, fract(vDepth * 0.4 - uTime * 1.5));
-    vec3 path = vec3(1.0, 0.72, 0.32) * vPath * (2.0 + flow * 3.0) * max(vFade, 0.6) * uDim;
+    vec3 path = vec3(0.9, 0.68, 0.4) * vPath * (2.0 + flow * 3.0) * max(vFade, 0.6) * uDim;
     // vBase가 0인 선(중심에서 나오는 뿌리)은 경로일 때만 보인다
-    gl_FragColor = vec4((col * a + vec3(0.8, 1.0, 1.0) * pulse * vFade * uDim) * uBoost * vBase + path * uPathGain, 1.0);
+    gl_FragColor = vec4((col * a + vec3(0.88, 0.86, 0.82) * pulse * vFade * uDim) * uBoost * vBase + path * uPathGain, 1.0);
   }
 `;
 
@@ -117,7 +117,7 @@ export const NEBULA_FRAG = /* glsl */ `
   void main() {
     float d = length(gl_PointCoord - 0.5);
     if (d > 0.5) discard;
-    vec3 col = mix(vec3(0.3, 0.55, 1.0), vec3(1.0, 0.68, 0.32), vWarm);
+    vec3 col = mix(vec3(0.55, 0.55, 0.53), vec3(0.88, 0.7, 0.46), vWarm);
     gl_FragColor = vec4(col, (1.0 - smoothstep(0.0, 0.5, d)) * vA * 0.55 * uDim);
   }
 `;
@@ -159,8 +159,8 @@ export const CORE_FRAG = /* glsl */ `
     float f = pow(1.0 - max(dot(normalize(vN), normalize(vV)), 0.0), 2.2);
     float n = fbm(vP * 16.0 + vec3(0.0, uTime * 0.35, uTime * 0.2));
     float veins = smoothstep(0.4, 0.72, n);
-    vec3 base = mix(vec3(0.01, 0.1, 0.16), vec3(0.2, 0.85, 1.0), veins);
-    vec3 col = base * (0.3 + veins * 0.75) + vec3(0.5, 0.95, 1.0) * f * 0.9 + vec3(1.0, 0.75, 0.4) * pow(veins, 3.0) * 0.3;
+    vec3 base = mix(vec3(0.03, 0.03, 0.035), vec3(0.72, 0.69, 0.63), veins);
+    vec3 col = base * (0.3 + veins * 0.75) + vec3(0.85, 0.83, 0.78) * f * 0.9 + vec3(0.9, 0.7, 0.42) * pow(veins, 3.0) * 0.3;
     gl_FragColor = vec4(col * (0.85 + 0.15 * sin(uTime * 2.2)), 1.0);
   }
 `;
@@ -194,7 +194,7 @@ export const BEAM_FRAG = /* glsl */ `
     float tip = smoothstep(grow - 0.14, grow, vT) * (1.0 - smoothstep(0.7, 1.0, vD));
     float s = fract(vT * 1.5 - uSigT * 0.6 + vP);
     // uFlash: 여섯 도메인이 모두 연결된 순간 한 번 번쩍인다
-    gl_FragColor = vec4(vec3(1.0, 0.68, 0.28) * (0.4 + smoothstep(0.75, 1.0, s) * 1.6) * (1.0 + uFlash * 2.2) + vec3(1.0, 0.9, 0.7) * tip * 2.2, 1.0);
+    gl_FragColor = vec4(vec3(0.9, 0.67, 0.36) * (0.4 + smoothstep(0.75, 1.0, s) * 1.6) * (1.0 + uFlash * 2.2) + vec3(0.95, 0.88, 0.74) * tip * 2.2, 1.0);
   }
 `;
 
@@ -220,6 +220,6 @@ export const MARK_FRAG = /* glsl */ `
     if (d > 0.5) discard;
     float c = 1.0 - smoothstep(0.0, 0.2, d);
     float r = smoothstep(0.33, 0.4, d) * (1.0 - smoothstep(0.44, 0.5, d));
-    gl_FragColor = vec4(vec3(1.0, 0.72, 0.32) * (c * 1.6 + r), (c + r) * vArrive);
+    gl_FragColor = vec4(vec3(0.9, 0.68, 0.4) * (c * 1.6 + r), (c + r) * vArrive);
   }
 `;

@@ -2,7 +2,7 @@ import { COMPANY, CONTACT_EMAIL, CONTACT_LINKS, NAV } from "@/data/site";
 
 export default function SiteFooter() {
   return (
-    <footer className="relative z-10 border-t border-line bg-bg px-5 py-12 sm:px-8">
+    <footer className="night relative z-10 border-t border-line bg-bg px-5 py-12 sm:px-8">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-lg font-bold tracking-[-0.02em]">

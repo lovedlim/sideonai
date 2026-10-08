@@ -1,25 +1,16 @@
 import { ABOUT_EN } from "@/data/site";
-import SectionShell from "./SectionShell";
 
-// 영문 회사 소개. 번호 섹션(01~05) 앞에 두는 짧은 문단이라 번호를 붙이지 않는다.
+// 영문 회사 소개. 밤의 히어로가 끝나고 처음 만나는 낮의 문단이라 섹션 틀 없이 크게 둔다.
 export default function About() {
   return (
-    <SectionShell id="about">
-      <div lang="en" className="reveal max-w-3xl">
-        <p className="label-mono mb-4">About SideOnAI</p>
-        {ABOUT_EN.map((line, i) => (
-          <p
-            key={line}
-            className={
-              i === 0
-                ? "text-[clamp(1.4rem,2.6vw,2rem)] font-semibold leading-snug tracking-[-0.02em] text-balance"
-                : "mt-4 text-lg leading-relaxed text-muted"
-            }
-          >
-            {line}
-          </p>
-        ))}
+    <section id="about" className="relative z-10 bg-bg px-5 pb-8 pt-24 sm:px-8 sm:pt-36">
+      <div lang="en" className="reveal mx-auto grid max-w-6xl gap-4 lg:grid-cols-12 lg:gap-8">
+        <p className="eyebrow lg:col-span-3 lg:pt-3">About SideOnAI</p>
+        <div className="lg:col-span-9">
+          <p className="font-display text-[clamp(1.75rem,3.6vw,3rem)] leading-[1.2] text-balance">{ABOUT_EN[0]}</p>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{ABOUT_EN[1]}</p>
+        </div>
       </div>
-    </SectionShell>
+    </section>
   );
 }

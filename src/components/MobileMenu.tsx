@@ -24,7 +24,7 @@ export default function MobileMenu() {
         aria-controls="mobile-menu"
         aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
         onClick={() => setOpen((v) => !v)}
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-ink transition hover:border-accent/70"
+        className="flex h-10 w-10 items-center justify-center border border-line text-ink transition hover:border-ink"
       >
         <span aria-hidden="true" className="relative block h-3 w-4">
           <span className={`absolute inset-x-0 top-0 h-px bg-current transition ${open ? "translate-y-[6px] rotate-45" : ""}`} />

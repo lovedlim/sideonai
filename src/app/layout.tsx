@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono } from "next/font/google";
+import { Geist_Mono, Hahmlet } from "next/font/google";
 // Pretendard(OFL)를 직접 호스팅한다. 외부 CDN이 막힌 기관 망에서도 글꼴과 첫 화면이 늦어지지 않는다.
 import "./fonts/pretendard/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
@@ -10,6 +10,13 @@ import { Analytics } from "@vercel/analytics/next";
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// 제목용 한글 명조(OFL). 한글 글리프는 구글 폰트가 나눠 둔 unicode-range 조각으로 필요한 만큼만 받는다.
+const hahmlet = Hahmlet({
+  variable: "--font-hahmlet",
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -42,8 +49,8 @@ export const metadata: Metadata = {
 
 // 모바일 브라우저의 주소창 색을 페이지 배경과 맞춘다
 export const viewport: Viewport = {
-  themeColor: "#03060b",
-  colorScheme: "dark",
+  themeColor: "#0d0e10",
+  colorScheme: "light dark",
 };
 
 export default function RootLayout({
@@ -60,7 +67,7 @@ export default function RootLayout({
         {/* 히어로 포스터가 첫 화면의 가장 큰 요소(LCP)라 CSS보다 먼저 받기 시작한다 */}
         <link rel="preload" as="image" href="/images/hero-poster.webp" type="image/webp" />
       </head>
-      <body className={`${geistMono.variable} antialiased`}>
+      <body className={`${geistMono.variable} ${hahmlet.variable} antialiased`}>
         {gaId && <GoogleAnalytics measurementId={gaId} />}
         <StructuredData />
         {children}

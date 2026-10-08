@@ -44,7 +44,7 @@ export interface HeroSceneOptions {
 }
 
 const SEED = 20261006;
-const BG = 0x03060b;
+const BG = 0x0d0e10;
 const FOV = 42;
 const clamp = (v: number, a: number, b: number) => Math.min(b, Math.max(a, v));
 const wrapAngle = (a: number) => Math.atan2(Math.sin(a), Math.cos(a));
@@ -182,9 +182,9 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     cv.width = cv.height = 128;
     const c2 = cv.getContext('2d')!;
     const gr = c2.createRadialGradient(64, 64, 0, 64, 64, 64);
-    gr.addColorStop(0, 'rgba(190,250,255,0.9)');
-    gr.addColorStop(0.25, 'rgba(90,225,255,0.4)');
-    gr.addColorStop(1, 'rgba(60,200,255,0)');
+    gr.addColorStop(0, 'rgba(240,236,226,0.8)');
+    gr.addColorStop(0.25, 'rgba(200,196,186,0.3)');
+    gr.addColorStop(1, 'rgba(180,176,166,0)');
     c2.fillStyle = gr;
     c2.fillRect(0, 0, 128, 128);
     glow = new THREE.Sprite(new THREE.SpriteMaterial({
@@ -202,7 +202,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
       const ring = new THREE.LineLoop(
         new THREE.BufferGeometry().setFromPoints(pts),
         new THREE.LineBasicMaterial({
-          color: i === 1 ? 0xffb454 : 0x4df3ff, transparent: true, opacity: 0.8,
+          color: i === 1 ? 0xc9a063 : 0xbdbab2, transparent: true, opacity: 0.55,
           blending: THREE.AdditiveBlending, depthWrite: false, depthTest: false,
         }),
       );
@@ -234,7 +234,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
   if (high) {
     composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
-    bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.8, 0.6, 0.1);
+    bloom = new UnrealBloomPass(new THREE.Vector2(1, 1), 0.45, 0.5, 0.15);
     composer.addPass(bloom);
   }
 
@@ -419,7 +419,7 @@ export function createHeroScene(canvas: HTMLCanvasElement, opts: HeroSceneOption
     core.scale.setScalar(a * (1 - 0.4 * dom) * (1 + 0.06 * Math.sin(time * 2.2)) * (1 + 0.5 * flash));
     (glow.material as THREE.SpriteMaterial).opacity = 0.26 + 0.08 * Math.sin(time * 2.2);
     for (const r of rings) r.ring.rotation.set(r.bx + time * r.s, r.by + time * r.s * 0.7, 0);
-    if (bloom) bloom.strength = 0.8 + energy * 0.3 + flash * 0.6;
+    if (bloom) bloom.strength = 0.45 + energy * 0.15 + flash * 0.4;
 
     // 이름표 좌표
     group.updateMatrixWorld();
