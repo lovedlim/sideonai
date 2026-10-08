@@ -29,8 +29,7 @@
 ## 📚 포함된 링크
 
 ### 소셜 미디어
-- 이메일: danmujicafe@gmail.com
-- GitHub: https://github.com/lovedlim/
+- 이메일: ceo@sideonai.com
 - YouTube: https://www.youtube.com/@ai-study
 - Inflearn: https://www.inflearn.com/users/26238/@roadmap (만족도 4.9/5점 만점)
 - LinkedIn: https://www.linkedin.com/in/ailab
@@ -111,8 +110,7 @@ npm start
 
 ## 📞 연락처
 
-- **이메일**: danmujicafe@gmail.com
-- **GitHub**: [https://github.com/lovedlim/](https://github.com/lovedlim/)
+- **이메일**: ceo@sideonai.com
 - **YouTube**: [https://www.youtube.com/@ai-study](https://www.youtube.com/@ai-study)
 - **Inflearn**: [강의 로드맵](https://www.inflearn.com/users/26238/@roadmap) (만족도 4.9/5점 만점)
 - **LinkedIn**: [https://www.linkedin.com/in/ailab](https://www.linkedin.com/in/ailab)
