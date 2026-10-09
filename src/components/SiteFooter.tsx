@@ -5,7 +5,7 @@ export default function SiteFooter() {
     <footer className="night relative z-10 border-t border-line bg-bg px-5 py-12 sm:px-8">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
-          <p className="text-lg font-bold tracking-[-0.02em]">
+          <p className="font-display text-2xl">
             SideOn<span className="text-accent">AI</span>
           </p>
           <p className="mt-2 text-sm text-muted">{COMPANY.tagline}</p>

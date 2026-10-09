@@ -6,15 +6,15 @@ import CtaLink from "@/components/CtaLink";
 import MobileMenu from "@/components/MobileMenu";
 import { NAV } from "@/data/site";
 
-// 헤더 바로 아래에 밤 섹션(히어로·문의·하단)이 있으면 헤더도 밤 색으로 바꾼다.
+// 헤더 바로 아래 섹션의 색을 따라간다. 3D 히어로 위에서는 청록(neon), 문의·하단 위에서는 먹색(night).
 function useOverNight() {
-  const [night, setNight] = useState(true);
+  const [night, setNight] = useState<"" | "night" | "neon">("neon");
   useEffect(() => {
     let raf = 0;
     const check = () => {
       raf = 0;
       const el = document.elementFromPoint(window.innerWidth / 2, 66);
-      setNight(!!el?.closest(".night"));
+      setNight(el?.closest(".neon") ? "neon" : el?.closest(".night") ? "night" : "");
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(check);
@@ -35,7 +35,7 @@ export default function SiteHeader() {
   const night = useOverNight();
   return (
     <header
-      className={`${night ? "night" : ""} fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/75 backdrop-blur-md transition-colors duration-300`}
+      className={`${night} fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/75 backdrop-blur-md transition-colors duration-300`}
     >
       {/* 키보드 사용자가 긴 히어로 구간을 건너뛸 수 있게 한다 */}
       <a
@@ -45,7 +45,7 @@ export default function SiteHeader() {
         본문으로 건너뛰기
       </a>
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Link href="/" className="font-display text-xl">
+        <Link href="/" className="font-display text-2xl">
           SideOn<span className="text-accent">AI</span>
         </Link>
         <nav aria-label="주요 메뉴" className="hidden items-center gap-8 md:flex">
@@ -59,7 +59,7 @@ export default function SiteHeader() {
           <CtaLink
             href="/#contact"
             location="header"
-            className="bg-ink px-4 py-2 text-sm font-semibold text-bg transition hover:bg-accent"
+            className={`rounded-full bg-accent px-5 py-2.5 text-sm font-bold transition hover:brightness-110 text-[#03060b]`}
           >
             협업 문의
           </CtaLink>

@@ -1,16 +1,21 @@
 @import "tailwindcss";
 
+/* v4: 배민의 화법(굵은 한나체 제목, 도현체 숫자, 둥근 면, 스티커)에 3D 히어로의 색을 입힌다.
+   밤하늘 남색 + 청록(AI의 빛) + 호박색(사람의 온기). 본문은 흰 바탕에 같은 색을 낮은 채도로 쓴다. */
 @theme {
-  /* 낮: 본문 섹션. 종이 위에 먹으로 쓴 듯한 톤 */
-  --color-bg: #f2f2ef;
-  --color-surface: #e9e9e4;
+  --color-bg: #ffffff;
+  --color-surface: #f0f5f8;
   --color-raised: #ffffff;
-  --color-line: #d6d5cf;
-  --color-ink: #17181b;
-  --color-muted: #63656b;
-  /* 황동. AI를 가리킬 때만 쓴다 */
-  --color-accent: #9a7440;
-  --color-warm: #c9a063;
+  --color-line: #dfe7ec;
+  --color-ink: #0b1220;
+  --color-muted: #5d6b78;
+  /* 청록. 면과 버튼에는 밝은 것, 흰 바탕 위 작은 글자에는 진한 것 */
+  --color-accent: #2fd8ea;
+  --color-accent-ink: #0b8796;
+  --color-tint: #e3f8fb;
+  /* 호박색. 히어로의 금빛 연결선 */
+  --color-butter: #ffc46b;
+  --color-warm: #ffb454;
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
 }
@@ -41,80 +46,95 @@ body {
 }
 
 @layer base {
-  /* 밤: 히어로, 문의, 하단. 퇴근 후의 시간에서 시작한 회사라 처음과 끝을 밤으로 둔다 */
+  /* 먹색 면: 문의와 하단 */
+  /* 밤: 문의와 하단. 히어로와 같은 밤하늘로 닫는다 */
   .night {
-    --color-bg: #0d0e10;
-    --color-surface: #16171a;
-    --color-raised: #1d1e22;
-    --color-line: rgba(236, 232, 222, 0.14);
-    --color-ink: #ecebe6;
-    --color-muted: #9a9890;
-    --color-accent: #c9a063;
+    --color-bg: #03060b;
+    --color-surface: #0a121c;
+    --color-raised: #12202e;
+    --color-line: rgba(120, 220, 255, 0.16);
+    --color-ink: #eaf6ff;
+    --color-muted: #8aa0b4;
+    --color-accent: #4df3ff;
+    --color-accent-ink: #4df3ff;
     color-scheme: dark;
     background: var(--color-bg);
     color: var(--color-ink);
   }
-}
 
-/* base 레이어에 두어 focus:outline-none 같은 유틸리티가 이길 수 있게 한다 */
-@layer base {
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 3px solid var(--color-accent);
     outline-offset: 3px;
   }
 }
 
 ::selection {
-  background: rgba(154, 116, 64, 0.25);
+  background: var(--color-butter);
+  color: #1b1b1b;
 }
 
 @layer components {
-  /* 제목용 명조. 굵기를 낮추고 자간을 좁혀 인쇄물처럼 */
+  /* 제목: 한나체 Pro. 글꼴이 이미 굵어서 굵기를 더하지 않는다 */
   .font-display {
-    /* --font-hahmlet은 body에 정의되므로 :root의 @theme 변수로 감싸지 않고 여기서 바로 읽는다 */
-    font-family: var(--font-hahmlet), "AppleMyungjo", "Nanum Myeongjo", serif;
-    font-weight: 500;
-    letter-spacing: -0.035em;
+    font-family: var(--font-hanna), var(--font-sans);
+    font-weight: 400;
+    letter-spacing: -0.01em;
   }
 
-  /* 섹션 머리의 작은 이름표 */
+  /* 숫자와 짧은 이름표: 도현체 */
+  .font-num {
+    font-family: var(--font-dohyeon), var(--font-sans);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* 섹션 머리의 이름표. 스티커처럼 살짝 기울인다 */
   .eyebrow {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    color: var(--color-muted);
+    display: inline-block;
+    font-family: var(--font-dohyeon), var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-accent-ink);
   }
 
-  /* 밑줄이 그어지는 글 링크 */
+  .sticker {
+    display: inline-block;
+    border-radius: 9999px;
+    background: var(--color-raised);
+    padding: 0.35rem 0.85rem;
+    font-family: var(--font-dohyeon), var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-ink);
+    box-shadow: 0 6px 18px -8px rgba(27, 27, 27, 0.35);
+  }
+
   .text-link {
     text-decoration: underline;
     text-decoration-color: var(--color-line);
-    text-decoration-thickness: 1px;
+    text-decoration-thickness: 2px;
     text-underline-offset: 0.3em;
     transition: text-decoration-color 0.2s ease, color 0.2s ease;
   }
 
   .text-link:hover {
+    color: var(--color-accent-ink);
     text-decoration-color: currentColor;
   }
 
-  /* 조용한 면. 문의 폼과 강연 페이지에서 쓴다 */
+  /* 둥근 면. 문의 폼과 카드에 쓴다 */
   .card {
     position: relative;
-    border: 1px solid var(--color-line);
-    border-radius: 2px;
+    border-radius: 1.75rem;
     background: var(--color-surface);
   }
 
   .node-dot {
     display: inline-block;
-    width: 0.4rem;
-    height: 0.4rem;
+    width: 0.45rem;
+    height: 0.45rem;
     border-radius: 9999px;
     background: var(--color-accent);
   }
 
-  /* 줄 목록의 한 행. 호버하면 화살표가 조금 밀린다 */
   .row-link .arrow {
     transition: translate 0.25s ease;
   }
@@ -122,34 +142,120 @@ body {
   .row-link:hover .arrow {
     translate: 4px 0;
   }
+
+  /* 형광펜 밑줄. 제목 안에서 강조할 낱말에 쓴다 */
+  .marker {
+    background: linear-gradient(transparent 62%, var(--color-butter) 62%, var(--color-butter) 92%, transparent 92%);
+    padding: 0 0.08em;
+  }
 }
 
-/* 밤(히어로)에서 낮(본문)으로 넘어가는 띠. 지평선 근처에 황동빛이 아주 옅게 돈다 */
-.dawn {
-  position: relative;
-  z-index: 10;
-  height: clamp(10rem, 34vh, 22rem);
-  margin-top: -1px;
-  background: linear-gradient(
-    180deg,
-    #0d0e10 0%,
-    #1b1a18 30%,
-    #5b5346 58%,
-    #c8bfae 82%,
-    var(--color-bg) 100%
-  );
+/* 화면에 들어올 때 떠오르는 등장. 지원하지 않는 브라우저에서는 그냥 보인다 */
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
 }
 
-.dusk {
-  height: clamp(8rem, 24vh, 16rem);
-  margin-top: 0;
-  rotate: 180deg;
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 42%;
+    }
+  }
+}
+
+/* 첫 화면 사진 스티커가 하나씩 붙는다 */
+@keyframes stick {
+  from {
+    opacity: 0;
+    transform: translateY(24px) rotate(var(--r, 0deg)) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--r, 0deg)) scale(1);
+  }
+}
+
+.stick {
+  transform: rotate(var(--r, 0deg));
+  animation: stick 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+/* 현장 사진 띠와 기관명 띠. 목록을 두 번 이어 붙였으니 절반만큼 밀면 처음과 같은 장면이 된다 */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.photo-wall-track {
+  animation: marquee 90s linear infinite;
+}
+
+.photo-wall-reverse {
+  animation-direction: reverse;
+  animation-duration: 110s;
+}
+
+.photo-wall-track:hover {
+  animation-play-state: paused;
+}
+
+.name-track {
+  animation: marquee 60s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- 3D 히어로 (v2 색 그대로) ----------
+   첫 화면만 처음 버전의 밤하늘·청록·주황 빛을 쓴다. .neon 안에서만 색 변수를 바꾼다. */
+@layer base {
+  .neon {
+    --color-bg: #03060b;
+    --color-surface: #0a121c;
+    --color-raised: #101b28;
+    --color-line: rgba(120, 220, 255, 0.16);
+    --color-ink: #eaf6ff;
+    --color-muted: #8aa0b4;
+    --color-accent: #4df3ff;
+    --color-warm: #ffb454;
+    color-scheme: dark;
+    background: var(--color-bg);
+    color: var(--color-ink);
+  }
+}
+
+.label-mono {
+  font-family: var(--font-dohyeon), var(--font-sans);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  color: var(--color-accent);
 }
 
 /* ---------- 히어로 ---------- */
 
 .hero-title {
-  text-shadow: 0 2px 30px rgba(13, 14, 16, 0.95), 0 0 2px rgba(13, 14, 16, 0.8);
+  text-shadow: 0 2px 30px rgba(3, 6, 11, 0.95), 0 0 2px rgba(3, 6, 11, 0.8);
 }
 
 /* 슬로건 블록의 순차 등장. 인트로에서 입자가 모이는 동안 한 줄씩 올라온다 */
@@ -179,7 +285,7 @@ body {
   aspect-ratio: 1;
   translate: -50% -50%;
   background: url("/images/hero-poster.webp") center / contain no-repeat,
-    radial-gradient(circle, rgba(236, 232, 222, 0.06), transparent 62%);
+    radial-gradient(circle, rgba(77, 243, 255, 0.16), transparent 62%);
   -webkit-mask-image: radial-gradient(circle, #000 52%, transparent 70%);
   mask-image: radial-gradient(circle, #000 52%, transparent 70%);
 }
@@ -224,7 +330,7 @@ body {
   border-radius: 50%;
   pointer-events: none;
   mix-blend-mode: screen;
-  background: radial-gradient(circle, rgba(236, 232, 222, 0.07), transparent 65%);
+  background: radial-gradient(circle, rgba(77, 243, 255, 0.2), rgba(77, 243, 255, 0.05) 45%, transparent 70%);
   will-change: transform;
 }
 
@@ -248,14 +354,14 @@ body {
 
 .domain-label span {
   display: inline-block;
-  padding: 0.3rem 0.1rem;
-  border-bottom: 1px solid rgba(201, 160, 99, 0.7);
-  font-family: var(--font-hahmlet), "AppleMyungjo", serif;
-  font-size: clamp(1.05rem, 1.6vw, 1.35rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  color: #ecebe6;
-  text-shadow: 0 0 18px rgba(13, 14, 16, 0.95);
+  padding: 0.4rem 0.95rem;
+  border: 1.5px solid rgba(255, 180, 84, 0.85);
+  border-radius: 9999px;
+  background: rgba(6, 12, 20, 0.82);
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #fff;
 }
 
 .domain-label.is-right span {
@@ -268,9 +374,8 @@ body {
 
 .domain-label.is-core span {
   translate: 22px calc(-100% - 14px);
-  border-color: transparent;
-  color: var(--color-accent);
-  font-size: clamp(1.2rem, 2vw, 1.7rem);
+  border-color: var(--color-accent);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
 }
 
 /* 좁은 화면: 이름표를 노드 바로 아래 가운데에 붙여 화면 밖으로 나가지 않게 한다 */
@@ -295,8 +400,10 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 0.6rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
   color: var(--color-muted);
   pointer-events: none;
 }
@@ -331,34 +438,7 @@ body {
   }
 }
 
-/* 화면에 들어올 때 떠오르는 등장. 지원하지 않는 브라우저에서는 그냥 보인다 */
-/* transform이 아니라 translate를 쓴다. 채움 모드가 카드 호버의 transform을 덮지 않게 하려는 것 */
-@keyframes reveal {
-  from {
-    opacity: 0;
-    translate: 0 28px;
-  }
-  to {
-    opacity: 1;
-    translate: 0 0;
-  }
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal {
-      animation: reveal linear both;
-      animation-timeline: view();
-      animation-range: entry 0% entry 42%;
-    }
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
   .hero-rise {
     animation: none;
   }
@@ -367,32 +447,4 @@ body {
   .hero-track {
     height: auto !important;
   }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-
-/* 현장 사진 띠. 목록을 두 번 이어 붙였으니 절반만큼 밀면 처음과 같은 장면이 된다 */
-@keyframes photo-wall {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.photo-wall-track {
-  animation: photo-wall 90s linear infinite;
-}
-
-.photo-wall-reverse {
-  animation-direction: reverse;
-  animation-duration: 110s;
-}
-
-.photo-wall-track:hover {
-  animation-play-state: paused;
 }

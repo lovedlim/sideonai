@@ -1,85 +1,89 @@
 import Link from "next/link";
 import CourseGallery from "@/components/courses/CourseGallery";
 import PhotoWall from "@/components/courses/PhotoWall";
-import { courses, FEATURED, orgNames, totalSessions } from "@/data/courses";
+import { courses, FEATURED, orgCount, totalSessions } from "@/data/courses";
 import { STATS } from "@/data/site";
 import CountUp from "./CountUp";
 import SectionHead from "./SectionHead";
 import SectionShell from "./SectionShell";
 
 export default function TrackRecord() {
-  const featured = FEATURED.map((id) => courses.find((c) => c.id === id)).filter((c) => c && c.photos.length > 1).slice(0, 3);
+  const featured = FEATURED.map((id) => courses.find((c) => c.id === id))
+    .filter((c) => c !== undefined && c.photos.length > 1)
+    .slice(0, 5);
   const wall = courses.filter((c) => c.photos.some((p) => p.kind === "photo"));
+  const big = [
+    { v: totalSessions, u: "회", l: "누적 강의 · 강연" },
+    { v: orgCount, u: "곳", l: "함께한 기관" },
+    { v: courses.length, u: "개", l: "설계한 과정" },
+  ];
+
   return (
-    <SectionShell id="track">
+    <SectionShell id="track" tone="surface" sheet>
       <SectionHead
         label="실적"
-        title="현장에서 검증했습니다"
-        lead="소방학교 강의실부터 방송사 편집실, 기업 연수원까지. 직무에 맞춰 설계한 과정을 직접 진행했습니다."
+        title={
+          <>
+            말보다 <span className="marker">현장</span>으로
+            <br />
+            보여 드릴게요
+          </>
+        }
+        lead="EBS, GS리테일, KB국민카드, NC부터 공공기관과 대학까지. 조직마다 직무에 맞춰 과정을 새로 설계하고 직접 진행했습니다."
       />
 
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
-        <div className="reveal lg:col-span-3">
-          <p className="font-display text-[clamp(4.5rem,9vw,7rem)] leading-none">
-            <CountUp value={totalSessions} />
-            <span className="text-accent">+</span>
-          </p>
-          <p className="mt-3 text-muted">누적 강의 · 강연 횟수</p>
-          <Link href="/activities" className="row-link mt-8 inline-block font-semibold">
-            강의 아카이브 보기 <span className="arrow inline-block" aria-hidden="true">→</span>
-          </Link>
-        </div>
-
-        {/* 기관명은 칩 대신 문장처럼 이어 쓴다 */}
-        <p className="reveal font-display text-[clamp(1.25rem,2vw,1.6rem)] leading-[1.7] text-ink/90 lg:col-span-9">
-          {orgNames.map((org, i) => (
-            <span key={org}>
-              <span className="sm:whitespace-nowrap">{org}</span>
-              {/* 구분선은 앞 이름에 붙이고 뒤에만 공백을 둬서, 줄이 구분선 뒤에서 바뀌게 한다 */}
-              {i < orgNames.length - 1 && <><span className="ml-2 mr-1 text-line" aria-hidden="true">/</span> </>}
-            </span>
-          ))}
-        </p>
-      </div>
+      {/* 큰 숫자 셋 */}
+      <dl className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {big.map((b, i) => (
+          <div key={b.l} className={`reveal relative flex flex-col-reverse overflow-hidden rounded-[2rem] p-8 ${i === 0 ? "bg-[#050b14] bg-[radial-gradient(circle_at_85%_10%,rgba(77,243,255,0.28),transparent_55%)] text-white" : "bg-bg"}`}>
+            <dt className={`mt-2 ${i === 0 ? "text-white/70" : "text-muted"}`}>{b.l}</dt>
+            <dd className="font-num text-[clamp(3.6rem,7vw,5.4rem)] leading-none">
+              <CountUp value={b.v} />
+              <span className={`ml-1 text-[0.4em] ${i === 0 ? "text-accent" : "text-accent-ink"}`}>{b.u}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <dl className="mt-4 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        {STATS.map((s) => (
+          <div key={s.label} className="reveal flex flex-col-reverse rounded-[1.5rem] bg-bg px-6 py-5">
+            <dt className="mt-1 text-sm text-muted">{s.label}</dt>
+            <dd className="font-num text-[clamp(1.6rem,2.6vw,2.1rem)] leading-none">{s.value}</dd>
+          </div>
+        ))}
+      </dl>
 
       {/* 화면 끝까지 닿는 현장 사진 띠 */}
-      <div className="relative left-1/2 my-20 w-screen -translate-x-1/2 sm:my-28">
+      <div className="relative left-1/2 my-20 w-screen -translate-x-1/2 sm:my-24">
         <PhotoWall courses={wall} />
       </div>
 
-      {/* 대표 과정 셋. 사진 모음과 설명을 번갈아 놓는다 */}
-      <ol className="space-y-20 sm:space-y-28">
+      {/* 대표 과정. 둥근 흰 카드에 사진 모음 */}
+      <ul className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         {featured.map((c, i) =>
           c ? (
-            <li key={c.id} className="reveal grid grid-cols-1 items-end gap-6 lg:grid-cols-12 lg:gap-10">
-              <div className={`lg:col-span-8 ${i % 2 ? "lg:order-2" : ""}`}>
+            <li
+              key={c.id}
+              className={`reveal overflow-hidden rounded-[2rem] bg-bg p-3 sm:p-4 ${i === 0 ? "lg:col-span-2 lg:grid lg:grid-cols-[1.5fr_1fr] lg:items-end lg:gap-4" : ""}`}
+            >
+              <div className="overflow-hidden rounded-[1.4rem]">
                 <CourseGallery course={c} />
               </div>
-              <div className={`lg:col-span-4 ${i % 2 ? "lg:order-1" : ""}`}>
-                <p className="eyebrow">{c.org}</p>
-                <h3 className="mt-4 font-display text-[clamp(1.6rem,2.6vw,2.3rem)] leading-[1.25] text-balance">{c.title}</h3>
-                <p className="mt-4 text-sm text-muted">
-                  <span className="font-display text-xl text-ink">{c.sessions}</span>회 진행 · {c.years}
+              <div className={`px-3 pb-3 pt-6 sm:px-4 ${i === 0 ? "lg:px-6 lg:pb-6" : ""}`}>
+                <p className="font-num text-accent-ink">{c.org}</p>
+                <h3 className={`mt-3 font-display leading-[1.2] text-balance ${i === 0 ? "text-[clamp(1.8rem,3vw,2.6rem)]" : "text-[clamp(1.5rem,2.4vw,2rem)]"}`}>{c.title}</h3>
+                <p className="mt-2 text-sm text-muted">
+                  {c.sessions > 0 ? <><span className="font-num text-lg text-ink">{c.sessions}</span>회 진행 · </> : null}{c.years}{c.upcoming > 0 && <span className="ml-2 text-accent-ink">{c.upcoming}회 예정</span>}
                 </p>
               </div>
             </li>
           ) : null,
         )}
-      </ol>
+      </ul>
 
-      <dl className="reveal mt-24 grid grid-cols-2 border-y border-line lg:grid-cols-4">
-        {STATS.map((s, i) => (
-          <div key={s.label} className={`py-7 pr-4 ${i % 2 ? "pl-6" : ""} ${i > 0 ? "lg:border-l lg:border-line lg:pl-6" : ""} ${i < 2 ? "border-b border-line lg:border-b-0" : ""}`}>
-            <dt className="sr-only">{s.label}</dt>
-            <dd className="font-display text-[clamp(1.9rem,3vw,2.6rem)] leading-none">{s.value}</dd>
-            <dd className="mt-2 text-sm text-muted" aria-hidden="true">{s.label}</dd>
-          </div>
-        ))}
-      </dl>
-
-      <p className="mt-12 text-center">
-        <Link href="/activities" className="row-link inline-block font-display text-2xl">
-          과정 {courses.length}개 전체 보기 <span className="arrow inline-block text-accent" aria-hidden="true">→</span>
+      <p className="mt-14 text-center">
+        <Link href="/activities" className="inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 font-display text-xl text-white transition hover:bg-accent hover:text-ink">
+          과정 {courses.length}개 전부 보기 <span aria-hidden="true">→</span>
         </Link>
       </p>
     </SectionShell>

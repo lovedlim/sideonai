@@ -1,15 +1,15 @@
 import { ABOUT_EN } from "@/data/site";
 
-// 영문 회사 소개. 밤의 히어로가 끝나고 처음 만나는 낮의 문단이라 섹션 틀 없이 크게 둔다.
+// 영문 회사 소개. 오렌지 띠 위에 큰 글씨로 한 문장.
 export default function About() {
   return (
-    <section id="about" className="relative z-10 bg-bg px-5 pb-8 pt-24 sm:px-8 sm:pt-36">
-      <div lang="en" className="reveal mx-auto grid max-w-6xl gap-4 lg:grid-cols-12 lg:gap-8">
-        <p className="eyebrow lg:col-span-3 lg:pt-3">About SideOnAI</p>
-        <div className="lg:col-span-9">
-          <p className="font-display text-[clamp(1.75rem,3.6vw,3rem)] leading-[1.2] text-balance">{ABOUT_EN[0]}</p>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{ABOUT_EN[1]}</p>
-        </div>
+    <section id="about" className="neon relative z-10 -mt-12 overflow-hidden rounded-t-[2.5rem] px-5 py-24 sm:-mt-16 sm:rounded-t-[4rem] sm:px-8 sm:py-32">
+      {/* 히어로의 구체에서 새어 나온 듯한 청록 빛 */}
+      <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(circle,rgba(77,243,255,0.22),transparent_65%)]" />
+      <div lang="en" className="reveal relative mx-auto max-w-6xl">
+        <p className="label-mono">About SideOnAI</p>
+        <p className="mt-5 max-w-4xl font-display text-[clamp(2rem,4.4vw,3.6rem)] leading-[1.12] text-balance">{ABOUT_EN[0]}</p>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{ABOUT_EN[1]}</p>
       </div>
     </section>
   );

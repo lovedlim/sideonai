@@ -2,7 +2,7 @@
 #   python3 list/2026-10/build_courses.py
 # picks.json: {"과정id": ["사진/<폴더>/<파일>", "public/images/activities/x.webp", "생성/<id>.png", ...]}
 #   값의 맨 앞 사진이 대표(커버)가 된다. 2~5장.
-import json, os, sys, unicodedata
+import hashlib, json, os, sys, unicodedata
 from PIL import Image, ImageOps
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -17,14 +17,14 @@ TODAY = "2026-10-09"
 # 분야. 홈페이지의 분야 탭과 같다.
 SECTOR = {
     "corp": "기업",
-    "public": "공공 · 소방",
     "media": "방송 · 미디어",
+    "public": "공공 · 소방",
     "edu": "대학 · 교육 · 컨퍼런스",
 }
 # 분야 안에서는 규모가 큰 기관부터, 같은 기관 안에서는 대표 과정부터 보인다.
 ORDER = [
     # 기업
-    "gsretail", "kbcard", "nexon", "ncsoft", "jb", "multicampus", "vaiv", "datasolution", "medengine",
+    "gsretail", "kbcard", "ncsoft", "nexon", "jb", "multicampus", "vaiv", "datasolution", "medengine",
     # 공공 · 소방
     "kcg", "fire-advanced", "fire-basic", "fire-commander", "fire-chiefs", "fire-newcomer", "fire-promotion",
     "fire-officer", "fire-admin", "fire-hazmat", "fire-safety-edu", "fire-tlss",
@@ -81,7 +81,9 @@ EXTRA = [
          links=[("행사 안내", "https://event-us.kr/modu/event/100282")]),
 ]
 # 홈 실적 섹션에 크게 올릴 과정 (순서대로)
-FEATURED = ["fire-advanced", "ebs-digital-school", "mbccb", "etnews-claudecode", "uos", "kcg", "gsretail", "koba"]
+FEATURED = ["kbcard", "ebs-digital-school", "gsretail", "ncsoft", "koba"]
+# 기관명 띠와 목록에서 맨 앞에 세울 기관. 이름만 들어도 아는 곳부터
+BRANDS_FIRST = ["EBS", "GS리테일", "KB국민카드", "NC", "넥슨코리아", "JB금융지주", "KISA", "MBC충북", "서울시립대학교", "멀티캠퍼스", "전자신문"]
 
 
 def webp(src, dst):
@@ -103,8 +105,12 @@ def main():
         for i, p in enumerate(picks.get(c["id"], [])[:5]):
             src = os.path.join(REPO, p) if p.startswith("public/") else os.path.join(HERE, p)
             src = unicodedata.normalize("NFD", src) if not os.path.exists(src) else src
-            name = f"{c['id']}-{i + 1}.webp"
-            w, h = webp(src, os.path.join(OUT_IMG, name))
+            # 사진을 바꾸면 주소도 바뀌게 내용 해시를 붙인다(이미지 최적화 캐시가 옛 사진을 내주지 않게)
+            tmp = os.path.join(OUT_IMG, "_tmp.webp")
+            w, h = webp(src, tmp)
+            digest = hashlib.sha1(open(tmp, "rb").read()).hexdigest()[:8]
+            name = f"{c['id']}-{i + 1}-{digest}.webp"
+            os.replace(tmp, os.path.join(OUT_IMG, name))
             kind = "illustration" if p.startswith("생성/") else "slide" if p.startswith("교안/") else "photo"
             photos.append(dict(src=f"/images/courses/{name}", w=w, h=h, kind=kind))
         done = [d for d in c["dates"] if d <= TODAY]
@@ -118,9 +124,10 @@ def main():
         ))
     missing = [r["id"] for r in rows if r["id"] not in ORDER]
     assert not missing, f"ORDER에 없는 과정: {missing}"
-    rows.sort(key=lambda r: ORDER.index(r["id"]))
-    total = sum(r["sessions"] for r in rows) + 2  # 모두의연구소, KISA VOD
+    rows.sort(key=lambda r: (list(SECTOR).index(r["sector"]), ORDER.index(r["id"])))
+    total = sum(r["sessions"] for r in rows)  # 강의한 날짜 수. 하루에 두 기관이면 2회
     orgs = list(dict.fromkeys(r["org"].split(" (")[0] for r in rows))
+    orgs = [o for o in BRANDS_FIRST if o in orgs] + [o for o in orgs if o not in BRANDS_FIRST]
     ts = [
         "// 자동 생성 파일 — list/2026-10/build_courses.py 로 다시 만든다. 직접 고치지 말 것.",
         "",

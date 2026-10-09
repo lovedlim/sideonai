@@ -24,17 +24,17 @@ export default function CourseGallery({ course, priority = false }: { course: Co
   if (n === 0) {
     // 사진이 없는 과정(온라인·예정 등)은 수료증 같은 표지를 만든다. 황동 테두리 안에 과정명과 기관명
     return (
-      <div className="relative aspect-[16/8] overflow-hidden bg-[#141517] p-3 sm:p-4">
-        <div className="relative flex h-full flex-col justify-between border border-[#c9a063]/35 p-5 sm:p-8">
-          <span aria-hidden="true" className="pointer-events-none absolute -bottom-8 right-2 font-display text-[7rem] leading-none text-[#c9a063]/10 sm:text-[11rem]">
+      <div className="relative aspect-[16/8] overflow-hidden bg-[#050b14] p-3 sm:p-4">
+        <div className="relative flex h-full flex-col justify-between border border-[#4df3ff]/30 p-5 sm:p-8">
+          <span aria-hidden="true" className="pointer-events-none absolute -bottom-8 right-2 font-display text-[7rem] leading-none text-[#4df3ff]/10 sm:text-[11rem]">
             {course.org.slice(0, 2)}
           </span>
-          <p className="text-[0.7rem] tracking-[0.25em] text-[#c9a063]">
+          <p className="text-[0.7rem] tracking-[0.25em] text-[#ffb454]">
             {course.upcoming > 0 && course.sessions === 0 ? "UPCOMING" : "SIDEONAI COURSE"}
           </p>
           <div className="relative">
-            <p className="max-w-xl font-display text-xl leading-snug text-[#ecebe6] sm:text-3xl">{course.title}</p>
-            <p className="mt-3 text-sm text-[#9a9890]">{course.org}</p>
+            <p className="max-w-xl font-display text-xl leading-snug text-[#eaf6ff] sm:text-3xl">{course.title}</p>
+            <p className="mt-3 text-sm text-[#8aa0b4]">{course.org}</p>
           </div>
         </div>
       </div>
@@ -61,9 +61,9 @@ export default function CourseGallery({ course, priority = false }: { course: Co
                 sizes={i === 0 ? "(max-width: 1024px) 100vw, 720px" : "(max-width: 1024px) 50vw, 300px"}
                 className="object-cover transition duration-[1.2s] ease-out group-hover:scale-[1.04]"
               />
-              <span className="absolute inset-0 bg-[#0d0e10]/0 transition duration-500 group-hover:bg-[#0d0e10]/10" />
+              <span className="absolute inset-0 bg-[#050b14]/0 transition duration-500 group-hover:bg-[#050b14]/10" />
               {p.kind !== "photo" && (
-                <span className="absolute bottom-2 left-2 bg-[#0d0e10]/70 px-1.5 py-0.5 text-[0.65rem] tracking-wider text-[#ecebe6]/80">
+                <span className="absolute bottom-2 left-2 bg-[#050b14]/70 px-1.5 py-0.5 text-[0.65rem] tracking-wider text-[#eaf6ff]/80">
                   {KIND_LABEL[p.kind]}
                 </span>
               )}
@@ -101,7 +101,7 @@ function Lightbox({ course, index, onIndex }: { course: Course; index: number; o
       role="dialog"
       aria-modal="true"
       aria-label={`${course.org} 사진`}
-      className="night fixed inset-0 z-[100] flex flex-col bg-[#0d0e10]/95 backdrop-blur-sm"
+      className="night fixed inset-0 z-[100] flex flex-col bg-[#050b14]/95 backdrop-blur-sm"
       onClick={() => onIndex(null)}
     >
       <div className="flex items-center justify-between px-5 py-4 text-sm sm:px-8">

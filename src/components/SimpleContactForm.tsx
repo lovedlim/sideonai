@@ -207,7 +207,7 @@ export default function SimpleContactForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-ink text-bg py-3.5 rounded-sm font-semibold hover:bg-accent transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-ink text-bg py-3.5 rounded-full font-bold hover:bg-accent transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isSubmitting ? (
                 <div className="flex items-center justify-center space-x-2">

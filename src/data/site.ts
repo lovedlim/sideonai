@@ -36,8 +36,8 @@ export const SERVICES = [
   {
     key: "vibe",
     title: "바이브 코딩",
-    body: "코딩 경험이 없어도 Cursor·Claude Code로 웹 서비스를 직접 만드는 워크숍.",
-    tags: ["Cursor", "Claude Code", "1-Day 워크숍"],
+    body: "코딩 경험이 없어도 Claude Code·Codex·Gemini·Cursor로 웹 서비스를 직접 만드는 워크숍.",
+    tags: ["Claude Code", "Codex", "Gemini", "Cursor"],
   },
 ] as const;
 

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Hahmlet } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 // Pretendard(OFL)를 직접 호스팅한다. 외부 CDN이 막힌 기관 망에서도 글꼴과 첫 화면이 늦어지지 않는다.
 import "./fonts/pretendard/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
@@ -12,10 +13,15 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// 제목용 한글 명조(OFL). 한글 글리프는 구글 폰트가 나눠 둔 unicode-range 조각으로 필요한 만큼만 받는다.
-const hahmlet = Hahmlet({
-  variable: "--font-hahmlet",
-  subsets: ["latin"],
+// 배달의민족 글꼴. 제목은 한나체 Pro, 숫자와 짧은 이름표는 도현체. 완성형 2,350자로 줄여 직접 호스팅한다.
+const hanna = localFont({
+  src: "./fonts/baemin/BMHANNAPro.woff2",
+  variable: "--font-hanna",
+  display: "swap",
+});
+const dohyeon = localFont({
+  src: "./fonts/baemin/BMDOHYEON.woff2",
+  variable: "--font-dohyeon",
   display: "swap",
 });
 
@@ -49,8 +55,8 @@ export const metadata: Metadata = {
 
 // 모바일 브라우저의 주소창 색을 페이지 배경과 맞춘다
 export const viewport: Viewport = {
-  themeColor: "#0d0e10",
-  colorScheme: "light dark",
+  themeColor: "#ffffff",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -63,11 +69,7 @@ export default function RootLayout({
 
   return (
     <html lang="ko" data-scroll-behavior="smooth">
-      <head>
-        {/* 히어로 포스터가 첫 화면의 가장 큰 요소(LCP)라 CSS보다 먼저 받기 시작한다 */}
-        <link rel="preload" as="image" href="/images/hero-poster.webp" type="image/webp" />
-      </head>
-      <body className={`${geistMono.variable} ${hahmlet.variable} antialiased`}>
+      <body className={`${geistMono.variable} ${hanna.variable} ${dohyeon.variable} antialiased`}>
         {gaId && <GoogleAnalytics measurementId={gaId} />}
         <StructuredData />
         {children}

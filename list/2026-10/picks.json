@@ -1,5 +1,9 @@
 {
  "etnews-vibe-1day": [
+  "사진/2026-02-25 전자신문/IMG_6388.jpeg",
+  "사진/2025-07-09 전자신문/IMG_1315.jpeg",
+  "사진/2025-05-23 전자신문/IMG_0898.jpeg",
+  "사진/2025-08-29 전자신문/IMG_2216.jpeg",
   "public/images/activities/2026enews1.webp"
  ],
  "etnews-claudecode": [
@@ -55,16 +59,20 @@
  "seoul-lifelong": [],
  "vaiv": [],
  "fire-newcomer": [
-  "public/images/activities/2026firenew1.webp",
-  "사진/2026-06-12 서울소방학교/대표_IMG_8388.jpeg",
-  "사진/2026-06-12 서울소방학교/대표_IMG_8389.jpeg",
-  "사진/2026-09-03 서울소방학교/대표_IMG_0645.jpeg"
+  "사진/2026-03-25 서울소방학교/IMG_6733.jpeg",
+  "사진/2026-09-03 서울소방학교/대표_IMG_0645.jpeg",
+  "사진/2026-09-03 서울소방학교/IMG_0649.jpeg",
+  "사진/2026-09-03 서울소방학교/IMG_0647.jpeg",
+  "public/images/activities/2026firenew1.webp"
  ],
  "fire-officer": [
   "사진/2025-10-31 서울소방학교/IMG_3737.jpeg",
   "사진/2025-11-13 서울소방학교/ai 스튜디오 이용규칙(미리캠퍼스) - 복사본 2.jpeg"
  ],
- "fire-admin": [],
+ "fire-admin": [
+  "사진/2026-04-06 서울소방학교/IMG_6932.jpeg",
+  "사진/2026-04-06 서울소방학교/IMG_6933.jpeg"
+ ],
  "fire-hazmat": [],
  "fire-safety-edu": [
   "사진/2025-11-26 서울소방학교/IMG_3971.jpeg"
@@ -72,13 +80,19 @@
  "fire-promotion": [
   "사진/2025-12-11 서울소방학교/IMG_4147.jpeg"
  ],
- "fire-basic": [],
+ "fire-basic": [
+  "사진/2026-02-02 서울소방학교/IMG_5808.jpeg",
+  "사진/2026-03-23 서울소방학교/IMG_6711.jpeg",
+  "사진/2026-02-02 서울소방학교/IMG_5807.jpeg",
+  "사진/2026-03-23 서울소방학교/IMG_6712.jpeg",
+  "사진/2026-03-23 서울소방학교/IMG_6710.jpeg"
+ ],
  "fire-advanced": [
-  "public/images/activities/2026fireadv1.webp",
-  "사진/2026-07-06 서울소방학교/대표_IMG_8793.jpeg",
-  "사진/2026-07-06 서울소방학교/대표_IMG_8795.jpeg",
-  "사진/2026-07-07 서울소방학교/대표_IMG_8840.jpeg",
-  "사진/2026-07-07 서울소방학교/대표_IMG_8842.jpeg"
+  "사진/2026-07-07 서울소방학교/대표_IMG_8842.jpeg",
+  "사진/2026-04-14 서울소방학교/IMG_7052.jpeg",
+  "사진/2026-07-06 서울소방학교/IMG_8786.jpeg",
+  "사진/2026-04-13 서울소방학교/IMG_7039.jpeg",
+  "public/images/activities/2026fireadv1.webp"
  ],
  "fire-tlss": [
   "사진/2026-06-22 서울소방학교/대표_IMG_8548.jpeg",
@@ -95,8 +109,10 @@
   "사진/2025-10-21 EBS/IMG_3689.jpeg"
  ],
  "ebs-digital-school": [
-  "public/images/activities/2026ebs2.webp",
-  "사진/2026-06-30 EBS/대표_IMG_8733.jpeg"
+  "사진/2026-06-30 EBS/대표_IMG_8733.jpeg",
+  "사진/2026-05-11 EBS/IMG_7617.jpeg",
+  "사진/2026-05-11 EBS/IMG_7613.jpeg",
+  "사진/2026-06-30 EBS/IMG_8736.jpeg"
  ],
  "ebs-business": [
   "사진/2026-06-18 EBS/대표_IMG_8493.jpeg",
@@ -120,6 +136,10 @@
   "사진/2026-10-07 EBS/IMG_3483.jpeg"
  ],
  "kobeta-beginner": [
+  "사진/2026-04-07 방송기술교육원/IMG_6962.jpeg",
+  "사진/2026-04-08 방송기술교육원/IMG_6976.jpeg",
+  "사진/2026-04-07 방송기술교육원/IMG_6956.jpeg",
+  "사진/2026-04-07 방송기술교육원/IMG_6954.jpeg",
   "public/images/activities/2026broadcast1.webp"
  ],
  "kobeta-python": [
@@ -130,7 +150,10 @@
   "사진/2026-06-09 방송기술교육원/IMG_8306.jpeg"
  ],
  "koba": [
-  "public/images/activities/2026koba1.webp"
+  "사진/2026-05-14 코바/Resized_20260514_105149_TIRHPBHHIHCHJFFJFGPMCCDBEA.jpeg",
+  "사진/2026-05-14 코바/Resized_20260514_111132_MIZBPBHHIHCHJFFJFGBGEEJEDC.jpeg",
+  "사진/2026-05-14 코바/IMG_7651.jpeg",
+  "사진/2026-05-14 코바/Resized_20260514_105233_YIOFXBHHIHCHJFFJFGBJCHCJFC.jpeg"
  ],
  "tbc": [
   "사진/2026-06-24 TBC/대표_IMG_8578.jpeg",
@@ -147,7 +170,10 @@
   "사진/2026-09-08 MBC충북/IMG_0748.jpeg"
  ],
  "kpf": [
-  "public/images/activities/2026press1.webp"
+  "사진/2026-06-04 한국언론재단/IMG_8170.jpeg",
+  "사진/2026-06-04 한국언론재단/IMG_8166.jpeg",
+  "사진/2026-06-04 한국언론재단/IMG_8168.jpeg",
+  "사진/2026-06-04 한국언론재단/IMG_8167.jpeg"
  ],
  "joongang-girls": [
   "사진/2025-12-29 중앙여고/IMG_4595.jpeg",
@@ -161,27 +187,47 @@
   "public/images/activities/2026jb1.webp"
  ],
  "gbsa": [
+  "사진/2026-03-12 경기도경제과학진흥원/IMG_7204.jpeg",
+  "사진/2026-03-12 경기도경제과학진흥원/IMG_7206.jpeg",
+  "사진/2026-03-12 경기도경제과학진흥원/IMG_6580.jpeg",
+  "사진/2026-03-12 경기도경제과학진흥원/IMG_6579.jpeg",
   "public/images/activities/2026inf1.webp"
  ],
  "hanbit": [
-  "public/images/activities/2026han1.webp"
+  "사진/2026-03-19 한빛미디어(온라인)/IMG_6662.jpeg"
  ],
  "kbcard": [
-  "public/images/activities/2026kb1.webp"
+  "사진/2026-04-01 KB국민카드/IMG_6810.jpeg",
+  "사진/2026-03-26 KB국민카드/IMG_6743.jpeg",
+  "사진/2026-03-26 KB국민카드/IMG_6748.jpeg",
+  "사진/2026-04-24 KB국민카드/IMG_7251.jpeg",
+  "사진/2026-03-26 KB국민카드/IMG_6740.jpeg"
  ],
  "medengine": [
+  "사진/2026-04-10 메드엔진(온라인)/IMG_6998.jpeg",
   "public/images/activities/2026medengine1.webp"
  ],
  "kvrda": [
-  "public/images/activities/2026meta1.webp"
+  "사진/2026-04-17 한국가상융합디지털산업협회/IMG_7127.jpeg",
+  "사진/2026-04-15 한국가상융합디지털산업협회/IMG_7099.jpeg",
+  "사진/2026-04-15 한국가상융합디지털산업협회/IMG_7070.jpeg",
+  "사진/2026-04-17 한국가상융합디지털산업협회/IMG_7116.jpeg",
+  "사진/2026-04-17 한국가상융합디지털산업협회/IMG_7123.jpeg"
  ],
  "gsretail": [
-  "public/images/activities/2026gs1.webp"
+  "사진/2026-04-22 GS리테일/IMG_7210.jpeg",
+  "사진/2026-04-22 GS리테일/IMG_7207.jpeg",
+  "사진/2026-04-22 GS리테일/IMG_7208.jpeg"
  ],
  "music-assoc": [
-  "public/images/activities/2026music1.webp"
+  "사진/2026-04-23 한국음악협회·KB국민카드/IMG_7225.jpeg",
+  "사진/2026-04-23 한국음악협회·KB국민카드/IMG_7224.jpeg",
+  "사진/2026-04-23 한국음악협회·KB국민카드/IMG_7223.jpeg",
+  "사진/2026-04-23 한국음악협회·KB국민카드/IMG_7220.jpeg",
+  "사진/2026-04-23 한국음악협회·KB국민카드/IMG_7219.jpeg"
  ],
  "inflearn-sme": [
+  "사진/2026-07-21 인프런중소기업(온라인)/IMG_9121.jpeg",
   "public/images/activities/2026infvibe1.webp"
  ],
  "kcg": [

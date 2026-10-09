@@ -4,7 +4,7 @@ import { useState } from "react";
 import { courses, SECTORS, type Sector } from "@/data/courses";
 import CourseGallery from "./CourseGallery";
 
-const TABS: ("all" | Sector)[] = ["all", "corp", "public", "media", "edu"];
+const TABS: ("all" | Sector)[] = ["all", "corp", "media", "public", "edu"];
 
 // 과정 목록. 분야 탭으로 거르고, 과정마다 왼쪽에 이름, 오른쪽에 사진 모음을 둔다.
 export default function ArchiveList() {
@@ -17,7 +17,7 @@ export default function ArchiveList() {
       <div
         role="tablist"
         aria-label="분야"
-        className="sticky top-16 z-20 -mx-5 mb-4 flex gap-6 overflow-x-auto border-b border-line bg-bg/90 px-5 backdrop-blur-md sm:-mx-8 sm:gap-9 sm:px-8"
+        className="sticky top-16 z-20 -mx-5 mb-4 flex gap-6 overflow-x-auto overflow-y-hidden [scrollbar-width:none] border-b border-line bg-bg/90 px-5 backdrop-blur-md sm:-mx-8 sm:gap-9 sm:px-8"
       >
         {TABS.map((t) => {
           const n =
@@ -78,7 +78,7 @@ export default function ArchiveList() {
                         )}
                         {c.years}
                         {c.upcoming > 0 && (
-                          <span className="ml-3 text-accent">
+                          <span className="ml-3 text-accent-ink">
                             {c.upcoming}회 예정
                           </span>
                         )}

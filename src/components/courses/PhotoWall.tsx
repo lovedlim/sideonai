@@ -9,12 +9,12 @@ export default function PhotoWall({ courses, rows = 2, perRow = 10, dim = false 
   const all = courses.flatMap((c) => c.photos.filter((p) => p.kind === "photo").map((p) => ({ ...p, org: c.org })));
   const lines = Array.from({ length: rows }, (_, r) => all.filter((_, i) => i % rows === r).slice(0, perRow));
   return (
-    <div className={`flex flex-col gap-2 overflow-hidden ${dim ? "opacity-40" : ""}`} aria-hidden="true">
+    <div className={`flex flex-col gap-3 overflow-hidden ${dim ? "opacity-40" : ""}`} aria-hidden="true">
       {lines.map((line, r) => (
-        <div key={r} className={`photo-wall-track flex w-max gap-2 ${r % 2 ? "photo-wall-reverse" : ""}`}>
+        <div key={r} className={`photo-wall-track flex w-max gap-3 ${r % 2 ? "photo-wall-reverse" : ""}`}>
           {[...line, ...line].map((p, i) => (
-            <figure key={`${p.src}-${i}`} className="group relative h-40 shrink-0 overflow-hidden sm:h-56" style={{ aspectRatio: Math.min(Math.max(p.w / p.h, 0.8), 1.6) }}>
-              <Image src={p.src} alt="" fill sizes="(max-width: 640px) 200px, 300px" quality={dim ? 45 : 60} className="object-cover grayscale-[30%] transition duration-700 group-hover:grayscale-0" />
+            <figure key={`${p.src}-${i}`} className="group relative h-40 shrink-0 overflow-hidden rounded-2xl sm:h-56" style={{ aspectRatio: Math.min(Math.max(p.w / p.h, 0.8), 1.6) }}>
+              <Image src={p.src} alt="" fill sizes="(max-width: 640px) 200px, 300px" quality={dim ? 45 : 60} className="object-cover" />
               <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-3 pb-2 pt-6 text-xs text-white/90 opacity-0 transition group-hover:opacity-100">
                 {p.org}
               </figcaption>
