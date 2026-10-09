@@ -7,6 +7,8 @@ import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import LogoIdent from "@/components/LogoIdent";
 import StructuredData from "@/components/StructuredData";
+import { orgCount, totalSessions } from "@/data/courses";
+import { BRAND, LEAD_CLIENTS, SITE_URL, SLOGAN } from "@/data/site";
 import { Analytics } from "@vercel/analytics/next";
 
 const geistMono = Geist_Mono({
@@ -26,31 +28,54 @@ const dohyeon = localFont({
   display: "swap",
 });
 
+const SITE_TITLE = `${BRAND} | 생성형 AI 기업 교육 · AX 컨설팅 · 바이브 코딩`;
+const SITE_DESC = `${LEAD_CLIENTS} 등 ${orgCount}곳에서 ${totalSessions}회 강의한 AI 교육·AX 컨설팅 회사. 생성형 AI 실무, 업무 자동화, 바이브 코딩 교육.`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sideonai.com"),
-  title: "SideOnAI - 도메인에 AI를 더하다",
-  description: "기업·기관을 위한 AI 교육, 업무 자동화, 바이브 코딩. 도메인에 AI를 더하는 SideOnAI.",
-  keywords: "SideOnAI, AX 컨설팅, AI 전환, AI 교육, 기업 교육, 업무 자동화, 바이브 코딩, 생성형 AI, 데이터 분석, 빅데이터 분석기사",
-  authors: [{ name: "SideOnAI" }],
-  creator: "SideOnAI",
-  publisher: "SideOnAI",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: `%s | ${BRAND}` },
+  description: SITE_DESC,
+  applicationName: BRAND,
+  keywords: [
+    "SideOnAI",
+    "사이드온에이아이",
+    "생성형 AI 기업 교육",
+    "AI 기업 교육",
+    "AI 강사",
+    "AI 교육 강사",
+    "AX 컨설팅",
+    "AI 전환",
+    "바이브코딩 교육",
+    "바이브 코딩 강의",
+    "Claude Code 교육",
+    "클로드 코드 교육",
+    "AI 업무 자동화",
+    "AI 에이전트 교육",
+    "공공기관 AI 교육",
+  ],
+  authors: [{ name: BRAND, url: SITE_URL }],
+  creator: BRAND,
+  publisher: BRAND,
+  category: "education",
   openGraph: {
-    title: "SideOnAI - 도메인에 AI를 더하다",
-    description: "기업·기관을 위한 AI 교육, 업무 자동화, 바이브 코딩",
+    title: SITE_TITLE,
+    description: SITE_DESC,
     type: "website",
     locale: "ko_KR",
-    siteName: "SideOnAI",
-    images: [{ url: "/home-preview.png", width: 1200, height: 630, alt: "SideOnAI - 도메인에 AI를 더하다" }],
+    siteName: BRAND,
+    url: "/",
+    images: [{ url: "/home-preview.png", width: 1200, height: 630, alt: `${BRAND} - ${SLOGAN}` }],
   },
   twitter: {
     card: "summary_large_image",
     images: ["/home-preview.png"],
-    title: "SideOnAI - 도메인에 AI를 더하다",
-    description: "기업·기관을 위한 AI 교육, 업무 자동화, 바이브 코딩",
+    title: SITE_TITLE,
+    description: SITE_DESC,
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 },
   },
 };
 

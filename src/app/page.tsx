@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import NeuralHero from "@/components/hero/NeuralHero";
 import OrgBand from "@/components/OrgBand";
 import SiteFooter from "@/components/SiteFooter";
@@ -8,6 +9,10 @@ import Contact from "@/components/sections/Contact";
 import Resources from "@/components/sections/Resources";
 import Services from "@/components/sections/Services";
 import TrackRecord from "@/components/sections/TrackRecord";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

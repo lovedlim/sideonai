@@ -4,15 +4,33 @@ import PhotoWall from "@/components/courses/PhotoWall";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { CONTACT_EMAIL } from "@/data/site";
-import { courses, orgCount, totalSessions } from "@/data/courses";
+import { courses, homeWall, orgCount, totalSessions } from "@/data/courses";
+
+const TITLE = "AI 교육 강의 아카이브";
+const DESC = `EBS, GS리테일, KB국민카드, NC 등 ${orgCount}곳에서 진행한 생성형 AI·바이브 코딩·업무 자동화 교육 ${totalSessions}회, ${courses.length}개 과정의 기록.`;
 
 export const metadata: Metadata = {
-  title: "강의 아카이브",
-  description: `EBS, GS리테일, KB국민카드, NC 등 ${orgCount}개 기관에서 진행한 AI 교육 ${totalSessions}회의 기록.`,
+  title: TITLE,
+  description: DESC,
+  alternates: { canonical: "/activities" },
+  openGraph: {
+    title: `${TITLE} | SideOnAI`,
+    description: DESC,
+    type: "website",
+    locale: "ko_KR",
+    siteName: "SideOnAI",
+    url: "/activities",
+    images: [{ url: "/home-preview.png", width: 1200, height: 630, alt: "SideOnAI 강의 아카이브" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${TITLE} | SideOnAI`,
+    description: DESC,
+    images: ["/home-preview.png"],
+  },
 };
 
 export default function ActivitiesPage() {
-  const withPhotos = courses.filter((c) => c.photos.some((p) => p.kind === "photo"));
   return (
     <>
       <SiteHeader />
@@ -20,7 +38,7 @@ export default function ActivitiesPage() {
         {/* 밤의 머리. 뒤로 현장 사진이 흐른다 */}
         <section className="neon relative overflow-hidden pb-20 pt-36 sm:pb-28 sm:pt-44">
           <div className="absolute inset-x-0 top-1/2 -translate-y-1/2">
-            <PhotoWall courses={withPhotos} rows={2} perRow={9} dim />
+            <PhotoWall photos={homeWall} rows={2} perRow={9} dim />
           </div>
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(5,11,20,0.55),rgba(5,11,20,0.95)_70%)]" />
           <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
