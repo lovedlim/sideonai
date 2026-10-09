@@ -24,21 +24,21 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/gsretail-1-c1a81799.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/gsretail-1-8a1b652a.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/gsretail-2-79ae288f.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/gsretail-2-84c5b906.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/gsretail-3-71ef0a7b.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/gsretail-3-811a39ba.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -56,33 +56,33 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/kbcard-1-84e2b81b.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kbcard-1-7ae20d27.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kbcard-2-96346eaa.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kbcard-2-62798104.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kbcard-3-83778fb4.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/kbcard-3-dce36323.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kbcard-4-a506c19f.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/kbcard-4-723594ef.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kbcard-5-6cde888f.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/kbcard-5-8c0e616b.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -100,21 +100,21 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/ncsoft-1-d3c6411c.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ncsoft-1-bc29438f.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ncsoft-2-a5fb843b.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/ncsoft-2-aa8694ae.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ncsoft-3-9c76fd26.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/ncsoft-3-f637ce54.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -132,15 +132,15 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/nexon-1-2081c3c6.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/nexon-1-fcd05fd7.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/nexon-2-504ea1f2.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/nexon-2-05c141fb.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -158,27 +158,27 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/jb-1-207c545e.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/jb-1-a31a701c.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/jb-2-bab45364.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/jb-2-e1d86ab7.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/jb-3-cb8b107d.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/jb-3-6dbe4d86.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/jb-4-8f653b7a.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/jb-4-3be46d97.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
@@ -228,9 +228,9 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/datasolution-1-d3ecdf5f.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/datasolution-1-f81a646e.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -248,9 +248,9 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/medengine-1-62d2ca1b.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/medengine-1-e14dca9a.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
@@ -274,27 +274,27 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/ebs-digital-school-1-296ff467.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-digital-school-1-1831ae5d.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-digital-school-2-fbd98ec4.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/ebs-digital-school-2-7dc1649b.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-digital-school-3-92e0ef9b.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/ebs-digital-school-3-f5af521f.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-digital-school-4-e29b1fa5.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-digital-school-4-b493a1e7.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -312,21 +312,21 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/ebs-newhire-1-f5bef121.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-newhire-1-1921c5a3.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-newhire-2-7aeb1f99.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-newhire-2-e52d775b.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-newhire-3-407d4c83.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-newhire-3-a8dda97f.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -344,27 +344,27 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/ebs-business-1-1492b2f3.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-business-1-d3157f24.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-business-2-ffc86df0.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/ebs-business-2-f321ecd3.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-business-3-15b985f3.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/ebs-business-3-084fbd8c.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-business-4-3920b1ff.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-business-4-c86f790a.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -382,27 +382,27 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/ebs-hr-1-15a9c66b.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-hr-1-a6b13584.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-hr-2-e78c7d13.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-hr-2-f2b9c7e6.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-hr-3-a98de234.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/ebs-hr-3-ae678d6c.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-hr-4-493c8c54.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-hr-4-0263c0f2.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -420,15 +420,15 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/ebs-youth-1-d6d1e799.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-youth-1-4de46c01.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-youth-2-e2928008.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/ebs-youth-2-f40943de.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -451,21 +451,21 @@ export const courses: Course[] = [
   ],
   "photos": [
    {
-    "src": "/images/courses/ebs-2025-1-1c2afdc7.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-2025-1-eab7f6c5.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-2025-2-d5ee432b.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/ebs-2025-2-6d907f22.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ebs-2025-3-d7f8ee0d.webp",
-    "w": 1600,
-    "h": 738,
+    "src": "/images/courses/ebs-2025-3-ecaab223.webp",
+    "w": 1400,
+    "h": 646,
     "kind": "photo"
    }
   ]
@@ -483,33 +483,33 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/mbccb-1-23a34b96.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/mbccb-1-2e7a8d75.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/mbccb-2-b3ae3f02.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/mbccb-2-4e4721ed.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/mbccb-3-053a163c.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/mbccb-3-23da21e3.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/mbccb-4-5d364ff5.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/mbccb-4-f5e550c7.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/mbccb-5-f9521623.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/mbccb-5-0628be69.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -527,33 +527,33 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/tbc-1-bf3551eb.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/tbc-1-cd0c30d0.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/tbc-2-99523f24.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/tbc-2-d88a0a5e.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/tbc-3-6c31cde7.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/tbc-3-6e30dcc3.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/tbc-4-b7a82644.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/tbc-4-38703eda.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/tbc-5-f5d2e8eb.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/tbc-5-b8642180.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -571,33 +571,33 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/etnews-claudecode-1-bf035be6.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/etnews-claudecode-1-24e202af.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/etnews-claudecode-2-856490ca.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/etnews-claudecode-2-dfdd6504.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/etnews-claudecode-3-647a207a.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/etnews-claudecode-3-87012cac.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/etnews-claudecode-4-9fbc4235.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/etnews-claudecode-4-103d64ca.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/etnews-claudecode-5-f0f77dd0.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/etnews-claudecode-5-4cb96b8e.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -640,27 +640,27 @@ export const courses: Course[] = [
   ],
   "photos": [
    {
-    "src": "/images/courses/etnews-vibe-1day-1-d42d054c.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/etnews-vibe-1day-1-0bf5083c.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/etnews-vibe-1day-2-12eb1c95.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/etnews-vibe-1day-2-2f5a8d7c.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/etnews-vibe-1day-3-e121e5ba.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/etnews-vibe-1day-3-1f014a95.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/etnews-vibe-1day-4-1d4ff002.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/etnews-vibe-1day-4-48d0504e.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
@@ -684,27 +684,27 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/kpf-1-20177dd3.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kpf-1-f44c2285.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kpf-2-02aeb0f6.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kpf-2-6df92a84.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kpf-3-323cf1ea.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/kpf-3-c698775d.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kpf-4-079513bc.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/kpf-4-f084c585.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -727,27 +727,27 @@ export const courses: Course[] = [
   ],
   "photos": [
    {
-    "src": "/images/courses/kobeta-beginner-1-e7b2a98f.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kobeta-beginner-1-d2155b02.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kobeta-beginner-2-a42ed8d2.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kobeta-beginner-2-2301734e.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kobeta-beginner-3-58529cf0.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kobeta-beginner-3-6e4d6744.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kobeta-beginner-4-93c97e27.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kobeta-beginner-4-16b6c4fa.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
@@ -771,33 +771,33 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/kobeta-python-1-685b19b1.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kobeta-python-1-5d241061.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kobeta-python-2-4490e57b.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kobeta-python-2-705fcc10.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kobeta-python-3-4f6e6592.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kobeta-python-3-31ed6dcf.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kobeta-python-4-d4b2120a.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/kobeta-python-4-e798e4e1.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kobeta-python-5-e31e00db.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kobeta-python-5-750934bc.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -815,27 +815,27 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/koba-1-559ae00a.webp",
-    "w": 1600,
-    "h": 901,
+    "src": "/images/courses/koba-1-5ec29bd3.webp",
+    "w": 1400,
+    "h": 788,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/koba-2-6fc08067.webp",
-    "w": 1600,
-    "h": 900,
+    "src": "/images/courses/koba-2-ee14a318.webp",
+    "w": 1400,
+    "h": 788,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/koba-3-99ad4ca9.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/koba-3-f12a7c63.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/koba-4-229db183.webp",
-    "w": 901,
-    "h": 1600,
+    "src": "/images/courses/koba-4-9bb5d2c7.webp",
+    "w": 788,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -853,33 +853,33 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/kcg-1-33142230.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kcg-1-df73b9ac.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kcg-2-ad084de5.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/kcg-2-09c83b92.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kcg-3-2ca7d540.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/kcg-3-a98221b0.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kcg-4-04e33145.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/kcg-4-0c98a097.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kcg-5-aee9b5a9.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kcg-5-672d95a9.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -897,27 +897,27 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/fire-advanced-1-de136749.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-advanced-1-854d6b76.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-advanced-2-fbb4015b.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-advanced-2-8ac84e15.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-advanced-3-e046d97f.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-advanced-3-fee59280.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-advanced-4-2fa54294.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/fire-advanced-4-6cae17b9.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
@@ -941,33 +941,33 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/fire-basic-1-5543c7b6.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-basic-1-16986c96.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-basic-2-243676cf.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/fire-basic-2-a1036a82.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-basic-3-27f3873a.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-basic-3-975d0c0c.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-basic-4-d06687e7.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/fire-basic-4-92e59cb9.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-basic-5-ef79e8f9.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-basic-5-d9e8bc83.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -985,21 +985,21 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/fire-commander-1-2f913817.webp",
-    "w": 1467,
-    "h": 825,
+    "src": "/images/courses/fire-commander-1-0203badc.webp",
+    "w": 1400,
+    "h": 787,
     "kind": "slide"
    },
    {
-    "src": "/images/courses/fire-commander-2-d67cb19e.webp",
-    "w": 1467,
-    "h": 825,
+    "src": "/images/courses/fire-commander-2-6135bbc1.webp",
+    "w": 1400,
+    "h": 787,
     "kind": "slide"
    },
    {
-    "src": "/images/courses/fire-commander-3-ad6310b7.webp",
-    "w": 1467,
-    "h": 825,
+    "src": "/images/courses/fire-commander-3-571d50d0.webp",
+    "w": 1400,
+    "h": 787,
     "kind": "slide"
    }
   ]
@@ -1017,21 +1017,21 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/fire-chiefs-1-73a6102d.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-chiefs-1-36d3f67c.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-chiefs-2-8e936fe5.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-chiefs-2-4a12edc1.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-chiefs-3-599c90e0.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-chiefs-3-ec35345c.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -1049,27 +1049,27 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/fire-newcomer-1-0008b043.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-newcomer-1-e13367c8.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-newcomer-2-c798aa0c.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-newcomer-2-4dfe20ca.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-newcomer-3-3e031808.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-newcomer-3-b61484ea.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-newcomer-4-44c0ac9c.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-newcomer-4-e7c2dbfb.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
@@ -1093,9 +1093,9 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/fire-promotion-1-ffafe748.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/fire-promotion-1-31a4ecc4.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -1113,15 +1113,15 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/fire-officer-1-ecc3b9be.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/fire-officer-1-d5f37f85.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-officer-2-0e4ee129.webp",
-    "w": 1136,
-    "h": 1600,
+    "src": "/images/courses/fire-officer-2-34e61d6b.webp",
+    "w": 994,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -1139,15 +1139,15 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/fire-admin-1-e1c57d0d.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/fire-admin-1-ab34c2fc.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-admin-2-73a17e69.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/fire-admin-2-2b3a1e81.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -1178,9 +1178,9 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/fire-safety-edu-1-9b73f69f.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/fire-safety-edu-1-221305dd.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -1198,15 +1198,15 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/fire-tlss-1-c1e8efc9.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/fire-tlss-1-ee027270.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/fire-tlss-2-33b076c5.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/fire-tlss-2-650176b5.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -1237,9 +1237,9 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/kalis-1-77f18532.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kalis-1-79627dab.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -1257,21 +1257,21 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/kipf-1-11256b2b.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kipf-1-ded32e4d.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kipf-2-6e475005.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kipf-2-e5c673a3.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kipf-3-4a40e023.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kipf-3-f23918fc.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -1289,33 +1289,33 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/kwdi-1-658afb4b.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kwdi-1-af7a5cdf.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kwdi-2-303a845e.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kwdi-2-4642c19a.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kwdi-3-7477b70f.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kwdi-3-9e43cf82.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kwdi-4-246520ed.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kwdi-4-04f0107a.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kwdi-5-5e1717d0.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kwdi-5-81c46659.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -1338,27 +1338,27 @@ export const courses: Course[] = [
   ],
   "photos": [
    {
-    "src": "/images/courses/gbsa-1-14527524.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/gbsa-1-c733dbe7.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/gbsa-2-7ebf10e9.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/gbsa-2-f693463a.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/gbsa-3-ceb76025.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/gbsa-3-a6d99125.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/gbsa-4-ad78cf40.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/gbsa-4-ec678530.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
@@ -1395,9 +1395,9 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/seongnam-youth-1-0751f5c9.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/seongnam-youth-1-8b649b12.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -1415,9 +1415,9 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/gangnam-teachers-1-e62b58fc.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/gangnam-teachers-1-6361b1ae.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -1440,27 +1440,27 @@ export const courses: Course[] = [
   ],
   "photos": [
    {
-    "src": "/images/courses/kisa-vibe-1-654c5b9c.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kisa-vibe-1-ce535e3d.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kisa-vibe-2-f323b182.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kisa-vibe-2-641a80e6.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kisa-vibe-3-be1f4935.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kisa-vibe-3-ac976256.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kisa-vibe-4-3bf1e931.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kisa-vibe-4-c98fdfe4.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -1483,27 +1483,27 @@ export const courses: Course[] = [
   ],
   "photos": [
    {
-    "src": "/images/courses/kisa-web3-1-4878c469.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kisa-web3-1-63edbf13.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kisa-web3-2-dd1adcac.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kisa-web3-2-f49f74a0.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kisa-web3-3-3e842b55.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kisa-web3-3-b5a6c117.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kisa-web3-4-b6517c6b.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/kisa-web3-4-1fb1c4f8.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -1521,33 +1521,33 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/uos-1-3d769e6f.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/uos-1-c57717e4.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/uos-2-358f5b84.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/uos-2-39f55233.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/uos-3-b2df90ac.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/uos-3-b50f075e.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/uos-4-1246a7fe.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/uos-4-b7f67d41.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/uos-5-56e83033.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/uos-5-80736ffd.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -1578,9 +1578,9 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/inflearn-sme-1-7d673699.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/inflearn-sme-1-7be98363.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
@@ -1604,9 +1604,9 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/hanbit-1-b6e0da05.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/hanbit-1-f6b2a7e7.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -1629,33 +1629,33 @@ export const courses: Course[] = [
   ],
   "photos": [
    {
-    "src": "/images/courses/kvrda-1-b81a0e2c.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kvrda-1-4f29fb41.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kvrda-2-e488f133.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kvrda-2-d03badd2.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kvrda-3-9dda2351.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kvrda-3-a9b5dfda.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kvrda-4-d4ace93d.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/kvrda-4-dd4baba9.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/kvrda-5-5720591e.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/kvrda-5-02ab578b.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]
@@ -1673,33 +1673,33 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/music-assoc-1-bc36023e.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/music-assoc-1-2e4de268.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/music-assoc-2-ace28d59.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/music-assoc-2-3012de56.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/music-assoc-3-524cef6d.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/music-assoc-3-19964a55.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/music-assoc-4-4bae91b3.webp",
-    "w": 1600,
-    "h": 1600,
+    "src": "/images/courses/music-assoc-4-cf2da177.webp",
+    "w": 1400,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/music-assoc-5-0be57fa7.webp",
-    "w": 1200,
-    "h": 1600,
+    "src": "/images/courses/music-assoc-5-97e1e774.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -1717,15 +1717,15 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/joongang-girls-1-ff2cd3ed.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/joongang-girls-1-d1f92f96.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/joongang-girls-2-a43903e8.webp",
-    "w": 1600,
-    "h": 1200,
+    "src": "/images/courses/joongang-girls-2-cb256222.webp",
+    "w": 1400,
+    "h": 1050,
     "kind": "photo"
    }
   ]

@@ -88,7 +88,7 @@ BRANDS_FIRST = ["EBS", "GS리테일", "KB국민카드", "NC", "넥슨코리아",
 
 def webp(src, dst):
     im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
-    im.thumbnail((1600, 1600))
+    im.thumbnail((1400, 1400))  # 화면에서 가장 크게 보이는 칸(약 720px)의 두 배
     im.save(dst, "WEBP", quality=74, method=6)
     return im.size
 
