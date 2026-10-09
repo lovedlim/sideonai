@@ -52,3 +52,9 @@ list/*.webp
 
 # brainstorm/plan scratch (local only)
 .superpowers/
+
+# 강의 사진 원본 (사진 앱에서 내보낸 것. 웹용으로 줄인 사진만 public/에 둔다)
+list/2026-10/사진/
+list/2026-10/대표사진_모음.jpg
+list/2026-10/생성/
+list/2026-10/__pycache__/

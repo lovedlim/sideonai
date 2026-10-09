@@ -32,6 +32,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   word-break: keep-all;
+  /* 화면 끝까지 닿는 사진 띠(w-screen)가 스크롤바 폭만큼 가로 스크롤을 만들지 않게 자른다 */
+  overflow-x: clip;
 }
 
 * {
@@ -373,4 +375,24 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* 현장 사진 띠. 목록을 두 번 이어 붙였으니 절반만큼 밀면 처음과 같은 장면이 된다 */
+@keyframes photo-wall {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.photo-wall-track {
+  animation: photo-wall 90s linear infinite;
+}
+
+.photo-wall-reverse {
+  animation-direction: reverse;
+  animation-duration: 110s;
+}
+
+.photo-wall-track:hover {
+  animation-play-state: paused;
 }
