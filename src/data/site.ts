@@ -1,13 +1,13 @@
 // 홈에 나오는 문구와 링크의 단일 출처. 메타데이터·구조화 데이터도 여기서 가져간다.
 import { courses, orgCount, totalSessions } from "./courses";
 
-export const SITE_URL = "https://sideonai.com";
+export const SITE_URL = "https://www.sideonai.com"; // sideonai.com은 www로 넘어간다(Vercel 도메인 설정). 대표 주소는 실제 도착 주소와 같아야 한다
 export const BRAND = "SideOnAI";
 export const BRAND_KO = "사이드온에이아이";
 export const LEAD_CLIENTS = "EBS, GS리테일, KB국민카드, NC";
 
 export const SLOGAN = "도메인에 AI를 더하다";
-export const TAGLINE = "AX 컨설팅 · AI 교육 · 업무 자동화 · 바이브 코딩";
+export const TAGLINE = "AX 컨설팅 · AI 교육 · 업무 자동화 · 바이브 코딩 · MVP 개발";
 export const DOMAIN_LINE = "어떤 도메인에도 AI를 더합니다";
 
 // 히어로 도메인 장면의 이름표. 순서는 graph.ts의 DOMAIN_DIRS와 같다 (오른쪽 3개, 왼쪽 3개).
@@ -44,6 +44,13 @@ export const SERVICES = [
     title: "바이브 코딩",
     body: "코딩 몰라도 내 업무 도구를 직접 만듭니다.",
     tags: ["Claude Code", "Codex", "Gemini", "Cursor"],
+  },
+  {
+    // 바이브 코딩은 직접 만드는 법을 배우는 교육, 이건 대신 만들어 드리는 개발
+    key: "build",
+    title: "MVP 개발",
+    body: "아이디어를 돌아가는 서비스와 업무 도구로 만들어 드립니다.",
+    tags: ["MVP 제작", "서비스 개발", "사내 업무 도구", "AI 기능 연동"],
   },
 ] as const;
 

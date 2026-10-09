@@ -29,7 +29,7 @@ const dohyeon = localFont({
 });
 
 const SITE_TITLE = `${BRAND} | 생성형 AI 기업 교육 · AX 컨설팅 · 바이브 코딩`;
-const SITE_DESC = `${LEAD_CLIENTS} 등 ${orgCount}곳에서 ${totalSessions}회 강의한 AI 교육·AX 컨설팅 회사. 생성형 AI 실무, 업무 자동화, 바이브 코딩 교육.`;
+const SITE_DESC = `${LEAD_CLIENTS} 등 ${orgCount}곳에서 ${totalSessions}회 강의한 AI 교육·AX 컨설팅 회사. 생성형 AI 실무, 업무 자동화, 바이브 코딩 교육과 MVP 개발.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -52,6 +52,8 @@ export const metadata: Metadata = {
     "AI 업무 자동화",
     "AI 에이전트 교육",
     "공공기관 AI 교육",
+    "MVP 개발",
+    "AI 서비스 개발",
   ],
   authors: [{ name: BRAND, url: SITE_URL }],
   creator: BRAND,

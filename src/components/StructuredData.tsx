@@ -23,6 +23,7 @@ const SERVICE_NAMES: Record<(typeof SERVICES)[number]["key"], string> = {
   education: "생성형 AI 실무 교육",
   automation: "AI 업무 자동화",
   vibe: "바이브 코딩 교육",
+  build: "MVP·서비스 개발",
 };
 
 export function JsonLd({ data }: { data: object }) {

@@ -2,14 +2,15 @@ import { SERVICES } from "@/data/site";
 import SectionHead from "./SectionHead";
 import SectionShell from "./SectionShell";
 
-// 서비스 넷을 크기가 다른 판(벤토)으로. AX 컨설팅과 바이브 코딩은 넓게, 나머지 둘은 좁게 엇갈려 놓는다.
+// 서비스 다섯을 크기가 다른 판(벤토)으로. 윗줄은 넓은 AX 컨설팅 + 좁은 AI 교육, 아랫줄은 셋을 나란히.
 // 밤하늘 위의 유리판처럼: 어두운 면에 가는 선, 모서리에서 청록·호박 빛이 번진다.
-const SPAN = ["lg:col-span-2", "lg:col-span-1", "lg:col-span-1", "lg:col-span-2"];
+const SPAN = ["lg:col-span-2", "lg:col-span-1", "lg:col-span-1", "lg:col-span-1", "lg:col-span-1"];
 const GLOW = [
   "bg-[radial-gradient(circle_at_88%_12%,rgba(77,243,255,0.30),transparent_50%)]",
   "bg-[radial-gradient(circle_at_90%_10%,rgba(255,180,84,0.22),transparent_55%)]",
   "bg-[radial-gradient(circle_at_10%_90%,rgba(77,243,255,0.18),transparent_55%)]",
   "bg-[radial-gradient(circle_at_12%_15%,rgba(255,180,84,0.20),transparent_50%)]",
+  "bg-[radial-gradient(circle_at_85%_85%,rgba(77,243,255,0.24),transparent_55%)]",
 ];
 
 export default function Services() {
