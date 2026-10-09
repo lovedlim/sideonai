@@ -24,19 +24,13 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/gsretail-1-8a1b652a.webp",
+    "src": "/images/courses/gsretail-1-84c5b906.webp",
     "w": 1400,
     "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/gsretail-2-84c5b906.webp",
-    "w": 1400,
-    "h": 1400,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/gsretail-3-811a39ba.webp",
+    "src": "/images/courses/gsretail-2-811a39ba.webp",
     "w": 1050,
     "h": 1400,
     "kind": "photo"
