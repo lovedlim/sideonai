@@ -40,15 +40,25 @@ const KIND_LABEL = {
   illustration: "일러스트",
 } as const;
 
+// card: 메인의 작은 대표 과정 카드용. 사진 장수와 상관없이 같은 비율(16:10) 안에 최대 3장을 넣어
+// 나란히 놓인 카드끼리 높이가 맞는다.
+const CARD: Record<number, { grid: string; cells: string[] }> = {
+  1: { grid: "grid-cols-1", cells: [""] },
+  2: { grid: "grid-cols-3", cells: ["col-span-2", ""] },
+  3: { grid: "grid-cols-3 grid-rows-2", cells: ["col-span-2 row-span-2", "", ""] },
+};
+
 export default function CourseGallery({
   course,
   priority = false,
+  variant = "full",
 }: {
   course: Course;
   priority?: boolean;
+  variant?: "full" | "card";
 }) {
   const photos = course.photos;
-  const n = Math.min(photos.length, 5);
+  const n = Math.min(photos.length, variant === "card" ? 3 : 5);
 
   if (n === 0) {
     // 사진이 없는 과정(온라인·예정 등)은 수료증 같은 표지를 만든다. 황동 테두리 안에 과정명과 기관명
@@ -77,13 +87,14 @@ export default function CourseGallery({
     );
   }
 
-  const layout = LAYOUT[n];
+  const card = variant === "card";
+  const layout = card ? CARD[n] : LAYOUT[n];
   return (
-    <ul className={`grid gap-1.5 sm:gap-2 ${layout.grid}`}>
+    <ul className={`grid gap-1.5 sm:gap-2 ${layout.grid} ${card ? "aspect-[16/10]" : ""}`}>
       {photos.slice(0, n).map((p, i) => (
         <li
           key={p.src}
-          className={`relative min-h-0 overflow-hidden bg-surface ${layout.cells[i] || "aspect-[4/3]"}`}
+          className={`relative min-h-0 overflow-hidden bg-surface ${card ? layout.cells[i] : layout.cells[i] || "aspect-[4/3]"}`}
         >
           <div className="group absolute inset-0">
             <Image
@@ -92,7 +103,11 @@ export default function CourseGallery({
               fill
               priority={priority && i === 0}
               sizes={
-                i === 0
+                card
+                  ? i === 0
+                    ? "(max-width: 1024px) 66vw, 400px"
+                    : "(max-width: 1024px) 33vw, 200px"
+                  : i === 0
                   ? "(max-width: 1024px) 100vw, 720px"
                   : "(max-width: 1024px) 50vw, 300px"
               }

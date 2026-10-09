@@ -809,9 +809,9 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/koba-1-5ec29bd3.webp",
+    "src": "/images/courses/koba-1-7ae336a9.webp",
     "w": 1400,
-    "h": 788,
+    "h": 1050,
     "kind": "photo"
    },
    {
@@ -821,15 +821,15 @@ export const courses: Course[] = [
     "kind": "photo"
    },
    {
-    "src": "/images/courses/koba-3-f12a7c63.webp",
-    "w": 1400,
-    "h": 1050,
+    "src": "/images/courses/koba-3-9bb5d2c7.webp",
+    "w": 788,
+    "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/koba-4-9bb5d2c7.webp",
-    "w": 788,
-    "h": 1400,
+    "src": "/images/courses/koba-4-5ec29bd3.webp",
+    "w": 1400,
+    "h": 788,
     "kind": "photo"
    }
   ]
@@ -1743,7 +1743,149 @@ export const courses: Course[] = [
   "photos": []
  }
 ];
-export const FEATURED: string[] = ["ebs-digital-school", "gsretail", "kbcard", "ncsoft", "koba"];
+export const FEATURED: string[] = ["ebs-newhire", "gsretail", "kbcard", "ncsoft", "koba"];
+export const homeWall: (CoursePhoto & { org: string })[] = [
+ {
+  "src": "/images/courses/wall-1-a32c2bb8.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "EBS"
+ },
+ {
+  "src": "/images/courses/wall-2-ca0cbf5a.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "코바(KOBA)"
+ },
+ {
+  "src": "/images/courses/wall-3-cc80e74e.webp",
+  "w": 900,
+  "h": 900,
+  "kind": "photo",
+  "org": "JB금융지주"
+ },
+ {
+  "src": "/images/courses/wall-4-6cecbbc0.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "방송기술교육원"
+ },
+ {
+  "src": "/images/courses/wall-5-3767c93b.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "KB국민카드"
+ },
+ {
+  "src": "/images/courses/wall-6-c04ef4ed.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "EBS"
+ },
+ {
+  "src": "/images/courses/wall-7-02bc307c.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "한국가상융합디지털산업협회"
+ },
+ {
+  "src": "/images/courses/wall-8-e03f51ca.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "NC"
+ },
+ {
+  "src": "/images/courses/wall-9-c347b864.webp",
+  "w": 900,
+  "h": 506,
+  "kind": "photo",
+  "org": "코바(KOBA)"
+ },
+ {
+  "src": "/images/courses/wall-10-99c8bd34.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "방송기술교육원"
+ },
+ {
+  "src": "/images/courses/wall-11-6b5abd0d.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "JB금융지주"
+ },
+ {
+  "src": "/images/courses/wall-12-1b13c4eb.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "EBS"
+ },
+ {
+  "src": "/images/courses/wall-13-a8080b71.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "한국가상융합디지털산업협회"
+ },
+ {
+  "src": "/images/courses/wall-14-6b4bf080.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "방송기술교육원"
+ },
+ {
+  "src": "/images/courses/wall-15-da10393e.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "코바(KOBA)"
+ },
+ {
+  "src": "/images/courses/wall-16-bfc9cd58.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "서울소방학교"
+ },
+ {
+  "src": "/images/courses/wall-17-fc2fe324.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "EBS"
+ },
+ {
+  "src": "/images/courses/wall-18-8a468420.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "한국가상융합디지털산업협회"
+ },
+ {
+  "src": "/images/courses/wall-19-eb8bda5a.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "방송기술교육원"
+ },
+ {
+  "src": "/images/courses/wall-20-84346d69.webp",
+  "w": 900,
+  "h": 675,
+  "kind": "photo",
+  "org": "한국가상융합디지털산업협회"
+ }
+];
 export const totalSessions = 121;
 export const orgCount = 35;
 export const orgNames: string[] = ["EBS", "GS리테일", "KB국민카드", "NC", "넥슨코리아", "JB금융지주", "KISA", "MBC충북", "서울시립대학교", "멀티캠퍼스", "전자신문", "바이브컴퍼니", "데이터솔루션", "메드엔진", "방송기술교육원", "TBC", "한국언론진흥재단", "코바(KOBA)", "해양경찰청", "서울소방학교", "한국소비자원", "국토안전관리원", "한국조세재정연구원", "한국여성정책연구원", "경기도경제과학진흥원", "서울시평생교육진흥원", "성남시청소년재단", "강남서초교육지원청", "부산가톨릭대학교", "인프런", "한빛미디어", "한국가상융합디지털산업협회", "한국음악협회", "중앙여고", "모두의연구소"];

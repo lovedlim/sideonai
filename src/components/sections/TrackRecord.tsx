@@ -1,7 +1,7 @@
 import Link from "next/link";
 import CourseGallery from "@/components/courses/CourseGallery";
 import PhotoWall from "@/components/courses/PhotoWall";
-import { courses, FEATURED, orgCount, totalSessions } from "@/data/courses";
+import { courses, FEATURED, homeWall, orgCount, totalSessions } from "@/data/courses";
 import { STATS } from "@/data/site";
 import CountUp from "./CountUp";
 import SectionHead from "./SectionHead";
@@ -11,7 +11,6 @@ export default function TrackRecord() {
   const featured = FEATURED.map((id) => courses.find((c) => c.id === id))
     .filter((c) => c !== undefined && c.photos.length > 1)
     .slice(0, 5);
-  const wall = courses.filter((c) => c.photos.some((p) => p.kind === "photo"));
   const big = [
     { v: totalSessions, u: "회", l: "누적 강의 · 강연" },
     { v: orgCount, u: "곳", l: "함께한 기관" },
@@ -55,7 +54,7 @@ export default function TrackRecord() {
 
       {/* 화면 끝까지 닿는 현장 사진 띠 */}
       <div className="relative left-1/2 my-20 w-screen -translate-x-1/2 sm:my-24">
-        <PhotoWall courses={wall} />
+        <PhotoWall photos={homeWall} />
       </div>
 
       {/* 대표 과정. 둥근 흰 카드에 사진 모음 */}
@@ -67,7 +66,7 @@ export default function TrackRecord() {
               className={`reveal overflow-hidden rounded-[2rem] bg-bg p-3 sm:p-4 ${i === 0 ? "lg:col-span-2 lg:grid lg:grid-cols-[1.5fr_1fr] lg:items-end lg:gap-4" : ""}`}
             >
               <div className="overflow-hidden rounded-[1.4rem]">
-                <CourseGallery course={c} />
+                <CourseGallery course={c} variant={i === 0 ? "full" : "card"} priority={false} />
               </div>
               <div className={`px-3 pb-3 pt-6 sm:px-4 ${i === 0 ? "lg:px-6 lg:pb-6" : ""}`}>
                 <p className="font-num text-accent-ink">{c.org}</p>

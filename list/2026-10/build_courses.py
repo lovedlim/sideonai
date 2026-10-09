@@ -81,14 +81,38 @@ EXTRA = [
          links=[("행사 안내", "https://event-us.kr/modu/event/100282")]),
 ]
 # 홈 실적 섹션에 크게 올릴 과정 (순서대로)
-FEATURED = ["ebs-digital-school", "gsretail", "kbcard", "ncsoft", "koba"]
+FEATURED = ["ebs-newhire", "gsretail", "kbcard", "ncsoft", "koba"]
+# 메인 사진 띠. 사람이 꽉 찬 강의장·행사장 중 선명한 것만 골랐다(선명도 측정 후 눈으로 확인).
+# 줄 두 개에 번갈아 들어가므로 홀수 번째는 윗줄, 짝수 번째는 아랫줄
+HOME_WALL = [
+    ("사진/2026-09-14 EBS/대표_IMG_0972.jpeg", "EBS"),
+    ("사진/2026-05-14 코바/IMG_7636.jpeg", "코바(KOBA)"),
+    ("사진/2026-02-11 JB금융지주/IMG_5939.jpeg", "JB금융지주"),
+    ("사진/2026-04-07 방송기술교육원/IMG_6962.jpeg", "방송기술교육원"),
+    ("사진/2026-04-01 KB국민카드/IMG_6810.jpeg", "KB국민카드"),
+    ("사진/2026-10-07 EBS/IMG_3491.jpeg", "EBS"),
+    ("사진/2026-04-17 한국가상융합디지털산업협회/IMG_7104.jpeg", "한국가상융합디지털산업협회"),
+    ("사진/2026-09-02 NC소프트/IMG_0640.jpeg", "NC"),
+    ("사진/2026-05-14 코바/Resized_20260514_111132_MIZBPBHHIHCHJFFJFGBGEEJEDC.jpeg", "코바(KOBA)"),
+    ("사진/2026-04-09 방송기술교육원/IMG_6987.jpeg", "방송기술교육원"),
+    ("사진/2026-02-11 JB금융지주/IMG_5933.jpeg", "JB금융지주"),
+    ("사진/2026-09-14 EBS/IMG_0971.jpeg", "EBS"),
+    ("사진/2026-04-17 한국가상융합디지털산업협회/IMG_7112.jpeg", "한국가상융합디지털산업협회"),
+    ("사진/2026-04-07 방송기술교육원/IMG_6963.jpeg", "방송기술교육원"),
+    ("사진/2026-05-14 코바/IMG_7651.jpeg", "코바(KOBA)"),
+    ("사진/2026-04-14 서울소방학교/IMG_7045.jpeg", "서울소방학교"),
+    ("사진/2026-10-07 EBS/IMG_3489.jpeg", "EBS"),
+    ("사진/2026-04-17 한국가상융합디지털산업협회/IMG_7113.jpeg", "한국가상융합디지털산업협회"),
+    ("사진/2026-04-09 방송기술교육원/IMG_6988.jpeg", "방송기술교육원"),
+    ("사진/2026-04-15 한국가상융합디지털산업협회/IMG_7070.jpeg", "한국가상융합디지털산업협회"),
+]
 # 기관명 띠와 목록에서 맨 앞에 세울 기관. 이름만 들어도 아는 곳부터
 BRANDS_FIRST = ["EBS", "GS리테일", "KB국민카드", "NC", "넥슨코리아", "JB금융지주", "KISA", "MBC충북", "서울시립대학교", "멀티캠퍼스", "전자신문"]
 
 
-def webp(src, dst):
+def webp(src, dst, size=1400):
     im = ImageOps.exif_transpose(Image.open(src)).convert("RGB")
-    im.thumbnail((1400, 1400))  # 화면에서 가장 크게 보이는 칸(약 720px)의 두 배
+    im.thumbnail((size, size))  # 화면에서 가장 크게 보이는 칸(약 720px)의 두 배
     im.save(dst, "WEBP", quality=74, method=6)
     return im.size
 
@@ -122,6 +146,16 @@ def main():
             last=max(c["dates"]), note=NOTE.get(c["id"]),
             links=[dict(label=a, href=b) for a, b in c["links"]], photos=photos,
         ))
+    wall = []
+    for i, (p, org) in enumerate(HOME_WALL):
+        src = os.path.join(HERE, p)
+        src = unicodedata.normalize("NFD", src) if not os.path.exists(src) else src
+        tmp = os.path.join(OUT_IMG, "_tmp.webp")
+        w, h = webp(src, tmp, 900)  # 띠의 칸은 300px 남짓이라 900px이면 충분하다
+        digest = hashlib.sha1(open(tmp, "rb").read()).hexdigest()[:8]
+        name = f"wall-{i + 1}-{digest}.webp"
+        os.replace(tmp, os.path.join(OUT_IMG, name))
+        wall.append(dict(src=f"/images/courses/{name}", w=w, h=h, kind="photo", org=org))
     missing = [r["id"] for r in rows if r["id"] not in ORDER]
     assert not missing, f"ORDER에 없는 과정: {missing}"
     rows.sort(key=lambda r: (list(SECTOR).index(r["sector"]), ORDER.index(r["id"])))
@@ -142,6 +176,7 @@ def main():
         f"export const SECTORS: Record<Sector, string> = {json.dumps(SECTOR, ensure_ascii=False)};",
         f"export const courses: Course[] = {json.dumps(rows, ensure_ascii=False, indent=1)};",
         f"export const FEATURED: string[] = {json.dumps(FEATURED)};",
+        f"export const homeWall: (CoursePhoto & {{ org: string }})[] = {json.dumps(wall, ensure_ascii=False, indent=1)};",
         f"export const totalSessions = {total};",
         f"export const orgCount = {len(orgs)};",
         f"export const orgNames: string[] = {json.dumps(orgs, ensure_ascii=False)};",
