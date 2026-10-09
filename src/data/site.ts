@@ -30,8 +30,8 @@ export const SERVICES = [
   {
     key: "automation",
     title: "업무 자동화",
-    body: "반복 업무를 n8n·파이썬·AI 에이전트로 자동화합니다. 설계부터 구현까지 함께합니다.",
-    tags: ["n8n", "Claude API", "AI 에이전트", "문서·행정 자동화"],
+    body: "반복 업무를 AI 에이전트·컴퓨터 유즈·Aside로 자동화합니다. 설계부터 구현까지 함께합니다.",
+    tags: ["AI 에이전트", "컴퓨터 유즈", "Aside", "Claude API", "문서·행정 자동화"],
   },
   {
     key: "vibe",
