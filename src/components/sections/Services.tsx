@@ -11,7 +11,6 @@ const GLOW = [
   "bg-[radial-gradient(circle_at_10%_90%,rgba(77,243,255,0.18),transparent_55%)]",
   "bg-[radial-gradient(circle_at_12%_15%,rgba(255,180,84,0.20),transparent_50%)]",
 ];
-const KICKER = ["진단부터 실행까지", "직무에 맞춘 커리큘럼", "반복은 AI에게", "코딩 몰라도 OK"];
 
 export default function Services() {
   return (
@@ -25,7 +24,7 @@ export default function Services() {
             <span className="text-accent [text-shadow:0_0_30px_rgba(77,243,255,0.45)]">AI</span>를 더합니다
           </>
         }
-        lead="교육으로 끝내지 않습니다. 현장의 업무에 바로 쓰이도록 설계하고, 직접 만들어 보게 합니다."
+        lead="배우고 끝나지 않게, 바로 업무에 씁니다."
       />
       <ul className="grid grid-cols-1 gap-4 sm:gap-5 lg:grid-cols-3">
         {SERVICES.map((s, i) => (
@@ -35,9 +34,8 @@ export default function Services() {
           >
             <div aria-hidden="true" className={`pointer-events-none absolute inset-0 opacity-80 transition duration-500 group-hover:opacity-100 ${GLOW[i]}`} />
             <div className="relative">
-              <p className="font-num text-[0.95rem] text-warm">{KICKER[i]}</p>
-              <h3 className="mt-3 font-display text-[clamp(2.2rem,3.6vw,3.2rem)] leading-[1.05]">{s.title}</h3>
-              <p className={`mt-5 text-[1.05rem] leading-relaxed text-ink/75 ${i === 0 || i === 3 ? "max-w-lg" : ""}`}>{s.body}</p>
+              <h3 className="font-display text-[clamp(2.2rem,3.6vw,3.2rem)] leading-[1.05]">{s.title}</h3>
+              <p className="mt-4 font-num text-[1.1rem] text-warm">{s.body}</p>
             </div>
             <ul className="relative mt-8 flex flex-wrap gap-2">
               {s.tags.map((t) => (

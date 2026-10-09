@@ -10,7 +10,7 @@ export default function Books() {
   const [featured, ...rest] = BOOKS;
   return (
     <SectionShell id="books" sheet>
-      <SectionHead label="도서 · 강의" title="책과 강의로도 만나요" lead="현장에서 다듬은 내용을 책과 온라인 강의로 정리했습니다." />
+      <SectionHead label="도서 · 강의" title="책과 강의로도 만나요" lead="현장에서 다듬은 내용을 책과 강의로." />
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-12">
         <RandomBookLink links={featured.links} className="reveal group flex flex-col items-center justify-end rounded-[2rem] bg-butter px-8 pb-8 pt-12 lg:col-span-5">

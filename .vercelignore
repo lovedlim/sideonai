@@ -1,0 +1,4 @@
+# 배포에 필요 없는 원본 자료(강의 사진 원본 13GB 등)
+list/
+.superpowers/
+.playwright-mcp/

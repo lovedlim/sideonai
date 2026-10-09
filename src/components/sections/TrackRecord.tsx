@@ -24,12 +24,12 @@ export default function TrackRecord() {
         label="실적"
         title={
           <>
-            말보다 <span className="marker">현장</span>으로
+            <span className="marker">{totalSessions}번의 현장</span>이
             <br />
-            보여 드릴게요
+            증명합니다
           </>
         }
-        lead="EBS, GS리테일, KB국민카드, NC부터 공공기관과 대학까지. 조직마다 직무에 맞춰 과정을 새로 설계하고 직접 진행했습니다."
+        lead="EBS, GS리테일, KB국민카드, NC부터 공공기관·대학까지."
       />
 
       {/* 큰 숫자 셋 */}

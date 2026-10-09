@@ -12,7 +12,7 @@ export default function Contact() {
           <br />
           <span className="text-accent">AI</span>, 같이 붙여 볼까요?
         </h2>
-        <p className="reveal mb-12 mt-6 text-lg leading-relaxed text-muted">교육 대상과 목표를 알려 주시면 도메인에 맞는 과정을 제안해 드립니다.</p>
+        <p className="reveal mb-12 mt-6 text-lg leading-relaxed text-muted">대상과 목표만 알려 주세요. 맞는 과정을 제안해 드립니다.</p>
         <ul className="reveal space-y-4">
           {CONTACT_LINKS.map((l) => (
             <li key={l.label} className="flex items-baseline gap-4">

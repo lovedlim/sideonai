@@ -5,7 +5,7 @@ import SectionShell from "./SectionShell";
 export default function Resources() {
   return (
     <SectionShell id="resources" tone="surface" sheet>
-      <SectionHead label="리소스" title="바로 써 보는 학습 도구" lead="교육에서 쓰는 연습 도구와 자료를 누구나 쓸 수 있게 열어 두었습니다." />
+      <SectionHead label="리소스" title="바로 써 보는 학습 도구" lead="교육에서 쓰는 도구, 누구나 무료로." />
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {RESOURCES.map((r, i) => (
           <li key={r.href} className="reveal">

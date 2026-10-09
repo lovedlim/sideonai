@@ -18,25 +18,25 @@ export const SERVICES = [
   {
     key: "ax",
     title: "AX 컨설팅",
-    body: "조직의 업무를 진단하고 AI 전환 로드맵을 설계합니다. 교육과 자동화까지 실행으로 연결합니다.",
+    body: "업무 진단부터 AI 전환 로드맵, 실행까지.",
     tags: ["업무 진단", "AX 로드맵", "데이터 기반 의사결정"],
   },
   {
     key: "education",
     title: "AI 교육",
-    body: "임직원·공공기관 대상 생성형 AI 실무 교육. 직무와 도메인에 맞춰 커리큘럼을 설계합니다.",
+    body: "직무와 도메인에 맞춘 생성형 AI 실무 교육.",
     tags: ["생성형 AI 실무", "직무별 맞춤", "신임자·관리자 과정"],
   },
   {
     key: "automation",
     title: "업무 자동화",
-    body: "반복 업무를 AI 에이전트·컴퓨터 유즈·Aside로 자동화합니다. 설계부터 구현까지 함께합니다.",
+    body: "반복 업무는 AI 에이전트에게 맡깁니다.",
     tags: ["AI 에이전트", "컴퓨터 유즈", "Aside", "Claude API", "문서·행정 자동화"],
   },
   {
     key: "vibe",
     title: "바이브 코딩",
-    body: "코딩 경험이 없어도 Claude Code·Codex·Gemini·Cursor로 웹 서비스를 직접 만드는 워크숍.",
+    body: "코딩 몰라도 내 업무 도구를 직접 만듭니다.",
     tags: ["Claude Code", "Codex", "Gemini", "Cursor"],
   },
 ] as const;
