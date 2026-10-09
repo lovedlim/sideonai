@@ -16,22 +16,22 @@ TODAY = "2026-10-09"
 
 # 분야. 홈페이지의 분야 탭과 같다.
 SECTOR = {
-    "corp": "기업",
+    "corp": "기업 · 공영방송",
     "media": "방송 · 미디어",
     "public": "공공 · 소방",
     "edu": "대학 · 교육 · 컨퍼런스",
 }
 # 분야 안에서는 규모가 큰 기관부터, 같은 기관 안에서는 대표 과정부터 보인다.
 ORDER = [
-    # 기업
+    # 기업 · 공영방송: EBS를 맨 앞에, 이어서 대기업
+    "ebs-digital-school", "ebs-newhire", "ebs-business", "ebs-hr", "ebs-youth",
     "gsretail", "kbcard", "ncsoft", "nexon", "jb", "multicampus", "vaiv", "datasolution", "medengine",
     # 공공 · 소방
     "kcg", "fire-advanced", "fire-basic", "fire-commander", "fire-chiefs", "fire-newcomer", "fire-promotion",
     "fire-officer", "fire-admin", "fire-hazmat", "fire-safety-edu", "fire-tlss",
     "kca", "kalis", "kipf", "kwdi", "gbsa", "seoul-lifelong", "seongnam-youth", "gangnam-teachers",
     # 방송 · 미디어
-    "ebs-digital-school", "ebs-newhire", "ebs-business", "ebs-hr", "ebs-youth", "ebs-2025",
-    "mbccb", "tbc", "etnews-claudecode", "etnews-vibe-1day", "kpf", "kobeta-beginner", "kobeta-python", "koba",
+    "ebs-2025", "mbccb", "tbc", "etnews-claudecode", "etnews-vibe-1day", "kpf", "kobeta-beginner", "kobeta-python", "koba",
     # 대학 · 교육 · 컨퍼런스
     "kisa-vibe", "kisa-web3", "uos", "busan-catholic", "inflearn-sme", "hanbit", "kvrda", "music-assoc",
     "joongang-girls", "modulabs",
@@ -41,10 +41,10 @@ SECTOR_OF = {
                              "fire-safety-edu", "fire-promotion", "fire-basic", "fire-advanced", "fire-tlss",
                              "fire-commander", "kcg", "kalis", "kipf", "kwdi", "seoul-lifelong", "kca",
                              "gangnam-teachers", "tutor-fire"]},
-    **{k: "media" for k in ["ebs-2025", "ebs-digital-school", "ebs-business", "ebs-youth", "ebs-newhire", "ebs-hr",
-                            "kobeta-beginner", "kobeta-python", "koba", "tbc", "mbccb", "kpf"]},
+    **{k: "media" for k in ["ebs-2025", "kobeta-beginner", "kobeta-python", "koba", "tbc", "mbccb", "kpf"]},
     **{k: "corp" for k in ["nexon", "vaiv", "multicampus", "jb", "kbcard", "gsretail", "medengine", "ncsoft",
-                           "datasolution"]},
+                           "datasolution", "ebs-digital-school", "ebs-business", "ebs-youth",
+                           "ebs-newhire", "ebs-hr"]},
     "gbsa": "public", "seongnam-youth": "public", "etnews-claudecode": "media", "etnews-vibe-1day": "media",
 }
 
@@ -81,7 +81,7 @@ EXTRA = [
          links=[("행사 안내", "https://event-us.kr/modu/event/100282")]),
 ]
 # 홈 실적 섹션에 크게 올릴 과정 (순서대로)
-FEATURED = ["kbcard", "ebs-digital-school", "gsretail", "ncsoft", "koba"]
+FEATURED = ["ebs-digital-school", "gsretail", "kbcard", "ncsoft", "koba"]
 # 기관명 띠와 목록에서 맨 앞에 세울 기관. 이름만 들어도 아는 곳부터
 BRANDS_FIRST = ["EBS", "GS리테일", "KB국민카드", "NC", "넥슨코리아", "JB금융지주", "KISA", "MBC충북", "서울시립대학교", "멀티캠퍼스", "전자신문"]
 

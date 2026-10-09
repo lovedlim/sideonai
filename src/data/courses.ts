@@ -9,8 +9,180 @@ export interface Course {
   note?: string; links: { label: string; href: string }[]; photos: CoursePhoto[];
 }
 
-export const SECTORS: Record<Sector, string> = {"corp": "기업", "media": "방송 · 미디어", "public": "공공 · 소방", "edu": "대학 · 교육 · 컨퍼런스"};
+export const SECTORS: Record<Sector, string> = {"corp": "기업 · 공영방송", "media": "방송 · 미디어", "public": "공공 · 소방", "edu": "대학 · 교육 · 컨퍼런스"};
 export const courses: Course[] = [
+ {
+  "id": "ebs-digital-school",
+  "org": "EBS",
+  "title": "디지털학교 교육본부 바이브코딩 연수",
+  "sector": "corp",
+  "sessions": 4,
+  "upcoming": 0,
+  "years": "2026",
+  "last": "2026-07-01",
+  "note": "교육 외 현업 적용 프로젝트까지 진행",
+  "links": [],
+  "photos": [
+   {
+    "src": "/images/courses/ebs-digital-school-1-1831ae5d.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-digital-school-2-7dc1649b.webp",
+    "w": 1050,
+    "h": 1400,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-digital-school-3-f5af521f.webp",
+    "w": 1050,
+    "h": 1400,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-digital-school-4-b493a1e7.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   }
+  ]
+ },
+ {
+  "id": "ebs-newhire",
+  "org": "EBS",
+  "title": "바이브코딩으로 완성하는 생성형 AI 서비스 (2026 신규직원 연수)",
+  "sector": "corp",
+  "sessions": 2,
+  "upcoming": 0,
+  "years": "2026",
+  "last": "2026-09-15",
+  "note": undefined,
+  "links": [],
+  "photos": [
+   {
+    "src": "/images/courses/ebs-newhire-1-1921c5a3.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-newhire-2-e52d775b.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-newhire-3-a8dda97f.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   }
+  ]
+ },
+ {
+  "id": "ebs-business",
+  "org": "EBS",
+  "title": "사업센터 바이브 코딩 연수",
+  "sector": "corp",
+  "sessions": 3,
+  "upcoming": 0,
+  "years": "2026",
+  "last": "2026-06-19",
+  "note": undefined,
+  "links": [],
+  "photos": [
+   {
+    "src": "/images/courses/ebs-business-1-d3157f24.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-business-2-f321ecd3.webp",
+    "w": 1400,
+    "h": 1400,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-business-3-084fbd8c.webp",
+    "w": 1050,
+    "h": 1400,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-business-4-c86f790a.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   }
+  ]
+ },
+ {
+  "id": "ebs-hr",
+  "org": "EBS",
+  "title": "HR팀을 위한 AI 업무 자동화",
+  "sector": "corp",
+  "sessions": 1,
+  "upcoming": 0,
+  "years": "2026",
+  "last": "2026-10-07",
+  "note": undefined,
+  "links": [],
+  "photos": [
+   {
+    "src": "/images/courses/ebs-hr-1-a6b13584.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-hr-2-f2b9c7e6.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-hr-3-ae678d6c.webp",
+    "w": 1050,
+    "h": 1400,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-hr-4-0263c0f2.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   }
+  ]
+ },
+ {
+  "id": "ebs-youth",
+  "org": "EBS",
+  "title": "학교 밖 청소년",
+  "sector": "corp",
+  "sessions": 1,
+  "upcoming": 0,
+  "years": "2026",
+  "last": "2026-08-30",
+  "note": undefined,
+  "links": [],
+  "photos": [
+   {
+    "src": "/images/courses/ebs-youth-1-4de46c01.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/ebs-youth-2-f40943de.webp",
+    "w": 1050,
+    "h": 1400,
+    "kind": "photo"
+   }
+  ]
+ },
  {
   "id": "gsretail",
   "org": "GS리테일",
@@ -251,178 +423,6 @@ export const courses: Course[] = [
     "src": "/images/courses/medengine-2-83fbe358.webp",
     "w": 400,
     "h": 300,
-    "kind": "photo"
-   }
-  ]
- },
- {
-  "id": "ebs-digital-school",
-  "org": "EBS",
-  "title": "디지털학교 교육본부 바이브코딩 연수",
-  "sector": "media",
-  "sessions": 4,
-  "upcoming": 0,
-  "years": "2026",
-  "last": "2026-07-01",
-  "note": "교육 외 현업 적용 프로젝트까지 진행",
-  "links": [],
-  "photos": [
-   {
-    "src": "/images/courses/ebs-digital-school-1-1831ae5d.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-digital-school-2-7dc1649b.webp",
-    "w": 1050,
-    "h": 1400,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-digital-school-3-f5af521f.webp",
-    "w": 1050,
-    "h": 1400,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-digital-school-4-b493a1e7.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   }
-  ]
- },
- {
-  "id": "ebs-newhire",
-  "org": "EBS",
-  "title": "바이브코딩으로 완성하는 생성형 AI 서비스 (2026 신규직원 연수)",
-  "sector": "media",
-  "sessions": 2,
-  "upcoming": 0,
-  "years": "2026",
-  "last": "2026-09-15",
-  "note": undefined,
-  "links": [],
-  "photos": [
-   {
-    "src": "/images/courses/ebs-newhire-1-1921c5a3.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-newhire-2-e52d775b.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-newhire-3-a8dda97f.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   }
-  ]
- },
- {
-  "id": "ebs-business",
-  "org": "EBS",
-  "title": "사업센터 바이브 코딩 연수",
-  "sector": "media",
-  "sessions": 3,
-  "upcoming": 0,
-  "years": "2026",
-  "last": "2026-06-19",
-  "note": undefined,
-  "links": [],
-  "photos": [
-   {
-    "src": "/images/courses/ebs-business-1-d3157f24.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-business-2-f321ecd3.webp",
-    "w": 1400,
-    "h": 1400,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-business-3-084fbd8c.webp",
-    "w": 1050,
-    "h": 1400,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-business-4-c86f790a.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   }
-  ]
- },
- {
-  "id": "ebs-hr",
-  "org": "EBS",
-  "title": "HR팀을 위한 AI 업무 자동화",
-  "sector": "media",
-  "sessions": 1,
-  "upcoming": 0,
-  "years": "2026",
-  "last": "2026-10-07",
-  "note": undefined,
-  "links": [],
-  "photos": [
-   {
-    "src": "/images/courses/ebs-hr-1-a6b13584.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-hr-2-f2b9c7e6.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-hr-3-ae678d6c.webp",
-    "w": 1050,
-    "h": 1400,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-hr-4-0263c0f2.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   }
-  ]
- },
- {
-  "id": "ebs-youth",
-  "org": "EBS",
-  "title": "학교 밖 청소년",
-  "sector": "media",
-  "sessions": 1,
-  "upcoming": 0,
-  "years": "2026",
-  "last": "2026-08-30",
-  "note": undefined,
-  "links": [],
-  "photos": [
-   {
-    "src": "/images/courses/ebs-youth-1-4de46c01.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/ebs-youth-2-f40943de.webp",
-    "w": 1050,
-    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -1743,7 +1743,7 @@ export const courses: Course[] = [
   "photos": []
  }
 ];
-export const FEATURED: string[] = ["kbcard", "ebs-digital-school", "gsretail", "ncsoft", "koba"];
+export const FEATURED: string[] = ["ebs-digital-school", "gsretail", "kbcard", "ncsoft", "koba"];
 export const totalSessions = 121;
 export const orgCount = 35;
 export const orgNames: string[] = ["EBS", "GS리테일", "KB국민카드", "NC", "넥슨코리아", "JB금융지주", "KISA", "MBC충북", "서울시립대학교", "멀티캠퍼스", "전자신문", "바이브컴퍼니", "데이터솔루션", "메드엔진", "방송기술교육원", "TBC", "한국언론진흥재단", "코바(KOBA)", "해양경찰청", "서울소방학교", "한국소비자원", "국토안전관리원", "한국조세재정연구원", "한국여성정책연구원", "경기도경제과학진흥원", "서울시평생교육진흥원", "성남시청소년재단", "강남서초교육지원청", "부산가톨릭대학교", "인프런", "한빛미디어", "한국가상융합디지털산업협회", "한국음악협회", "중앙여고", "모두의연구소"];
