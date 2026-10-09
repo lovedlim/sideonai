@@ -45,8 +45,8 @@ export default function SiteHeader() {
         본문으로 건너뛰기
       </a>
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Link href="/" className="font-display text-2xl">
-          SideOn<span className="text-accent">AI</span>
+        <Link href="/" className="logo-bug font-display text-2xl">
+          SideOn<span className="text-accent [text-shadow:0_0_14px_rgba(77,243,255,0.45)]">AI</span>
         </Link>
         <nav aria-label="주요 메뉴" className="hidden items-center gap-8 md:flex">
           {NAV.map((n) => (

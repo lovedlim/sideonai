@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import "./fonts/pretendard/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import LogoIdent from "@/components/LogoIdent";
 import StructuredData from "@/components/StructuredData";
 import { Analytics } from "@vercel/analytics/next";
 
@@ -72,6 +73,7 @@ export default function RootLayout({
       <body className={`${geistMono.variable} ${hanna.variable} ${dohyeon.variable} antialiased`}>
         {gaId && <GoogleAnalytics measurementId={gaId} />}
         <StructuredData />
+        <LogoIdent />
         {children}
         <Analytics />
       </body>
