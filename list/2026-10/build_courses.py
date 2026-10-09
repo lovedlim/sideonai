@@ -81,7 +81,7 @@ EXTRA = [
          links=[("행사 안내", "https://event-us.kr/modu/event/100282")]),
 ]
 # 홈 실적 섹션에 크게 올릴 과정 (순서대로)
-FEATURED = ["ebs-newhire", "gsretail", "kbcard", "ncsoft", "koba"]
+FEATURED = ["ebs-newhire", "gsretail", "kbcard", "jb", "koba"]
 # 메인 사진 띠. 사람이 꽉 찬 강의장·행사장 중 선명한 것만 골랐다(선명도 측정 후 눈으로 확인).
 # 줄 두 개에 번갈아 들어가므로 홀수 번째는 윗줄, 짝수 번째는 아랫줄
 HOME_WALL = [
@@ -92,7 +92,7 @@ HOME_WALL = [
     ("사진/2026-04-01 KB국민카드/IMG_6810.jpeg", "KB국민카드"),
     ("사진/2026-10-07 EBS/IMG_3491.jpeg", "EBS"),
     ("사진/2026-04-17 한국가상융합디지털산업협회/IMG_7104.jpeg", "한국가상융합디지털산업협회"),
-    ("사진/2026-09-02 NC소프트/IMG_0640.jpeg", "NC"),
+    ("보정/nc-IMG_0640.jpg", "NC"),  # 프로젝터 빛 색 보정본(보정/fix_color.py)
     ("사진/2026-05-14 코바/Resized_20260514_111132_MIZBPBHHIHCHJFFJFGBGEEJEDC.jpeg", "코바(KOBA)"),
     ("사진/2026-04-09 방송기술교육원/IMG_6987.jpeg", "방송기술교육원"),
     ("사진/2026-02-11 JB금융지주/IMG_5933.jpeg", "JB금융지주"),

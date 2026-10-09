@@ -266,13 +266,13 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/ncsoft-1-bc29438f.webp",
+    "src": "/images/courses/ncsoft-1-30cc5e34.webp",
     "w": 1400,
     "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/ncsoft-2-aa8694ae.webp",
+    "src": "/images/courses/ncsoft-2-045f8986.webp",
     "w": 1400,
     "h": 1400,
     "kind": "photo"
@@ -324,33 +324,33 @@ export const courses: Course[] = [
   "links": [],
   "photos": [
    {
-    "src": "/images/courses/jb-1-a31a701c.webp",
+    "src": "/images/courses/jb-1-50269d42.webp",
     "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/jb-2-e1d86ab7.webp",
-    "w": 1400,
-    "h": 1050,
-    "kind": "photo"
-   },
-   {
-    "src": "/images/courses/jb-3-6dbe4d86.webp",
-    "w": 1050,
     "h": 1400,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/jb-4-3be46d97.webp",
+    "src": "/images/courses/jb-2-637193d6.webp",
     "w": 1400,
     "h": 1050,
     "kind": "photo"
    },
    {
-    "src": "/images/courses/jb-5-a8ccdcfd.webp",
-    "w": 400,
-    "h": 400,
+    "src": "/images/courses/jb-3-3be46d97.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/jb-4-e1d86ab7.webp",
+    "w": 1400,
+    "h": 1050,
+    "kind": "photo"
+   },
+   {
+    "src": "/images/courses/jb-5-6dbe4d86.webp",
+    "w": 1050,
+    "h": 1400,
     "kind": "photo"
    }
   ]
@@ -1743,7 +1743,7 @@ export const courses: Course[] = [
   "photos": []
  }
 ];
-export const FEATURED: string[] = ["ebs-newhire", "gsretail", "kbcard", "ncsoft", "koba"];
+export const FEATURED: string[] = ["ebs-newhire", "gsretail", "kbcard", "jb", "koba"];
 export const homeWall: (CoursePhoto & { org: string })[] = [
  {
   "src": "/images/courses/wall-1-a32c2bb8.webp",
@@ -1795,7 +1795,7 @@ export const homeWall: (CoursePhoto & { org: string })[] = [
   "org": "한국가상융합디지털산업협회"
  },
  {
-  "src": "/images/courses/wall-8-e03f51ca.webp",
+  "src": "/images/courses/wall-8-5c6be8cc.webp",
   "w": 900,
   "h": 675,
   "kind": "photo",
