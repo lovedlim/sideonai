@@ -1,7 +1,6 @@
 import { ABOUT_EN, ABOUT_HEAD, ABOUT_KO } from "@/data/site";
-import Faq from "./Faq";
 
-// 회사 소개. 누가·무엇을·어떤 근거로를 한 줄씩 한국어로 적고, 아래에 영문 소개와 자주 묻는 질문을 둔다.
+// 회사 소개. 누가·무엇을·어떤 근거로를 한 줄씩 한국어로 적고, 아래에 영문 소개를 둔다.
 export default function About() {
   return (
     <section id="about" className="neon relative z-10 -mt-12 overflow-hidden rounded-t-[2.5rem] px-5 py-24 sm:-mt-16 sm:rounded-t-[4rem] sm:px-8 sm:py-32">
@@ -21,7 +20,6 @@ export default function About() {
           ))}
         </div>
       </div>
-      <Faq />
     </section>
   );
 }

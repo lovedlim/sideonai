@@ -4,7 +4,6 @@ import {
   BRAND_KO,
   COMPANY,
   CONTACT_EMAIL,
-  FAQ,
   SERVICES,
   SITE_URL,
   SLOGAN,
@@ -121,21 +120,4 @@ export default function StructuredData() {
   };
 
   return <JsonLd data={graph} />;
-}
-
-// 홈 화면의 자주 묻는 질문(About 섹션)과 같은 문장.
-export function FaqStructuredData() {
-  return (
-    <JsonLd
-      data={{
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: FAQ.map((f) => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: { "@type": "Answer", text: f.a },
-        })),
-      }}
-    />
-  );
 }

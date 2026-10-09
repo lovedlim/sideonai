@@ -1,4 +1,4 @@
-// 홈에 나오는 문구와 링크의 단일 출처. 메타데이터·구조화 데이터·FAQ도 여기서 가져간다.
+// 홈에 나오는 문구와 링크의 단일 출처. 메타데이터·구조화 데이터도 여기서 가져간다.
 import { courses, orgCount, totalSessions } from "./courses";
 
 export const SITE_URL = "https://sideonai.com";
@@ -159,34 +159,6 @@ export const ABOUT_KO = [
   `${BRAND}(${BRAND_KO})는 기업·기관의 AI 전환을 돕는 AX 컨설팅·AI 교육 회사입니다.`,
   `${LEAD_CLIENTS} 등 ${orgCount}곳에서 ${totalSessions}회 강의했습니다.`,
   `생성형 AI 실무, 업무 자동화, 바이브 코딩까지 ${courses.length}개 과정을 직접 설계했습니다.`,
-] as const;
-
-// 자주 묻는 질문. 화면(About 섹션)과 FAQPage 구조화 데이터가 같은 문장을 쓴다.
-export const FAQ = [
-  {
-    q: "SideOnAI는 어떤 회사인가요?",
-    a: "기업·기관에 AX 컨설팅, 생성형 AI 실무 교육, 업무 자동화, 바이브 코딩 교육을 제공합니다.",
-  },
-  {
-    q: "어디에서 강의했나요?",
-    a: `${LEAD_CLIENTS}, 넥슨코리아, JB금융지주, KISA 등 ${orgCount}곳에서 ${totalSessions}회 강의했습니다.`,
-  },
-  {
-    q: "바이브 코딩 교육에서는 무엇을 배우나요?",
-    a: "Claude Code, Codex, Gemini, Cursor로 내 업무 도구를 직접 만듭니다.",
-  },
-  {
-    q: "업무 자동화는 어떤 도구로 하나요?",
-    a: "AI 에이전트, 컴퓨터 유즈, Aside, Claude API로 반복 업무를 자동화합니다.",
-  },
-  {
-    q: "우리 조직에 맞춘 교육도 되나요?",
-    a: `네. 직무와 도메인에 맞춰 과정을 설계합니다. 지금까지 ${courses.length}개 과정을 만들었습니다.`,
-  },
-  {
-    q: "교육 문의는 어떻게 하나요?",
-    a: `${CONTACT_EMAIL} 또는 문의 폼에 대상과 목표를 남겨 주세요.`,
-  },
 ] as const;
 
 export const CONTACT_LINKS = [
